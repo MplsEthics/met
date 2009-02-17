@@ -1,9 +1,10 @@
 FIXME:
 
-add clever documentation here
+XXX add clever documentation here
 
 RESOURCES:
 
     /usr/lib/pygtk/2.0/pygtk-demo.py
     http://www.pygtk.org/docs/pygtk/index.html
+    http://www.py2exe.org/
 
