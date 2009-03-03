@@ -27,7 +27,7 @@ run:
 	PYTHONPATH=$(PWD) /usr/bin/python met/main.py
 
 test:
-	pyflakes src/
+	pyflakes met/
 
 exe:
 	python setup.py py2exe --bundle 1
