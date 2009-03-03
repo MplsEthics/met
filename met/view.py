@@ -69,7 +69,7 @@ class Splash(object):
         button = gtk.Button("exit")
 
         win.add(sw)
-        win.add(button)
+        #win.add(button)
         win.show_all()
 
     def insert_text(self,buffer):
@@ -81,4 +81,11 @@ class Splash(object):
         buffer.insert_with_tags_by_name(iter,
             "Ethics training software for the City of Minneapolis",
             "center")
+
+class Question(object):
+    pass
+
+
+class AnsweredQuestion(object):
+    pass
 

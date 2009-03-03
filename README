@@ -6,7 +6,7 @@ SYNOPSIS
 
 RESOURCES:
 
-    /usr/lib/pygtk/2.0/pygtk-demo.py
+    file:///usr/lib/pygtk/2.0/pygtk-demo.py
     http://www.pygtk.org/docs/pygtk/index.html
     http://www.py2exe.org/
     http://www.py2exe.org/index.cgi/SingleFileExecutable
