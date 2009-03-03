@@ -29,6 +29,6 @@ run:
 test:
 	pyflakes src/
 
-#exe:
-# FIXME: use py2exe to generate an executable
+exe:
+	python setup.py py2exe --bundle 1
 
