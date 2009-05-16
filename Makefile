@@ -3,9 +3,12 @@
      STAMP := $(shell date '+%Y%m%d.%H%M%S')
    DISTDIR := $(PACKAGE)-$(STAMP)
      PWD   := $(shell pwd)
-
+ APPENGINE := /usr/local/lib/google_appengine
 usage:
 	@echo "usage: [clean]"
+
+gae app:
+	$(APPENGINE)/dev_appserver.py google-app/
 
 clean:
 	rm -rf $(PACKAGE)-20[0-9][0-9][01][1-9][0-3][0-9].*
