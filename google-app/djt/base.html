@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+   "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/styles/screen.css"
+    media="screen" />
+<link rel="stylesheet" type="text/css" href="/styles/print.css"
+    media="print" />
+<title>
+{% block title %}
+City of Minneapolis electronic ethics training
+{% endblock %}
+</title>
+</head>
+<body>
+{% block body %}
+
+<div id="content">
+{% block content %}
+{% endblock content %}
+</div>
+
+<div id="footer">
+{% block footer %}
+This is the footer.
+{% endblock footer %}
+</div>
+
+{% endblock body %}
+</body>
+</html>

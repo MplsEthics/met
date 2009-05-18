@@ -1,28 +1,34 @@
-<html>
-<head></head>
-<body>
-City of Minneapolis
+{% extends "base.html" %}
 
-Ethics in Government Education for Appointed Members of Boards, Commissions and
-Agencies
+{% block content %}
+<h1>City of Minneapolis</h1>
 
-Office of the Minneapolis City Attorney
+<h1>Ethics in Government Education for Appointed Members of Boards, Commissions
+and Agencies</h1>
 
+<h2>Office of the Minneapolis City Attorney</h2>
+
+<p>
 Welcome to the Ethics in Government Education for Appointed Members of Boards,
 Commissions and Agencies.  This training module consists of a General Overview
 of the City of Minneapolis Ethics in Government Ordinance, followed by three
 discussion topics, a discussion of the Confidential Reporting Line, and a
 summary.  The discussion topics are as follows:
 
-    1. Conflict of Interest
-    2. Gifts
-    3. Use of City Property
+<ol>
+<li>Conflict of Interest</li>
+<li>Gifts</li>
+<li>Use of City Property</li>
+</ol>
 
 We expect that, on average, this training should take approximately 30 minutes.
 Upon completion, you will have finished your required ethics education for the
 four year time period and will be more comfortable with some of the measures to
 ensure integrity in Minneapolis City government.
 
-</body>
-</html>
+<p>
+<form method="post" action="instructions.html">
+<input type="submit" name="submit" value="Continue &rarr;"/>
+</form>
 
+{% endblock %}

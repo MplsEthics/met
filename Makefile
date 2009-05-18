@@ -7,7 +7,7 @@
 usage:
 	@echo "usage: [clean]"
 
-gae app:
+start gae app:
 	$(APPENGINE)/dev_appserver.py google-app/
 
 clean:

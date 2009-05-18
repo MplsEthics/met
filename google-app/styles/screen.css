@@ -1,0 +1,15 @@
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+    background-color: #B4F3FF;
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+div#footer {
+    margin-top: 2em;
+    font-size: small;
+    border: thin solid #122564;
+    background-color: #14ded8;
+}
+
+
