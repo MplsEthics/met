@@ -6,6 +6,13 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
 
+def debug():
+    import sys
+    import pdb
+    for attr in ('stdin', 'stdout', 'stderr'):
+        setattr(sys, attr, getattr(sys, '__%s__' % attr))
+    pdb.set_trace()
+
 class MainPage(webapp.RequestHandler):
     def get(self):
         if users.get_current_user():
@@ -27,9 +34,17 @@ class MainPage(webapp.RequestHandler):
     def post(self):
         self.redirect('/instructions.html')
 
+class HTMLPage(webapp.RequestHandler):
+    def get(self):
+        #debug()
+        path = os.path.join(os.path.dirname(__file__), self.request.path[1:])
+        self.response.out.write(template.render(path, {}))
+    post = get
+
 application = webapp.WSGIApplication(
     [
         ('/', MainPage),
+        (r'/.*\.html$', HTMLPage),
 #       ('/sign', Guestbook),
     ],
     debug=True,

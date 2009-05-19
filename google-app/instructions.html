@@ -1,23 +1,26 @@
-<html>
-<head>
-</head>
-<body>
-INSTRUCTIONS FOR COMPLETING YOUR TRAINING
+{% extends "djt/base.html" %}
+
+{% block content %}
+
+<h1>Instructions for Completing your Training</h1>
 
 STEP ONE: We begin each topic with a “general” rule. You should reflect for a
 brief moment on how that rule furthers the purpose of the Ethics in Government
 Ordinance -- to promote high ethical standards and conduct, and to foster a
 healthy ethical culture throughout city government.
 
+<p>
 STEP TWO: Following the general rule will be a scenario and a question. Please
 choose the best answer from among the possible answers.
 
+<p>
 To choose the best answer, think first what the answer should be based simply
 on the general rule. Then ask yourself, "Is there a good reason in this case
 not to apply the general rule?" In other words, should there be an exception
 here? Balance the apparent good that the general rule might do in this case
 against any competing values that you believe may be important.
 
+<p>
 For example: There is a general rule that you may not participate in City of
 Minneapolis business that affects the financial interests of a company or other
 non-Minneapolis entity with which you are seeking employment. This rule
@@ -31,6 +34,7 @@ confidence in the integrity of Minneapolis city government? If your answer is
 exception should apply, then select an answer in accordance with that
 expectation.
 
+<p>
 STEP THREE: After you select an answer, give particular attention to our
 explanation of why the answer is correct or incorrect. Only at this stage, when
 you have read our explanation, will you know if an exception actually applies
@@ -39,8 +43,7 @@ on the difference, if any, between what you thought the correct answer should
 be and what it actually was. Once you are confident that you understand the
 rationale for the correct answer, go on to the next scenario.
 
-
-INSTRUCTIONS FOR COMPLETING YOUR TRAINING
+<h1>Instructions for Completing your Training</h1>
 
 A more traditional approach would be to give you the general rule and the
 exception, if one applies, right before each scenario. Then you would simply
@@ -85,7 +88,5 @@ re-take this course in its entirety.
 
 Let's get started with an overview of the Ethics in Government Ordinance.
 
-
-</body>
-</html>
+{% endblock content %}
 

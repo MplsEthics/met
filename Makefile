@@ -8,7 +8,7 @@ usage:
 	@echo "usage: [clean]"
 
 start gae app:
-	$(APPENGINE)/dev_appserver.py google-app/
+	$(APPENGINE)/dev_appserver.py --port=9001 google-app/
 
 clean:
 	rm -rf $(PACKAGE)-20[0-9][0-9][01][1-9][0-3][0-9].*
@@ -31,7 +31,5 @@ run:
 
 test:
 	pyflakes met/
-
-exe:
-	python setup.py py2exe --bundle 1
+exe: python setup.py py2exe --bundle 1
 
