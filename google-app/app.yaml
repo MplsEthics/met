@@ -9,4 +9,5 @@ handlers:
 - url: /styles
   static_dir: styles
 - url: /.*
-  script: met.py
+  script: met/gae.py
+
