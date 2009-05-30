@@ -14,18 +14,31 @@ City of Minneapolis electronic ethics training
 </head>
 <body>
 {% block body %}
+<div id="page">
+<div id="header">
+{% block header %}
 
+City of Minneapolis
+<br>
+Ethics in Government Education for Appointed Members of Boards, Commissions
+and Agencies
+<br>
+
+Office of the Minneapolis City Attorney
+{% endblock header %}
+</div>
 <div id="content">
 {% block content %}
 {% endblock content %}
+<div style="clear:both" />
 </div>
-
 <div id="footer">
 {% block footer %}
+<a class="about" href="/about.html">About</a>
 This is the footer.
 {% endblock footer %}
 </div>
-
+</div>
 {% endblock body %}
 </body>
 </html>

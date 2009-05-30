@@ -1,16 +1,42 @@
-body {
+
+html, title, body {
     font-family: Verdana, Helvetica, sans-serif;
-    color: #007;
-    background-color: #B4F3FF;
-    margin-left: 10em;
-    margin-right: 10em;
+    background-color: #ffffee;
+    margin: 0;
+    padding: 0;
+}
+
+div#page {
+    margin-top: 0;
+    background-color: #b4f3ff;
+    margin: 0px 10em 0px 10em;
+    padding: 0px 1em 0px 1em;
+}
+
+div#content {
+    margin-bottom: 1em;
+    background-color: #ffddff;
+}
+
+div#content h1 {
+
+
+}
+
+div#content form.rhs {
+    float: right;
 }
 
 div#footer {
+    clear: both;
     margin-top: 2em;
     font-size: small;
     border: thin solid #122564;
     background-color: #14ded8;
 }
 
+div#footer a.about {
+    float: right;
+    margin: 0 1em;
+}
 

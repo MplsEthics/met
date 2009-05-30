@@ -28,16 +28,13 @@ class MainPage(webapp.RequestHandler):
             'url_linktext': url_linktext,
         }
 
-        path = os.path.join(os.path.dirname(__file__), 'djt/splash.html')
+        path = os.path.join(os.path.dirname(__file__), '../djt/main.html')
         self.response.out.write(template.render(path, template_values))
-
-    def post(self):
-        self.redirect('/instructions.html')
 
 class StaticHTMLPage(webapp.RequestHandler):
     fn = os.path.dirname(__file__)
     def get(self):
-        path = os.path.join(self.fn, self.request.path[1:])
+        path = os.path.join(self.fn, '..' + self.request.path)
         self.response.out.write(template.render(path, {}))
     post = get
 
