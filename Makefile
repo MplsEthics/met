@@ -8,7 +8,7 @@ usage:
 	@echo "usage: [clean]"
 
 start gae app:
-	$(APPENGINE)/dev_appserver.py --port=9001 google-app/
+	$(APPENGINE)/dev_appserver.py --port=9001 appengine/
 
 clean:
 	rm -rf $(PACKAGE)-20[0-9][0-9][01][1-9][0-3][0-9].*
