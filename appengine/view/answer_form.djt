@@ -1,0 +1,8 @@
+<form class="question" id="question">
+{% for answer in question.answers %}
+<input type="radio" style="float:left" />
+<div class="answer" id="{% answer.id %}">
+{{ answer.stem }}
+</div>
+{% endfor %}
+</form>

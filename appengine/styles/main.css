@@ -13,9 +13,15 @@ div#page {
     padding: 0px 1em 0px 1em;
 }
 
+div#header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 12pt;
+}
+
 div#content {
     margin-bottom: 1em;
-    background-color: #ffddff;
+    background-color: #b4f3ff;
 }
 
 div#content h1 {
@@ -30,13 +36,23 @@ div#content form.rhs {
 div#footer {
     clear: both;
     margin-top: 2em;
+    padding-bottom: 0.3em;
     font-size: small;
-    border: thin solid #122564;
-    background-color: #14ded8;
+    border-top: thin solid #122564;
+    background-color: #b4f3ff;
 }
 
 div#footer a.about {
     float: right;
     margin: 0 1em;
+}
+
+form#question div.answer {
+    margin-left: 2em;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
 }
 
