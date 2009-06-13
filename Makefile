@@ -4,6 +4,7 @@
    DISTDIR := $(PACKAGE)-$(STAMP)
      PWD   := $(shell pwd)
  APPENGINE := /usr/local/lib/google_appengine
+
 usage:
 	@echo "usage: [clean]"
 
@@ -31,5 +32,7 @@ run:
 
 test:
 	pyflakes met/
-exe: python setup.py py2exe --bundle 1
+
+exe:
+	 python setup.py py2exe --bundle 1
 
