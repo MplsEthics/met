@@ -24,7 +24,7 @@ class MainPage(webapp.RequestHandler):
 class StaticHTMLPage(webapp.RequestHandler):
     fn = os.path.dirname(__file__)
     def get(self):
-        path = os.path.join(self.fn, '..' + self.request.path)
+        path = os.path.join(self.fn, '../view' + self.request.path)
         self.response.out.write(template.render(path, {}))
     post = get
 

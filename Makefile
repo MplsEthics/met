@@ -4,6 +4,7 @@
    DISTDIR := $(PACKAGE)-$(STAMP)
      PWD   := $(shell pwd)
  APPENGINE := /usr/local/lib/google_appengine
+      PATH := /usr/bin:/bin
 
 usage:
 	@echo "usage: [clean]"
