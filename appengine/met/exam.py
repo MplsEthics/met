@@ -12,17 +12,13 @@ class Scene(object):
 
 class Question(object):
 
-    def __init__(self):
+    def __init__(self,name):
         self.name = name
 
 #   name
-#   question
+#   stem
 #   answers
 #   scenario
-
-class Question(object):
-    pass
-
 
 class Answer(object):
     pass
