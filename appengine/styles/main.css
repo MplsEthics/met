@@ -1,5 +1,4 @@
 
-    /*
 html, title, body {
     font-family: Verdana, Helvetica, sans-serif;
     background-color: #ffffee;
@@ -7,35 +6,58 @@ html, title, body {
     padding: 0;
 }
 
-    */
 div#page {
-    margin-top: 0;
+    margin-top: 2em;
     /*background-color: #b4f3ff;*/
     /*background-color: #aaa;*/
     margin: 0px 10em 0px 10em;
     padding: 0px 1em 0px 1em;
 }
 
+div#header {
+    margin-top: 2px;
+}
+
 div#header h1 {
-    /*
     margin: 0;
     padding: 0;
-    */
+    font-size: 14pt;
+}
+
+div#header h2 {
+    margin-top: 1em;
+    margin-bottom: 0;
+    padding: 0;
     font-size: 12pt;
 }
 
 div#content {
+    padding: 0;
+    margin-top: 2px;
     margin-bottom: 1em;
     background-color: #b4f3ff;
 }
 
-div#content h1 {
-
-
+.rhs {
+    float: right;
 }
 
-div#content form.rhs {
-    float: right;
+a.button {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 120%;
+    color: black;
+    background-color: #ccc;
+    border: thin solid black;
+    padding: 2px 6px 2px 6px;
+}
+
+a.button:click {
+    background-color: #99aabf;
+    border-top: 2px #31557f solid;
+    border-left: 2px #31557f solid;
+    border-bottom: 2px #cce3ff solid;
+    border-right: 2px #cce3ff solid;
 }
 
 div#footer {
@@ -56,31 +78,19 @@ form#question div.answer {
     margin-left: 2em;
 }
 
+div.clear {
+    clear: both;
+}
+
 .centered {
     margin-left: auto;
     margin-right: auto;
 }
 
-.roundedcornr_box_156078 {
-    background: #b4f3ff;
-}
-.roundedcornr_top_156078 div {
-    background: url("/images/roundedcornr_156078_tl.png") no-repeat top left;
-}
-.roundedcornr_top_156078 {
-    background: url("/images/roundedcornr_156078_tr.png") no-repeat top right;
-}
-.roundedcornr_bottom_156078 div {
-    background: url(/images/roundedcornr_156078_bl.png) no-repeat bottom left;
-}
-.roundedcornr_bottom_156078 {
-    background: url(/images/roundedcornr_156078_br.png) no-repeat bottom right;
-}
+div.rule {
+    margin: 1em 3em;
+    padding: 0.5em 1em;
+    border: thin blue dashed;
 
-.roundedcornr_top_156078 div, .roundedcornr_top_156078,
-.roundedcornr_bottom_156078 div, .roundedcornr_bottom_156078 {
-   width: 100%;
-   height: 5px;
-   font-size: 1px;
+
 }
-.roundedcornr_content_156078 { margin: 0 5px; }
