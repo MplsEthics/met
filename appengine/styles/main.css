@@ -25,17 +25,39 @@ div#header h1 {
 }
 
 div#header h2 {
-    margin-top: 1em;
+    margin-top: 0.1em;
     margin-bottom: 0;
     padding: 0;
     font-size: 12pt;
+    font-style: italic;
 }
 
 div#content {
     padding: 0;
     margin-top: 2px;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
     background-color: #b4f3ff;
+}
+
+div#content h1 {
+    display: inline;
+    padding: 0;
+    margin: 0.25em 0px;
+    font-size: 120%;
+    border-bottom: thin #006 solid;
+}
+
+div#content h2 {
+    padding: 0;
+    margin-top: 0.75em;
+    margin-bottom: 0.1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    font-size: 110%;
+}
+
+div#content p {
+    margin: 0.5em 0.5em 0em 0.5em;
 }
 
 .rhs {
@@ -43,6 +65,7 @@ div#content {
 }
 
 a.button {
+    margin-top: 0.25em;
     text-decoration: none;
     font-weight: bold;
     font-size: 120%;
@@ -62,10 +85,10 @@ a.button:click {
 
 div#footer {
     clear: both;
-    margin-top: 2em;
-    padding-bottom: 0.3em;
-    font-size: small;
     border-top: thin solid #122564;
+    margin-top: 2em;
+    padding-bottom: 1.25em;
+    font-size: small;
     background-color: #b4f3ff;
 }
 
@@ -87,10 +110,15 @@ div.clear {
     margin-right: auto;
 }
 
-div.rule {
-    margin: 1em 3em;
+fieldset.rule, fieldset.reflection {
+    margin: 1em 4em;
     padding: 0.5em 1em;
-    border: thin blue dashed;
-
-
+    border: thin blue solid;
 }
+
+fieldset.rule legend, fieldset.reflection legend {
+    font-weight: bold;
+    border: thin blue dashed;
+    padding: 1px 3px;
+}
+

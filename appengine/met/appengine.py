@@ -1,12 +1,13 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
-from met.view import MainPage
-from met.view import StaticHTMLPage
+from met.view import Main, Question, StaticHTML
 
 app_pages = [
-    ('/', MainPage),
-    (r'/.*\.html$', StaticHTMLPage),
+    ('/', Main),
+    ('/index.html', Main),
+    (r'/question/.*', Question),
+    (r'/.*\.html$', StaticHTML),
 #   ('/sign', Guestbook),
 ]
 
