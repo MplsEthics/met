@@ -6,9 +6,8 @@ from met.view import Main, Question, StaticHTML
 app_pages = [
     ('/', Main),
     ('/index.html', Main),
-    (r'/question/.*', Question),
+    (r'/question/(.*)', Question),
     (r'/.*\.html$', StaticHTML),
-#   ('/sign', Guestbook),
 ]
 
 wsgi_app = webapp.WSGIApplication(app_pages,debug=True)
