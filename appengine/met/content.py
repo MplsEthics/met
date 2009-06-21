@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.6
 
 """
 The exam portion of the Ethics training.
@@ -28,4 +28,10 @@ class Answer(object):
 
 class TestBank(object):
     pass
+
+
+if __name__ == "__main__":
+    print "aggle"
+    f = open('questions/conflict-of-interest.json')
+    js = json.load(f)
 
