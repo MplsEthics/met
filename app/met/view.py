@@ -20,7 +20,10 @@ class MetView(webapp.RequestHandler):
     can we initialize this webapp somehow?
     """
 
-    def viewpath(self):
+    def viewpath(self,append=None):
+        if append:
+            # FIXME: append here
+            pass
         return os.path.join(os.path.dirname(__file__),'../view')
 
     def next(self):
@@ -43,12 +46,11 @@ class MetView(webapp.RequestHandler):
             'previous': self.previous(),
         }
 
-        path = viewpath + '/main.html'
+        path = self.viewpath(append='main.html')
         self.response.out.write(template.render(path, template_values))
 
 
-
-class Main(webapp.RequestHandler):
+class Main(MetView):
     def get(self):
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)
@@ -63,8 +65,11 @@ class Main(webapp.RequestHandler):
             'url_linktext': url_linktext,
         }
 
-        path = viewpath + '/main.html'
+        path = self.viewpath(append='main.html')
         self.response.out.write(template.render(path, template_values))
+
+
+
 
 class Question(webapp.RequestHandler):
 
