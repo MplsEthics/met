@@ -13,9 +13,15 @@ start gae app:
 	$(APPENGINE)/dev_appserver.py --port=9001 appengine/
 
 clean:
-	rm -rf $(PACKAGE)-20[0-9][0-9][01][1-9][0-3][0-9].*
 	rm -f *.zip *.tar.gz
+	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' | xargs rm -f
+	python setup.py clean
+
+dist:
+	python setup.py dist
+
+
 
 dist distdir $(DISTDIR):
 	mkdir -p $(DISTDIR)
@@ -31,9 +37,13 @@ tgz: $(DISTDIR)
 run:
 	PYTHONPATH=$(PWD) /usr/bin/python met/main.py
 
-test:
-	pyflakes met/
+   FIX = FIX
+   f_i_x_m_e := $(FIX)ME
 
-exe:
-	 python setup.py py2exe --bundle 1
+test: bin/check-yaml.py
+	@-ack $(f_i_x_m_e)
+	@-find . -name '*.py' | xargs -n 1 pyflakes
+	@-find app/content -name '*.yaml' | xargs -n 1 python bin/check-yaml.py
+	@-python setup.py test
+	
 
