@@ -1,4 +1,8 @@
 
+--- !Question
+
+name: 'conflict-of-interest'
+
 prompt: "Please reflect first on the reason we have this conflict of interest
   statute and how it applies here. Then choose the best answer."
 
@@ -6,7 +10,7 @@ stem: "May you sit on the panel hearing the charge of discrimination?"
 
 answers:
 
-  -
+  - !Answer
     answer: "Yes. You can hear this case because you have a high level of
       integrity and can assure the Chair that you will not let your stock
       ownership and your daughter’s employment influence you in making
@@ -21,7 +25,7 @@ answers:
       Ethics Code."
     correct: false
 
-  -
+  - !Answer
     answer: "Maybe, if you sell the stock and determine that your relationship
       with your daughter and her employment will not affect your decisions in
       the case."
@@ -32,7 +36,7 @@ answers:
       proceed to a next page for a full discussion of the issue."
     correct: true
 
-  -
+  - !Answer
     answer: "No, because your financial interest in the stock and your
       daughter’s employment preclude you from hearing the case."
     response: "While stock ownership does give you a financial interest that
@@ -41,11 +45,10 @@ answers:
       is a better answer, please try again."
     correct: false
 
-  -
+  - !Answer
     answer: "Yes, if you sell your stock and disown your daughter."
     response: "Did you really think the City would require you to disown your
       child?  We’ve been accused of being heartless – but never like this.
       There is a better answer, please try again."
     correct: false
-
 

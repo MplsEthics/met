@@ -4,7 +4,7 @@
 The exam portion of the Ethics training.
 """
 
-import json
+import yaml
 
 class SceneTemplate(object):
     pass
@@ -12,18 +12,35 @@ class SceneTemplate(object):
 class Scene(object):
     pass
 
-class Question(object):
+class Question(yaml.YAMLObject):
 
-    def __init__(self,name):
+    yaml_tag = u'!Question'
+
+    def __init__(self,name,prompt,stem,answers):
         self.name = name
+        self.prompt = prompt
+        self.stem = stem
+        self.answers = answers
+
+    def __repr__(self):
+        return "%s(%s)[%s]" % (self.__class__.__name__,self.name,self.answers)
 
 #   name
 #   stem
 #   answers
 #   scenario
 
-class Answer(object):
-    pass
+class Answer(yaml.YAMLObject):
+
+    yaml_tag = u'!Answer'
+
+    def __init__(self,answer,response,correct):
+        self.answer = answer
+        self.response = response
+        self.correct = correct
+
+    def __repr__(self):
+        return "%s(%s)" % (self.__class__.__name__,self.answer)
 
 
 class TestBank(object):
