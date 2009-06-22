@@ -9,5 +9,5 @@ Changelog for mpls.ethics
 
 TO DO
 -----
-
+    * fix setuptools build to release a proper egg
 
