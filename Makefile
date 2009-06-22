@@ -2,7 +2,7 @@
    PACKAGE := mpls-ethics
      STAMP := $(shell date '+%Y%m%d.%H%M%S')
    DISTDIR := $(PACKAGE)-$(STAMP)
-     PWD   := $(shell pwd)
+       PWD := $(shell pwd)
  APPENGINE := /usr/local/lib/google_appengine
       PATH := /usr/bin:/bin
 
