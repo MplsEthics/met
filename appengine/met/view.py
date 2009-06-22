@@ -7,15 +7,15 @@ from met.util import debug
 
 viewpath = os.path.join(os.path.dirname(__file__),'../view')
 
-next = {
-    'main':   'intro1',
-    'intro1': 'intro2',
-    'intro2': 'over1',
-    'over1':  'over2',
-    'over2':  'Q1',
-}
-
-prev = {}
+order = [
+    'main',
+    'intro1',
+    'intro2',
+    'over1',
+    'over2',
+    'topic1',
+    'Q1',
+]
 
 class MetView(webapp.RequestHandler):
     def get(self):

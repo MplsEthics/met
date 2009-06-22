@@ -11,5 +11,5 @@ handlers:
 - url: /styles
   static_dir: styles
 - url: /.*
-  script: met/appengine.py
+  script: met/app.py
 
