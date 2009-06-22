@@ -6,12 +6,6 @@ The exam portion of the Ethics training.
 
 import yaml
 
-class SceneTemplate(object):
-    pass
-
-class Scene(object):
-    pass
-
 class Question(yaml.YAMLObject):
 
     yaml_tag = u'!Question'
@@ -25,11 +19,6 @@ class Question(yaml.YAMLObject):
     def __repr__(self):
         return "%s(%s)[%s]" % (self.__class__.__name__,self.name,self.answers)
 
-#   name
-#   stem
-#   answers
-#   scenario
-
 class Answer(yaml.YAMLObject):
 
     yaml_tag = u'!Answer'
@@ -42,13 +31,10 @@ class Answer(yaml.YAMLObject):
     def __repr__(self):
         return "%s(%s)" % (self.__class__.__name__,self.answer)
 
+testbank = []
 
-class TestBank(object):
-    pass
+def load_testbank():
 
-
-if __name__ == "__main__":
-    print "aggle"
-    f = open('questions/conflict-of-interest.json')
-    js = json.load(f)
+    fh = open(file)
+    pprint(yaml.load(fh))
 
