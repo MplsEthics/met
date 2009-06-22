@@ -3,9 +3,9 @@
 from sys import argv
 import yaml
 
-print 'Opening file: %s' % argv[1]
 
-fh = open(argv[1])
-
-yaml.load(fh)
+for file in argv[1:]:
+    print "Opening file: '%s':\n" % file
+    fh = open(file)
+    yaml.safe_load(fh)
 
