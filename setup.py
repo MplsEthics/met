@@ -1,3 +1,32 @@
-from distutils.core import setup
-import py2exe
-setup(console=['hello.py'],zipfile=None)
+
+from setuptools import setup, find_packages
+import os
+
+setup(
+    name='mpls.ethics',
+    version='0.0.1',
+    description="Individual and group reports for the CPA PCP Pretest product",
+    long_description=open("README.txt").read() + "\n" +
+        open(os.path.join("doc", "HISTORY.txt")).read(),
+    classifiers=[
+        "Programming Language :: Python",
+        "Intended Audience :: Education",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
+        "Natural Language :: English",
+        "Topic :: Education :: Computer Aided Instruction (CAI)",
+        "Topic :: Education :: Testing",
+    ],
+    keywords='Minneapolis ethics training',
+    author='John Trammell',
+    author_email='johntrammell@gmail.com',
+    url='http://www.johntrammell.com/',
+    license='GPL',
+    packages=find_packages(exclude=['ez_setup']),
+    namespace_packages=[],
+    include_package_data=True,
+    zip_safe=False,
+    install_requires=['setuptools',],
+    dependency_links = [],
+    entry_points=""
+)
+
