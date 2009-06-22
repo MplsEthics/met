@@ -5,8 +5,7 @@ from met.view import Main, Question, StaticHTML
 
 app_pages = [
     ('/', Main),
-    ('/index.html', Main),
-    (r'/question/(.*)', Question),
+    (r'/Q(\d+)', Question),
     (r'/.*\.html$', StaticHTML),
 ]
 

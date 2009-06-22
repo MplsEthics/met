@@ -2,10 +2,7 @@ import os
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
-
 from met.util import debug
-
-viewpath = os.path.join(os.path.dirname(__file__),'../view')
 
 order = [
     'main',
@@ -18,9 +15,21 @@ order = [
 ]
 
 class MetView(webapp.RequestHandler):
-    def get(self):
 
-        this = 'main'
+    """
+    can we initialize this webapp somehow?
+    """
+
+    def viewpath(self):
+        return os.path.join(os.path.dirname(__file__),'../view')
+
+    def next(self):
+        pass
+
+    def previous(self):
+        pass
+
+    def get(self):
 
         if users.get_current_user():
             url = users.create_logout_url(self.request.uri)
@@ -30,8 +39,8 @@ class MetView(webapp.RequestHandler):
             url_linktext = 'Login'
 
         template_values = {
-            'prev': get(prev,this,None),
-            'next': get(next,this,None),
+            'next': self.next(),
+            'previous': self.previous(),
         }
 
         path = viewpath + '/main.html'
