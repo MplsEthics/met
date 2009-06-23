@@ -14,17 +14,19 @@ order = [
     'Q1',
 ]
 
+
 class MetView(webapp.RequestHandler):
 
     """
     can we initialize this webapp somehow?
     """
 
+    view = os.path.join(os.path.dirname(__file__), '../view')
+
     def viewpath(self,append=None):
         if append:
-            # FIXME: append here
-            pass
-        return os.path.join(os.path.dirname(__file__),'../view')
+            return os.path.join(self.view, './' + append)
+        return self.view
 
     def next(self):
         pass
@@ -68,14 +70,16 @@ class Main(MetView):
         path = self.viewpath(append='main.html')
         self.response.out.write(template.render(path, template_values))
 
-
-
-
 class Question(webapp.RequestHandler):
 
-    def get(self):
+#   def __init__(self,question_id):
+#       self.question_id = question_id
+
+    def get(self,question_id):
         debug()
         pass
+
+
 
 class StaticHTML(webapp.RequestHandler):
     fn = os.path.dirname(__file__)
