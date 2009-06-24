@@ -3,6 +3,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from met.util import debug
+from met import content
 
 order = [
     'main',
@@ -70,16 +71,22 @@ class Main(MetView):
         path = self.viewpath(append='main.html')
         self.response.out.write(template.render(path, template_values))
 
-class Question(webapp.RequestHandler):
+class Question(MetView):
 
 #   def __init__(self,question_id):
 #       self.question_id = question_id
 
-    def get(self,question_id):
-        debug()
+    def get(self,qid):
+        question_id = int(qid)
+        path = self.viewpath(append='question.djt')
+        #debug()
+        template_values = {
+            'question': content.get_question(question_id),
+        }
+        self.response.out.write(template.render(path, template_values))
+
+    def post(self,_question_id):
         pass
-
-
 
 class StaticHTML(webapp.RequestHandler):
     fn = os.path.dirname(__file__)

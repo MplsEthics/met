@@ -1,8 +1,14 @@
 <form class="question" id="question">
 {% for answer in question.answers %}
-<input type="radio" style="float:left" />
-<div class="answer" id="{% answer.id %}">
-{{ answer.stem }}
+<input type="radio" name="answer" id="a{{ forloop.counter }}"
+    style="float:left" />
+<div class="answer" id="a{{ forloop.counter }}">
+<label for="a{{ forloop.counter }}">
+{{ answer.answer }}
+</label>
 </div>
 {% endfor %}
+
+<input type="submit" name="submit" value="Submit" />
+
 </form>

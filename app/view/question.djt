@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<p>{{ question.stem }}</p>
+
+{% include "answer_form.djt" %}
+
+<p>{{ question.prompt }}</p>
+
+{% endblock content %}
