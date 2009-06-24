@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.6
+#!/usr/bin/env python
 
 """
 The exam portion of the Ethics training.
@@ -11,7 +11,7 @@ content_dir = os.path.join(os.path.dirname(__file__), '../content')
 
 class Question(yaml.YAMLObject):
 
-    yaml_tag = u'!Question'
+    yaml_tag = u'!question'
 
     def __init__(self,name,prompt,stem,answers):
         self.name = name
@@ -24,7 +24,7 @@ class Question(yaml.YAMLObject):
 
 class Answer(yaml.YAMLObject):
 
-    yaml_tag = u'!Answer'
+    yaml_tag = u'!answer'
 
     def __init__(self,answer,response,correct):
         self.answer = answer
