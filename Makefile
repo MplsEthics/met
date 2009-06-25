@@ -15,7 +15,7 @@ clean:
 	find . -name '*.pyc' | xargs rm -f
 	python setup.py clean
 
-dist bdist_egg:
+egg dist bdist_egg:
 	python setup.py bdist_egg
 
    FIX = FIX

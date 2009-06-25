@@ -1,0 +1,4 @@
+include MANIFEST.in
+include app/
+include bin/
+include doc/
