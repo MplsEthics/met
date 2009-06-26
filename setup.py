@@ -1,4 +1,5 @@
-
+import ez_setup
+ez_setup.use_setuptools()
 from setuptools import setup, find_packages
 import os
 
@@ -21,7 +22,7 @@ setup(
     author_email='johntrammell@gmail.com',
     url='http://www.johntrammell.com/',
     license='GPL',
-    packages=find_packages(exclude=['ez_setup']),
+    packages=['app.met'],
     namespace_packages=[],
     include_package_data=True,
     zip_safe=False,

@@ -1,6 +1,3 @@
-include Makefile
-include MANIFEST.in
-include README.txt
-include setup.py
+include Makefile *.in *.py *.txt
 recursive-include app/ *.py
 recursive-include bin/ *.py
