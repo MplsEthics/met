@@ -22,7 +22,7 @@ setup(
     author_email='johntrammell@gmail.com',
     url='http://www.johntrammell.com/',
     license='GPL',
-    packages=['app.met'],
+    packages = find_packages(exclude=['ez_setup']),
     namespace_packages=[],
     include_package_data=True,
     zip_safe=False,
