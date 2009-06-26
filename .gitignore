@@ -1,2 +1,4 @@
 *.pyc
 app/index.yaml
+MANIFEST
+dist/
