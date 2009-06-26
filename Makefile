@@ -10,13 +10,13 @@ start gae app:
 	$(APPENGINE)/dev_appserver.py --port=9001 app/
 
 clean:
-	rm -f *.zip *.tar.gz
+	rm -f MANIFEST *.zip *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' | xargs rm -f
 	python setup.py clean
 
-egg dist bdist_egg:
-	python setup.py bdist_egg
+dist sdist:
+	python setup.py sdist
 
    FIX = FIX
    ME = ME
