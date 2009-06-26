@@ -16,7 +16,7 @@ clean:
 	python setup.py clean
 
 dist sdist:
-	python setup.py sdist
+	python setup.py sdist --formats=zip
 
    FIX = FIX
    ME = ME
