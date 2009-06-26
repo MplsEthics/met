@@ -1,3 +1,10 @@
 include Makefile *.in *.py *.txt
-recursive-include app/ *.py
+include app/app.yaml
+
+recursive-include app/content/ *.yaml
+recursive-include app/images/ *.png
+recursive-include app/js/ *.js
+recursive-include app/met/ *.py
+recursive-include app/styles/ *.css
+recursive-include app/view/ *.djt *.html
 recursive-include bin/ *.py
