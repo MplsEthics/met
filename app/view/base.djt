@@ -10,44 +10,43 @@
     media="print" />
 <title>
 {% block title %}
-City of Minneapolis :: Electronic Ethics Training
+City of Minneapolis | Electronic Ethics Training
 {% endblock title %}
 </title>
 </head>
 <body>
-<div id="page">
-
-<div id="header">
-    <div class="roundedcornr_box_156078">
-        <div class="roundedcornr_top_156078"><div></div></div>
-        <div class="roundedcornr_content_156078">
+    <div id="page">
+        <div id="header">
+            <div class="roundedcornr_box_156078">
+                <div class="roundedcornr_top_156078"><div></div></div>
+                <div class="roundedcornr_content_156078">
 {% block header %}
 <h1>City of Minneapolis / Office of the Minneapolis City Attorney</h1>
 <h2>Ethics in Government Education for Appointed Members of Boards,
 Commissions and Agencies</h2>
 {% endblock header %}
+                </div>
+                <div class="roundedcornr_bottom_156078"><div></div></div>
+            </div>
         </div>
-        <div class="roundedcornr_bottom_156078"><div></div></div>
-    </div>
-</div>
 
-<div id="content">
-    <div class="roundedcornr_box_156078">
-        <div class="roundedcornr_top_156078"><div></div></div>
-        <div class="roundedcornr_content_156078">
+        <div id="content">
+            <div class="roundedcornr_box_156078">
+                <div class="roundedcornr_top_156078"><div></div></div>
+                <div class="roundedcornr_content_156078">
 {% block content %}
 {% endblock content %}
-<div class="clear"></div>
-<div id="footer">
+                    <div class="clear"></div>
+                    <div id="footer">
 {% block footer %}
 <a class="about" href="about.html">About</a>
 {% endblock footer %}
-</div>
+                    </div>
+                </div>
+                <div class="roundedcornr_bottom_156078"><div></div></div>
+            </div>
         </div>
-        <div class="roundedcornr_bottom_156078"><div></div></div>
-    </div>
-</div>
 
-</div> <!--end of div id="page" -->
+    </div> <!--end of div id="page" -->
 </body>
 </html>

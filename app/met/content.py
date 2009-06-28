@@ -44,3 +44,5 @@ for file in os.listdir(content_dir):
 def get_question(id):
     return testbank[id]
 
+if __name__ == '__main__':
+    print 'file: %s' % __file__

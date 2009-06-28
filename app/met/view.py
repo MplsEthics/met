@@ -2,7 +2,7 @@ import os
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
-from met.util import debug
+from met import util
 from met import content
 
 order = [
@@ -79,7 +79,7 @@ class Question(MetView):
     def get(self,qid):
         question_id = int(qid)
         path = self.viewpath(append='question.djt')
-        #debug()
+        #util.debug()
         template_values = {
             'question': content.get_question(question_id),
         }
