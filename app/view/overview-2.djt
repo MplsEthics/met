@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.djt" %}
 
 {% block content %}
 
@@ -41,7 +41,7 @@ fact finding hearing.  A recommendation is made to the appointing authority
 regarding the complaint should it be sustained.
 
 <p>
-<a class="rhs button" href="topic-1.html">Continue &rarr;</a>
+<a class="rhs button" href="topic1">Continue &rarr;</a>
 </p>
 
 {% endblock content %}

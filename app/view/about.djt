@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.djt" %}
 
 {% block content %}
 <a href="http://github.com/trammell/met/downloads">Source</a>

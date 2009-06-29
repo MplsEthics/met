@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base.djt" %}
 
 {% block content %}
 
@@ -57,7 +57,7 @@ re-take this course in its entirety.
 Let's get started with an overview of the Ethics in Government Ordinance.
 
 <p>
-<a class="rhs button" href="overview-1.html">Continue &rarr;</a>
+<a class="rhs button" href="over1">Continue &rarr;</a>
 </p>
 
 {% endblock content %}
