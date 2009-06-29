@@ -7,7 +7,7 @@ setup(
     version='0.1',
     description="",
     author='John Trammell',
-    author_email='johntrammell@gmail.com',
+    author_email='johntrammell' + '@' + 'gmail.com',
     url='http://github.com/trammell/met/tree/master',
     packages=['app.met'],
 )
