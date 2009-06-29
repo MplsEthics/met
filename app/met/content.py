@@ -46,3 +46,4 @@ def get_question(id):
 
 if __name__ == '__main__':
     print 'file: %s' % __file__
+    print '%s' % testbank
