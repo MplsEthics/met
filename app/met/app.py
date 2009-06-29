@@ -1,12 +1,12 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
-from met.view import Main, Question, StaticHTML
+from met.view import Main, Scenario, BestGuess
 
 app_pages = [
     ('/', Main),
-    (r'/Q(\d+)', Question),
-    (r'/.*\.html$', StaticHTML),
+    (r'/scenario/(\d+)', Scenario),
+    (r'/.*$', BestGuess),
 ]
 
 wsgi_app = webapp.WSGIApplication(app_pages,debug=True)

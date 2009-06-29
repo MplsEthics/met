@@ -24,6 +24,9 @@ class MetView(webapp.RequestHandler):
 
     view = os.path.join(os.path.dirname(__file__), '../view')
 
+    def main(self):
+        return self.viewpath('main.djt')
+
     def viewpath(self,append=None):
         if append:
             return os.path.join(self.view, './' + append)
@@ -52,26 +55,28 @@ class MetView(webapp.RequestHandler):
         path = self.viewpath(append='main.html')
         self.response.out.write(template.render(path, template_values))
 
-
 class Main(MetView):
     def get(self):
-        if users.get_current_user():
-            url = users.create_logout_url(self.request.uri)
-            url_linktext = 'Logout'
-        else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
+        path = self.viewpath(append='main.djt')
+        self.response.out.write(template.render(path,{}))
 
-        template_values = {
-            #'greetings': greetings,
-            'url': url,
-            'url_linktext': url_linktext,
-        }
+class BestGuess(MetView):
+    def templates(self):
+        return sorted(os.listdir(self.view))
 
-        path = self.viewpath(append='main.html')
-        self.response.out.write(template.render(path, template_values))
+    def get(self):
+        path = self.viewpath(append='main.djt')
 
-class Question(MetView):
+        for t in self.templates():
+            if self.request.path[1:] in t:
+                path = self.viewpath(append=t)
+                break
+
+        self.response.out.write(template.render(path,{}))
+
+    post = get
+
+class Scenario(MetView):
 
 #   def __init__(self,question_id):
 #       self.question_id = question_id
