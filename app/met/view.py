@@ -17,69 +17,67 @@ order = [
 
 
 class MetView(webapp.RequestHandler):
+    """Base class for all MET view classes."""
 
-    """
-    can we initialize this webapp somehow?
-    """
-
-    view = os.path.join(os.path.dirname(__file__), '../view')
+    view_dir = os.path.join(os.path.dirname(__file__), '../view')
 
     def main(self):
+        """Returns the path to the 'main' view template."""
         return self.viewpath('main.djt')
 
     def viewpath(self,append=None):
+        """Construct a view path."""
         if append:
-            return os.path.join(self.view, './' + append)
-        return self.view
+            return os.path.join(self.view_dir, './' + append)
+        return self.view_dir
 
     def next(self):
+        """Returns the alias to the next page."""
         pass
 
     def previous(self):
+        """Returns the alias to the previous page."""
         pass
 
+    def template(self):
+        """Returns the filename of the template to view."""
+        return 'main.djt'
+
     def get(self):
-
-        if users.get_current_user():
-            url = users.create_logout_url(self.request.uri)
-            url_linktext = 'Logout'
-        else:
-            url = users.create_login_url(self.request.uri)
-            url_linktext = 'Login'
-
+        """The default GET request handler."""
         template_values = {
             'next': self.next(),
             'previous': self.previous(),
         }
 
-        path = self.viewpath(append='main.html')
-        self.response.out.write(template.render(path, template_values))
+        t = self.viewpath(append=self.template())
+        self.response.out.write(template.render(t, template_values))
 
-class Main(MetView):
-    def get(self):
-        path = self.viewpath(append='main.djt')
-        self.response.out.write(template.render(path,{}))
+
 
 class BestGuess(MetView):
-    def templates(self):
-        return sorted(os.listdir(self.view))
+    """View class that displays the view closest to that requested."""
+
+    def template(self):
+        """Return the view template that best matches the request."""
+        for t in sorted(os.listdir(self.view_dir)):
+            if self.request.path[1:] in t: return t
+        return 'main.djt'
 
     def get(self):
-        path = self.viewpath(append='main.djt')
-
-        for t in self.templates():
-            if self.request.path[1:] in t:
-                path = self.viewpath(append=t)
-                break
-
+        path = self.viewpath(append=self.template())
         self.response.out.write(template.render(path,{}))
 
     post = get
 
+
+
+
+
 class Scenario(MetView):
 
-#   def __init__(self,question_id):
-#       self.question_id = question_id
+    def __init__(self,question_id):
+        self.question_id = question_id
 
     def get(self,qid):
         question_id = int(qid)
@@ -90,13 +88,7 @@ class Scenario(MetView):
         }
         self.response.out.write(template.render(path, template_values))
 
-    def post(self,_question_id):
+    def post(self,question_id):
         pass
 
-class StaticHTML(webapp.RequestHandler):
-    fn = os.path.dirname(__file__)
-    def get(self):
-        path = os.path.join(self.fn, '../view' + self.request.path)
-        self.response.out.write(template.render(path, {}))
-    post = get
 
