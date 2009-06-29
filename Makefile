@@ -21,10 +21,8 @@ dist sdist:
    FIX = FIX
    ME = ME
 
-test: bin/check-yaml.py
+test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
-	@-find . -name '*.py' | xargs -n 1 pyflakes
-	@-find app/content -name '*.yaml' | xargs -n 1 python bin/check-yaml.py
-	@-python setup.py test
-
+	@-find . -name '*.py' | xargs -n 1 pylint -e
+	@-find app/content -name '*.yaml' | xargs -n 1 python bin/check_yaml.py
 
