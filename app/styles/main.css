@@ -8,8 +8,6 @@ html, title, body {
 
 div#page {
     margin-top: 2em;
-    /*background-color: #b4f3ff;*/
-    /*background-color: #aaa;*/
     margin: 0px 10em 0px 10em;
     padding: 0px 1em 0px 1em;
 }
@@ -40,14 +38,20 @@ div#header h2 {
 }
 
 div#content {
-    padding: 0.25em;
-    margin-top: 0.5em;
-    margin-bottom: 3em;
     background-color: #eff;
+
     border-top: thin solid white;
     border-left: thin solid white;
     border-bottom: thin solid #003;
     border-right: thin solid #003;
+
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.25em;
+
+    margin-top: 0.5em;
+    margin-bottom: 3em;
 }
 
 div#content h1 {
@@ -68,7 +72,10 @@ div#content h2 {
 }
 
 div#content p {
-    margin: 0.5em 0.5em 0em 0.5em;
+    margin-left: 0.75em;
+    margin-right: 0.75em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 
 .rhs {
@@ -96,11 +103,10 @@ a.button:click {
 
 div#footer {
     clear: both;
-    border-top: thin solid #122564;
     margin-top: 2em;
     padding-bottom: 1.25em;
     font-size: small;
-    background-color: #b4f3ff;
+    background-color: #eff;
 }
 
 div#footer a.about {
