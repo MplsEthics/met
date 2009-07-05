@@ -58,15 +58,19 @@ class MetView(webapp.RequestHandler):
 class BestGuess(MetView):
     """View class that displays the view closest to that requested."""
 
-    def template(self):
-        """Return the view template that best matches the request."""
-        for t in sorted(os.listdir(self.view_dir)):
-            if self.request.path[1:] in t: return t
-        return 'main.djt'
-
     def get(self):
         path = self.viewpath(append=self.template())
         self.response.out.write(template.render(path,{}))
+
+    def template(self):
+        """Return the view template that best matches the request."""
+        if len(self.request.path) <= 1:
+            return 'main.djt'
+        if len(self.request.path) > 1:
+            for t in sorted(os.listdir(self.view_dir)):
+                if self.request.path[1:] in t:
+                    return t
+            return 'main.djt'
 
     post = get
 
