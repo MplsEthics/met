@@ -1,7 +1,7 @@
 
 html, title, body {
     font-family: Verdana, Helvetica, sans-serif;
-    background-color: #ffffee;
+    background-color: #c0ffff;
     margin: 0;
     padding: 0;
 }
@@ -15,7 +15,14 @@ div#page {
 }
 
 div#header {
-    margin-top: 2px;
+    border-top: thin solid white;
+    border-left: thin solid white;
+    border-bottom: thin solid #003;
+    border-right: thin solid #003;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background-color: #eff;
+    padding: 0.25em;
 }
 
 div#header h1 {
@@ -33,10 +40,14 @@ div#header h2 {
 }
 
 div#content {
-    padding: 0;
-    margin-top: 2px;
+    padding: 0.25em;
+    margin-top: 0.5em;
     margin-bottom: 3em;
-    background-color: #b4f3ff;
+    background-color: #eff;
+    border-top: thin solid white;
+    border-left: thin solid white;
+    border-bottom: thin solid #003;
+    border-right: thin solid #003;
 }
 
 div#content h1 {
