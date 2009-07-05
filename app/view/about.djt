@@ -2,4 +2,11 @@
 
 {% block content %}
 <a href="http://github.com/trammell/met/downloads">Source</a>
+
+<img
+src="http://code.google.com/appengine/images/appengine-silver-120x30.gif"
+alt="Powered by Google App Engine" />
+
 {% endblock content %}
+{% block footer %}
+{% endblock footer %}
