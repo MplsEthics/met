@@ -15,8 +15,8 @@ div#page {
 div#header {
     border-top: thin solid white;
     border-left: thin solid white;
-    border-bottom: thin solid #003;
-    border-right: thin solid #003;
+    border-bottom: thin solid #005;
+    border-right: thin solid #005;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
     background-color: #eff;
@@ -42,8 +42,8 @@ div#content {
 
     border-top: thin solid white;
     border-left: thin solid white;
-    border-bottom: thin solid #003;
-    border-right: thin solid #003;
+    border-bottom: thin solid #005;
+    border-right: thin solid #005;
 
     padding-left: 0.5em;
     padding-right: 0.5em;
