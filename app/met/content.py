@@ -39,7 +39,7 @@ class Answer(yaml.YAMLObject):
     def __repr__(self):
         repr = {
             'class': self.__class__.__name__,
-            'answer': self.answer,
+            'answer': '%s...' % self.answer[0:30],
         }
         return u"%(class)s(%(answer)s)" % repr
 
@@ -55,6 +55,7 @@ def get_question(id):
     return testbank[id]
 
 if __name__ == '__main__':
+    from pprint import pprint
     print u'file: %s' % __file__
-    print u'%s' % testbank
+    pprint(testbank)
 
