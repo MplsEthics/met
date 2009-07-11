@@ -20,7 +20,12 @@ class Question(yaml.YAMLObject):
         self.answers = answers
 
     def __repr__(self):
-        return "%s(%s)[%s]" % (self.__class__.__name__,self.name,self.answers)
+        repr = {
+            'class': self.__class__.__name__,
+            'name': self.name,
+            'answers': self.answers,
+        }
+        return u"%(class)s(%(name)s)[%(answers)s]" % repr
 
 class Answer(yaml.YAMLObject):
 
@@ -32,18 +37,24 @@ class Answer(yaml.YAMLObject):
         self.correct = correct
 
     def __repr__(self):
-        return "%s(%s)" % (self.__class__.__name__,self.answer)
+        repr = {
+            'class': self.__class__.__name__,
+            'answer': self.answer,
+        }
+        return u"%(class)s(%(answer)s)" % repr
 
 # load the test bank
-testbank = [ None ]
+testbank = {}
 for file in os.listdir(content_dir):
     path = os.path.join(content_dir,file)
     fh = open(path)
-    testbank.append(yaml.load(fh))
+    question = yaml.load(fh)
+    testbank[question.name] = question
 
 def get_question(id):
     return testbank[id]
 
 if __name__ == '__main__':
-    print 'file: %s' % __file__
-    print '%s' % testbank
+    print u'file: %s' % __file__
+    print u'%s' % testbank
+
