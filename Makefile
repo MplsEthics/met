@@ -2,7 +2,7 @@
    PACKAGE := mpls-ethics
  APPENGINE := /usr/local/lib/google_appengine
       PATH := /usr/bin:/bin
-  PYTHON25 ?= /usr/local/bin/python2.5
+  PYTHON25 ?= python2.5
 
 usage:
 	@echo "usage: [clean]"
