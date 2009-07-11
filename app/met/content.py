@@ -6,6 +6,7 @@ The exam portion of the Ethics training.
 
 import os
 import yaml
+from pprint import pprint
 
 content_dir = os.path.join(os.path.dirname(__file__), '../content')
 
@@ -48,14 +49,20 @@ testbank = {}
 for file in os.listdir(content_dir):
     path = os.path.join(content_dir,file)
     fh = open(path)
-    question = yaml.load(fh)
-    testbank[question.name] = question
+    try:
+        print "loading file '%s'" % path
+        objects = [x for x in yaml.load_all(fh)]
+        question = objects[0]
+        question.answers = objects[1:]
+    except:
+        print "error loading file '%s' ... skipping" % path
+    else:
+        testbank[question.name] = question
 
 def get_question(id):
     return testbank[id]
 
 if __name__ == '__main__':
-    from pprint import pprint
     print u'file: %s' % __file__
     pprint(testbank)
 

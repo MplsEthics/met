@@ -14,24 +14,28 @@ stem: "May you appeal an order issued by city staff when the appeal will
 prompt: "Please reflect first on the reason we have this conflict of interest
   statute and how it applies here. Then choose the best answer."
 
-answers:
-
-  - !answer
-    answer: "Yes.  Provided you send a property representative and not
-      personally plead your case to the board."
-    response:
+--- !answer
+answer: "Yes.  Provided you send a property representative and not
+  personally plead your case to the board."
+response:
 
 
 
+--- !answer
+answer: "Yes. Provided you resign from the Board prior to the hearing
+  date."
+response:
 
+--- !answer
 
+answer: "Yes.  Provided you do not discuss your situation with other board
+  members outside of the hearing."
+response:
 
+--- !answer
 
-     Yes. Provided you resign from the Board prior to the hearing date.
-      Yes.  Provided you do not discuss your situation with other board
-      members outside of the hearing.
-       No.  Because of your relationship to the board, whether you resign or
-       not.
+answer: "No.  Because of your relationship to the board, whether you resign
+  or not."
 
 
 

@@ -12,9 +12,15 @@ order = [
     'over1',
     'over2',
     'topic1',
-    'Q1',
+    'scenario/coi1',    # conflict of interest 1
+    'scenario/coi2',    # conflict of interest 2
+    'scenario/coi3',    # conflict of interest 3
+    'scenario/coi4',    # conflict of interest 4
+    'scenario/doi',     # disclosure of information
+    'scenario/gifts',
+    'reportline',
+    'summary',
 ]
-
 
 class MetView(webapp.RequestHandler):
     """Base class for all MET view classes."""
@@ -53,7 +59,11 @@ class MetView(webapp.RequestHandler):
         t = self.viewpath(append=self.template())
         self.response.out.write(template.render(t, template_values))
 
-
+class Main(MetView):
+    def get(self):
+        path = self.viewpath(append='main.djt')
+        self.response.out.write(template.render(path,{}))
+    post = get
 
 class BestGuess(MetView):
     """View class that displays the view closest to that requested."""
