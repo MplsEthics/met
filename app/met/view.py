@@ -101,17 +101,22 @@ class BestGuess(MetView):
 
 class Scenario(MetView):
 
-    def __init__(self,question_id):
-        self.question_id = question_id
+    def __init__(self,scenario_id):
+        self.scenario_id = scenario_id
 
-    def get(self,qid):
-        question_id = int(qid)
+    def get(self,scenario_id):
+        if self.prerequisites():
+            pass
+
         path = self.viewpath(append='question.djt')
-        #util.debug()
         template_values = {
-            'question': content.get_question(question_id),
+            'question': content.get_scenario(scenario_id),
         }
         self.response.out.write(template.render(path, template_values))
+
+    def prerequisites(self):
+        """Returns the prerequisites for showing this view."""
+        return True
 
     def post(self,question_id):
         pass
