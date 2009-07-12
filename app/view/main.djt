@@ -1,19 +1,20 @@
 {% extends "base.djt" %}
 
 {% block content %}
+
 Welcome to the Ethics in Government Education for Appointed Members of
 Boards, Commissions and Agencies.  This training module consists of a
 General Overview of the City of Minneapolis Ethics in Government Ordinance,
-followed by three discussion topics, a discussion of the Confidential
-Reporting Line, and a summary.  The discussion topics are as follows:
+followed by three discussion topics, an overview of the Ethics Report Line,
+and a summary.  The discussion topics are as follows:
 
-<ol style="font-size: 125%">
-<li>Conflict of Interest</li>
-<li>Gifts</li>
-<li>Use of City Property</li>
+<ol>
+<li>Conflict of Interest
+<li>Disclosure of Information
+<li>Gifts
 </ol>
 
-We expect that, on average, this training should take approximately 30
+We expect that, on average, this training should take approximately 40
 minutes.  Upon completion, you will have finished your required ethics
 education for the four year time period and will be more comfortable with
 some of the measures to ensure integrity in Minneapolis City government.
