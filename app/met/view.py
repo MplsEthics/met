@@ -65,7 +65,12 @@ class Main(MetView):
     def get(self):
         path = self.viewpath(append='main.djt')
         session = self.getSession()
-        session['timestamp'] = datetime.now()
+        try:
+            session['timestamp'] += [ datetime.now() ]
+        except:
+            session['timestamp'] = []
+
+        session['timestamp'] = session['timestamp'][0:3]
         self.response.out.write(template.render(path,locals()))
 
     post = get
