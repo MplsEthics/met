@@ -57,19 +57,15 @@ div#content {
 }
 
 div#content h1 {
-    display: inline;
     padding: 0;
-    margin: 0.25em 0px;
+    margin: 0;
     font-size: 120%;
     border-bottom: thin #006 solid;
 }
 
 div#content h2 {
     padding: 0;
-    margin-top: 0.75em;
-    margin-bottom: 0.1em;
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin: 0.75em 0.5em 0.1em 0em;
     font-size: 110%;
 }
 
@@ -78,10 +74,6 @@ div#content p {
     margin-right: 0.75em;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-}
-
-div#content li {
-    font-size: medium;
 }
 
 .rhs {
@@ -135,13 +127,10 @@ div.clear {
 
 fieldset.rule, fieldset.reflection {
     margin: 1em 4em;
-    padding: 0.5em 1em;
     border: thin blue solid;
 }
 
 fieldset.rule legend, fieldset.reflection legend {
     font-weight: bold;
-    border: thin blue dashed;
-    padding: 1px 3px;
 }
 

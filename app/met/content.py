@@ -60,8 +60,8 @@ for file in os.listdir(content_dir):
     else:
         testbank[question.name] = question
 
-def get_question(id):
-    return testbank[id]
+def get_scenario(id):
+    return testbank.get(id,None)
 
 if __name__ == '__main__':
     print u'file: %s' % __file__

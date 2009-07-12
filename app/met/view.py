@@ -1,4 +1,5 @@
 import os
+import logging
 from datetime import datetime
 from google.appengine.api import users
 from google.appengine.ext import webapp
@@ -90,10 +91,15 @@ class BestGuess(MetView):
         if len(self.request.path) <= 1:
             return 'main.djt'
         if len(self.request.path) > 1:
-            for t in sorted(os.listdir(self.view_dir)):
+            for t in self.list_templates():
                 if self.request.path[1:] in t:
                     return t
             return 'main.djt'
+
+    def list_templates(self):
+        t = os.listdir(self.view_dir)
+        t = [ x for x in t if x[0] != '.' ]
+        return t
 
     post = get
 
@@ -101,8 +107,10 @@ class BestGuess(MetView):
 
 class Scenario(MetView):
 
-    def __init__(self,scenario_id):
-        self.scenario_id = scenario_id
+    def __init__(self):
+        #self.scenario_id = scenario_id
+        #logging.info("Scenario(%s)" % scenario_id)
+        pass
 
     def get(self,scenario_id):
         if self.prerequisites():
