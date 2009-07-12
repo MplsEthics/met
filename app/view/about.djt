@@ -1,11 +1,26 @@
 {% extends "base.djt" %}
 
 {% block content %}
-<a href="http://github.com/trammell/met/downloads">Source</a>
 
+<p>
+This is free software!
+The <a target="new"
+href="http://github.com/trammell/met/downloads">source code</a>
+for this application is available for download from
+<a target="new" href="http://www.github.com/">Github</a>.
+</p>
+
+<p>
 <img
 src="http://code.google.com/appengine/images/appengine-silver-120x30.gif"
 alt="Powered by Google App Engine" />
+This software is designed to run on the
+<a target="new" href="http://appengine.google.com/">Google App Engine</a>.
+</p>
+
+<p class="buttons">
+<a class="button" href="javascript:history.back(1)">&larr; Back</a>
+</p>
 
 {% endblock content %}
 {% block footer %}

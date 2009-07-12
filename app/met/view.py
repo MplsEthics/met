@@ -1,9 +1,11 @@
 import os
+from datetime import datetime
 from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
 from met import util
 from met import content
+from met import session
 
 order = [
     'main',
@@ -62,8 +64,14 @@ class MetView(webapp.RequestHandler):
 class Main(MetView):
     def get(self):
         path = self.viewpath(append='main.djt')
-        self.response.out.write(template.render(path,{}))
+        session = self.getSession()
+        session['timestamp'] = datetime.now()
+        self.response.out.write(template.render(path,locals()))
+
     post = get
+
+Main.__bases__ += (session.SessionMixin,)
+
 
 class BestGuess(MetView):
     """View class that displays the view closest to that requested."""
@@ -86,8 +94,6 @@ class BestGuess(MetView):
 
 
 
-
-
 class Scenario(MetView):
 
     def __init__(self,question_id):
@@ -105,4 +111,5 @@ class Scenario(MetView):
     def post(self,question_id):
         pass
 
+Scenario.__bases__ += (session.SessionMixin,)
 

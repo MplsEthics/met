@@ -35,4 +35,7 @@ Commissions and Agencies</h2>
 </div> <!--end of div id="content" -->
 </div> <!--end of div id="page" -->
 </body>
+{% block session %}
+<!-- {% if session %}{{ session }}{% else %}No session.{% endif %} -->
+{% endblock session %}
 </html>

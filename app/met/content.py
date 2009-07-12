@@ -6,6 +6,7 @@ The exam portion of the Ethics training.
 
 import os
 import yaml
+import logging
 from pprint import pprint
 
 content_dir = os.path.join(os.path.dirname(__file__), '../content')
@@ -50,12 +51,12 @@ for file in os.listdir(content_dir):
     path = os.path.join(content_dir,file)
     fh = open(path)
     try:
-        print "loading file '%s'" % path
+        logging.info("loading file '%s'" % path)
         objects = [x for x in yaml.load_all(fh)]
         question = objects[0]
         question.answers = objects[1:]
     except:
-        print "error loading file '%s' ... skipping" % path
+        logging.error("error loading '%s', skipping" % path)
     else:
         testbank[question.name] = question
 

@@ -1,66 +1,55 @@
-CENARIO:  You are a member of the Public Health Advisory Committee.  You have
-a personal relationship and own a home with the owner of a consulting firm
-(“Firm”). The Committee is reviewing grant proposals to make recommendations
-about grant awards to the City Council.  A non-profit organization (“Help
-Others”) submitted a proposal listing the Firm as a provider of services which
-would be paid for with grant funds.  You also serve as a volunteer on another
-non-profit board (“Do Good”) and Do Good has also submitted a proposal seeking
-the grant money.
-QUESTION: May you participate in the decision making process related to the
-recommendations to City Council regarding the grant proposals?
-Topic One: Conflict of Interest, Part Four
+--- !question
 
-QUESTION: May you participate in the decision making process related to the
-recommendations to City Council regarding the grant proposals?
-Please reflect first on the reason we have this conflict of interest statute
-and how it applies here. Then choose the best answer.
- Yes, provided Firm is not the sole provider of services listed in Helping
- Others’ proposal.
-  No, because you have an interest in two of the proposals.
-   Yes, because any interest you have in Helping Others is negated by the
-   interest you have in Do Good.
-   Yes, provided you do not receive more than $50.00 compensation a month from
-   Do Good.
-   Topic One: Conflict of Interest, Part Four
-   Discussion:
+name: "Conflict of Interest 4"
 
-   Correct!!
-   While the financial interests of a domestic partner are considered your
-   financial interests, if the Firm is one of several possible providers of
-   services, no conflict of interest exists. At the time of the board’s
-   decision your financial interests are no any greater than the other
-   providers of services listed
-   You may now proceed to the next page for a full discussion of the issue.
-   Topic One: Conflict of Interest, Part Four
-   Discussion:
-   Incorrect.  While the financial interests of a domestic partner are
-   considered your financial interests, a potential conflict of interest
-   involving the Firm would only arise if the Firm is listed as the sole
-   provider of services.
-   Your volunteer service at Do Good does not create a conflict of interest
-   because you are a volunteer.  Absent the payment of compensation of $50.00
-   per month or more, Do Good is not an associated business and you do not
-   have a financial interest in Do Good.
-   Please return to the question and select another answer.
-   Topic One: Conflict of Interest, Part Four
-   Discussion:
-   Incorrect.  If you have a financial interest in a matter of city business,
-   that interest can not be negated by another competing financial interest.
-   Please return to the question and select another answer.
-   Topic One: Conflict of Interest, Part Four
-   Discussion:
-   Incorrect.   While it is correct that absent the payment of compensation of
-   $50.00 per month or more, Do Good is not an associated business and you do
-   not have a financial interest in Do Good, this answer ignores the financial
-   interests of your domestic partner.
+scenario: "You are a member of the Public Health Advisory Committee.  You
+  have a personal relationship and own a home with the owner of a
+  consulting firm (“Firm”). The Committee is reviewing grant proposals to
+  make recommendations about grant awards to the City Council.  A
+  non-profit organization (“Help Others”) submitted a proposal listing the
+  Firm as a provider of services which would be paid for with grant funds.
+  You also serve as a volunteer on another non-profit board (“Do Good”) and
+  Do Good has also submitted a proposal seeking the grant money."
 
-   Please return to the question and select another answer.
-   Topic One: Conflict of Interest, Part Four
+question: "May you participate in the decision making process related to
+  the recommendations to City Council regarding the grant proposals?"
 
-   Discussion:
+prompt: "Please reflect first on the reason we have this conflict of
+  interest statute and how it applies here. Then choose the best answer."
 
-   An associated business is one from which the official receives compensation
-   of more than $50 in a month, or in which the official owns securities worth
-   at least $2,500. Compensation does not include expense reimbursement.
-   A member serves without compensation as a board member of a grant proposer.
+--- !answer
+
+answer: "Yes, provided Firm is not the sole provider of services listed in
+  Helping Others’ proposal."
+
+response: "While the financial interests of a domestic partner are
+  considered your financial interests, if the Firm is one of several
+  possible providers of services, no conflict of interest exists. At the
+  time of the board’s decision your financial interests are no any greater
+  than the other providers of services listed."
+
+--- !answer
+answer: "No, because you have an interest in two of the proposals."
+response: "Incorrect.  While the financial interests of a domestic partner
+  are considered your financial interests, a potential conflict of interest
+  involving the Firm would only arise if the Firm is listed as the sole
+  provider of services.  Your volunteer service at Do Good does not create
+  a conflict of interest because you are a volunteer.  Absent the payment
+  of compensation of $50.00 per month or more, Do Good is not an associated
+  business and you do not have a financial interest in Do Good."
+
+--- !answer
+answer: "Yes, because any interest you have in Helping Others is negated by
+  the interest you have in Do Good."
+response: "Incorrect.  If you have a financial interest in a matter of city
+  business, that interest can not be negated by another competing financial
+  interest."
+
+--- !answer
+answer: "Yes, provided you do not receive more than $50.00 compensation a
+  month from Do Good."
+response: "Incorrect.  While it is correct that absent the payment of
+  compensation of $50.00 per month or more, Do Good is not an associated
+  business and you do not have a financial interest in Do Good, this answer
+  ignores the financial interests of your domestic partner."
 

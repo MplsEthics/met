@@ -1,7 +1,7 @@
 
    PACKAGE := mpls-ethics
  APPENGINE := /usr/local/lib/google_appengine
-      PATH := /usr/bin:/bin
+      PATH := /usr/bin:/bin:/usr/local/bin
   PYTHON25 ?= python2.5
 
 usage:
