@@ -1,76 +1,69 @@
 --- !question
 
-name: 'conflict-of-interest'
+name: 'Conflict of Interest, Part 1'
 
-scenario: "A charge of discrimination has been filed by one of the former
-  employees of Make Money Company.  The Chair of the Civil Rights Commission
-  has informed you that you are on the panel assigned to hear the case.  You
-  own $15,000 worth of stock in Make Money Company and your daughter is an
-  executive with the company in a division not involved in the charge of
-  discrimination."
+scenario: "You, an architect, arrive for a Zoning Board of Adjustment
+  meeting only to see a “Friend” standing in the hallway outside the
+  meeting room.  Friend is present to plead his case for a variance.  Many
+  neighborhood residents appearing to oppose Friend’s case are also
+  standing in the hallway.  You “backslap” your friend with a hearty
+  greeting.  Your employer initially worked on Friend’s project but Friend
+  chose to finish the project with another Firm.  You never worked on
+  Friend’s project because you specialize in other areas."
 
-prompt: "Please reflect first on the reason we have this conflict of interest
-  statute and how it applies here. Then choose the best answer."
+question: "May you participate in the Board’s decision related to Friend’s
+  variance?"
 
-stem: "May you sit on the panel hearing the charge of discrimination?"
-
---- !answer
-
-answer: "Yes. You can hear this case because you have a high level of
-  integrity and can assure the Chair that you will not let your stock
-  ownership and your daughter’s employment influence you in making decisions
-  on this case."
-
-response: "The fact that you are an honest person with a high level of
-  personal integrity is not relevant.  The ordinance provides objective
-  criteria.  The subjective factor of personal integrity is not included.  The
-  fact that you could make an objective and impartial decision based entirely
-  on the facts presented in the hearing would not preclude you from violating
-  the conflict of interest rule.  This is a good example of how even honest,
-  well-meaning individuals may unwittingly violate the Ethics Code."
-
-correct: false
+prompt: "Please reflect first on the reason we have this conflict of
+  interest statute and how it applies here. Then choose the best answer."
 
 --- !answer
 
-answer: "Maybe, if you sell the stock and determine that your relationship
-  with your daughter and her employment will not affect your decisions in the
-  case."
-
-response: "Selling the stock would eliminate your conflicting financial
-  interest.  Your ability to assume the responsibilities of a member of the
-  hearing panel would then depend on whether of not your participation in the
-  matter would lead to an appearance of impropriety.  You may now proceed to a
-  next page for a full discussion of the issue."
+answer: "Yes.  You may participate if your employer has no direct or
+  indirect financial interest."
 
 correct: true
 
---- !answer
-
-answer: "No, because your financial interest in the stock and your daughter’s
-  employment preclude you from hearing the case."
-
-response: "While stock ownership does give you a financial interest that
-  precludes you from serving on the hearing panel, there are actions that may
-  be taken to remedy the conflict and allow you to participate.  There is a
-  better answer, please try again."
-
-correct: false
+response: "Your employer’s financial interests are considered your
+  financial interests.  If your employer has no business relationship with
+  the party appearing before the Board, your employer, and you, have no
+  financial interest in the matter."
 
 --- !answer
 
-answer: "Yes, if you sell your stock and disown your daughter."
-
-response: "Did you really think the City would require you to disown your
-  child?  We’ve been accused of being heartless – but never like this.  There
-  is a better answer, please try again."
+answer: "Yes.  You may participate if you disclose the relationships to the
+  other members of the Board prior to the action being taken."
 
 correct: false
 
-#QUESTION: May you participate in the Board’s decision related to Friend’s variance?
-#Please reflect first on the reason we have this conflict of interest statute and how it applies here. Then choose the best answer.
-#  Yes.  You may participate if your employer has no direct or indirect financial interest.
-#  Yes.  You may participate if you disclose the relationships to the other members of the Board prior to the action being taken.
-#  Yes.  You may participate because your employer is not involved and you are not related to Friend.
-#  No.  You may not participate because of your relationship with Friend.
-#
+response: "Disclosure of a conflict of interest does not permit you to
+  participate in a matter in which you have a conflict.  If your employer
+  has a financial interest in the matter, then you are considered to have a
+  conflict of interest and may not participate in the decision on Friend’s
+  variance."
+
+# Please return to the question and select another answer.
+
+--- !answer
+
+answer: "Yes.  You may participate because your employer is not involved
+  and you are not related to Friend."
+
+correct: false
+
+response: "This answer would be correct only if your Friend and your
+  Employer have concluded all business between them, including payment of
+  outstanding bills.<p>There is a better answer, please try again."
+
+--- !answer
+
+answer: "No.  You may not participate because of your relationship with
+  Friend."
+
+correct: false
+
+response: "Financial interests of friends are not considered your financial
+  interests, so your relationship with Friend would not preclude you from
+  hearing the matter.  Please return to the question and select another
+  answer."
+
