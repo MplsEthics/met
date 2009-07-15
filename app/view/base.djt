@@ -3,11 +3,9 @@
 <html>
 <head>
 <link rel="icon" type="image/png" href="/images/favicon.png">
-<link rel="stylesheet" type="text/css" href="/styles/main.css"
+<link rel="stylesheet" type="text/css" href="/css/main.css"
     media="screen" />
-<link rel="stylesheet" type="text/css" href="/styles/rc.css"
-    media="screen" />
-<link rel="stylesheet" type="text/css" href="/styles/print.css"
+<link rel="stylesheet" type="text/css" href="/css/print.css"
     media="print" />
 <title>
 {% block title %}
