@@ -5,8 +5,7 @@ from google.appengine.ext.webapp import template
 from met import content
 from met import session
 
-
-
+# define the navigation view order
 order = [
     'main',
     'intro1',
@@ -18,40 +17,40 @@ order = [
     'topic1',
 
     # conflict of interest part 1
-    'coi1.intro',
-    'scenario/coi1',
-    'coi1.d1',
-    'coi1.d2',
+    'coi1/intro',
+    'coi1/scenario',
+    'coi1/d1',
+    'coi1/d2',
 
     # conflict of interest part 2
-    'coi2.intro',
-    'scenario/coi2',
-    'coi2.d1',
-    'coi2.d2',
-    'coi2.d3',
+    'coi2/intro',
+    'coi2/scenario',
+    'coi2/d1',
+    'coi2/d2',
+    'coi2/d3',
 
     # conflict of interest part 3
-    'coi3.intro',
-    'scenario/coi3',
-    'coi3.d1',
-    'coi3.d2',
-    'coi3.d3',
+    'coi3/intro',
+    'coi3/scenario',
+    'coi3/d1',
+    'coi3/d2',
+    'coi3/d3',
 
     # conflict of interest part 4
-    'coi4.intro',
-    'scenario/coi4',
-    'coi4.d1',
+    'coi4/intro',
+    'coi4/scenario',
+    'coi4/d1',
 
     # disclosure of information
-    'doi.intro',
-    'scenario/doi',
-    'doi.d1',
+    'doi/intro',
+    'doi/scenario',
+    'doi/d1',
 
     # gifts
-    'gifts.intro1',
-    'gifts.intro2',
-    'scenario/gifts',
-    'gifts.d1',
+    'gifts/intro1',
+    'gifts/intro2',
+    'gifts/scenario',
+    'gifts/d1',
 
     # ethics report line & contact info
     'reportline1',
