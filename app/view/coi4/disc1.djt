@@ -1,0 +1,30 @@
+{% extends "../base.djt" %}
+
+{% block content %}
+
+<h1>Topic One: {{ s.name }}</h1>
+
+<h2>Discussion:</h2>
+
+An associated business is one from which the official receives compensation of more than $50 in a month, or in which the official owns securities worth at least $2,500. Compensation does not include expense reimbursement.
+
+A member serves without compensation as a board member of a grant proposer.
+
+Topic One: Conflict of Interest, Part Four
+
+A member is compensated by, or owns securities in, a vendor named in a grant proposal as a sole provider of services which would be paid for with grant funds.
+
+	A potential conflict of interest exists because the vendor named to be paid with grant funds is an associated business of the member based on payment of compensation or securities ownership. That vendor will benefit from the grant whereas other similarly situated vendors will not
+
+A member is compensated by, or owns securities in, one of several possible vendors of training services which may be used by individuals and paid for with grant funds.
+
+	No potential conflict of interest exists. The vendor is an associated business of the State Board member based on payment of compensation or securities ownership; however, to create a conflict of interest, it is necessary that the action under consideration "would substantially affect" the associated business [emphasis added]. A grant for training services which may or may not be provided by a particular vendor will not necessarily affect that vendor. Even if some individuals use the vendor for training, it is not possible to say at the time of the vote that the affect of the grant award on the vendor's financial interests would be substantial.
+
+A member is compensated by, or owns securities in, an organization which is not named in a grant proposal, but which may benefit from the award of a particular grant.
+
+	No potential conflict of interest exists. There is an associated business of the State Board member, based on payment of compensation or securities ownership. However, it cannot be said at the time of the vote that awarding the grant will have a substantial affect on the unnamed organization
+
+Let’s now turn our attention to a new topic ~~ Disclosure of Information
+
+{% endblock content %}
+
