@@ -168,15 +168,9 @@ class BestGuess(MetView):
     post = get
 
 
-
 class Scenario(MetView):
 
-    def __init__(self):
-        #self.scenario_id = scenario_id
-        #logging.info("Scenario(%s)" % scenario_id)
-        pass
-
-    def get(self,scenario_id):
+    def get(self,scenario_id,view):
         if self.prerequisites():
             pass
 
