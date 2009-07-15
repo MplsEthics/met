@@ -51,7 +51,7 @@ answer: "Yes.  You may participate because your employer is not involved
 
 correct: false
 
-response: "This answer would be correct only if your Friend and your
+response: "This answer would be correct <b>only if</b> your Friend and your
   Employer have concluded all business between them, including payment of
   outstanding bills.<p>There is a better answer, please try again."
 

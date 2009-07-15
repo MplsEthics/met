@@ -1,12 +1,11 @@
 import os
-import logging
 from datetime import datetime
-from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
-from met import util
 from met import content
 from met import session
+
+
 
 order = [
     'main',
@@ -14,15 +13,54 @@ order = [
     'intro2',
     'over1',
     'over2',
+
+    # intrduce topic 1: conflict of interest
     'topic1',
-    'scenario/coi1',    # conflict of interest 1
-    'scenario/coi2',    # conflict of interest 2
-    'scenario/coi3',    # conflict of interest 3
-    'scenario/coi4',    # conflict of interest 4
-    'scenario/doi',     # disclosure of information
+
+    # conflict of interest part 1
+    'coi1.intro',
+    'scenario/coi1',
+    'coi1.d1',
+    'coi1.d2',
+
+    # conflict of interest part 2
+    'coi2.intro',
+    'scenario/coi2',
+    'coi2.d1',
+    'coi2.d2',
+    'coi2.d3',
+
+    # conflict of interest part 3
+    'coi3.intro',
+    'scenario/coi3',
+    'coi3.d1',
+    'coi3.d2',
+    'coi3.d3',
+
+    # conflict of interest part 4
+    'coi4.intro',
+    'scenario/coi4',
+    'coi4.d1',
+
+    # disclosure of information
+    'doi.intro',
+    'scenario/doi',
+    'doi.d1',
+
+    # gifts
+    'gifts.intro1',
+    'gifts.intro2',
     'scenario/gifts',
-    'reportline',
-    'summary',
+    'gifts.d1',
+
+    # ethics report line & contact info
+    'reportline1',
+    'reportline2',
+    'reportline3',
+
+    'contacts',
+    'congrats',
+    'certificate',
 ]
 
 class MetView(webapp.RequestHandler):

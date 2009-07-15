@@ -4,12 +4,15 @@ runtime: python
 api_version: 1
 
 handlers:
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
 - url: /images
-  static_dir: images
+  static_dir: static/images
 - url: /js
-  static_dir: js
+  static_dir: static/js
 - url: /styles
-  static_dir: styles
+  static_dir: static/styles
 - url: /.*
   script: met/app.py
 

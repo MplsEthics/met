@@ -2,6 +2,7 @@
    "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
+<link rel="icon" type="image/png" href="/images/favicon.png">
 <link rel="stylesheet" type="text/css" href="/styles/main.css"
     media="screen" />
 <link rel="stylesheet" type="text/css" href="/styles/rc.css"
