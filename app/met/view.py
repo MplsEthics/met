@@ -80,7 +80,9 @@ class MetView(webapp.RequestHandler):
 
     def view_index(self):
         srp = self.request.path[1:]
-        return order.index(srp)
+        i = order.index(srp)
+        logging.info("%s => %d" % (srp,i))
+        return i
 
     def next(self):
         """Returns the alias to the next page."""
