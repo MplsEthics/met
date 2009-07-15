@@ -1,4 +1,5 @@
 import os
+import logging
 from datetime import datetime
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import template
@@ -8,8 +9,8 @@ from met import session
 # define the navigation view order
 order = [
     'main',
-    'intro1',
-    'intro2',
+    'instr1',
+    'instr2',
     'over1',
     'over2',
 
@@ -77,13 +78,27 @@ class MetView(webapp.RequestHandler):
             return os.path.join(self.view_dir, './' + append)
         return self.view_dir
 
+    def view_index(self):
+        srp = self.request.path[1:]
+        return order.index(srp)
+
     def next(self):
         """Returns the alias to the next page."""
-        pass
+        try:
+            i = self.view_index()
+            if i < len(order):
+                return order[i+1]
+        except:
+            return None
 
     def previous(self):
         """Returns the alias to the previous page."""
-        pass
+        try:
+            i = self.view_index()
+            if i > 0:
+                return order[i-1]
+        except:
+            return None
 
     def template(self):
         """Returns the filename of the template to view."""
@@ -107,8 +122,9 @@ class Main(MetView):
             session['timestamp'] += [ datetime.now() ]
         except:
             session['timestamp'] = []
-
         session['timestamp'] = session['timestamp'][0:3]
+        next = 'instr1'
+        logging.info(locals())
         self.response.out.write(template.render(path,locals()))
 
     post = get
@@ -121,7 +137,9 @@ class BestGuess(MetView):
 
     def get(self):
         path = self.viewpath(append=self.template())
-        self.response.out.write(template.render(path,{}))
+        previous = self.previous()
+        next = self.next()
+        self.response.out.write(template.render(path,locals()))
 
     def template(self):
         """Return the view template that best matches the request."""
