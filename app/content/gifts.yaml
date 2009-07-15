@@ -1,13 +1,15 @@
 --- !question
 
+id: 'gifts'
+
 name: "Gifts"
 
 scenario: "You are a member of the Minneapolis Advisory Committee on People
-  with Disabilities.  Each member has been tasked with inspecting the City’s
-  restaurants and hotels for accessibility purposes.  When you arrive at
-  Hotel, staff tells you that the General Manager is running a bit late, asks
-  you to have a seat in the lobby and offers you a scone and coffee while you
-  wait for the General Manager."
+  with Disabilities.  Each member has been tasked with inspecting the
+  City’s restaurants and hotels for accessibility purposes.  When you
+  arrive at Hotel, staff tells you that the General Manager is running a
+  bit late, asks you to have a seat in the lobby and offers you a scone and
+  coffee while you wait for the General Manager."
 
 question: "Is it permissible to accept the scone and coffee?"
 
@@ -17,71 +19,48 @@ prompt: "How might it appear to a third party if you accept a gift from a
   discussed earlier to select answers to the scenarios."
 
 --- !answer
+
 answer: "Yes, because the intent behind the offer was one of common
   courtesy."
 
+correct: false
+
+response: "It may well be that the gift is offered simply as a common
+  courtesy with no intention to influence your inspection but if the gift
+  is from a prohibited source, the gift must fall under an exception in
+  order to be accepted."
 
 --- !answer
+
 answer: "Yes, because the value of the scone and coffee is less than
   $5.00."
 
+correct: false
+
+response: "Not all gifts valued under $5.00 may be accepted.  This gift
+  would not fit under any of the exceptions so even though it is of minimal
+  value it may not be accepted if it is from a prohibited source."
 
 --- !answer
+
 answer: "No, because your inspection could have an impact on the Hotel’s
   financial interests."
 
+correct: true
+
+response: "The Hotel is an interested party.  The Hotel has a financial
+  interest in the outcome of your inspection.  Should you report a
+  deficiency, the Hotel will need to spend time and money to contest or
+  remedy the deficiency."
+
 --- !answer
+
 answer: "Yes, because the offer was from staff not from the General
   Manager."
 
-# Discussion Topic 3: Gifts
-### Discussion:
-### Incorrect.  It may well be that the gift is offered simply as a common
-### courtesy with no intention to influence your inspection but if the gift is
-### from a prohibited source, the gift must fall under an exception in order to be
-### accepted.
-### Please return to the question and select another answer.
-### Discussion Topic 3: Gifts
-###
-### Discussion:
-### Incorrect.  Not all gifts valued under $5.00 may be accepted.  This gift would
-### not fit under any of the exceptions so even though it is of minimal value it
-### may not be accepted if it is from a prohibited source.
-### Please return to the question and select another answer.
-### Discussion Topic 3: Gifts
-###
-### Discussion:
-###
-### Correct!!  The Hotel is an interested party.  The Hotel has a financial
-### interest in the outcome of your inspection.  Should you report a deficiency,
-### the Hotel will need to spend time and money to contest or remedy the
-### deficiency.
-### You may now proceed to the next page for a full discussion of the issue.
-### Discussion Topic 3: Gifts
-###
-### Discussion:
-### Incorrect.  The gift is not provided by the staff in their personal capacity
-### but on behalf of Hotel and Hotel has a financial interest in your inspection.
-### Please return to the question and select another answer.
-### Discussion Topic 3: Gifts
-###
-### Discussion:
-###
-### No exceptions apply to a gift of scone and coffee as described in the
-### scenario.  Food and beverage are never considered “services” or “trinkets or
-### mementos”.  There is an exception that specifically addresses gifts of food or
-### beverages, but it is quite limited in its application to event at which the
-### recipient appears to make a speech or answer questions as part of a program.
-###
-### Gifts to City officials pose a couple of risks.  One risk is that a gift will
-### actually influence the official’s action on a matter.  The other risk is that
-### the public will perceive the gift as having influenced the official’s action
-### on the matter, regardless of whether the matter was actually influenced.
-###
-### There is reason to be concerned with even small gifts.  Officials may
-### rationalize that it is perfectly okay to accept such a small gift because
-### everyone knows you can not be bought for a scone and coffee.  Sometimes that
-### is the start of a very gradual but slippery slope.
-### When you are confronted with a gift from a prohibited source, you will want to
-### consider carefully that
-###
+correct: false
+
+response: "The gift is not provided by the staff in their personal capacity
+  but on behalf of Hotel and Hotel has a financial interest in your
+  inspection."
+
