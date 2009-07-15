@@ -1,5 +1,7 @@
 --- !question
 
+id: "doi"
+
 name: "Disclosure of Information"
 
 scenario: "You are a member of the Rental Housing Board of Appeals.  Last
@@ -25,76 +27,44 @@ prompt: "Remember, we encourage you to use the analysis steps discussed
 
 answer: "Yes, because you did not gain financially by informing Guest."
 
-response: "Incorrect.  It is correct that disclosure or use of certain
-  information gained in the course of your service to the City in any way
-  that could result in financial gain for you or the other persons or
-  entities listed in this provision is a violation of the Ethics Code but a
-  violation can also arise in situations where the disclosure or use does
-  not result in financial gain.  Please return to the question and select
-  another answer."
+correct: false
+
+response: "It is correct that disclosure or use of certain information gained
+  in the course of your service to the City in any way that could result in
+  financial gain for you or the other persons or entities listed in this
+  provision is a violation of the Ethics Code but a violation can also arise
+  in situations where the disclosure or use does not result in financial
+  gain."
 
 --- !answer
 
 answer: "Yes, because the issue is completed and the matter closed."
+
+correct: false
+
+response: "The answer to this question does not depend on the status of the
+  matter but the status of the information used or disclosed."
 
 --- !answer
 
 answer: "No, because a complaint about Guest’s properties could be before
   the Board at a later date."
 
+correct: false
+
+response: "The discussion you are holding with Guest could require you to
+  recuse yourself from a later hearing involving Guest’s properties but has no
+  bearing on whether your disclosure of the information involving Landlord was
+  proper."
+
 --- !answer
 
 answer: "No, because the identity of Complainant was private data."
 
+correct: true
 
+response: "The Minnesota Government Data Practices Act classifies the identity
+  of a Complainant as private data on an individual.  This means that the
+  although the data is accessible to the Complainant, the data is <b>not</b>
+  accessible to the public."
 
-### Incorrect.  It is correct that disclosure or use of certain information
-### gained in the course of your service to the City in any way that could result
-### in financial gain for you or the other persons or entities listed in this
-### provision is a violation of the Ethics Code but a violation can also arise in
-### situations where the disclosure or use does not result in financial gain.
-### Please return to the question and select another answer.
-### Discussion Topic 2: Disclosure of Information
-###
-### Discussion:
-### Incorrect.  The answer to this question does not depend on the status of the
-### matter but the status of the information used or disclosed.
-### Please return to the question and select another answer.
-### Discussion Topic 2: Disclosure of Information
-###
-### Discussion:
-### Incorrect.  The discussion you are holding with Guest could require you to
-### recuse yourself from a later hearing involving Guest’s properties but has no
-### bearing on whether your disclosure of the information involving Landlord was
-### proper.
-### Please return to the question and select another answer.
-### Discussion Topic 2: Disclosure of Information
-###
-### Discussion:
-###
-### Correct!!  The Minnesota Government Data Practices Act classifies the
-### identity of a Complainant as private data on an individual.  This means that
-### the although the data is accessible to the Complainant, the data not
-### accessible to the public.
-### You may now proceed to the next page for a full discussion of the issue.
-### Discussion Topic 2: Disclosure of Information
-###
-### Discussion:
-###
-### Members of the City’s boards and commissions will encounter non-public data
-### through their work for the City.  It is important to keep the information
-### non-public.  Even when you are not financially gaining from information,
-### disclosure or use of non-public data that violate your fiduciary duty to the
-### City and/or the Minnesota Government Data Practices Act (“MGDPA”) violates
-### the Ethics Code.  In addition to being an Ethics Code violation, a disclosure
-### violating the MGDPA can result in legal actions by the subject of the data.
-### And a willful violation can result in exemplary damages of not less than
-### $100, nor more than $10,000 for each violation.
-###
-### It is important to take care to protect the non-public data you encounter in
-### your role as a member of a City board or commission.  Occasionally, but not
-### often, status of data changes based upon the status of a matter.  Always ask
-### your staff liaison for assistance should you have any questions about the
-### status of data.
-### Let’s now turn our attention to the last topic ~~ Gifts
-###
