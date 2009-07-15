@@ -1,10 +1,9 @@
 {% extends "base.djt" %}
 
 {% block content %}
-There are four discussion topics in this training.  The first discussion
-topic is
 
-Conflict of Interest
+There are four discussion topics in this training.  The first discussion topic
+is <b>Conflict of Interest</b>.
 
 <p>
 Remember, we encourage you to use the analysis steps discussed earlier to

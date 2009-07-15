@@ -1,6 +1,7 @@
 {% extends "base.djt" %}
 
 {% block content %}
+
 <h1>Instructions for Completing your Training</h1>
 
 <h2>Step One</h2>
