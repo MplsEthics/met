@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<h1>Topic One: {{ scenario.name }}</h1>
+<h1>Topic One: {{ s.name }}</h1>
 
-<p>{{ scenario.scenario }}</p>
+<p>{{ s.scenario }}</p>
 
-<p>{{ scenario.question }}</p>
+<p>{{ s.question }}</p>
 
 {% endblock content %}
