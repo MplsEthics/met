@@ -1,5 +1,7 @@
 --- !question
 
+id: "coi1"
+
 name: 'Conflict of Interest, Part 1'
 
 scenario: "You, an architect, arrive for a Zoning Board of Adjustment
@@ -41,8 +43,6 @@ response: "Disclosure of a conflict of interest does not permit you to
   has a financial interest in the matter, then you are considered to have a
   conflict of interest and may not participate in the decision on Friend’s
   variance."
-
-# Please return to the question and select another answer.
 
 --- !answer
 
