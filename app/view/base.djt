@@ -31,10 +31,10 @@ Commissions and Agencies</h2>
 {% block prevnext %}
 <div id="prevnext">
 {% if next %}
-<a id="next" class="button" href="{{ next }}">Continue &rarr;</a>
+<a id="next" class="button" href="/{{ next }}">Continue &rarr;</a>
 {% endif %}
 {% if previous %}
-<a id="previous" class="button" href="{{ previous }}">&larr; Back</a>
+<a id="previous" class="button" href="/{{ previous }}">&larr; Back</a>
 {% endif %}
 </div>
 {% endblock prevnext %}
