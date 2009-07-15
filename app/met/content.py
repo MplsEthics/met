@@ -1,7 +1,7 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.5
 
 """
-The exam portion of the Ethics training.
+Classes and other utilities related to dynamic question content.
 """
 
 import os
@@ -15,28 +15,30 @@ class Question(yaml.YAMLObject):
 
     yaml_tag = '!question'
 
-    def __init__(self,name,prompt,stem,answers):
+    def __init__(self,id_,name,prompt,stem,answers):
+        self.id = id_
         self.name = name
+        self.question = question
         self.prompt = prompt
-        self.stem = stem
         self.answers = answers
 
     def __repr__(self):
         repr = {
             'class': self.__class__.__name__,
+            'id': self.id,
             'name': self.name,
             'answers': self.answers,
         }
-        return "%(class)s(%(name)s)[%(answers)s]" % repr
+        return """%(class)s("%(name)s")[%(answers)s]""" % repr
 
 class Answer(yaml.YAMLObject):
 
     yaml_tag = '!answer'
 
-    def __init__(self,answer,response,correct):
+    def __init__(self,answer,correct,response):
         self.answer = answer
-        self.response = response
         self.correct = correct
+        self.response = response
 
     def __repr__(self):
         repr = {
@@ -58,7 +60,7 @@ for file in os.listdir(content_dir):
     except:
         logging.error("error loading '%s', skipping" % path)
     else:
-        testbank[question.name] = question
+        testbank[question.id] = question
 
 def get_scenario(id):
     return testbank.get(id,None)
