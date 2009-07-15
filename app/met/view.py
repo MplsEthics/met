@@ -171,20 +171,11 @@ class BestGuess(MetView):
 class Scenario(MetView):
 
     def get(self,scenario_id,view):
-        if self.prerequisites():
-            pass
-
+        scenario = content.get_scenario(scenario_id)
         path = self.viewpath(append='question.djt')
-        template_values = {
-            'question': content.get_scenario(scenario_id),
-        }
-        self.response.out.write(template.render(path, template_values))
+        self.response.out.write(template.render(path, locals()))
 
-    def prerequisites(self):
-        """Returns the prerequisites for showing this view."""
-        return True
-
-    def post(self,question_id):
+    def post(self,scenario_id,view):
         pass
 
 Scenario.__bases__ += (session.SessionMixin,)
