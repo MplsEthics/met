@@ -5,7 +5,8 @@ from met.view import Main, Scenario, BestGuess
 
 app_pages = [
     ('/', Main),
-    ('/scenario/(\w+)', Scenario),
+    ('/(\w+)/scenario', Scenario),
+    ('/(\w+)/(\w+)', BestGuess),
     ('/.*$', BestGuess),
 ]
 
