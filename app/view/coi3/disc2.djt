@@ -1,0 +1,47 @@
+{% extends "../base.djt" %}
+
+{% block content %}
+
+<h1>Topic One: {{ s.name }}</h1>
+
+<h2>Discussion continued:</h2>
+
+<p>
+Your daughter’s employment with Making Money Company is not a financial
+interest attributed to you under the ordinance, assuming she is not your
+dependent.  As discussed earlier in this training, only your financial
+interests and those of your employers and associated businesses, along with
+the financial interests of your dependents, your spouse or domestic partner
+and their employers and associated businesses are considered your financial
+interests.  Your emancipated daughter’s financial interests would not be
+considered your financial interests.
+
+<p>
+As your daughter is employed by another division of the company – not related
+to the matter being heard by the hearing panel – it is unlikely that your
+daughter will be testifying in the matter.  This should however be confirmed
+by the parties’ attorneys prior to the hearing and you should consider any
+objections to your participation in the matter.
+
+<p>
+Even if your daughter will not be involved in the hearing, you should consider
+several factors, including:
+
+<ul>
+<li>The importance of your role in the matter;
+<li>The sensitivity of the matter;
+<li>The information you have learned about the company from your daughter
+    about the company that you would have difficulty setting aside; and
+<li>Whether a reasonable person might question your impartiality.
+</ul>
+
+<p>
+The City strives to have its officials avoid actions that might impair
+independence of judgment or give the appearance of impropriety or an
+appearance of a conflict of interest.  (See M.C.O. §15.20.) If after
+considering all of the facts, you determine that to maintain the highest
+ethical principles and avoid an apparent conflict of interest, you should
+recuse yourself from hearing the charge of discrimination.
+
+{% endblock content %}
+
