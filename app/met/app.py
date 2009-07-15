@@ -4,10 +4,10 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from met.view import Main, Scenario, BestGuess
 
 app_pages = [
-    ('/', Main),
-    ('/(\w+)/scenario', Scenario),
-    ('/(\w+)/(\w+)', BestGuess),
-    ('/.*$', BestGuess),
+    (r'^/$', Main),
+    (r'^/main$', Main),
+    (r'^/(\w+)/(\w+)$', Scenario),  # e.g. "coi1/intro"
+    (r'^/\w+$', BestGuess),
 ]
 
 wsgi_app = webapp.WSGIApplication(app_pages,debug=True)
