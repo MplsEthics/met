@@ -1,0 +1,27 @@
+{% extends "../base.djt" %}
+
+{% block content %}
+
+<h1>Topic One: {{ s.name }}</h1>
+
+<h2>Discussion (continued):</h2>
+
+<p>
+Because you are the Chair of the Board, you control the discussion of an
+agenda item.  When the Board considers a matter in which you have a financial
+interest, you must turn the chair over to the vice chair, and not participate
+in any manner in the Board’s proceedings.
+</p>
+
+<p>
+Once you have a matter to be discussed by the Board on which you serve, you
+must carefully avoid ex parte discussions with the other Board members.  Even
+without knowing any of the facts of your matter, some members may recuse
+themselves because their relationship with you may appear to have impaired
+independence of their judgment.  If the matter is highly contentious or the
+remaining Board members are not able to or have concerns about acting on
+another member’s matter, the affected City Department may work with the Board
+and seek the assistance of an administrative law judge.
+</p>
+
+{% endblock content %}
