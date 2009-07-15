@@ -1,6 +1,8 @@
 --- !question
 
-name: "Conflict of Interest 4"
+id: "coi4"
+
+name: "Conflict of Interest, Part Four"
 
 scenario: "You are a member of the Public Health Advisory Committee.  You
   have a personal relationship and own a home with the owner of a
@@ -22,6 +24,8 @@ prompt: "Please reflect first on the reason we have this conflict of
 answer: "Yes, provided Firm is not the sole provider of services listed in
   Helping Others’ proposal."
 
+correct: true
+
 response: "While the financial interests of a domestic partner are
   considered your financial interests, if the Firm is one of several
   possible providers of services, no conflict of interest exists. At the
@@ -29,9 +33,13 @@ response: "While the financial interests of a domestic partner are
   than the other providers of services listed."
 
 --- !answer
+
 answer: "No, because you have an interest in two of the proposals."
-response: "Incorrect.  While the financial interests of a domestic partner
-  are considered your financial interests, a potential conflict of interest
+
+correct: false
+
+response: "While the financial interests of a domestic partner are
+  considered your financial interests, a potential conflict of interest
   involving the Firm would only arise if the Firm is listed as the sole
   provider of services.  Your volunteer service at Do Good does not create
   a conflict of interest because you are a volunteer.  Absent the payment
@@ -39,17 +47,25 @@ response: "Incorrect.  While the financial interests of a domestic partner
   business and you do not have a financial interest in Do Good."
 
 --- !answer
+
 answer: "Yes, because any interest you have in Helping Others is negated by
   the interest you have in Do Good."
-response: "Incorrect.  If you have a financial interest in a matter of city
-  business, that interest can not be negated by another competing financial
+
+correct: false
+
+response: "If you have a financial interest in a matter of city business,
+  that interest can not be negated by another competing financial
   interest."
 
 --- !answer
+
 answer: "Yes, provided you do not receive more than $50.00 compensation a
   month from Do Good."
-response: "Incorrect.  While it is correct that absent the payment of
-  compensation of $50.00 per month or more, Do Good is not an associated
-  business and you do not have a financial interest in Do Good, this answer
-  ignores the financial interests of your domestic partner."
+
+correct: false
+
+response: "While it is correct that absent the payment of compensation of
+  $50.00 per month or more, Do Good is not an associated business and you
+  do not have a financial interest in Do Good, this answer ignores the
+  financial interests of your domestic partner."
 
