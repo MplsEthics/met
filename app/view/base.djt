@@ -26,6 +26,18 @@ Commissions and Agencies</h2>
 <div id="content">
 {% block content %}
 {% endblock content %}
+
+{% block prevnext %}
+<div id="prevnext">
+{% if next %}
+<a id="next" class="button" href="{{ next }}">Continue &rarr;</a>
+{% endif %}
+{% if previous %}
+<a id="previous" class="button" href="{{ previous }}">&larr; Back</a>
+{% endif %}
+</div>
+{% endblock prevnext %}
+
 <div class="clear"></div>
 <div id="footer">
 {% block footer %}
@@ -36,6 +48,8 @@ Commissions and Agencies</h2>
 </div> <!--end of div id="page" -->
 </body>
 {% block session %}
-<!-- {% if session %}{{ session }}{% else %}No session.{% endif %} -->
+<!--
+{% if session %}{{ session }}{% else %}No session.{% endif %}
+-->
 {% endblock session %}
 </html>
