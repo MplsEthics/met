@@ -13,7 +13,7 @@ content_dir = os.path.join(os.path.dirname(__file__), '../content')
 
 class Question(yaml.YAMLObject):
 
-    yaml_tag = u'!question'
+    yaml_tag = '!question'
 
     def __init__(self,name,prompt,stem,answers):
         self.name = name
@@ -27,11 +27,11 @@ class Question(yaml.YAMLObject):
             'name': self.name,
             'answers': self.answers,
         }
-        return u"%(class)s(%(name)s)[%(answers)s]" % repr
+        return "%(class)s(%(name)s)[%(answers)s]" % repr
 
 class Answer(yaml.YAMLObject):
 
-    yaml_tag = u'!answer'
+    yaml_tag = '!answer'
 
     def __init__(self,answer,response,correct):
         self.answer = answer
@@ -43,7 +43,7 @@ class Answer(yaml.YAMLObject):
             'class': self.__class__.__name__,
             'answer': '%s...' % self.answer[0:30],
         }
-        return u"%(class)s(%(answer)s)" % repr
+        return "%(class)s(%(answer)s)" % repr
 
 # load the test bank
 testbank = {}
@@ -64,6 +64,6 @@ def get_scenario(id):
     return testbank.get(id,None)
 
 if __name__ == '__main__':
-    print u'file: %s' % __file__
+    print 'file: %s' % __file__
     pprint(testbank)
 
