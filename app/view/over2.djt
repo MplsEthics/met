@@ -40,9 +40,5 @@ rules, the Ethical Practices Board would investigate and take evidence in a
 fact finding hearing.  A recommendation is made to the appointing authority
 regarding the complaint should it be sustained.
 
-<p>
-<a class="rhs button" href="topic1">Continue &rarr;</a>
-</p>
-
 {% endblock content %}
 

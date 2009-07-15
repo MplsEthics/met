@@ -19,8 +19,4 @@ minutes.  Upon completion, you will have finished your required ethics
 education for the four year time period and will be more comfortable with
 some of the measures to ensure integrity in Minneapolis City government.
 
-<p>
-<a class="rhs button" href="instr1">Continue &rarr;</a>
-</p>
-
 {% endblock %}

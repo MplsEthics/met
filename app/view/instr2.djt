@@ -10,11 +10,13 @@ exception, if one applies, right before each scenario. Then you would simply
 plug in the rule and get the correct answer with minimal effort, allowing you
 to move on to the next scenario, and quickly finish the training and obtain
 your certificate of completion. What could be wrong with that?
+</p>
 
 <p>
 Well, that approach might not give you the knowledge and understanding you need
 to protect yourself from committing inadvertent violations that, in many cases,
 carry civil or even criminal consequences.
+</p>
 
 <p>
 Applying ethics rules are more complex than you would think. Your good
@@ -23,6 +25,7 @@ to protect you from committing inadvertent violations. Of course, as several
 people commented during previous training, it is never inappropriate to take a
 cautious approach and say "No," even when an exception may allow you to take a
 certain action.
+</p>
 
 <p>
 It is surprising how many well-intentioned personnel have unintentionally
@@ -35,6 +38,7 @@ to seek specific guidance before engaging in an activity. We believe that using
 the three steps outlined above will give you the proper orientation by asking
 you to focus on general ethical principles and their relation to real-life
 situations.
+</p>
 
 <h2>Step Four</h2>
 
@@ -44,6 +48,7 @@ completion certificate and email.  You are encouraged to save a copy of the
 completion certificate for your own records.  You should use the email to
 notify the City Clerk’s office and your city staff liaison of your
 completion of this educational requirement.
+</p>
 
 <p>
 Electronic records of training are not transmitted back to the Office of the
@@ -52,12 +57,10 @@ commission or agency and we are not able to assist you in reproducing proof
 that you’ve completed this training.  If you do not make a copy of your
 certificate, the only method available for obtaining another certificate is to
 re-take this course in its entirety.
+</p>
 
 <p>
 Let's get started with an overview of the Ethics in Government Ordinance.
-
-<p>
-<a class="rhs button" href="over1">Continue &rarr;</a>
 </p>
 
 {% endblock content %}

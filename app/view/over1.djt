@@ -36,9 +36,5 @@ re-take this course in its entirety.
 <p>
 Let's get started with an overview of the Ethics in Government Ordinance.
 
-<p>
-<a class="rhs button" href="over2">Continue &rarr;</a>
-</p>
-
 {% endblock content %}
 
