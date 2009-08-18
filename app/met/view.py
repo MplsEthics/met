@@ -171,9 +171,19 @@ class BestGuess(MetView):
 class Scenario(MetView):
 
     def get(self,scenario_id,view):
-        scenario = content.get_scenario(scenario_id)
-        path = self.viewpath(append='question.djt')
-        self.response.out.write(template.render(path, locals()))
+        if view == 'scenario':
+            path = self.viewpath(append='scenario.djt')
+        else:
+            a = "%s/%s.djt" % (scenario_id, view)
+            path = self.viewpath(append=a)
+
+        djt = {
+            'next': self.next(),
+            'previous': self.previous(),
+            's': content.get_scenario(scenario_id),
+        }
+
+        self.response.out.write(template.render(path,djt))
 
     def post(self,scenario_id,view):
         pass

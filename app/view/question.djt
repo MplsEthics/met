@@ -1,6 +1,9 @@
 {% extends "base.djt" %}
 
 {% block content %}
+
+
+
 <h1>GENERAL RULE:</h1>
 
 You may not participate personally and substantially in a "particular
