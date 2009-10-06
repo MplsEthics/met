@@ -40,7 +40,7 @@ Commissions and Agencies</h2>
 <div class="clear"></div>
 <div id="footer">
 {% block footer %}
-<a class="about" href="about">About</a>
+<a class="about" href="/about">About</a>
 {% endblock footer %}
 </div> <!--end of div id="footer" -->
 </div> <!--end of div id="content" -->
