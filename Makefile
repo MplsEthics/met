@@ -8,7 +8,7 @@ usage:
 	@echo "usage: [clean]"
 
 start gae app:
-	$(PYTHON25) $(APPENGINE)/dev_appserver.py --port=8765 --address=10.1.6.111 app/
+	PYTHON25=$(PYTHON25) APPENGINE=$(APPENGINE) /bin/bash bin/start-appengine.sh
 
 clean:
 	rm -f MANIFEST *.zip *.tar.gz
