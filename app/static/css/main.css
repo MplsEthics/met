@@ -117,8 +117,20 @@ div#footer a.about {
     margin: 0 1em;
 }
 
+form#question input.answer-radio {
+    vertical-align: text-top;
+}
+
 form#question div.answer {
+    margin-left: 4em;
+}
+
+form#question input {
     margin-left: 2em;
+}
+
+form#question input#submit {
+    margin-top: 1em;
 }
 
 div.clear {
