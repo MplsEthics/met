@@ -171,22 +171,45 @@ class BestGuess(MetView):
 class Scenario(MetView):
 
     def get(self,scenario_id,view):
-        if view == 'scenario':
-            path = self.viewpath(append='scenario.djt')
-        else:
+        if view != 'scenario':
             a = "%s/%s.djt" % (scenario_id, view)
             path = self.viewpath(append=a)
+            djt = {
+                'next': self.next(),
+                'previous': self.previous(),
+                's': content.get_scenario(scenario_id),
+            }
+            self.response.out.write(template.render(path,djt))
+        else:
+            self.get_scenario(scenario_id)
 
+    def get_scenario(self,scenario_id):
+        scenario = content.get_scenario(scenario_id)
+        session = self.getSession()
+        path = self.viewpath(append='scenario.djt')
+        if scenario_id in session:
+            last_answer = session[scenario_id][-1]
+        scenario.is_correct(last_answer)
         djt = {
-            'next': self.next(),
             'previous': self.previous(),
-            's': content.get_scenario(scenario_id),
+            'next': self.next(),
+            's': scenario,
+            'session': session,
+            'is_correct': scenario.is_correct(last_answer),
         }
-
         self.response.out.write(template.render(path,djt))
 
     def post(self,scenario_id,view):
-        pass
+        """Process the answer submission, then redirect to the question
+        view."""
+        scenario = content.get_scenario(scenario_id)
+        session = self.getSession()
+        answer = self.request.params['answer']
+        if scenario_id in session:
+            session[scenario_id] += [ answer ]
+        else:
+            session[scenario_id] = [ answer ]
+        self.redirect("/%s/scenario" % scenario_id)
 
 Scenario.__bases__ += (session.SessionMixin,)
 

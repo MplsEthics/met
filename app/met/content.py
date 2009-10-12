@@ -31,11 +31,18 @@ class Question(yaml.YAMLObject):
         }
         return """%(class)s("%(name)s")[%(answers)s]""" % repr
 
+    def is_correct(self,answer_id):
+        for answer in self.answers:
+            if answer.id == answer_id and answer.correct:
+                return True
+        return False
+
 class Answer(yaml.YAMLObject):
 
     yaml_tag = '!answer'
 
-    def __init__(self,answer,correct,response):
+    def __init__(self,_id,answer,correct,response):
+        self.id = _id
         self.answer = answer
         self.correct = correct
         self.response = response
@@ -44,8 +51,9 @@ class Answer(yaml.YAMLObject):
         repr = {
             'class': self.__class__.__name__,
             'answer': '%s...' % self.answer[0:30],
+            'id': self.id,
         }
-        return "%(class)s(%(answer)s)" % repr
+        return "%(class)s(%(id)s:%(answer)s)" % repr
 
 # load the test bank
 testbank = {}
