@@ -24,6 +24,7 @@ prompt: "Remember, we encourage you to use the analysis steps discussed
   earlier to select answers to the scenarios."
 
 --- !answer
+id: "doi.1"
 
 answer: "Yes, because you did not gain financially by informing Guest."
 
@@ -37,6 +38,7 @@ response: "It is correct that disclosure or use of certain information gained
   gain."
 
 --- !answer
+id: "doi.2"
 
 answer: "Yes, because the issue is completed and the matter closed."
 
@@ -46,6 +48,7 @@ response: "The answer to this question does not depend on the status of the
   matter but the status of the information used or disclosed."
 
 --- !answer
+id: "doi.3"
 
 answer: "No, because a complaint about Guest’s properties could be before
   the Board at a later date."
@@ -58,6 +61,7 @@ response: "The discussion you are holding with Guest could require you to
   proper."
 
 --- !answer
+id: "doi.4"
 
 answer: "No, because the identity of Complainant was private data."
 

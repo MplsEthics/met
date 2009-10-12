@@ -19,6 +19,7 @@ prompt: "How might it appear to a third party if you accept a gift from a
   discussed earlier to select answers to the scenarios."
 
 --- !answer
+id: 'gifts.1'
 
 answer: "Yes, because the intent behind the offer was one of common
   courtesy."
@@ -31,6 +32,7 @@ response: "It may well be that the gift is offered simply as a common
   order to be accepted."
 
 --- !answer
+id: 'gifts.2'
 
 answer: "Yes, because the value of the scone and coffee is less than
   $5.00."
@@ -42,6 +44,7 @@ response: "Not all gifts valued under $5.00 may be accepted.  This gift
   value it may not be accepted if it is from a prohibited source."
 
 --- !answer
+id: 'gifts.3'
 
 answer: "No, because your inspection could have an impact on the Hotel’s
   financial interests."
@@ -54,6 +57,7 @@ response: "The Hotel is an interested party.  The Hotel has a financial
   remedy the deficiency."
 
 --- !answer
+id: 'gifts.4'
 
 answer: "Yes, because the offer was from staff not from the General
   Manager."

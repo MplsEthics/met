@@ -20,6 +20,7 @@ prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
 --- !answer
+id: "coi4.1"
 
 answer: "Yes, provided Firm is not the sole provider of services listed in
   Helping Others’ proposal."
@@ -33,6 +34,7 @@ response: "While the financial interests of a domestic partner are
   than the other providers of services listed."
 
 --- !answer
+id: "coi4.2"
 
 answer: "No, because you have an interest in two of the proposals."
 
@@ -47,6 +49,7 @@ response: "While the financial interests of a domestic partner are
   business and you do not have a financial interest in Do Good."
 
 --- !answer
+id: "coi4.3"
 
 answer: "Yes, because any interest you have in Helping Others is negated by
   the interest you have in Do Good."
@@ -58,6 +61,7 @@ response: "If you have a financial interest in a matter of city business,
   interest."
 
 --- !answer
+id: "coi4.4"
 
 answer: "Yes, provided you do not receive more than $50.00 compensation a
   month from Do Good."

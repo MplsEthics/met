@@ -17,6 +17,7 @@ prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
 --- !answer
+id: "coi2.1"
 
 answer: "Yes.  Provided you send a property representative and not
   personally plead your case to the board."
@@ -27,6 +28,7 @@ response: "You may send a representative to plead your case but you may
   personally plead your case."
 
 --- !answer
+id: "coi2.2"
 
 answer: "Yes. Provided you resign from the Board prior to the hearing
   date."
@@ -38,6 +40,7 @@ response: "While resigning from the board would permit you to bring your
   hearing."
 
 --- !answer
+id: "coi2.3"
 
 answer: "Yes.  Provided you do not discuss your situation with other board
   members outside of the hearing."
@@ -49,6 +52,7 @@ response: "You continue to have the rights other citizens have to pursue
   Board."
 
 --- !answer
+id: "coi2.4"
 
 answer: "No.  Because of your relationship to the board, whether you resign
   or not."

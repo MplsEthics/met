@@ -17,6 +17,7 @@ prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
 --- !answer
+id: "coi3.1"
 
 answer: "Yes. You can hear this case because you have a high level of
   integrity and can assure the Chair that you will not let your stock
@@ -35,6 +36,7 @@ response: "The fact that you are an honest person with a high level of
   Ethics Code."
 
 --- !answer
+id: "coi3.2"
 
 answer: "Maybe, if you sell the stock and determine that your relationship
   with your daughter and her employment will not affect your decisions in
@@ -48,6 +50,7 @@ response: "Selling the stock would eliminate your conflicting financial
   in the matter would lead to an appearance of impropriety."
 
 --- !answer
+id: "coi3.3"
 
 answer: "No, because your financial interest in the stock and your
   daughter’s employment preclude you from hearing the case."
@@ -60,6 +63,7 @@ response: "While stock ownership does give you a financial interest that
   is a better answer, please try again."
 
 --- !answer
+id: "coi3.4"
 
 answer: "Yes, if you sell your stock and disown your daughter."
 
