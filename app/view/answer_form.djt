@@ -1,14 +1,26 @@
 <form class="question" id="question">
-{% for answer in question.answers %}
-<input type="radio" name="answer" id="a{{ forloop.counter }}"
-    style="float:left" />
-<div class="answer" id="a{{ forloop.counter }}">
-<label for="a{{ forloop.counter }}">
+<table>
+{% for answer in s.answers %}
+<tr>
+<td style="vertical-align:top">
+<input type="radio" name="answer" id="radio{{ forloop.counter }}"
+   value="{{ answer.id }}"
+{% if answer.disabled %}
+   disabled="true"
+{% endif %}
+/>
+</td>
+<td>
+<label for="radio{{ forloop.counter }}">
+<span class="{{ answer.class }}" id="a{{ forloop.counter }}">
 {{ answer.answer }}
+</span>
 </label>
-</div>
+</td>
+</tr>
 {% endfor %}
+</table>
 
-<input type="submit" name="submit" value="Submit" />
+<input id="submit" type="submit" name="submit" value="Submit Answer" />
 
 </form>

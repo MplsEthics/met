@@ -6,47 +6,13 @@
 
 <p>{{ s.question }}</p>
 
-<form id="question">
+<form method="POST" id="question">
 
-<input id="answer1" type="radio" style="float:left" name="answer" value="1">
-<div class="answer">
-<label for="answer1">
-Yes. You can take on these COR duties because you have a high level of
-integrity and can assure your supervisor that you will not let either your
-stock ownership or your spouse's employment influence you in making
-decisions on this contract.
-</label>
-</div>
-
-<label>
-<input type="radio" style="float:left" name="answer" value="2">
-<div class="answer">
-Maybe, if you sell the stock and determine that your actions could not
-affect your spouse's salary and benefits.
-</div>
-</label>
-
-<input type="radio" style="float:left" name="answer">
-<div class="answer">
-No, because your financial interest in the stock and in your spouse's
-employment and salary preclude you from taking on these
-responsibilities.
-</div>
-
-<input type="radio" style="float:left" name="answer">
-<div class="answer">
-Yes, if you sell your stock and divorce your spouse.
-</div>
+{% include "answer_form.djt" %}
 
 </form>
 
 {% endblock content %}
 
 {% block prevnext %}
-
-<form method="post">
-<input type="submit" name="submit" value="submit">
-</form>
-
 {% endblock prevnext %}
-
