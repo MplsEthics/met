@@ -6,38 +6,39 @@
 
 <p>
 A more traditional approach would be to give you the general rule and the
-exception, if one applies, right before each scenario. Then you would simply
-plug in the rule and get the correct answer with minimal effort, allowing you
-to move on to the next scenario, and quickly finish the training and obtain
-your certificate of completion. What could be wrong with that?
+exception, if one applies, right before each scenario. Then you would
+simply plug in the rule and get the correct answer with minimal effort,
+allowing you to move on to the next scenario, and quickly finish the
+training and obtain your certificate of completion. What could be wrong
+with that?
 </p>
 
 <p>
-Well, that approach might not give you the knowledge and understanding you need
-to protect yourself from committing inadvertent violations that, in many cases,
-carry civil or even criminal consequences.
+Well, that approach might not give you the knowledge and understanding you
+need to protect yourself from committing inadvertent violations that, in
+many cases, carry civil or even criminal consequences.
 </p>
 
 <p>
-Applying ethics rules are more complex than you would think. Your good
-intentions and a basic understanding of the more common rules may not be enough
-to protect you from committing inadvertent violations. Of course, as several
-people commented during previous training, it is never inappropriate to take a
-cautious approach and say "No," even when an exception may allow you to take a
-certain action.
+Applying ethics rules is more complex than you would think. Your good
+intentions and a basic understanding of the more common rules may not be
+enough to protect you from committing inadvertent violations. Of course, as
+several people commented during previous training, it is never
+inappropriate to take a cautious approach and say "No," even when an
+exception may allow you to take a certain action.
 </p>
 
 <p>
-It is surprising how many well-intentioned personnel have unintentionally
-broken the rules because they just didn't realize there was a problem until it
-was too late. In a required one-half-hour training session such as this, we
-can't present you with all ethics rules and their exceptions, much less expect
-you to remember them. What we can do is orient you to a way of thinking that
-readily identifies potential ethics problems so that you know whether you need
-to seek specific guidance before engaging in an activity. We believe that using
-the three steps outlined above will give you the proper orientation by asking
-you to focus on general ethical principles and their relation to real-life
-situations.
+It is surprising how many well-intentioned persons have unintentionally
+broken the rules because they just didn't realize there was a problem until
+it was too late. In a required one-half-hour training session such as this,
+we can't present you with all ethics rules and their exceptions, much less
+expect you to remember them. What we can do is orient you to a way of
+thinking that readily identifies potential ethics problems so that you know
+whether you need to seek specific guidance before engaging in an activity.
+We believe that using the three steps outlined above will give you the
+proper orientation by asking you to focus on general ethical principles and
+their relation to real-life situations.
 </p>
 
 <h2>Step Four</h2>
@@ -51,12 +52,12 @@ completion of this educational requirement.
 </p>
 
 <p>
-Electronic records of training are not transmitted back to the Office of the
-Minneapolis City Attorney or the city department staffing your board,
+Electronic records of training are not transmitted back to the Office of
+the Minneapolis City Attorney or the city department staffing your board,
 commission or agency and we are not able to assist you in reproducing proof
 that you’ve completed this training.  If you do not make a copy of your
-certificate, the only method available for obtaining another certificate is to
-re-take this course in its entirety.
+certificate, the only method available for obtaining another certificate is
+to re-take this course in its entirety.
 </p>
 
 <p>
@@ -64,4 +65,3 @@ Let's get started with an overview of the Ethics in Government Ordinance.
 </p>
 
 {% endblock content %}
-
