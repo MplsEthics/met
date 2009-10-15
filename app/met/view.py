@@ -204,11 +204,11 @@ class Scenario(MetView):
         view."""
         scenario = content.get_scenario(scenario_id)
         session = self.getSession()
-        answer = self.request.params['answer']
-        if scenario_id in session:
-            session[scenario_id] += [ answer ]
-        else:
-            session[scenario_id] = [ answer ]
+        prev_answers = session.get(scenario_id,[])
+        the_answer = self.request.params['answer']
+        if not the_answer in prev_answers:
+            prev_answers.append(the_answer)
+        session[scenario_id] = prev_answers
         self.redirect("/%s/scenario" % scenario_id)
 
 Scenario.__bases__ += (session.SessionMixin,)
