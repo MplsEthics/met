@@ -1,10 +1,11 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
-from met.view import Main, Scenario, BestGuess
+from met.view import Main, Reset, Scenario, BestGuess
 
 app_pages = [
     (r'^/$', Main),
     (r'^/main$', Main),
+    (r'^/reset$', Reset),
     (r'^/(\w+)/(\w+)$', Scenario),  # e.g. "coi1/intro"
     (r'^/\w+$', BestGuess),
 ]
