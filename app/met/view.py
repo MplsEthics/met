@@ -133,6 +133,19 @@ class Main(MetView):
 
 Main.__bases__ += (session.SessionMixin,)
 
+class Reset(MetView):
+    """View to reset the session hash."""
+
+    def get(self):
+        session = self.getSession()
+        for key in session.keys():
+            del session[key]
+        self.redirect("/")
+
+    post = get
+
+Reset.__bases__ += (session.SessionMixin,)
+
 
 class BestGuess(MetView):
     """View class that displays the view closest to that requested."""
@@ -187,9 +200,7 @@ class Scenario(MetView):
         scenario = content.get_scenario(scenario_id)
         session = self.getSession()
         path = self.viewpath(append='scenario.djt')
-        if scenario_id in session:
-            last_answer = session[scenario_id][-1]
-        scenario.is_correct(last_answer)
+        last_answer = self.most_recent_answer(scenario_id)
         djt = {
             'previous': self.previous(),
             'next': self.next(),
@@ -199,16 +210,22 @@ class Scenario(MetView):
         }
         self.response.out.write(template.render(path,djt))
 
+    def most_recent_answer(self,scenario_id):
+        session = self.getSession()
+        try:
+            return session[scenario_id][-1]
+        except:
+            return None
+
     def post(self,scenario_id,view):
         """Process the answer submission, then redirect to the question
         view."""
         scenario = content.get_scenario(scenario_id)
         session = self.getSession()
         answer = self.request.params['answer']
-        if scenario_id in session:
-            session[scenario_id] += [ answer ]
-        else:
-            session[scenario_id] = [ answer ]
+        prev_answers = session.get(scenario_id,[])
+        if answer not in prev_answers:
+            session[scenario_id] = prev_answers + [answer]
         self.redirect("/%s/scenario" % scenario_id)
 
 Scenario.__bases__ += (session.SessionMixin,)
