@@ -1,13 +1,13 @@
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
-from met.view import Main, Reset, Scenario, BestGuess
+from met.views import Main, Reset, Scenario, Fallback
 
 app_pages = [
-    (r'^/$', Main),
-    (r'^/main$', Main),
-    (r'^/reset$', Reset),
+    (r'^/$', Main),                 # splash page
+    (r'^/main$', Main),             # ditto
+    (r'^/reset$', Reset),           # clears session
     (r'^/(\w+)/(\w+)$', Scenario),  # e.g. "coi1/intro"
-    (r'^/\w+$', BestGuess),
+    (r'^/\w+$', Fallback),          # best guess
 ]
 
 wsgi_app = webapp.WSGIApplication(app_pages,debug=True)
