@@ -121,6 +121,9 @@ form#question input.answer-radio {
     vertical-align: text-top;
 }
 
+span.correct {
+    font-weight: bold;
+}
 
 span.incorrect {
     text-decoration: line-through;
