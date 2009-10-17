@@ -8,7 +8,7 @@
 {% if answer.disabled %}
    disabled="true"
 {% endif %}
-/>
+>
 </td>
 <td>
 <label for="radio{{ forloop.counter }}">

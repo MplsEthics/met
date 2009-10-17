@@ -121,7 +121,8 @@ form#question input.answer-radio {
     vertical-align: text-top;
 }
 
-span.strikethrough {
+
+span.incorrect {
     text-decoration: line-through;
 }
 

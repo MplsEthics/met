@@ -73,6 +73,33 @@ for file in os.listdir(content_dir):
 def get_scenario(id):
     return testbank.get(id,None)
 
+def merge_scenario(id,session):
+    """Merge the scenario data with the relevant session data."""
+    scenario = get_scenario(id)
+
+    # find the user's answers to this scenario, if any
+    user_answers = session.get(id,[])
+
+    # set the anwer classes
+    for a in scenario.answers:
+        if a.id not in user_answers:        # unanswered
+            setattr(a,"class","answer")
+        elif a.correct and a.id in user_answers:
+            setattr(a,"class","answer correct")
+            setattr(scenario,"answered",True)
+            setattr(scenario,"response",a.response)
+        else:
+            setattr(a,"class","answer incorrect")
+            setattr(a,"disabled",True)
+
+    # FIXME:
+    #  - if the learner has answered correctly, disable all inputs, and make
+    #    sure the response is the "correct" one
+    #  - make sure the response is for the most recent answer
+
+    return scenario
+
+
 if __name__ == '__main__':
     print 'file: %s' % __file__
     pprint(testbank)

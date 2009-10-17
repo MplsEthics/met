@@ -1,9 +1,9 @@
 from google.appengine.ext import webapp
 import base
 from met import content
-from met.session import SessionMixin
+from met import session
 
-class Scenario(base.BaseView):
+class Scenario(base.BaseView, session.SessionMixin):
 
     def get(self,scenario_id,view):
         if view != 'scenario':
@@ -19,8 +19,8 @@ class Scenario(base.BaseView):
             self.get_scenario(scenario_id)
 
     def get_scenario(self,scenario_id):
-        scenario = content.get_scenario(scenario_id)
         session = self.getSession()
+        scenario = content.merge_scenario(scenario_id,session)
         path = self.viewpath(append='scenario.djt')
         last_answer = self.most_recent_answer(scenario_id)
         djt = {
@@ -44,11 +44,10 @@ class Scenario(base.BaseView):
         view."""
         scenario = content.get_scenario(scenario_id)
         session = self.getSession()
-        answer = self.request.params['answer']
-        prev_answers = session.get(scenario_id,[])
-        if answer not in prev_answers:
-            session[scenario_id] = prev_answers + [answer]
+        answer = self.request.params.get('answer',None)
+        if answer is not None:
+            prev_answers = session.get(scenario_id,[])
+            if answer not in prev_answers:
+                session[scenario_id] = prev_answers + [answer]
         self.redirect("/%s/scenario" % scenario_id)
-
-Scenario.__bases__ += (SessionMixin,)
 

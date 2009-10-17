@@ -6,6 +6,8 @@
 
 <p>{{ s.question }}</p>
 
+<p>{{ s.response }}</p>
+
 <form method="POST" id="question">
 
 {% include "answer_form.djt" %}
