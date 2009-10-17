@@ -74,11 +74,15 @@ def get_scenario(id):
     return testbank.get(id,None)
 
 def merge_scenario(id,session):
-    """Merge the scenario data with the relevant session data."""
+    """Merge the scenario data with the relevant session data.  This function
+    does quite a bit; it should definitely be refactored."""
     scenario = get_scenario(id)
 
     # find the user's answers to this scenario, if any
     user_answers = session.get(id,[])
+
+    # assume the scenario is not completed unless proven otherwise
+    setattr(scenario,"completed",False)
 
     # set the anwer classes
     for a in scenario.answers:
@@ -87,19 +91,31 @@ def merge_scenario(id,session):
         elif a.correct and a.id in user_answers:
             setattr(a,"class","answer correct")
             setattr(a,"disabled",True)
-            setattr(scenario,"answered",True)
+            setattr(scenario,"completed",True)
             setattr(scenario,"response",a.response)
         else:
             setattr(a,"class","answer incorrect")
             setattr(a,"disabled",True)
 
-    # FIXME:
-    #  - if the learner has answered correctly, disable all inputs, and make
-    #    sure the response is the "correct" one
-    #  - make sure the response is for the most recent answer
+    # if the scenario has been completed, disable all user inputs, and set the
+    # user response to the correct value
+    if scenario.completed:
+        for a in scenario.answers:
+            setattr(a,"disabled",True)
+            if a.correct:
+                setattr(scenario,"response",a.response)
+
+    # make sure the response is for the most recent answer
+    try:
+        last_answer = user_answers[-1]
+    except:
+        last_answer = None
+    if last_answer is not None:
+        resp = [ a.response for a in scenario.answers if a.id == last_answer ]
+        resp.append(None)
+        setattr(scenario,"response",resp[0])
 
     return scenario
-
 
 if __name__ == '__main__':
     print 'file: %s' % __file__

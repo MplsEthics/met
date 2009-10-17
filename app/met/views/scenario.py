@@ -28,7 +28,6 @@ class Scenario(base.BaseView, session.SessionMixin):
             'next': self.next(),
             's': scenario,
             'session': session,
-            'is_correct': scenario.is_correct(last_answer),
         }
         self.response.out.write(webapp.template.render(path,djt))
 
