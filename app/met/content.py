@@ -86,6 +86,7 @@ def merge_scenario(id,session):
             setattr(a,"class","answer")
         elif a.correct and a.id in user_answers:
             setattr(a,"class","answer correct")
+            setattr(a,"disabled",True)
             setattr(scenario,"answered",True)
             setattr(scenario,"response",a.response)
         else:
