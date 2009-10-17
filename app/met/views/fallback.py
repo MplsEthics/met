@@ -1,6 +1,7 @@
 import os
 import logging
 import base
+from google.appengine.ext import webapp
 
 class Fallback(base.BaseView):
     """View class that displays the view closest to that requested."""
@@ -10,7 +11,7 @@ class Fallback(base.BaseView):
         path = self.viewpath(append=self.template())
         previous = self.previous()
         next = self.next()
-        self.response.out.write(template.render(path,locals()))
+        self.response.out.write(webapp.template.render(path,locals()))
 
     def template(self):
         """Return the view template that best matches the request."""

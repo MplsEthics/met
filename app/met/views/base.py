@@ -1,10 +1,7 @@
 import os
 import logging
-from datetime import datetime
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp import template
-from met import content
-from met import session
+from order import order
 
 class BaseView(webapp.RequestHandler):
     """Base class for all MET view classes."""
@@ -24,9 +21,9 @@ class BaseView(webapp.RequestHandler):
         return self.view_dir
 
     def view_index(self):
-        srp = self.request.path[1:]
-        i = order.index(srp)
-        logging.info("%s => %d" % (srp,i))
+        request_path = self.request.path[1:]
+        i = order.index(request_path)
+        logging.info("%s => %d" % (request_path,i))
         return i
 
     def next(self):
@@ -59,5 +56,9 @@ class BaseView(webapp.RequestHandler):
         }
 
         t = self.viewpath(append=self.template())
-        self.response.out.write(template.render(t, template_values))
+        self.response.out.write(webapp.template.render(t, template_values))
+
+    def post(self):
+        """Default POST action is to redirect to GET."""
+        self.redirect(self.request.path)
 

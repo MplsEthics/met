@@ -1,12 +1,7 @@
-import os
-import logging
-from datetime import datetime
 from google.appengine.ext import webapp
-from google.appengine.ext.webapp import template
-from met import content
-from met import session
-
 import base
+from met import content
+from met.session import SessionMixin
 
 class Scenario(base.BaseView):
 
@@ -19,7 +14,7 @@ class Scenario(base.BaseView):
                 'previous': self.previous(),
                 's': content.get_scenario(scenario_id),
             }
-            self.response.out.write(template.render(path,djt))
+            self.response.out.write(webapp.template.render(path,djt))
         else:
             self.get_scenario(scenario_id)
 
@@ -35,7 +30,7 @@ class Scenario(base.BaseView):
             'session': session,
             'is_correct': scenario.is_correct(last_answer),
         }
-        self.response.out.write(template.render(path,djt))
+        self.response.out.write(webapp.template.render(path,djt))
 
     def most_recent_answer(self,scenario_id):
         session = self.getSession()
@@ -55,5 +50,5 @@ class Scenario(base.BaseView):
             session[scenario_id] = prev_answers + [answer]
         self.redirect("/%s/scenario" % scenario_id)
 
-Scenario.__bases__ += (session.SessionMixin,)
+Scenario.__bases__ += (SessionMixin,)
 
