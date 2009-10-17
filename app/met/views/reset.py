@@ -1,8 +1,8 @@
 
-from met.session import SessionMixin
 import base
+from met import session
 
-class Reset(base.BaseView):
+class Reset(base.BaseView, session.SessionMixin):
     """View to reset the session hash."""
 
     def get(self):
@@ -10,8 +10,4 @@ class Reset(base.BaseView):
         for key in session.keys():
             del session[key]
         self.redirect("/")
-
-    post = get
-
-Reset.__bases__ += (SessionMixin,)
 
