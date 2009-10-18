@@ -10,8 +10,8 @@ scenario: "You are the chair of the Housing Board of Appeal which hears and
   Housing Maintenance Code.  You received an order from a housing inspector
   regarding a rental property you own.  You want to appeal the order."
 
-stem: "May you appeal an order issued by city staff when the appeal will be
-  heard by a board on which you are a member?"
+question: "May you appeal an order issued by city staff when the appeal
+  will be heard by a board on which you are a member?"
 
 prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
