@@ -30,12 +30,10 @@ answer: "Yes, because you did not gain financially by informing Guest."
 
 correct: false
 
-response: "It is correct that disclosure or use of certain information gained
-  in the course of your service to the City in any way that could result in
-  financial gain for you or the other persons or entities listed in this
-  provision is a violation of the Ethics Code but a violation can also arise
-  in situations where the disclosure or use does not result in financial
-  gain."
+response: "While your disclosure did not result in financial gain for you
+  or the other persons or entities listed in M.C.O. § 15.170, a violation
+  can also arise in situations where the disclosure is of nonpublic
+  information."
 
 --- !answer
 
@@ -58,20 +56,21 @@ answer: "No, because a complaint about Guest’s properties could be before
 correct: false
 
 response: "The discussion you are holding with Guest could require you to
-  recuse yourself from a later hearing involving Guest’s properties but has no
-  bearing on whether your disclosure of the information involving Landlord was
-  proper."
+  recuse yourself from a later hearing involving Guest’s properties but has
+  no bearing on whether your disclosure of the information involving
+  Landlord was proper."
 
 --- !answer
 
 id: "doi.4"
 
-answer: "No, because the identity of Complainant was private data."
+answer: "No, because you identified Complainant as the complaining party in
+  Landlord's matter."
 
 correct: true
 
-response: "The Minnesota Government Data Practices Act classifies the identity
-  of a Complainant as private data on an individual.  This means that the
-  although the data is accessible to the Complainant, the data is <b>not</b>
-  accessible to the public."
+response: "The Minnesota Government Data Practices Act classifies the
+  identity of a Complainant as private data on an individual.  This means
+  that although the data is accessible to the Complainant, the data is
+  not accessible to the public."
 
