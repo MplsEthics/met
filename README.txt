@@ -16,14 +16,10 @@ RESOURCES
     http://forums.devshed.com/python-programming-11/py2exe-step-by-step-guide-209432.html
 
 TO DO
-
+* Editing
+   - check all question text
+   - check all answer text
+   - check all static view text
 * enforce scenario ordering
-* finish code to save completed exams
-* fix question response rendering to make it more clear that there is a
-  response!
-* when the user chooses the right answer, the radio button should be
-  "checked."
-* content changes
-   - get new list of scenarios
-   - update text
+* fix question response rendering -- need a new view to handle this
 
