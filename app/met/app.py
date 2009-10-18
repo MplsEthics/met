@@ -6,7 +6,7 @@ app_pages = [
     (r'^/$', Main),                 # splash page
     (r'^/main$', Main),             # ditto
     (r'^/reset$', Reset),           # clears session
-    (r'^/(\w+)/(\w+)$', Scenario),  # e.g. "coi1/intro"
+    (r'^/(\w+)/(\w+)$', Scenario),  # e.g. "coi1/intro1"
     (r'^/\w+$', Fallback),          # best guess
 ]
 
