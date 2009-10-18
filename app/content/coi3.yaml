@@ -1,4 +1,4 @@
---- !question
+--- !scenario
 
 id: 'coi3'
 
@@ -17,6 +17,7 @@ prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
 --- !answer
+
 id: "coi3.1"
 
 answer: "Yes. You can hear this case because you have a high level of
@@ -36,6 +37,7 @@ response: "The fact that you are an honest person with a high level of
   Ethics Code."
 
 --- !answer
+
 id: "coi3.2"
 
 answer: "Maybe, if you sell the stock and determine that your relationship
@@ -50,6 +52,7 @@ response: "Selling the stock would eliminate your conflicting financial
   in the matter would lead to an appearance of impropriety."
 
 --- !answer
+
 id: "coi3.3"
 
 answer: "No, because your financial interest in the stock and your
@@ -63,6 +66,7 @@ response: "While stock ownership does give you a financial interest that
   is a better answer, please try again."
 
 --- !answer
+
 id: "coi3.4"
 
 answer: "Yes, if you sell your stock and disown your daughter."
@@ -72,6 +76,4 @@ correct: false
 response: "Did you really think the City would require you to disown your
   child?  We’ve been accused of being heartless&mdash;but never like this.
   There is a better answer, please try again."
-
-# Please return to the question and select another answer.
 
