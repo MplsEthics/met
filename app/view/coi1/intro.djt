@@ -4,8 +4,8 @@
 
 <h1>Topic One: {{ s.name }}</h1>
 
-<p>{{ s.scenario }}</p>
+<p class="scenario"><b>Scenario:</b> {{ s.scenario }}</p>
 
-<p>{{ s.question }}</p>
+<p class="question"><b>Question:</b> {{ s.question }}</p>
 
 {% endblock content %}

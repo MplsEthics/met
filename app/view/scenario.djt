@@ -1,15 +1,23 @@
 {% extends "base.djt" %}
 {% block content %}
+{% if show_scenario %}
 <p class="scenario">{{ s.scenario }}</p>
-<p class="question">{{ s.question }}</p>
+{% endif %}
+<p class="question"><b>Question:</b> {{ s.question }}</p>
+<p class="prompt">{{ s.prompt }}</p>
 <p class="response">
 {% if s.completed %}
-RIGHT!!!
+<em>Correct!!</em>
 {{ s.response }}
+<p>
+<em>You may now proceed to the next page for a full discussion of the
+issue.</em>
+</p>
 {% endif %}
 {% if not s.completed and s.response %}
-WRONG!!!
+<em>Incorrect.</em>
 {{ s.response }}
+<b>Please return to the question and select another answer.</b>
 {% endif %}
 </p>
 {% include "answer_form.djt" %}
