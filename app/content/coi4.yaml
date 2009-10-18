@@ -31,8 +31,8 @@ correct: true
 response: "While the financial interests of a domestic partner are
   considered your financial interests, if the Firm is one of several
   possible providers of services, no conflict of interest exists. At the
-  time of the board’s decision your financial interests are no any greater
-  than the other providers of services listed."
+  time of the board’s decision your financial interests are no greater than
+  the other providers of services listed."
 
 --- !answer
 
@@ -45,7 +45,7 @@ correct: false
 response: "While the financial interests of a domestic partner are
   considered your financial interests, a potential conflict of interest
   involving the Firm would only arise if the Firm is listed as the sole
-  provider of services.  Your volunteer service at Do Good does not create
+  provider of services.<p>Your volunteer service at Do Good does not create
   a conflict of interest because you are a volunteer.  Absent the payment
   of compensation of $50.00 per month or more, Do Good is not an associated
   business and you do not have a financial interest in Do Good."
