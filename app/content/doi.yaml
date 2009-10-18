@@ -20,8 +20,7 @@ scenario: "You are a member of the Rental Housing Board of Appeals.  Last
 
 question: "Was it permissible to share the information with Guest?"
 
-prompt: "Remember, we encourage you to use the analysis steps discussed
-  earlier to select answers to the scenarios."
+prompt: ""
 
 --- !answer
 
