@@ -1,6 +1,6 @@
 import logging
 from datetime import datetime
-from google.appengine.ext import webapp
+from google.appengine.ext.webapp import template
 from met import session
 import base
 
@@ -14,8 +14,7 @@ class Main(base.BaseView, session.SessionMixin):
             session['timestamp'] = [ datetime.now() ]
         session['timestamp'] = session['timestamp'][0:3]
         next = 'instr1'
+        show_prevnext = True
         logging.info(locals())
-        self.response.out.write(webapp.template.render(path,locals()))
-
-    post = get
+        self.response.out.write(template.render(path,locals()))
 
