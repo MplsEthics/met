@@ -80,6 +80,10 @@ div#prevnext {
     margin: 2em 4em 1em 4em;
 }
 
+p.response {
+    font-weight: bold;
+}
+
 a#previous {
     float: left;
     text-align: center;
