@@ -1,7 +1,7 @@
 import os
 import logging
 from google.appengine.ext import webapp
-from order import order
+from met.order import view_order
 
 class BaseView(webapp.RequestHandler):
     """Base class for all MET view classes."""
@@ -22,7 +22,7 @@ class BaseView(webapp.RequestHandler):
 
     def view_index(self):
         request_path = self.request.path[1:]
-        i = order.index(request_path)
+        i = view_order.index(request_path)
         logging.info("%s => %d" % (request_path,i))
         return i
 
@@ -30,8 +30,8 @@ class BaseView(webapp.RequestHandler):
         """Returns the alias to the next page."""
         try:
             i = self.view_index()
-            if i < len(order):
-                return order[i+1]
+            if i < len(view_order):
+                return view_order[i+1]
         except:
             return None
 
@@ -40,7 +40,7 @@ class BaseView(webapp.RequestHandler):
         try:
             i = self.view_index()
             if i > 0:
-                return order[i-1]
+                return view_order[i-1]
         except:
             return None
 
@@ -53,6 +53,7 @@ class BaseView(webapp.RequestHandler):
         template_values = {
             'next': self.next(),
             'previous': self.previous(),
+            'show_prevnext': True,
         }
 
         t = self.viewpath(append=self.template())
