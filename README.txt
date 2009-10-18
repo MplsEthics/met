@@ -18,8 +18,16 @@ RESOURCES
 TO DO
 
 * Editing
-   - check all YAML content
    - check all static view text
+      = prolog
+      = coi1
+      = coi2
+      = coi3
+      = coi4
+      = doi
+      = gifts
+      = epilog
+
 * enforce scenario ordering
 * fix question response rendering -- need a new view to handle this
 
