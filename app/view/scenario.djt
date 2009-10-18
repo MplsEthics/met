@@ -1,20 +1,16 @@
 {% extends "base.djt" %}
-
 {% block content %}
-
-<p>{{ s.scenario }}</p>
-
-<p>{{ s.question }}</p>
-
-<p>{{ s.response }}</p>
-
-<form method="POST" id="question">
-
+<p class="scenario">{{ s.scenario }}</p>
+<p class="question">{{ s.question }}</p>
+<p class="response">
+{% if s.completed %}
+RIGHT!!!
+{{ s.response }}
+{% endif %}
+{% if not s.completed and s.response %}
+WRONG!!!
+{{ s.response }}
+{% endif %}
+</p>
 {% include "answer_form.djt" %}
-
-</form>
-
 {% endblock content %}
-
-{% block prevnext %}
-{% endblock prevnext %}
