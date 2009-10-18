@@ -1,5 +1,6 @@
 from google.appengine.ext import webapp
 import base
+from datetime import datetime
 from met import content
 from met import session
 
@@ -26,7 +27,7 @@ class Scenario(base.BaseView, session.SessionMixin):
         # persist scenario completion
         if scenario.completed:
             completed = session.get("completed",{})
-            completed[scenario_id] = True
+            completed[scenario_id] = datetime.now()
             session["completed"] = completed
 
         path = self.viewpath(append='scenario.djt')
