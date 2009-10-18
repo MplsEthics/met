@@ -1,13 +1,12 @@
-<form class="question" id="question">
+<form method="POST" class="question" id="question">
 <table>
 {% for answer in s.answers %}
 <tr>
 <td style="vertical-align:top">
 <input type="radio" name="answer" id="radio{{ forloop.counter }}"
    value="{{ answer.id }}"
-{% if answer.disabled %}
-   disabled="true"
-{% endif %}
+ {% if answer.disabled %}disabled{% endif %}
+ {% if answer.checked %}checked{% endif %}
 >
 </td>
 <td>
@@ -21,6 +20,8 @@
 {% endfor %}
 </table>
 
+{% if not s.completed %}
 <input id="submit" type="submit" name="submit" value="Submit Answer" />
+{% endif %}
 
 </form>
