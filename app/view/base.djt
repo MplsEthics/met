@@ -27,6 +27,7 @@ Commissions and Agencies</h2>
 {% endblock content %}
 
 {% block prevnext %}
+{% if show_prevnext %}
 <div id="prevnext">
 {% if next %}
 <a id="next" class="button" href="/{{ next }}">Continue &rarr;</a>
@@ -35,6 +36,7 @@ Commissions and Agencies</h2>
 <a id="previous" class="button" href="/{{ previous }}">&larr; Back</a>
 {% endif %}
 </div>
+{% endif %}
 {% endblock prevnext %}
 
 <div class="clear"></div>
