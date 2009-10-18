@@ -10,7 +10,6 @@ participating in any particular matter of City business that directly or
 indirectly affects their financial interests or the financial interests of
 other persons or entities that are attributed to them under the ordinance,
 e.g., their spouses and employers.
-</p>
 
 <p>
 Determining whether a conflict of interest is present requires an analysis on
@@ -20,7 +19,6 @@ Voting on the variance appeal is considered participation under M.C.O.
 §15.40(b)(1).  The variance appeal might have a direct or indirect affect on
 your employer’s financial interests if Friend and your Employer have
 unconcluded business or a continuing business relationship.
-</p>
 
 <p>
 There are many ways in which Friend and Employer financial interests could be
@@ -29,6 +27,5 @@ not have funds to pay bills if the variance is not granted.  Only once you
 determine that business dealings between Employer and Friend are entirely
 concluded will your Employer have no financial interest in the variance
 appeal.
-</p>
 
 {% endblock content %}
