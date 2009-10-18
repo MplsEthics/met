@@ -84,13 +84,15 @@ def merge_scenario(id,session):
     # assume the scenario is not completed unless proven otherwise
     setattr(scenario,"completed",False)
 
-    # set the anwer classes
+    # set the answer CSS classes
     for a in scenario.answers:
         if a.id not in user_answers:        # unanswered
             setattr(a,"class","answer")
+            setattr(a,"disabled",False)
         elif a.correct and a.id in user_answers:
             setattr(a,"class","answer correct")
             setattr(a,"disabled",True)
+            setattr(a,"checked",True)
             setattr(scenario,"completed",True)
             setattr(scenario,"response",a.response)
         else:
@@ -103,7 +105,10 @@ def merge_scenario(id,session):
         for a in scenario.answers:
             setattr(a,"disabled",True)
             if a.correct:
+                setattr(a,"class","answer correct")
                 setattr(scenario,"response",a.response)
+            else:
+                setattr(a,"class","answer incorrect")
 
     # make sure the response is for the most recent answer
     try:
@@ -111,9 +116,10 @@ def merge_scenario(id,session):
     except:
         last_answer = None
     if last_answer is not None:
-        resp = [ a.response for a in scenario.answers if a.id == last_answer ]
-        resp.append(None)
-        setattr(scenario,"response",resp[0])
+        for a in scenario.answers:
+            if a.id == last_answer:
+                setattr(scenario,"response",a.response)
+                setattr(a,"checked",True)
 
     return scenario
 
