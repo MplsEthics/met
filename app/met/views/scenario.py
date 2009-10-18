@@ -13,6 +13,7 @@ class Scenario(base.BaseView, session.SessionMixin):
                 'next': self.next(),
                 'previous': self.previous(),
                 's': content.get_scenario(scenario_id),
+                'show_prevnext': True,
             }
             self.response.out.write(webapp.template.render(path,djt))
         else:
@@ -28,6 +29,7 @@ class Scenario(base.BaseView, session.SessionMixin):
             'next': self.next(),
             's': scenario,
             'session': session,
+            'show_prevnext': scenario.completed,
         }
         self.response.out.write(webapp.template.render(path,djt))
 
