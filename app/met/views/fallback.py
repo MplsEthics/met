@@ -11,6 +11,7 @@ class Fallback(base.BaseView):
         path = self.viewpath(append=self.template())
         previous = self.previous()
         next = self.next()
+        show_prevnext = True
         self.response.out.write(webapp.template.render(path,locals()))
 
     def template(self):
