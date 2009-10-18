@@ -7,6 +7,7 @@ from met import session
 class Scenario(base.BaseView, session.SessionMixin):
 
     def get(self,scenario_id,view):
+        self.assert_scenario_order(scenario_id)
         if view != 'scenario':
             a = "%s/%s.djt" % (scenario_id, view)
             path = self.viewpath(append=a)
@@ -43,6 +44,7 @@ class Scenario(base.BaseView, session.SessionMixin):
     def post(self,scenario_id,view):
         """Process the answer submission, then redirect to the question
         view."""
+        self.assert_scenario_order(scenario_id)
         scenario = content.get_scenario(scenario_id)
         session = self.getSession()
         answer = self.request.params.get('answer',None)
@@ -51,4 +53,10 @@ class Scenario(base.BaseView, session.SessionMixin):
             if answer not in prev_answers:
                 session[scenario_id] = prev_answers + [answer]
         self.redirect("/%s/scenario" % scenario_id)
+
+    def assert_scenario_order(self,scenario_id):
+        """If the user is accessing this scenario out of order, redirect to
+        the most recently completed scenario."""
+        # FIXME
+        return True
 
