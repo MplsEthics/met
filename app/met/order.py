@@ -6,6 +6,8 @@ scenario_order = [
     'coi2',
     'coi3',
     'coi4',
+    'doi',
+    'gifts',
 ]
 
 view_order = [
