@@ -17,6 +17,8 @@ RESOURCES
 
 TO DO
 
+* enforce scenario ordering
+* finish code to save completed exams
 * fix question response rendering to make it more clear that there is a
   response!
 * when the user chooses the right answer, the radio button should be
