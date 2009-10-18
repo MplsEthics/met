@@ -16,9 +16,9 @@ RESOURCES
     http://forums.devshed.com/python-programming-11/py2exe-step-by-step-guide-209432.html
 
 TO DO
+
 * Editing
-   - check all question text
-   - check all answer text
+   - check all YAML content
    - check all static view text
 * enforce scenario ordering
 * fix question response rendering -- need a new view to handle this

@@ -6,22 +6,7 @@ from met import session
 
 class Scenario(base.BaseView, session.SessionMixin):
 
-    def get(self,scenario_id,view):
-        self.assert_scenario_order(scenario_id)
-        if view != 'scenario':
-            a = "%s/%s.djt" % (scenario_id, view)
-            path = self.viewpath(append=a)
-            djt = {
-                'next': self.next(),
-                'previous': self.previous(),
-                's': content.get_scenario(scenario_id),
-                'show_prevnext': True,
-            }
-            self.response.out.write(webapp.template.render(path,djt))
-        else:
-            self.get_scenario(scenario_id)
-
-    def get_scenario(self,scenario_id):
+    def get(self,scenario_id):
         session = self.getSession()
         scenario = content.merge_scenario(scenario_id,session)
 
@@ -52,7 +37,7 @@ class Scenario(base.BaseView, session.SessionMixin):
             prev_answers = session.get(scenario_id,[])
             if answer not in prev_answers:
                 session[scenario_id] = prev_answers + [answer]
-        self.redirect("/%s/scenario" % scenario_id)
+        self.redirect("/%s/response" % scenario_id)
 
     def assert_scenario_order(self,scenario_id):
         """If the user is accessing this scenario out of order, redirect to
