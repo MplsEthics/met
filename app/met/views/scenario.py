@@ -22,8 +22,14 @@ class Scenario(base.BaseView, session.SessionMixin):
     def get_scenario(self,scenario_id):
         session = self.getSession()
         scenario = content.merge_scenario(scenario_id,session)
+
+        # persist scenario completion
+        if scenario.completed:
+            completed = session.get("completed",{})
+            completed[scenario_id] = True
+            session["completed"] = completed
+
         path = self.viewpath(append='scenario.djt')
-        last_answer = self.most_recent_answer(scenario_id)
         djt = {
             'previous': self.previous(),
             'next': self.next(),
@@ -32,13 +38,6 @@ class Scenario(base.BaseView, session.SessionMixin):
             'show_prevnext': scenario.completed,
         }
         self.response.out.write(webapp.template.render(path,djt))
-
-    def most_recent_answer(self,scenario_id):
-        session = self.getSession()
-        try:
-            return session[scenario_id][-1]
-        except:
-            return None
 
     def post(self,scenario_id,view):
         """Process the answer submission, then redirect to the question
