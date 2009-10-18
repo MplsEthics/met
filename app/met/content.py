@@ -11,11 +11,11 @@ from pprint import pprint
 
 content_dir = os.path.join(os.path.dirname(__file__), '../content')
 
-class Question(yaml.YAMLObject):
+class Scenario(yaml.YAMLObject):
 
-    yaml_tag = '!question'
+    yaml_tag = '!scenario'
 
-    def __init__(self,id_,name,prompt,stem,answers):
+    def __init__(self,id_,name,prompt,question,answers):
         self.id = id_
         self.name = name
         self.question = question
@@ -55,23 +55,32 @@ class Answer(yaml.YAMLObject):
         }
         return "%(class)s(%(id)s:%(answer)s)" % repr
 
-# load the test bank
-testbank = {}
-for file in os.listdir(content_dir):
+def load_scenario_file(file):
     path = os.path.join(content_dir,file)
     fh = open(path)
     try:
         logging.info("loading file '%s'" % path)
         objects = [x for x in yaml.load_all(fh)]
-        question = objects[0]
-        question.answers = objects[1:]
+        scenario = objects[0]
+        scenario.answers = objects[1:]
     except:
         logging.error("error loading '%s', skipping" % path)
-    else:
-        testbank[question.id] = question
+    return scenario
+
+def load_testbank():
+    bank = {}
+    for file in os.listdir(content_dir):
+        scenario = load_scenario_file(file)
+        bank[scenario.id] = scenario
+    return bank
+
+testbank = load_testbank()
 
 def get_scenario(id):
     return testbank.get(id,None)
+
+def last_answer(id,session):
+    """Returns the last user answer for the indicated scenario ID."""
 
 def merge_scenario(id,session):
     """Merge the scenario data with the relevant session data.  This function
@@ -81,8 +90,18 @@ def merge_scenario(id,session):
     # find the user's answers to this scenario, if any
     user_answers = session.get(id,[])
 
+    # find the user's most recent answer to this scenario, if any
+    try:
+        last_answer = user_answers[-1]
+    except:
+        last_answer = None
+
     # assume the scenario is not completed unless proven otherwise
     setattr(scenario,"completed",False)
+
+    # if there are no user answers yet, we don't need to do anything
+    if not user_answers:
+        return scenario
 
     # set the answer CSS classes
     for a in scenario.answers:
@@ -111,15 +130,11 @@ def merge_scenario(id,session):
                 setattr(a,"class","answer incorrect")
 
     # make sure the response is for the most recent answer
-    try:
-        last_answer = user_answers[-1]
-    except:
-        last_answer = None
-    if last_answer is not None:
+    else:
         for a in scenario.answers:
             if a.id == last_answer:
-                setattr(scenario,"response",a.response)
                 setattr(a,"checked",True)
+                setattr(scenario,"response",a.response)
 
     return scenario
 
