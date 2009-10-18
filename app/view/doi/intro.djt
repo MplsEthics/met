@@ -1,5 +1,4 @@
 {% extends "../base.djt" %}
-
 {% block content %}
 
 <h1>Topic One: {{ s.name }}</h1>
@@ -14,8 +13,11 @@ gain for you, or for your spouse, domestic partner, or dependent, or for a
 person in a committed relationship with you, or for any associated business
 of these persons. M.C.O. § 15.170.
 
-<p>{{ s.scenario }}</p>
+<p class="scenario"><b>Scenario:</b> {{ s.scenario }}</p>
+<p class="question"><b>Question:</b> {{ s.question }}</p>
 
-<p>{{ s.question }}</p>
+<p>
+Remember, we encourage you to use the analysis steps discussed earlier to
+select answers to the scenarios.
 
 {% endblock content %}
