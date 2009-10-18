@@ -15,3 +15,13 @@ RESOURCES
     http://www.py2exe.org/index.cgi/SingleFileExecutable
     http://forums.devshed.com/python-programming-11/py2exe-step-by-step-guide-209432.html
 
+TO DO
+
+* fix question response rendering to make it more clear that there is a
+  response!
+* when the user chooses the right answer, the radio button should be
+  "checked."
+* content changes
+   - get new list of scenarios
+   - update text
+
