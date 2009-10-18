@@ -5,11 +5,11 @@ id: 'coi3'
 name: "Conflict of Interest, Part Three"
 
 scenario: "A charge of discrimination has been filed by one of the former
-  employees of Make Money Company.  The Chair of the Civil Rights Commission
-  has informed you that you are on the panel assigned to hear the case.  You
-  own $15,000 worth of stock in Make Money Company and your daughter is an
-  executive with the company in a division not involved in the charge of
-  discrimination."
+  employees of Make Money Company.  The Chair of the Civil Rights
+  Commission has informed you that you are on the panel assigned to hear
+  the case.  You own $15,000 worth of stock in Make Money Company and your
+  daughter is an executive with the company in a division not involved in
+  the charge of discrimination."
 
 question: "May you sit on the panel hearing the charge of discrimination?"
 
@@ -28,13 +28,14 @@ answer: "Yes. You can hear this case because you have a high level of
 correct: false
 
 response: "The fact that you are an honest person with a high level of
-  personal integrity is not relevant.  The ordinance provides objective
-  criteria.  The subjective factor of personal integrity is not included.
-  The fact that you could make an objective and impartial decision based
-  entirely on the facts presented in the hearing would not preclude you
-  from violating the conflict of interest rule.  This is a good example of
-  how even honest, well-meaning individuals may unwittingly violate the
-  Ethics Code."
+  personal integrity is not relevant.
+  <p>The ordinance provides objective criteria.  The subjective factor of
+  personal integrity is not included.  The fact that you could make an
+  objective and impartial decision based entirely on the facts presented in
+  the hearing would not preclude you from violating the conflict of
+  interest rule.
+  <p>This is a good example of how even honest, well-meaning individuals
+  may unwittingly violate the Ethics Code."
 
 --- !answer
 
@@ -47,9 +48,10 @@ answer: "Maybe, if you sell the stock and determine that your relationship
 correct: true
 
 response: "Selling the stock would eliminate your conflicting financial
-  interest.  Your ability to assume the responsibilities of a member of
-  the hearing panel would then depend on whether of not your participation
-  in the matter would lead to an appearance of impropriety."
+  interest.
+  <p>Your ability to assume the responsibilities of a member of the hearing
+  panel would then depend on whether of not your participation in the
+  matter would lead to an appearance of impropriety."
 
 --- !answer
 
@@ -62,8 +64,8 @@ correct: false
 
 response: "While stock ownership does give you a financial interest that
   precludes you from serving on the hearing panel, there are actions that
-  may be taken to remedy the conflict and allow you to participate.  There
-  is a better answer, please try again."
+  may be taken to remedy the conflict and allow you to participate.
+  <p>There is a better answer, please try again."
 
 --- !answer
 
@@ -74,6 +76,6 @@ answer: "Yes, if you sell your stock and disown your daughter."
 correct: false
 
 response: "Did you really think the City would require you to disown your
-  child?  We’ve been accused of being heartless&mdash;but never like this.
-  There is a better answer, please try again."
+  child?<p>The Ethics Code sets high standards but does not require
+  unreasonable remedies.<p>There is a better answer, please try again."
 
