@@ -1,29 +1,31 @@
-FIXME
+{% extends "base.djt" %}
+{% block content %}
 
+<h1>Ethics Report Line</h1>
 
-http://tnwinc.com
+The Ethics Report Line is operated by an independent company&mdash;The Network
+(<a href="">http://tnwinc.com</a>)&mdash;to ensure a confidential process for
+City employees and officials to report workplace concerns such as:
 
-Ethics Report Line
-The Ethics Report Line is operated by an independent company — The Network
-— to ensure a confidential process for City employees and officials to
-report workplace concerns such as:
+<ul>
+<li>Violations of government regulations
+<li>Violations of the City’s Ethics in Government policy
+<li>Destroying, altering or falsifying City records
+<li>Withholding properly requested public records
+<li>Theft or fraud
+<li>Creating or ignoring safety or environmental hazards
+<li>Using or selling illegal drugs
+<li>Misuse of City property or facilities
+<li>Alcohol use while on duty
+<li>Bribery
+<li>Conflict of interest
+<li>Threats to personal safety
+<li>Accounting or auditing irregularities
+<li>Harassment, discrimination or other violations of the City’s Respect in the Workplace policy.
+</ul>
 
-* Violations of government regulations
-* Violations of the City’s Ethics in Government policy
-* Destroying, altering or falsifying City records
-* Withholding properly requested public records
-* Theft or fraud
-* Creating or ignoring safety or environmental hazards
-* Using or selling illegal drugs
-* Misuse of City property or facilities
-* Alcohol use while on duty
-* Bribery
-* Conflict of interest
-* Threats to personal safety
-* Accounting or auditing irregularities
-* Harassment, discrimination or other violations of the City’s Respect in the Workplace policy.
-
+<p>
 The Network provides anonymous reporting services for hundreds of
 businesses and governmental entities worldwide.
 
-
+{% endblock content %}
