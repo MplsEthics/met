@@ -26,8 +26,8 @@ class Scenario(base.BaseView, session.SessionMixin):
         }
         self.response.out.write(webapp.template.render(path,djt))
 
-    def post(self,scenario_id,view):
-        """Process the answer submission, then redirect to the question
+    def post(self,scenario_id):
+        """Process the answer submission, then redirect to the "response"
         view."""
         self.assert_scenario_order(scenario_id)
         scenario = content.get_scenario(scenario_id)
