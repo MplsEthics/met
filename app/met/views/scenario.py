@@ -40,7 +40,9 @@ class Scenario(base.BaseView, session.SessionMixin):
             # save the answer
             if answer not in session[scenario_id]:
                 logging.info('%s => %s' % (answer,scenario_id))
-                session[scenario_id] += [ answer ]
+                learner_answers = session[scenario_id]
+                learner_answers.append(answer)
+                session[scenario_id] = learner_answers
                 logging.info('>>> %s' % session[scenario_id])
 
             # if the answer is correct, update session.completed
