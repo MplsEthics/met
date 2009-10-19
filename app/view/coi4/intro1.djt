@@ -1,6 +1,6 @@
 {% extends "../base.djt" %}
 {% block content %}
-<h1>Topic One: {{ s.name }}</h1>
-<p class="scenario"><b>Scenario:</b> {{ s.scenario }}</p>
-<p class="question"><b>Question:</b> {{ s.question }}</p>
+<h1>{{ s.name }}</h1>
+<p><em>Scenario:</em> {{ s.scenario }}</p>
+<p><em>Question:</em> {{ s.question }}</p>
 {% endblock content %}
