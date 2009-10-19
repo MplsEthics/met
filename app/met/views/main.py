@@ -8,11 +8,9 @@ class Main(base.BaseView, session.SessionMixin):
     def get(self):
         path = self.viewpath(append='main.djt')
         session = self.getSession()
-        try:
-            session['timestamp'] += [ datetime.now() ]
-        except:
-            session['timestamp'] = [ datetime.now() ]
-        session['timestamp'] = session['timestamp'][0:3]
+        timestamps = session.get('timestamp',[])
+        timestamps.append(datetime.now().isoformat())
+        session['timestamp'] = timestamps[0:3]
         next = 'instr1'
         show_prevnext = True
         logging.info(locals())
