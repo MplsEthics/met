@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>Topic One: {{ scenario.name }}</h1>
+<h1>Topic One: {{ s.name }}</h1>
 
 <p>
 M.C.O. §15.40 is an ordinance that prohibits the City’s officials from

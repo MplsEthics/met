@@ -1,7 +1,7 @@
 {% extends "../base.djt" %}
 {% block content %}
 
-<h1>Topic One: {{ name }}</h1>
+<h1>Topic One: {{ s.name }}</h1>
 
 <p>
 Your relationship with Friend does not create a financial conflict of
