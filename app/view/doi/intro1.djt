@@ -1,7 +1,6 @@
 {% extends "../base.djt" %}
 {% block content %}
-
-<h1>Topic Two: {{ s.name }}</h1>
+<h1>{{ s.name }}</h1>
 
 <p>
 <em>GENERAL RULE:</em> You may not use or disclose any information gained in
@@ -17,8 +16,8 @@ spouse, domestic partner, or dependent, or for a person in a committed
 relationship with you, or for any associated business of these persons. M.C.O.
 § 15.170.
 
-<p class="scenario"><b>Scenario:</b> {{ s.scenario }}</p>
-<p class="question"><b>Question:</b> {{ s.question }}</p>
+<p><em>Scenario:</em> {{ s.scenario }}</p>
+<p><em>Question:</em> {{ s.question }}</p>
 
 <p>
 Remember, we encourage you to use the analysis steps discussed earlier to
