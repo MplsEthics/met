@@ -3,18 +3,15 @@ import base
 from datetime import datetime
 from met import content
 from met import session
+from met.order import scenario_order
 
 class Scenario(base.BaseView, session.SessionMixin):
 
     def get(self,scenario_id):
         session = self.getSession()
+        self.assert_scenario_order(scenario_id,session)
         scenario = content.merge_scenario(scenario_id,session)
 
-        # persist scenario completion
-        if scenario.completed:
-            completed = session.get("completed",{})
-            completed[scenario_id] = datetime.now()
-            session["completed"] = completed
 
         path = self.viewpath(append='scenario.djt')
         djt = {
@@ -29,19 +26,29 @@ class Scenario(base.BaseView, session.SessionMixin):
     def post(self,scenario_id):
         """Process the answer submission, then redirect to the "response"
         view."""
-        self.assert_scenario_order(scenario_id)
-        scenario = content.get_scenario(scenario_id)
         session = self.getSession()
+        self.assert_scenario_order(scenario_id,session)
+        scenario = content.get_scenario(scenario_id)
+
+        # update the session as needed based on the answer
         answer = self.request.params.get('answer',None)
         if answer is not None:
-            prev_answers = session.get(scenario_id,[])
-            if answer not in prev_answers:
-                session[scenario_id] = prev_answers + [answer]
+            # save the answer
+            if answer not in session[scenario_id]:
+                session[scenario_id].append(answer)
+
+            # if the answer is correct, update session.completed
+            answer_obj = scenario.answer_dict.get(answer,None)
+            if answer_obj.correct:
+                session["completed"][scenario_id] = datetime.now()
+
         self.redirect("/%s/response" % scenario_id)
 
-    def assert_scenario_order(self,scenario_id):
+    def assert_scenario_order(self,scenario_id,session):
         """If the user is accessing this scenario out of order, redirect to
         the most recently completed scenario."""
-        # FIXME
-        return True
+        for i in range(scenario_order.index(scenario_id)):
+            test_scenario = scenario_order[i]
+            if test_scenario not in session['completed']:
+                self.redirect("/%s/response" % test_scenario)
 
