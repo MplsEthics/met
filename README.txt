@@ -1,33 +1,30 @@
 NAME
+====
 
-MET - Minneapolis Ethics Training
+mpls-ethics - online ethics training for the city of Minneapolis
 
-SYNOPSIS
+DESCRIPTION
+===========
+
+This package contains a complete Google App Engine application suitable for
+basic municipal ethics training, including the following topics:
+
+   - Conflict of Interest
+   - Disclosure of Information
+   - Gifts
+
+Each topic contains one or more sample 'scenarios', each having a question
+that must be answered correctly before proceeding to the next scenario.  At
+the end of the training, a user may enter contact information and submit
+proof of completion to a central location.
+
+This training is modeled after the 2007 US DOD Annual Ethics Training
+module.
 
 RESOURCES
+=========
 
-    https://free1.projectlocker.com/jotr/met/trac/
-    http://www.dod.mil/dodgc/defense_ethics/ethics_training/2007_AET/
-
-    file:///usr/lib/pygtk/2.0/pygtk-demo.py
-    http://www.pygtk.org/docs/pygtk/index.html
-    http://www.py2exe.org/
-    http://www.py2exe.org/index.cgi/SingleFileExecutable
-    http://forums.devshed.com/python-programming-11/py2exe-step-by-step-guide-209432.html
-
-TO DO
-
-* Editing
-   - check all static view text
-      = prolog
-      = coi1
-      = coi2
-      = coi3
-      = coi4
-      = doi
-      = gifts
-      = epilog
-
-* fix topic display in tops of scenario content
-* clean up this file!!!1!
+   http://code.google.com/intl/en/appengine/
+   http://code.google.com/appengine/docs/python/overview.html
+   http://www.dod.mil/dodgc/defense_ethics/ethics_training/2007_AET/
 
