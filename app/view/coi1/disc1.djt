@@ -4,6 +4,8 @@
 
 <h1>Topic One: {{ s.name }}</h1>
 
+<h2>Discussion:</h2>
+
 <p>
 M.C.O. §15.40 is an ordinance that prohibits the City’s officials from
 participating in any particular matter of City business that directly or
@@ -12,20 +14,20 @@ other persons or entities that are attributed to them under the ordinance,
 e.g., their spouses and employers.
 
 <p>
-Determining whether a conflict of interest is present requires an analysis on
-a case-by-case and fact sensitive basis. As a member of the Zoning Board of
-Adjustment, you are designated a local official by M.C.O. §15.280(m)(3).
+Determining whether a conflict of interest is present requires an analysis
+on a case-by-case and fact sensitive basis. As a member of the Zoning Board
+of Adjustment, you are designated a local official by M.C.O. §15.280(m)(3).
 Voting on the variance appeal is considered participation under M.C.O.
-§15.40(b)(1).  The variance appeal might have a direct or indirect affect on
-your employer’s financial interests if Friend and your Employer have
+§15.40(b)(1).  The variance appeal might have a direct or indirect affect
+on your employer’s financial interests if Friend and your Employer have
 unconcluded business or a continuing business relationship.
 
 <p>
-There are many ways in which Friend and Employer financial interests could be
-affected by the Boards decision, e.g. bills remain to be paid and Friend will
-not have funds to pay bills if the variance is not granted.  Only once you
-determine that business dealings between Employer and Friend are entirely
-concluded will your Employer have no financial interest in the variance
-appeal.
+There are many ways in which Friend and Employer financial interests could
+be affected by the Boards decision, e.g. bills remain to be paid and Friend
+will not have funds to pay bills if the variance is not granted.  Only once
+you determine that business dealings between Employer and Friend are
+entirely concluded will your Employer have no financial interest in the
+variance appeal.
 
 {% endblock content %}
