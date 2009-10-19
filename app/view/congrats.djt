@@ -1,6 +1,5 @@
 {% extends "base.djt" %}
 {% block content %}
-
 <h1>Congratulations!</h1>
 
 <p>
