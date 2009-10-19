@@ -87,41 +87,51 @@ def get_scenario(id):
 def last_answer(id,session):
     """Returns the last user answer for the indicated scenario ID."""
 
-def merge_scenario(id,session):
-    """Merge the scenario data with the relevant session data.  This function
-    does quite a bit; it should definitely be refactored."""
-    scenario = get_scenario(id)
+def merge_scenario(scenario_id,session):
+    """Retrieve the raw scenario data, then append information to it based on
+    the learner status in the session.  This function does quite a bit; it
+    should definitely be refactored."""
 
-    # find the user's answers to this scenario, if any
-    user_answers = session.get(id,[])
+    scenario = get_scenario(scenario_id)
+
+    # get the learner's answers to this scenario
+    learner_answers = session.get(scenario_id,[])
 
     # find the user's most recent answer to this scenario, if any
     try:
-        last_answer = user_answers[-1]
+        last_answer = learner_answers[-1]
     except:
         last_answer = None
+    logging.info("last_answer = %s" % last_answer)
 
     # assume the scenario is not completed unless proven otherwise
     setattr(scenario,"completed",False)
 
-    # if there are no user answers yet, we don't need to do anything
-    if not user_answers:
+    # if there are no learner answers yet, we don't need to do anything
+    if not learner_answers:
         return scenario
 
-    # set the answer CSS classes
+    # set attributes on the answer objects
     for a in scenario.answers:
-        if a.id not in user_answers:        # unanswered
+        # answers not yet chosen
+        if a.id not in learner_answers:
             setattr(a,"class","answer")
             setattr(a,"disabled",False)
-        elif a.correct and a.id in user_answers:
-            setattr(a,"class","answer correct")
-            setattr(a,"disabled",True)
-            setattr(a,"checked",True)
-            setattr(scenario,"completed",True)
-            setattr(scenario,"response",a.response)
+        # answers chosen
         else:
-            setattr(a,"class","answer incorrect")
             setattr(a,"disabled",True)
+            # correct answer
+            if a.correct:
+                setattr(a,"class","answer correct")
+            # incorrect answer
+            else:
+                setattr(a,"class","answer incorrect")
+
+    # if the session says to, mark this scenario as completed
+    if session['completed'].get(scenario_id,False):
+        scenario.completed = True
+    else:
+        scenario.completed = False
 
     # if the scenario has been completed, disable all user inputs, and set the
     # user response to the correct value
@@ -134,12 +144,12 @@ def merge_scenario(id,session):
             else:
                 setattr(a,"class","answer incorrect")
 
-    # make sure the response is for the most recent answer
+    # since the scenario has *not* been completed, make sure the response is
+    # for the **most recent** answer
     else:
-        for a in scenario.answers:
-            if a.id == last_answer:
-                setattr(a,"checked",True)
-                setattr(scenario,"response",a.response)
+        answer_object = scenario.answer_dict[last_answer]
+        answer_object.checked = True
+        scenario.response = answer_object.response
 
     return scenario
 
