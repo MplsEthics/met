@@ -4,6 +4,7 @@
 Classes and other utilities related to dynamic question content.
 """
 
+import copy
 import os
 import yaml
 import logging
@@ -14,6 +15,7 @@ content_dir = os.path.join(os.path.dirname(__file__), '../content')
 class Scenario(yaml.YAMLObject):
 
     yaml_tag = '!scenario'
+    completed = False
 
     def __init__(self,id_,name,prompt,question,answers):
         self.id = id_
@@ -40,6 +42,9 @@ class Scenario(yaml.YAMLObject):
 class Answer(yaml.YAMLObject):
 
     yaml_tag = '!answer'
+
+    checked = False
+    disabled = False
 
     def __init__(self,_id,answer,correct,response):
         self.id = _id
@@ -81,11 +86,12 @@ def load_testbank():
 
 testbank = load_testbank()
 
-def get_scenario(id):
-    return testbank.get(id,None)
-
-def last_answer(id,session):
-    """Returns the last user answer for the indicated scenario ID."""
+def get_scenario(scenario_id):
+    """Finds the scenario corresponding to the indicated ID.  We return a
+    copy, because GAE persists the 'testbank' global, and we don't want any
+    scary action-at-a-distance.  That might take hours to debug!"""
+    scenario = testbank.get(scenario_id,None)
+    return copy.deepcopy(scenario)
 
 def merge_scenario(scenario_id,session):
     """Retrieve the raw scenario data, then append information to it based on
@@ -97,19 +103,13 @@ def merge_scenario(scenario_id,session):
     # get the learner's answers to this scenario
     learner_answers = session.get(scenario_id,[])
 
-    # find the user's most recent answer to this scenario, if any
-    try:
-        last_answer = learner_answers[-1]
-    except:
-        last_answer = None
-    logging.info("last_answer = %s" % last_answer)
-
-    # assume the scenario is not completed unless proven otherwise
-    setattr(scenario,"completed",False)
-
     # if there are no learner answers yet, we don't need to do anything
     if not learner_answers:
         return scenario
+
+    # find the user's most recent answer to this scenario, if any
+    try: last_answer = learner_answers[-1]
+    except: last_answer = None
 
     # set attributes on the answer objects
     for a in scenario.answers:
@@ -147,9 +147,8 @@ def merge_scenario(scenario_id,session):
     # since the scenario has *not* been completed, make sure the response is
     # for the **most recent** answer
     else:
-        answer_object = scenario.answer_dict[last_answer]
-        answer_object.checked = True
-        scenario.response = answer_object.response
+        scenario.answer_dict[last_answer].checked = True
+        scenario.response = scenario.answer_dict[last_answer].response
 
     return scenario
 
