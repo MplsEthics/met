@@ -1,6 +1,12 @@
 Changelog for Minneapolis Ethics Training (MET)
 ===============================================
 
+0.2 - 2009-10-19
+----------------
+* finished installing remaining content
+* lots of minor template tweaks
+* fixed topic name in .yaml files
+
 0.1 - 2009-10-19
 ----------------
 * functioning exam templates
@@ -9,9 +15,7 @@ Changelog for Minneapolis Ethics Training (MET)
 
 TO DO
 -----
-* import remaining content
-* fix email functionality
-* upload code to Google App Engine
-* fetch GPL copyright statement
+* another proofreading sweep
+* add email functionality
 * clarify copyright
 
