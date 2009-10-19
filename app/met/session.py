@@ -17,6 +17,7 @@ class SessionMixin(object):
 
         # stash the session object in _session
         if not hasattr(self,'session'):
+            #self._session = Session(writer="cookie")
             self._session = Session()
 
         # make sure all scenario answer arrays are present
@@ -29,4 +30,7 @@ class SessionMixin(object):
             self._session['completed'] = dict()
 
         return self._session
+
+    def saveSession(self):
+        """Force a write."""
 
