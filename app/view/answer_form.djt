@@ -4,10 +4,8 @@
 <tr>
 <td style="vertical-align:top">
 <input type="radio" name="answer" id="radio{{ forloop.counter }}"
-   value="{{ answer.id }}"
- {% if answer.disabled %}disabled{% endif %}
- {% if answer.checked %}checked{% endif %}
->
+   value="{{ answer.id }}" {% if answer.disabled %}disabled{% endif %}
+   {% if answer.checked %}checked{% endif %}>
 </td>
 <td>
 <label for="radio{{ forloop.counter }}">
