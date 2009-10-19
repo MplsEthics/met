@@ -129,6 +129,14 @@ div#content p {
     margin-bottom: 0.5em;
 }
 
+div#content p em {
+    padding-left: 0;
+    color: blue;
+    font-weight: bold;
+    font-style: normal;
+    /* font-style: italic; */
+}
+
 div#prevnext {
     margin: 2em 4em 1em 4em;
 }
