@@ -185,6 +185,13 @@ div#content div#response p {
     margin-left: 0;
 }
 
+div#content div#response span.correct {
+    color: blue;
+    font-weight: bold;
+    padding-left: 0;
+    display: block;
+}
+
 div#content div#response span.incorrect {
     color: blue;
     font-weight: bold;
