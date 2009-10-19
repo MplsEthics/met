@@ -1,15 +1,24 @@
+{% extends "../base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+<h2>Discussion continued:</h2>
 
-Discussion continued:
+<p>
 Should you decide not to sell your stock, you must disclose the conflict of
-interest to the other members of the Commission as soon as you become aware
-of the conflict of interest.  If you become aware of the conflict during a
-meeting, you must immediately disclose the conflict orally.  You must also
-complete the City’s conflict of interest form, describing the City matter
-and the nature of your conflict. The completed conflict of interest form is
-distributed to the other members of the Commission, the Mayor and City
-Council, any department head whose department or jurisdiction could be
-affected.  The completed form is also filed with the City Clerk.   You must
-refrain from discussing the matter with your fellow Commissioners and
+interest to the other members of the Commission as soon as you become aware of
+the conflict of interest.  If you become aware of the conflict during a
+meeting, you must immediately disclose the conflict orally.
+
+<p>
+You must also complete the City’s conflict of interest form, describing the
+City matter and the nature of your conflict. The completed conflict of
+interest form is distributed to the other members of the Commission, the Mayor
+and City Council, any department head whose department or jurisdiction could
+be affected.  The completed form is also filed with the City Clerk.
+
+<p>
+You must refrain from discussing the matter with your fellow Commissioners and
 refrain participating from any Commission business regarding the matter.
 
+{% endblock content %}
 
