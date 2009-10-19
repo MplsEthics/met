@@ -1,0 +1,26 @@
+{% extends "base.djt" %}
+{% block content %}
+<div id="response">
+<p class="topic">{{ topic }}</p>
+
+{% if correct %}
+<p>
+<span class="correct">Correct!!</span>
+{{ response }}
+</p>
+<h3>
+You may now proceed to the next page for a full discussion of the issue.
+</h3>
+{% endif %}
+
+{% if not correct %}
+<p>
+<span class="incorrect">Incorrect.</span>
+{{ response }}
+</p>
+<h3>Please return to the question and select another answer.</h3>
+{% endif %}
+
+<a class="button" href="{{ link_next }}">Continue</a>
+</div>
+{% endblock content %}
