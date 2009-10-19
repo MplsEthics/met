@@ -1,32 +1,23 @@
 {% extends "base.djt" %}
-
 {% block content %}
 
 <p>
-This is free software.
-The <a target="new"
-href="http://github.com/trammell/met/downloads">source code</a>
-for this application is available for download from
-<a href="http://github.com"><img
-   src="https://github.com/images/modules/header/logov3.png" alt="github logo" /></a>
-</p>
+This is version <b>{{ version }}</b> of the Minneapolis Ethics Training
+software.
 
 <p>
-
-<img src="http://code.google.com/appengine/images/appengine-silver-120x30.gif"
-   alt="Powered by Google App Engine" />
-
-This software is written in <a href="http://www.python.org/">Python</a>, and
-designed to run on the
-
+This is free software written in
+<a target="new" href="http://www.python.org/">Python</a>
+to run on the
 <a target="new" href="http://appengine.google.com/">Google App Engine</a>.
 
-</p>
+<p>
+The source code for this application is available as a free download from
+<a target="new" href="http://github.com">GitHub</a>, at URL
+<a target="new" href="http://github.com/trammell/met/downloads">
+http://github.com/trammell/met/downloads</a>.
 
-<p class="buttons">
+<p style="margin-top: 2em">
 <a class="button" href="javascript:history.back(1)">&larr; Back</a>
-</p>
 
 {% endblock content %}
-{% block footer %}
-{% endblock footer %}

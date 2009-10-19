@@ -28,6 +28,5 @@ TO DO
       = gifts
       = epilog
 
-* fix 'about' page
 * fix topic display in tops of scenario content
 

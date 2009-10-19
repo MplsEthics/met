@@ -2,6 +2,7 @@ import os
 import logging
 import base
 from google.appengine.ext import webapp
+from met.version import version as VERSION
 
 class Fallback(base.BaseView):
     """View class that displays the view closest to that requested."""
@@ -12,6 +13,7 @@ class Fallback(base.BaseView):
         previous = self.previous()
         next = self.next()
         show_prevnext = True
+        version = VERSION
         self.response.out.write(webapp.template.render(path,locals()))
 
     def template(self):
