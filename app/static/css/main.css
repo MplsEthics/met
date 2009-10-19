@@ -154,7 +154,7 @@ a#next {
 }
 
 
-/* question form styling */
+/* question/answer form styling */
 
 form#question input.answer-radio {
     vertical-align: text-top;
@@ -171,6 +171,12 @@ form#question input {
 form#question input#submit {
     margin-top: 1em;
 }
+
+form#question span.incorrect {
+    color: #888;
+}
+
+
 
 
 /* response formatting */
