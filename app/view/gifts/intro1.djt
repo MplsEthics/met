@@ -1,38 +1,43 @@
 {% extends "../base.djt" %}
-
 {% block content %}
+
+FIXME
 
 <h1>Topic Three: {{ s.name }}</h1>
 
 Discussion Topic 3: Gifts
 
+<p>
 GENERAL RULE: You may not solicit or accept any gift from an interested
 person, lobbyist, or principal who has a direct financial interest in a
 decision that you are authorized to make.
 
-A XXgift is defined as money, real or personal property, a service, a loan, a
-forbearance or forgiveness of indebtedness, or a promise of future
+<p>
+A <b>gift</b> is defined as money, real or personal property, a service, a
+loan, a forbearance or forgiveness of indebtedness, or a promise of future
 employment, that is given and received without the fiver receiving
 consideration of equal or greater value in return.
 
-A XXlobbyist is an individual engaged for pay or other consideration, or
-authorized to spend money by another source, or an individual who spends
-more $250.00 in any year, for the purpose of attempting to influence
-legislative or administrative action, or other city action, by
-communicating or urging others to communicate with public or local
-officials.
+<p>
+A <b>lobbyist</b> is an individual engaged for pay or other consideration, or
+authorized to spend money by another source, or an individual who spends more
+$250.00 in any year, for the purpose of attempting to influence legislative or
+administrative action, or other city action, by communicating or urging others
+to communicate with public or local officials.
 
-A XXprincipal is an individual or association that either spends more than
-$500.00 in the aggregate in any calendar year to engage a lobbyist,
-compensate a lobbyist, or authorize the expenditure of money by a lobbyist;
-or spends a total of at least fifty $50,000.00 in any calendar year on
-efforts to influence city council action, administrative action, or other
-city action.
+<p>
+A <b>principal</b> is an individual or association that either spends more
+than $500.00 in the aggregate in any calendar year to engage a lobbyist,
+compensate a lobbyist, or authorize the expenditure of money by a lobbyist; or
+spends a total of at least fifty $50,000.00 in any calendar year on efforts to
+influence city council action, administrative action, or other city action.
 
-An XXinterested person is a person or a representative of a person or
+<p>
+An <b>interested person</b> is a person or a representative of a person or
 association that has a direct financial interest in a decision that a local
 official or employee is authorized to make
 
+<p>
 A limited number of exceptions to the general rule exist.  The exceptions
 include a service to assist you in the performance of your official duties;
 a service of insignificant monetary value; a plaque or similar memento with
