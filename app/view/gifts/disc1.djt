@@ -1,6 +1,6 @@
 {% extends "../base.djt" %}
 {% block content %}
-
+<h1>{{ s.name }}</h1>
 <h2>Discussion:</h2>
 
 <p>

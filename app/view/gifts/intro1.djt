@@ -1,16 +1,11 @@
 {% extends "../base.djt" %}
 {% block content %}
-
-FIXME
-
-<h1>Topic Three: {{ s.name }}</h1>
-
-Discussion Topic 3: Gifts
+<h1>{{ s.name }}</h1>
 
 <p>
-GENERAL RULE: You may not solicit or accept any gift from an interested
-person, lobbyist, or principal who has a direct financial interest in a
-decision that you are authorized to make.
+<em>GENERAL RULE:</em> You may not solicit or accept any gift from an
+interested person, lobbyist, or principal who has a direct financial interest
+in a decision that you are authorized to make.
 
 <p>
 A <b>gift</b> is defined as money, real or personal property, a service, a

@@ -1,12 +1,8 @@
 {% extends "../base.djt" %}
 {% block content %}
-
-<h1>Topic Three: {{ s.name }}</h1>
-
-FIXME
-
-<p class="scenario"><b>Scenario:</b> {{ s.scenario }}</p>
-<p class="question"><b>Question:</b> {{ s.question }}</p>
+<h1>{{ s.name }}</h1>
+<p><em>Scenario:</em> {{ s.scenario }}</p>
+<p><em>Question:</em> {{ s.question }}</p>
 
 <p>
 <em>REFLECTION:</em>  How might it appear to a third party if you accept a
