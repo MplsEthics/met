@@ -16,6 +16,9 @@ clean:
 	find . -name '*.pyc' | xargs rm -f
 	$(PYTHON25) setup.py clean
 
+archive:
+	git archive --verbose --format=tar --prefix="met-0.1/" HEAD | gzip > met-0.1.tgz
+
 dist sdist:
 	$(PYTHON25) setup.py sdist --formats=zip
 
