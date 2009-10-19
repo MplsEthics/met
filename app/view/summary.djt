@@ -1,29 +1,38 @@
-FIXME
+{% extends "base.djt" %}
+{% block content %}
 
-SUMMARY
+<h1>SUMMARY</h1>
 
+<p>
 The ethics education in which you participated today is a summary of the
 ethics code provisions commonly encountered by citizens appointed to City
 boards and commissions.  Our goal was not to make you a legal expert but to
-give you an understanding of conflicts of interest, impermissible
-disclosure of information and prohibited gifts and an appreciation of why
-these rules are necessary for good governance.
+give you an understanding of conflicts of interest, impermissible disclosure
+of information and prohibited gifts and an appreciation of why these rules are
+necessary for good governance.
 
-There are many ethics topics we did not cover.  We encourage you to review
-the Ethics Code, LINK, and the Ethical Practices Board website, LINK.
-Available on the Ethical Practices Board website is a downloadable conflict
-of interest form for board and commission members, LINK.  This is the form
-you should use to disclose a potential conflict of interest.
+<p>
+There are many ethics topics we did not cover.  We encourage you to review the
+Ethics Code, LINK, and the Ethical Practices Board website, LINK.  Available
+on the Ethical Practices Board website is a downloadable conflict of interest
+form for board and commission members, LINK.  This is the form you should use
+to disclose a potential conflict of interest.
 
+<p>
 If you have any ethics questions, please contact the City’s Ethics Officer,
-Susan Trammell at EthicsOfficer@ci.minneapolis.mn.us or 612-673-3230.
+Susan Trammell at <a href="mailto:EthicsOfficer@ci.minneapolis.mn.us">
+EthicsOfficer@ci.minneapolis.mn.us</a> or 612-673-3230.
 
+<p>
 Please remember that you may report a violation of the Ethics in Government
 Code by contacting the Ethics Officer, accessing the Ethics Report Line web
 reporting feature at
-https://www.reportlineweb.com/Welcome.aspx?Client=Minneapolis, utilizing a
-downloadable complaint form from the Ethical Practices Board website,
-http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp,
+<a href="https://www.reportlineweb.com/Welcome.aspx?Client=Minneapolis">
+https://www.reportlineweb.com/Welcome.aspx?Client=Minneapolis</a>,
+utilizing a downloadable complaint form from the Ethical Practices Board
+website,
+<a href="http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp">
+http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp</a>,
 or calling the Ethics Report Line at 1-877-563-1075.
 
-
+{% endblock content %}
