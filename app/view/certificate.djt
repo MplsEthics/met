@@ -1,25 +1,33 @@
-FIXME
+{% extends "base.djt" %}
+{% block content %}
 
-Automated Proof of Required Ethics Education
 
+<h1>Automated Proof of Required Ethics Education</h1>
+
+<p>
 The training certificate and email submissions from this electronic ethics
-education course are official records.  By submitting your proof of
-education certificate and/or automated email, you certify that you have
-reviewed the entire Ethics in Government Education for Appointed Members of
-Boards, Commissions and Agencies course, answered each question correctly –
-and fully reviewed the final discussion for each topic.
+education course are official records.  By submitting your proof of education
+certificate and/or automated email, you certify that you have reviewed the
+entire Ethics in Government Education for Appointed Members of Boards,
+Commissions and Agencies course, answered each question correctly&mdash;and
+fully reviewed the final discussion for each topic.
 
+<p>
 You can choose to create a certificate to print or download, send an email
 notification of training compliance or both.  Choose the appropriate
 selection(s) below.
+
+{# FIXME #}
 
 >>> Create Proof of Education Certificate.
 
 >>> Send Proof of Education Email.  You will need to add the email address
 >>> for your city staff liaison to the “cc” line.
 
+<p>
 Thank you for your commitment to public service and your compliance with
 the City’s Ethics in Government Ordinance.
 
 “Click” to exit.
 
+{% endblock %}
