@@ -1,4 +1,4 @@
-application: mpls-ethics
+application: 'mpls-ethics'
 version: 1
 runtime: python
 api_version: 1
