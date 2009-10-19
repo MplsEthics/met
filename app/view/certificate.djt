@@ -1,7 +1,5 @@
 {% extends "base.djt" %}
 {% block content %}
-
-
 <h1>Automated Proof of Required Ethics Education</h1>
 
 <p>

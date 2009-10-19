@@ -28,4 +28,4 @@ This way of doing business also demonstrates to citizens and other vendors,
 customers and consultants that our city processes can not be affected by
 acceptance of meals or other things of value.
 
-{% block content %}
+{% endblock content %}

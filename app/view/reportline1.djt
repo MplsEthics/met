@@ -22,10 +22,12 @@ you don’t feel comfortable talking to the person, you can:
 <li>call the Ethics Report Line at 1-877-563-1075,
 <li>visit the Ethics Report Line Web site,
 <li>utilize a downloadable complaint form from the Ethical Practices Board
-website, <a href="http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp">
+website, <a target="new"
+href="http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp">
 http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp</a>,
-<ul>
+</ul>
 
+<p>
 or
 
 <ul>
@@ -33,5 +35,6 @@ or
 contact the City’s Ethics Officer, Susan Trammell, at (612) 673-3230 or 
 <a href="mailto:EthicsOfficer@ci.minneapolis.mn.us">
 EthicsOfficer@ci.minneapolis.mn.us</a>.
+</ul>
 
 {% endblock content %}

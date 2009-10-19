@@ -17,7 +17,7 @@ educational requirement.
 
 <p>
 If you have comments or suggestions fro improving this or future training,
-please contact us at <a href="mailto:EthicsOfficer@ci.minneapolis.mn.us>
+please contact us at <a href="mailto:EthicsOfficer@ci.minneapolis.mn.us">
 EthicsOfficer@ci.minneapolis.mn.us</a>.
 
-{% endblock %}
+{% endblock content %}
