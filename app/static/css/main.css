@@ -1,3 +1,4 @@
+/* page layout */
 
 html, title, body {
     font-family: Verdana, Helvetica, sans-serif;
@@ -11,6 +12,32 @@ div#page {
     margin: 0px 10em 0px 10em;
     padding: 0px 1em 0px 1em;
 }
+
+/* styles that show up in many places */
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.clear {
+    clear: both;
+}
+
+.button {
+    text-decoration: none;
+    text-align: top;
+    font-weight: bold;
+    font-size: 120%;
+    color: black;
+    background-color: #ccc;
+    border: thin solid black;
+    margin: 0;
+    padding: 0.1em 0.25em;
+}
+
+
+/* header formatting */
 
 div#header {
     border-top: thin solid white;
@@ -35,6 +62,32 @@ div#header h2 {
     padding: 0;
     font-size: 12pt;
     font-style: italic;
+}
+
+/* footer formatting */
+
+div#footer {
+    clear: both;
+    margin-top: 2em;
+    padding-bottom: 1.25em;
+    font-size: small;
+    background-color: #eff;
+}
+
+div#footer a.about {
+    float: right;
+    margin: 0 1em;
+}
+
+/* nonspecific content formatting */
+
+fieldset.rule, fieldset.reflection {
+    margin: 1em 4em;
+    border: thin blue solid;
+}
+
+fieldset.rule legend, fieldset.reflection legend {
+    font-weight: bold;
 }
 
 div#content {
@@ -100,41 +153,11 @@ a#next {
     width: 8em;
 }
 
-.button {
-    text-decoration: none;
-    text-align: top;
-    font-weight: bold;
-    font-size: 120%;
-    color: black;
-    background-color: #ccc;
-    border: thin solid black;
-    margin: 0;
-    padding: 0.1em 0.25em;
-}
 
-div#footer {
-    clear: both;
-    margin-top: 2em;
-    padding-bottom: 1.25em;
-    font-size: small;
-    background-color: #eff;
-}
-
-div#footer a.about {
-    float: right;
-    margin: 0 1em;
-}
+/* question form styling */
 
 form#question input.answer-radio {
     vertical-align: text-top;
-}
-
-span.correct {
-    font-weight: bold;
-}
-
-span.incorrect {
-    text-decoration: line-through;
 }
 
 form#question div.answer {
@@ -149,21 +172,18 @@ form#question input#submit {
     margin-top: 1em;
 }
 
-div.clear {
-    clear: both;
-}
 
-.centered {
-    margin-left: auto;
-    margin-right: auto;
-}
+/* response formatting */
 
-fieldset.rule, fieldset.reflection {
-    margin: 1em 4em;
-    border: thin blue solid;
-}
-
-fieldset.rule legend, fieldset.reflection legend {
+div#content div#response p {
+    color: blue;
     font-weight: bold;
+    margin-left: 0;
+}
+
+div#content div#response span.incorrect {
+    color: blue;
+    font-weight: bold;
+    padding-left: 0;
 }
 
