@@ -4,43 +4,41 @@
 
 <h1>Topic One: {{ s.name }}</h1>
 
+<h2>Discussion:</h2>
+
 <p>
 M.C.O. §15.40 is an ordinance that prohibits the City’s officials from
 participating in any particular matter of City business that directly or
 indirectly affects their financial interests or the financial interests of
 other persons or entities that are attributed to them under the ordinance,
 e.g., their spouses and employers.
-</p>
 
 <p>
 The Ethics Code recognizes that the citizens who serve on the City’s boards
-and commissions are citizens of other callings who devote only a part of their
-lives to the service of the City.  One who engages in such service to the City
-is not thereby deprived of the ordinary rights of citizenship.  A member can
-not be disqualified from submitting to the jurisdiction of the Board, as all
-other citizens and property owners of the City are required to do in similar
-situations.  But some consideration must be given to how the matter is handled
-by you and the other members of the board.
-</p>
+and commissions are citizens of other callings who devote only a part of
+their lives to the service of the City.  One who engages in such service to
+the City is not thereby deprived of the ordinary rights of citizenship.  A
+member can not be disqualified from submitting to the jurisdiction of the
+Board, as all other citizens and property owners of the City are required
+to do in similar situations.  But some consideration must be given to how
+the matter is handled by you and the other members of the board.
 
 <p>
 Conflict of interest situations are fact sensitive and determinations of
-conflict of interest must be done on a case-by-case basis.   As the chair of
-the Board of Appeals, you are designated a local official by M.C.O.
+conflict of interest must be done on a case-by-case basis.   As the chair
+of the Board of Appeals, you are designated a local official by M.C.O.
 §15.280(m)(3).  The maintenance order you received from the inspections
 department will affect your financial interests, directly or indirectly.
 Participation under M.C.O. §15.40(b)(1) is defined broadly.  Participation
 includes providing advice, a recommendation, debating, sponsoring.
-</p>
 
 <p>
-M.C.O. §15.40 requires you to disclose the conflict of financial interest to
-the other members of the board as soon as you become aware of the conflict,
-e.g. at the point you decide to appeal the order.  Your disclosure needs to be
-in writing on the conflict of interest form.  The completed form will be
-distributed to the other members of the board, the mayor and city council, as
-well as any department heads whose departments could be affected and filed
-with the City Clerk.
-</p>
+M.C.O. §15.40 requires you to disclose the conflict of financial interest
+to the other members of the board as soon as you become aware of the
+conflict, e.g. at the point you decide to appeal the order.  Your
+disclosure needs to be in writing on the conflict of interest form.  The
+completed form will be distributed to the other members of the board, the
+mayor and city council, as well as any department heads whose departments
+could be affected and filed with the City Clerk.
 
 {% endblock content %}
