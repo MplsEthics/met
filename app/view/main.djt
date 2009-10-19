@@ -1,5 +1,4 @@
 {% extends "base.djt" %}
-
 {% block content %}
 
 Welcome to the Ethics in Government Education for Appointed Members of
