@@ -13,6 +13,7 @@ class Main(base.BaseView, session.SessionMixin):
         session['timestamp'] = timestamps[0:3]
         next = 'instr1'
         show_prevnext = True
+        show_about = True
         logging.info(locals())
         self.response.out.write(template.render(path,locals()))
 

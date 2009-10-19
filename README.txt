@@ -28,8 +28,6 @@ TO DO
       = gifts
       = epilog
 
-* enforce scenario ordering
-* fix question response rendering -- need a new view to handle this
 * fix 'about' page
 * fix topic display in tops of scenario content
 
