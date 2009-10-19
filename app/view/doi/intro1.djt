@@ -3,17 +3,19 @@
 
 <h1>Topic Two: {{ s.name }}</h1>
 
-FIXME
-
-GENERAL RULE: You may not use or disclose any information gained in the
-course of or by reason of service to the City in any way that violates
+<p>
+<em>GENERAL RULE:</em> You may not use or disclose any information gained in
+the course of or by reason of service to the City in any way that violates
 either your fiduciary duty to the City or the Minnesota Government Data
-Practices Act.  In addition, you may not use or disclose privileged,
-nonpublic, confidential, private, or proprietary information gained in the
-course of your official duties in any way that could result in financial
-gain for you, or for your spouse, domestic partner, or dependent, or for a
-person in a committed relationship with you, or for any associated business
-of these persons. M.C.O. § 15.170.
+Practices Act.
+
+<p>
+In addition, you may not use or disclose privileged, nonpublic, confidential,
+private, or proprietary information gained in the course of your official
+duties in any way that could result in financial gain for you, or for your
+spouse, domestic partner, or dependent, or for a person in a committed
+relationship with you, or for any associated business of these persons. M.C.O.
+§ 15.170.
 
 <p class="scenario"><b>Scenario:</b> {{ s.scenario }}</p>
 <p class="question"><b>Question:</b> {{ s.question }}</p>
