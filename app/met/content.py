@@ -69,7 +69,6 @@ def load_scenario_file(file):
         scenario = objects[0]
         scenario.answers = objects[1:]
         # load the answers into the scenario
-        # FIXME this could be cleaner
         scenario.answer_dict = dict()
         for answer in scenario.answers:
             scenario.answer_dict[ answer.id ] = answer
