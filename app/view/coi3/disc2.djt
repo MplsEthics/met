@@ -17,31 +17,31 @@ interests.  Your emancipated daughter’s financial interests would not be
 considered your financial interests.
 
 <p>
-As your daughter is employed by another division of the company – not related
-to the matter being heard by the hearing panel – it is unlikely that your
-daughter will be testifying in the matter.  This should however be confirmed
-by the parties’ attorneys prior to the hearing and you should consider any
-objections to your participation in the matter.
-
-<p>
-Even if your daughter will not be involved in the hearing, you should consider
-several factors, including:
+Although the Ethics Code would not prevent you from participating in the
+matter, the Ethics Code requires you to disclose your relationship as
+though it were a conflict of interest.  Related person is defined broadly
+and includes significant familial relationships.  Significant familial
+relationships include:
 
 <ul>
-<li>The importance of your role in the matter;
-<li>The sensitivity of the matter;
-<li>The information you have learned about the company from your daughter
-    about the company that you would have difficulty setting aside; and
-<li>Whether a reasonable person might question your impartiality.
+<li>
+By blood or adoption: parent, child, grandparent, grandchild, brother,
+sister, half-brother, half-sister, uncle, aunt, nephew, niece, first
+cousin.
+<li>
+By marriage: husband, wife, stepparent, stepchild, stepbrother, stepsister,
+brother-in-law, sister-in-law, father-in-law, mother-in-law, son-in-law,
+daughter-in-law, uncle, aunt, nephew, niece.  Divorce terminates a
+significant familial relationship by marriage.
 </ul>
 
 <p>
-The City strives to have its officials avoid actions that might impair
-independence of judgment or give the appearance of impropriety or an
-appearance of a conflict of interest.  (See M.C.O. §15.20.) If after
-considering all of the facts, you determine that to maintain the highest
-ethical principles and avoid an apparent conflict of interest, you should
-recuse yourself from hearing the charge of discrimination.
+Whenever you participate in a City matter involving a related person other
+than your spouse, domestic partner, or dependent, you must disclose your
+relationship.  You will use the City’s conflict of interest form to
+disclose your relationship.  The completed form will be distributed to the
+other members of the Commission, the mayor and city council, as well as any
+department heads whose departments could be affected and filed with the
+City Clerk.
 
 {% endblock content %}
-
