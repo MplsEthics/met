@@ -1,28 +1,37 @@
-Overview:  Ethics Report Line
+{% extends "base.djt" %}
+{% block content %}
+<h1>Overview: Ethics Report Line</h1>
 
+<p>
+As government employees and officials, the public rightly expects us to always
+exhibit the highest level of integrity.  Unfortunately, any instance of
+wrongdoing taints good employees and officials by association.  Wrongdoing
+harms the City’s image and reduces our ability to accomplish our mission.
+Wrongdoing also can result in serious personal and professional consequences
+for an employee, including discipline, job loss or even imprisonment.  Local
+officials can be removed from their positions.  Additionally, the City of
+Minneapolis could face costly lawsuits as a result of wrongdoing by one of its
+employees or local officials.
 
-As government employees and officials, the public rightly expects us to
-always exhibit the highest level of integrity.  Unfortunately, any instance
-of wrongdoing taints good employees and officials by association.
-Wrongdoing harms the City’s image and reduces our ability to accomplish our
-mission.  Wrongdoing also can result in serious personal and professional
-consequences for an employee, including discipline, job loss or even
-imprisonment.  Local officials can be removed from their positions.
-Additionally, the City of Minneapolis could face costly lawsuits as a
-result of wrongdoing by one of its employees or local officials.
-
+<p>
 If you’re aware of an illegal or unethical activity, don’t ignore it. If
 possible, say something to the person.  If the situation doesn’t improve or
 you don’t feel comfortable talking to the person, you can:
 
-* call the Ethics Report Line at 1-877-563-1075,
-* visit the Ethics Report Line Web site,
-* utilize a downloadable complaint form from the Ethical Practices Board
-website,
-http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp,
+<ul>
+<li>call the Ethics Report Line at 1-877-563-1075,
+<li>visit the Ethics Report Line Web site,
+<li>utilize a downloadable complaint form from the Ethical Practices Board
+website, <a href="http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp">
+http://www.ci.minneapolis.mn.us/boards-and-commissions/Ethical-Practices-Bd.asp</a>,
+<ul>
 
 or
 
-* contact the City’s Ethics Officer, Susan Trammell, at (612) 673-3230 or
-EthicsOfficer@ci.minneapolis.mn.us.
+<ul>
+<li>
+contact the City’s Ethics Officer, Susan Trammell, at (612) 673-3230 or 
+<a href="mailto:EthicsOfficer@ci.minneapolis.mn.us">
+EthicsOfficer@ci.minneapolis.mn.us</a>.
 
+{% endblock content %}

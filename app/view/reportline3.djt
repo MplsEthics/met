@@ -1,6 +1,5 @@
 {% extends "base.djt" %}
 {% block content %}
-
 <h2>Ethics Report Line Continued:</h2>
 
 <p>
