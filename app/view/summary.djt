@@ -2,7 +2,7 @@
 {% block content %}
 <h1>SUMMARY</h1>
 
-{# FIXME: need to replace 'LINK' with actual links #}
+{# FIXME: need to verify that these links are correct #}
 
 <p>
 The ethics education in which you participated today is a summary of the
@@ -14,10 +14,16 @@ necessary for good governance.
 
 <p>
 There are many ethics topics we did not cover.  We encourage you to review the
-Ethics Code, LINK, and the Ethical Practices Board website, LINK.  Available
-on the Ethical Practices Board website is a downloadable conflict of interest
-form for board and commission members, LINK.  This is the form you should use
-to disclose a potential conflict of interest.
+Ethics Code at
+<a href="http://www.ci.minneapolis.mn.us/epb/docs/CodeofEthicsOrd.pdf">
+www.ci.minneapolis.mn.us/epb/docs/CodeofEthicsOrd.pdf</a>
+and the Ethical Practices Board website at
+<a href="http://www.ci.minneapolis.mn.us/epb/">
+www.ci.minneapolis.mn.us/epb</a>.
+Available on the Ethical Practices Board website is a downloadable conflict of
+interest form for board and commission members,
+<a href="http://www.ci.minneapolis.mn.us/council/procedures/docs/Conflict-of-Interest-Form.doc">www.ci.minneapolis.mn.us/council/procedures/docs/Conflict-of-Interest-Form.doc</a>.  This is the form you
+should use to disclose a potential conflict of interest.
 
 <p>
 If you have any ethics questions, please contact the City’s Ethics Officer,
