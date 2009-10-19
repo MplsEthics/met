@@ -1,13 +1,17 @@
-Changelog for mpls.ethics
-=========================
+Changelog for Minneapolis Ethics Training (MET)
+===============================================
 
-0.0.1 - unreleased
-------------------
-
-
-
+0.1 - 2009-10-19
+----------------
+* functioning exam templates
+* no major bugs
+* first 1/3 of content in place
 
 TO DO
 -----
-    * fix setuptools build to release a proper egg
+* import remaining content
+* fix email functionality
+* upload code to Google App Engine
+* fetch GPL copyright statement
+* clarify copyright
 
