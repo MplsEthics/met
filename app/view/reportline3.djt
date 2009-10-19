@@ -1,24 +1,30 @@
-FIXME
+{% extends "base.djt" %}
+{% block content %}
 
-Ethics Report Line Continued:
+<h2>Ethics Report Line Continued:</h2>
 
+<p>
 What happens when you call the Ethics Report Line?
 
-1.Your call is answered by a specially trained interviewer who documents
+<ol>
+<li>Your call is answered by a specially trained interviewer who documents
 your concern in detail. Your call is not recorded and you may remain
 anonymous.
-2.The interviewer gives you a report number and a call back date.
-3.The company relays information about your concern to the appropriate City
+<li>The interviewer gives you a report number and a call back date.
+<li>The company relays information about your concern to the appropriate City
 staff member for follow-up or investigation.
-4.You phone the Ethics Report Line on your scheduled call back date and
-give the operator your report number. At this time, an interviewer may ask
-you a few questions to clarify the issue or give you an update on the
-status of the investigation.
-5.If you wish, you can always call back to provide additional information
-or to ask about the status of the investigation. (Be sure to have your
-report number on hand.)
+<li>You phone the Ethics Report Line on your scheduled call back date and give
+the operator your report number. At this time, an interviewer may ask you a
+few questions to clarify the issue or give you an update on the status of the
+investigation.
+<li>If you wish, you can always call back to provide additional information or
+to ask about the status of the investigation. (Be sure to have your report
+number on hand.)
+</ol>
 
+<p>
 The Network’s Web-based report service works in a similar fashion. The Web
-site visitor is guided through a series of online questions designed to
-elicit the same information the interviewer would gather.
+site visitor is guided through a series of online questions designed to elicit
+the same information the interviewer would gather.
 
+{% endblock content %}
