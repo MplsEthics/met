@@ -1,10 +1,10 @@
 {% extends "../base.djt" %}
-
 {% block content %}
+<h1>{{ s.name }}</h1>
 
 <p>
 There are four discussion topics in this training.  The first discussion
-topic is <b>Conflict of Interest</b>.
+topic is <em>Conflict of Interest</em>.
 
 <p>
 Remember, we encourage you to use the analysis steps discussed earlier to
@@ -15,11 +15,9 @@ As with some of the other rules, the conflict of interest rule is complex
 and we will discuss only the highlights in this training.  We urge you to
 take some time to read the entire rule at your convenience.
 
-<fieldset class="rule">
-<legend>General Rule</legend>
-You may not participate in a particular matter of City business if you have
-a financial interest in the matter.
-</fieldset>
+<p>
+<em>General Rule</em> You may not participate in a particular matter of City
+business if you have a financial interest in the matter.
 
 <p>
 <b>Participate</b> includes making the decision, taking action, entering
@@ -38,10 +36,8 @@ also includes the financial interests of your employer, your associated
 businesses, your spouse, domestic partner and/or dependents and their
 employers and associated businesses.  M.C.O. 15.40.
 
-<fieldset class="reflection">
-<legend>Reflection</legend>
-If you have a personal stake in an official decision, is your decision
-based on your best interest or your agency’s best interest?
-</fieldset>
+<p>
+<em>Reflection:</em> If you have a personal stake in an official decision, is
+your decision based on your best interest or your agency’s best interest?
 
 {% endblock content %}

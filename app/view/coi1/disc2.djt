@@ -1,8 +1,6 @@
 {% extends "../base.djt" %}
 {% block content %}
-
-<h1>Topic One: {{ s.name }}</h1>
-
+<h1>{{ s.name }}</h1>
 <h2>Discussion continued:</h2>
 
 <p>
@@ -21,12 +19,12 @@ may be saying to yourself, “This is easy!  I know the rule, there is no
 problem here.  I can vote on this variance appeal.”
 
 <p>
-Or… you might be thinking “Maybe I should not have greeted Friend so
+Or... you might be thinking “Maybe I should not have greeted Friend so
 enthusiastically. What are his neighbors thinking?”  The public tends to be
-cynical about government, and may not realize that you only want to do what
-is best for the City of Minneapolis.  What might be best for the City might
-not be what is best for Friend’s neighbors.  Attitudes, behavior and
-attention to details can impact how citizens feel about City government.
+cynical about government, and may not realize that you only want to do what is
+best for the City of Minneapolis.  What might be best for the City might not
+be what is best for Friend’s neighbors.  Attitudes, behavior and attention to
+details can impact how citizens feel about City government.
 
 <p>
 The best policy is to disclose your relationship with Friend even though
