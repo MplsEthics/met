@@ -64,7 +64,38 @@ view_order = [
     'summary',
     'congrats',
 
-    # certificate email / proof of completion
+    # collect learner name & board
+    'learner',
+
+    # display training certificate / proof of completion
     'certificate',
 ]
+
+class OrderMixin(object):
+
+    def prereqs_completed(scenario_id,compdict):
+        """Returns True if all the scenarios before to 'scenario_id' have been
+        completed, as indicated by their status in 'compdict'.  Returns False
+        otherwise.  This function can be used to determine if the user is
+        trying to complete the scenarios out of order."""
+        assert scenario_id in scenario_order, 'test scenario must be known'
+        k = scenario_order.index(scenario_id)
+        for sid in scenario_order[0:k]:
+            if sid not in compdict:
+                return False
+        return True
+
+    def all_scenarios_completed(self,compdict):
+        """Returns True if all the scenarios are in the dict that records
+        scenario completiions ('compdict').  Returns False otherwise."""
+        for sid in scenario_order:
+            if sid not in compdict:
+                return False
+        return True
+
+    def first_incomplete_scenario(self,compdict):
+        for sid in scenario_order:
+            if sid not in compdict:
+                return sid
+        return None
 
