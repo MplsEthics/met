@@ -34,7 +34,7 @@ archive:
 	git archive --verbose --format=tar --prefix="met-0.2/" HEAD | gzip > met-0.2.tar.gz
 
 update:
-	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update app/
+	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
 dist sdist:
 	$(PYTHON25) setup.py sdist --formats=zip
