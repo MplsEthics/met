@@ -1,4 +1,2 @@
 *.pyc
-app/index.yaml
-MANIFEST
-dist/
+mpls-ethics/index.yaml
