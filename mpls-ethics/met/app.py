@@ -3,13 +3,14 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 from met import views
 
 app_pages = [
-    (r'^/$', views.Main),                     # splash page
-    (r'^/main$', views.Main),                 # ditto
-    (r'^/reset$', views.Reset),               # clears session
-    (r'^/(\w+)/scenario$', views.Scenario),   # e.g. "coi1/scenario"
-    (r'^/(\w+)/response$', views.Response),   # e.g. "coi1/response"
-    (r'^/(\w+)/(\w+)$', views.Content),       # e.g. "coi1/intro1"
-    (r'^/\w+$', views.Fallback),              # best guess
+    (r'^/$', views.Main),                   # splash page
+    (r'^/main$', views.Main),               # ditto
+    (r'^/reset$', views.Reset),             # clears session
+    (r'^/learner$', views.Learner),         # learner form submit
+    (r'^/(\w+)/scenario$', views.Scenario), # e.g. "coi1/scenario"
+    (r'^/(\w+)/response$', views.Response), # e.g. "coi1/response"
+    (r'^/(\w+)/(\w+)$', views.Content),     # e.g. "coi1/intro1"
+    (r'^/\w+$', views.Fallback),            # fallback / best guess
 ]
 
 wsgi_app = webapp.WSGIApplication(app_pages,debug=True)
