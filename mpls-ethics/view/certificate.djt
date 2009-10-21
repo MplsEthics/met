@@ -11,21 +11,23 @@ Commissions and Agencies course, answered each question correctly&mdash;and
 fully reviewed the final discussion for each topic.
 
 <p>
-You can choose to create a certificate to print or download, send an email
-notification of training compliance or both.  Choose the appropriate
-selection(s) below.
-
-{# FIXME #}
-
->>> Create Proof of Education Certificate.
-
->>> Send Proof of Education Email.  You will need to add the email address
->>> for your city staff liaison to the “cc” line.
+Please enter your full name and choose your Board or Commission, then click
+Create Certificate.  The following page will show a certificate, suitable
+for printing.  The City Clerk's office will also receive an email
+indicating that you have completed your ethics training.
 
 <p>
 Thank you for your commitment to public service and your compliance with
 the City’s Ethics in Government Ordinance.
 
-“Click” to exit.
+<form method="POST">
+Full Name: <input type="text">
+Board or Commission: <select>
+{% for board in boards %}
+<option value="{{ forloop.counter0 }}">{{ board }}</option>
+{% endfor %}
+</select>
+<input type="submit" id="submit" value="Create Certificate">
+</form>
 
 {% endblock %}
