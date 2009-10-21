@@ -1,19 +1,21 @@
 from google.appengine.ext import webapp
 import base
 from datetime import datetime
-from met import content
-from met import session
-from met.order import scenario_order
-import logging
+from met import content, order, session
 import time
 
-class Scenario(base.BaseView, session.SessionMixin):
+class Scenario(base.BaseView, session.SessionMixin, order.OrderMixin):
 
     def get(self,scenario_id):
-        #logging.info('GET')
+        """Handle HTTP GET--show the scenario question to the user."""
+        # enforce correct scenario order
+        self.assert_scenario_order(scenario_id)
+
+        # retreive the merged scenario / session object
         session = self.getSession()
-        self.assert_scenario_order(scenario_id,session)
         scenario = content.merge_scenario(scenario_id,session)
+
+        # render the template
         path = self.viewpath(append='scenario.djt')
         djt = {
             'previous': self.previous(),
@@ -22,48 +24,48 @@ class Scenario(base.BaseView, session.SessionMixin):
             'session': session,
             'show_prevnext': scenario.completed,
         }
-        #time.sleep(3)
         self.response.out.write(webapp.template.render(path,djt))
 
     def post(self,scenario_id):
         """Process the answer submission, then redirect to the "response"
         view."""
-        #logging.info('POST')
+        # enforce correct scenario order
+        self.assert_scenario_order(scenario_id)
+
+        # update the session as needed based on the answer
         session = self.getSession()
-        self.assert_scenario_order(scenario_id,session)
         scenario = content.get_scenario(scenario_id)
         valid_answer_ids = scenario.answer_dict.keys()
 
-        # update the session as needed based on the answer
-        answer = self.request.params.get('answer',None)
-        if answer in valid_answer_ids:
-            # save the answer
-            if answer not in session[scenario_id]:
-                logging.info('%s => %s' % (answer,scenario_id))
-                learner_answers = session[scenario_id]
-                learner_answers.append(answer)
-                session[scenario_id] = learner_answers
-                logging.info('>>> %s' % session[scenario_id])
+        # get the learner's answer from the request object
+        answer_id = self.request.params.get('answer',None)
 
-            # if the answer is correct, update session.completed
-            answer_obj = scenario.answer_dict[answer]
-            if answer_obj.correct:
-                logging.info('completed %s' % scenario_id)
-                completed = session["completed"]
-                completed[scenario_id] = datetime.now().isoformat()
-                session["completed"] = completed
-                logging.info('>>> %s' % session["completed"])
+        # if we don't have a valid answer ID, re-GET the scenario
+        if answer_id not in valid_answer_ids:
+            self.redirect("/%s/scenario" % scenario_id)
+            return
 
-        logging.info("session: %s" % session)
+        # we have a valid answer ID; record it
+        if answer_id not in session[scenario_id]:
+            learner_answers = session[scenario_id]
+            learner_answers.append(answer_id)
+            session[scenario_id] = learner_answers
 
-        #time.sleep(3)
+        # if the answer is correct, also update session['completed']
+        answer_obj = scenario.answer_dict[answer_id]
+        if answer_obj.correct:
+            completed = session["completed"]
+            completed[scenario_id] = datetime.now().isoformat()
+            session["completed"] = completed
+
+        # redirect to the response page
         self.redirect("/%s/response" % scenario_id)
 
-    def assert_scenario_order(self,scenario_id,session):
-        """If the user is accessing this scenario out of order, redirect to
-        the most recently completed scenario."""
-        for i in range(scenario_order.index(scenario_id)):
-            test_scenario = scenario_order[i]
-            if test_scenario not in session['completed']:
-                self.redirect("/%s/response" % test_scenario)
+    def assert_scenario_order(self,scenario_id):
+        """If the learner is trying to access this scenario out of order,
+        redirect to the first incomplete scenario."""
+        compdict = self.getSession()['completed']
+        if not self.prereqs_completed(scenario_id,compdict):
+            incomplete = self.first_incomplete_scenario(compdict)
+            self.redirect("/%s/intro1" % incomplete_scenario)
 
