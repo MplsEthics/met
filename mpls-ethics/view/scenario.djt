@@ -3,7 +3,7 @@
 {% if show_scenario %}
 <p class="scenario">{{ s.scenario }}</p>
 {% endif %}
-<p class="question"><b>Question:</b> {{ s.question }}</p>
+<p><em>Question:</em> {{ s.question }}</p>
 <p class="prompt">{{ s.prompt }}</p>
 {% include "answer_form.djt" %}
 {% endblock content %}
