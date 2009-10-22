@@ -22,7 +22,7 @@ class Learner(base.BaseView, session.SessionMixin, order.OrderMixin):
         session = self.getSession()
 
         # ensure that all scenarios have been completed FIXME
-        self.assert_scenario_order(scenario_id,session)
+        # self.assert_scenario_order(scenario_id,session)
 
         # update the session as needed based on the answer
         learner_name = self.request.params.get('learner_name',None)
