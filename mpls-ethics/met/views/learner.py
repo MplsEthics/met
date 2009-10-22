@@ -2,7 +2,7 @@ import logging
 from datetime import datetime
 from google.appengine.ext.webapp import template
 from met import session
-from met import boards
+from met.boards import boards as boards_
 from met.views import base
 from met.model import Completion
 
@@ -12,7 +12,7 @@ class Learner(base.BaseView, session.SessionMixin):
         path = self.viewpath(append='learner.djt')
         session = self.getSession()
         show_prevnext = True
-        boards = boards.boards
+        boards = boards_
         self.response.out.write(template.render(path,locals()))
 
     def post(self):
