@@ -20,14 +20,25 @@ you have completed your ethics training.
 Thank you for your commitment to public service and your compliance with the
 City’s Ethics in Government Ordinance.
 
-<form id="learner" method="POST">
-Full Name: <input type="text">
-Board or Commission: <select>
+<form style="margin-left:3em" id="learner" method="POST">
+
+<table>
+<tr>
+<td>Full Name:
+<td><input type="text" size=40>
+<tr>
+<td>Board or Commission:
+<td><select>
+<option value="">[choose a board or commission]</option>
 {% for board in boards %}
 <option value="{{ forloop.counter0 }}">{{ board }}</option>
 {% endfor %}
 </select>
-<input type="submit" id="submit" value="Create Certificate">
+<tr>
+<td colspan=2>
+<input style="margin-top:1em" type="submit"
+   id="submit" value="Create Certificate">
+</table>
 </form>
 
 {% endblock %}
