@@ -63,3 +63,18 @@ class BaseView(webapp.RequestHandler):
         """Default POST action is to redirect to GET."""
         self.redirect(self.request.path)
 
+
+class RestrictedView(BaseView):
+    """Much like the base view, but restricting  """
+
+    def __init__(self):
+        pass
+
+    def assert_scenario_order(self,scenario_id):
+        """If the learner is trying to access this scenario out of order,
+        redirect to the first incomplete scenario."""
+        compdict = self.getSession()['completed']
+        if not self.prereqs_completed(scenario_id):
+            incomplete = self.first_incomplete_scenario()
+            self.redirect("/%s/intro1" % incomplete)
+

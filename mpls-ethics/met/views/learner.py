@@ -1,12 +1,12 @@
 import logging
 from datetime import datetime
 from google.appengine.ext.webapp import template
-from met import session
+from met import order, session
 from met.boards import boards as boards_
 from met.views import base
 from met.model import Completion
 
-class Learner(base.BaseView, session.SessionMixin):
+class Learner(base.BaseView, session.SessionMixin, order.OrderMixin):
 
     def get(self):
         path = self.viewpath(append='learner.djt')
