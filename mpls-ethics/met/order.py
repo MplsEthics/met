@@ -73,11 +73,12 @@ view_order = [
 
 class OrderMixin(object):
 
-    def prereqs_completed(scenario_id,compdict):
+    def prereqs_completed(self,scenario_id):
         """Returns True if all the scenarios before to 'scenario_id' have been
         completed, as indicated by their status in 'compdict'.  Returns False
         otherwise.  This function can be used to determine if the user is
         trying to complete the scenarios out of order."""
+        compdict = self.getSession()["completed"]
         assert scenario_id in scenario_order, 'test scenario must be known'
         k = scenario_order.index(scenario_id)
         for sid in scenario_order[0:k]:
@@ -85,15 +86,17 @@ class OrderMixin(object):
                 return False
         return True
 
-    def all_scenarios_completed(self,compdict):
+    def all_scenarios_completed(self):
         """Returns True if all the scenarios are in the dict that records
         scenario completiions ('compdict').  Returns False otherwise."""
+        compdict = self.getSession()["completed"]
         for sid in scenario_order:
             if sid not in compdict:
                 return False
         return True
 
-    def first_incomplete_scenario(self,compdict):
+    def first_incomplete_scenario(self):
+        compdict = self.getSession()["completed"]
         for sid in scenario_order:
             if sid not in compdict:
                 return sid
