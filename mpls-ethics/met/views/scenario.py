@@ -65,7 +65,7 @@ class Scenario(base.BaseView, session.SessionMixin, order.OrderMixin):
         """If the learner is trying to access this scenario out of order,
         redirect to the first incomplete scenario."""
         compdict = self.getSession()['completed']
-        if not self.prereqs_completed(scenario_id,compdict):
-            incomplete = self.first_incomplete_scenario(compdict)
-            self.redirect("/%s/intro1" % incomplete_scenario)
+        if not self.prereqs_completed(scenario_id):
+            incomplete = self.first_incomplete_scenario()
+            self.redirect("/%s/intro1" % incomplete)
 
