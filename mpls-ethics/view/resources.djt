@@ -1,0 +1,14 @@
+{% extends "base.djt" %}
+{% block content %}
+
+<h1>Online Resources</h1>
+
+<dl>
+
+<dt>
+
+<dd>
+
+</dl>
+
+{% endblock %}
