@@ -21,7 +21,7 @@ class Response(base.BaseView, session.SessionMixin):
             's': scenario,
             'show_prevnext': False,
             'correct': scenario.completed,
-            'response': scenario.answer_dict[answer_id].response,   # FIXME
+            'response': self.response(scenario,answer_id)
             'link_next': link_next,
         }
         self.response.out.write(webapp.template.render(path,djt))
@@ -30,5 +30,12 @@ class Response(base.BaseView, session.SessionMixin):
         try:
             return self.getSession()[scenario_id][-1]
         except:
+            return None
+
+    def response(self,scenario,answer_id):
+        answer = scenario.answer_dict.get(answer_id,None)
+        if answer is not None:
+            return answer.response
+        else:
             return None
 
