@@ -1,5 +1,6 @@
 TO DO
 =====
+* research GAE versioning--WTF?
 * research blank browser screen.  IE bug?
 * verify that submitting 'no answer' is handled well
 * consolidate 'secure views' code
