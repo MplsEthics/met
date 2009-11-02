@@ -19,4 +19,4 @@ education for the four year time period and will be more comfortable with
 some of the measures taken to ensure integrity in Minneapolis City
 government.
 
-{% endblock %}
+{% endblock content %}
