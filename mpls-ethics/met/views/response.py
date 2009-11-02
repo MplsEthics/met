@@ -21,7 +21,7 @@ class Response(base.BaseView, session.SessionMixin):
             's': scenario,
             'show_prevnext': False,
             'correct': scenario.completed,
-            'response': self.response(scenario,answer_id)
+            'response': self.response(scenario,answer_id),
             'link_next': link_next,
         }
         self.response.out.write(webapp.template.render(path,djt))
