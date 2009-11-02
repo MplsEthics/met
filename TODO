@@ -2,8 +2,7 @@ TO DO
 =====
 * research GAE versioning--WTF?
 * research blank browser screen.  IE bug?
-* verify that submitting 'no answer' is handled well
 * consolidate 'secure views' code
 * handle no user / no board well in 'learner' view
 * finish certificate view
-* finish email upon user credential submission
+* send email upon user credential submission
