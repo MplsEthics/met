@@ -1,0 +1,10 @@
+/* custom CSS for Microsoft Internet Explorer
+ * ie6 fix, see:
+ *    http://www.positioniseverything.net/explorer/peekaboo.html
+ *    http://www.positioniseverything.net/articles/haslayout.html
+ */
+
+div#content {
+    zoom: 1;
+}
+
