@@ -3,7 +3,7 @@
 <h1>Automated Proof of Required Ethics Education</h1>
 
 {% if learner_error %}
-<div class="learner_error">
+<div id="learner_error">
 Please enter your full name and choose a board or commission from the list
 below.
 </div>
