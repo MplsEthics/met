@@ -1,15 +1,15 @@
 from google.appengine.ext import webapp
-import base
 from datetime import datetime
+import base
 from met import content
 from met import session
 
-class Response(base.BaseView, session.SessionMixin):
+class Response(base.SessionView):
 
     def get(self,scenario_id):
         session = self.getSession()
         scenario = content.merge_scenario(scenario_id,session)
-        answer_id = self.last_answer(scenario_id)
+        answer_id = self.last_answer_id(scenario_id)
         path = self.viewpath(append='response.djt')
         if scenario.completed:
             link_next = "/%s/disc1" % scenario_id
@@ -26,7 +26,7 @@ class Response(base.BaseView, session.SessionMixin):
         }
         self.response.out.write(webapp.template.render(path,djt))
 
-    def last_answer(self,scenario_id):
+    def last_answer_id(self,scenario_id):
         try:
             return self.getSession()[scenario_id][-1]
         except:
