@@ -1,6 +1,5 @@
 import logging
 from google.appengine.ext.webapp import template
-from met import order, session
 from met.boards import boards as boards_
 from met.email import send_completion
 from met.model import Completion
