@@ -4,7 +4,7 @@ from google.appengine.ext.webapp import template
 from met import session
 import base
 
-class Main(base.BaseView, session.SessionMixin):
+class Main(base.SessionView):
     def get(self):
         path = self.viewpath(append='main.djt')
         session = self.getSession()
