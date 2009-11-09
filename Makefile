@@ -13,7 +13,6 @@ clean:
 	rm -f MANIFEST *.zip *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' | xargs rm -f
-	$(PYTHON25) setup.py clean
 
 archive:
 	git archive --verbose --format=tar --prefix="met-0.2/" HEAD | gzip > met-0.2.tar.gz
