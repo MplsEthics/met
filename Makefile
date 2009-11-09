@@ -28,6 +28,6 @@ dist sdist:
 
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
-	@-find . -name '*.py' | xargs -n 1 pylint -e
+	@-find . -name *.py | grep -v '__' | xargs pyflakes
 	@-find app/content -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
 
