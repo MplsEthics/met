@@ -1,8 +1,7 @@
 from google.appengine.ext import webapp
 import base
 from datetime import datetime
-from met import content, order, session
-import time
+from met import content
 
 class Scenario(base.SecureView):
 

@@ -1,8 +1,6 @@
 from google.appengine.ext import webapp
-from datetime import datetime
 import base
 from met import content
-from met import session
 
 class Response(base.SessionView):
 
