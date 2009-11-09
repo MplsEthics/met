@@ -1,8 +1,6 @@
-
 import base
-from met import session
 
-class Reset(base.BaseView, session.SessionMixin):
+class Reset(base.SessionView):
     """View to reset the session hash."""
 
     def get(self):
