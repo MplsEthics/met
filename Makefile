@@ -29,5 +29,5 @@ dist sdist:
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
-	@-find app/content -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
+	@-find mpls-ethics/content -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
 
