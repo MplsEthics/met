@@ -1,7 +1,8 @@
 import os
 import logging
 from google.appengine.ext import webapp
-from met.order import view_order
+from met.order import scenario_order, view_order
+from met.session import Session
 
 class BaseView(webapp.RequestHandler):
     """Base class for all MET view classes."""
@@ -64,11 +65,38 @@ class BaseView(webapp.RequestHandler):
         self.redirect(self.request.path)
 
 
-class RestrictedView(BaseView):
-    """Much like the base view, but restricting  """
+class SessionView(BaseView):
+    """Just like BaseView, with the addition of method getSession(), which
+    allows access to the session."""
 
-    def __init__(self):
-        pass
+    def getSession(self):
+        """Return an initialized session object."""
+
+        # if a cached session object already exists, return it
+        if hasattr(self,'_session'):
+            return self._session
+
+        # create and cache a new session object
+        self._session = session = Session()
+
+        # ensure all scenario answer arrays are present
+        for so in scenario_order:
+            session.setdefault(so,[])
+
+        # ensure the scenario completion dict is present and empty
+        session.setdefault('completed',dict())
+
+        return self._session
+
+
+class SecureView(SessionView):
+    """This view class extends the session view with features useful for
+    ensuring that learners are completing the scenarios in the right order."""
+
+    def assert_all_scenarios_completed(self):
+        if not self.all_scenarios_completed():
+            incomplete = self.first_incomplete_scenario()
+            self.redirect("/%s/intro1" % incomplete)
 
     def assert_scenario_order(self,scenario_id):
         """If the learner is trying to access this scenario out of order,
@@ -77,4 +105,33 @@ class RestrictedView(BaseView):
         if not self.prereqs_completed(scenario_id):
             incomplete = self.first_incomplete_scenario()
             self.redirect("/%s/intro1" % incomplete)
+
+    def prereqs_completed(self,scenario_id):
+        """Returns True if all the scenarios before to 'scenario_id' have been
+        completed, as indicated by their status in 'compdict'.  Returns False
+        otherwise.  This function can be used to determine if the user is
+        trying to complete the scenarios out of order."""
+        compdict = self.getSession()["completed"]
+        assert scenario_id in scenario_order, 'test scenario must be known'
+        k = scenario_order.index(scenario_id)
+        for sid in scenario_order[0:k]:
+            if sid not in compdict:
+                return False
+        return True
+
+    def all_scenarios_completed(self):
+        """Returns True if all the scenarios are in the dict that records
+        scenario completiions ('compdict').  Returns False otherwise."""
+        compdict = self.getSession()["completed"]
+        for sid in scenario_order:
+            if sid not in compdict:
+                return False
+        return True
+
+    def first_incomplete_scenario(self):
+        compdict = self.getSession()["completed"]
+        for sid in scenario_order:
+            if sid not in compdict:
+                return sid
+        return None
 
