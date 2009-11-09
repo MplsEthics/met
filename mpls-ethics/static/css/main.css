@@ -160,6 +160,14 @@ a#next {
     width: 8em;
 }
 
+div#content dl#resources {
+    margin-left: 1em;
+    margin-top: 0.5em;
+}
+
+div#content dl#resources dt {
+    margin-top: 0.5em;
+}
 
 /* question/answer form styling */
 
@@ -189,7 +197,10 @@ form#question span.incorrect {
 /* response formatting */
 
 div#content div#response p {
-    margin-left: 0;
+    margin-left: 0.75em;
+    margin-right: 0.75em;
+    margin-top: 0.75em;
+    margin-bottom: 0.5em;
 }
 
 div#content div#response span.correct {
@@ -208,6 +219,18 @@ div#content div#response span.incorrect {
 
 div#content div#response h3 {
     font-weight: normal;
-    padding-left: 0;
+    margin-left: 0.75em;
+}
+
+/* learner data form styling */
+
+div#content form#learner {
+    margin-left: 3em;
+}
+
+div#content div#learner_error {
+    color: #f51;
+    font-weight: bold;
+    margin: 1em 3em 1em 3em;
 }
 
