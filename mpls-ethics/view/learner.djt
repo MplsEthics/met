@@ -2,6 +2,13 @@
 {% block content %}
 <h1>Automated Proof of Required Ethics Education</h1>
 
+{% if learner_error %}
+<div class="learner_error">
+Please enter your full name and choose a board or commission from the list
+below.
+</div>
+{% endif %}
+
 <p>
 The training certificate and email submissions from this electronic ethics
 education course are official records.  By submitting your proof of education
