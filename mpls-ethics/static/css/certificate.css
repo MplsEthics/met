@@ -1,0 +1,9 @@
+/* page layout */
+
+html, title, body {
+    background-image: url('/images/certificate-plain.png');
+    font-family: Verdana, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
