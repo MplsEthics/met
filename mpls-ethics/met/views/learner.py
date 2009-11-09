@@ -1,5 +1,4 @@
 import logging
-from datetime import datetime
 from google.appengine.ext.webapp import template
 from met import order, session
 from met.boards import boards as boards_
