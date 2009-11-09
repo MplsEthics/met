@@ -1,7 +1,6 @@
 import logging
 from datetime import datetime
 from google.appengine.ext.webapp import template
-from met import session
 import base
 
 class Main(base.SessionView):
@@ -14,6 +13,6 @@ class Main(base.SessionView):
         next = 'instr1'
         show_prevnext = True
         show_about = True
-        #logging.info(locals())
+        logging.info(locals())
         self.response.out.write(template.render(path,locals()))
 
