@@ -1,1 +1,18 @@
-{# FIXME: need to generate learner certificate. Dynamic JPEG maybe? #}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png">
+<link rel="stylesheet" type="text/css" href="/css/certificate.css"
+   media="screen">
+<!--[if IE]>
+<link rel="stylesheet" type="text/css" href="/css/ie-fixes.css" />
+<![endif]-->
+<title></title>
+</head>
+<body id="certificate">
+<div id="learner_name">Learner Name</div>
+<div id="learner_board">Learner Board</div>
+</body>
+</html>
