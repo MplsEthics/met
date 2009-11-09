@@ -14,6 +14,6 @@ class Main(base.BaseView, session.SessionMixin):
         next = 'instr1'
         show_prevnext = True
         show_about = True
-        logging.info(locals())
+        #logging.info(locals())
         self.response.out.write(template.render(path,locals()))
 
