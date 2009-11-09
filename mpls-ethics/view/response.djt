@@ -21,6 +21,7 @@ You may now proceed to the next page for a full discussion of the issue.
 <h3>Please return to the question and select another answer.</h3>
 {% endif %}
 
+<p>
 <a class="button" href="{{ link_next }}">Continue</a>
 </div>
 {% endblock content %}
