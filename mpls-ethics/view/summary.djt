@@ -1,6 +1,6 @@
 {% extends "base.djt" %}
 {% block content %}
-<h1>SUMMARY</h1>
+<h1>Summary</h1>
 
 {# FIXME: need to verify that these links are correct #}
 
