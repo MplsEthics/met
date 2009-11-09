@@ -27,7 +27,7 @@ you have completed your ethics training.
 Thank you for your commitment to public service and your compliance with the
 City’s Ethics in Government Ordinance.
 
-<form style="margin-left:3em" id="learner" method="POST">
+<form id="learner" action="" method="POST">
 
 <table>
 <tr>
