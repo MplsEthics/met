@@ -4,7 +4,7 @@ from datetime import datetime
 from met import content, order, session
 import time
 
-class Scenario(base.BaseView, session.SessionMixin, order.OrderMixin):
+class Scenario(base.SecureView):
 
     def get(self,scenario_id):
         """Handle HTTP GET--show the scenario question to the user."""
