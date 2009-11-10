@@ -14,5 +14,6 @@
 <body id="certificate">
 <div id="learner_name">{{ learner_name|default:"++ Learner Name ++" }}</div>
 <div id="learner_board">{{ learner_board|default:"===== Learner Board =====" }}</div>
+<div id="complete_date">{{ complete_date|default:now|date:"N jS, Y" }}</div>
 </body>
 </html>

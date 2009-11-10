@@ -10,6 +10,14 @@ body {
     background-image: url('/images/certback.png');
 }
 
+@media screen { }
+
+/*
+@media print {
+    size: landscape;
+}
+*/
+
 div#learner_name {
     position:absolute;
     width: 5in;

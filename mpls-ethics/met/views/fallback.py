@@ -1,5 +1,6 @@
 import os
 import logging
+import datetime
 import base
 from google.appengine.ext import webapp
 from met.version import version as VERSION
@@ -14,6 +15,7 @@ class Fallback(base.BaseView):
         next = self.next()
         show_prevnext = True
         version = VERSION
+        now = datetime.datetime.now()
         self.response.out.write(webapp.template.render(path,locals()))
 
     def template(self):
