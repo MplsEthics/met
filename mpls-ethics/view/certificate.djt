@@ -5,14 +5,14 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <link rel="icon" type="image/png" href="/images/favicon-16x16.png">
 <link rel="stylesheet" type="text/css" href="/css/certificate.css"
-   media="screen">
+   media="screen, print">
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" href="/css/ie-fixes.css" />
 <![endif]-->
 <title></title>
 </head>
 <body id="certificate">
-<div id="learner_name">Learner Name</div>
-<div id="learner_board">Learner Board</div>
+<div id="learner_name">{{ learner_name|default:"++ Learner Name ++" }}</div>
+<div id="learner_board">{{ learner_board|default:"===== Learner Board =====" }}</div>
 </body>
 </html>
