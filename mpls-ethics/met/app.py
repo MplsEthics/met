@@ -7,6 +7,7 @@ app_pages = [
     (r'^/main$', views.Main),               # ditto
     (r'^/reset$', views.Reset),             # clears session
     (r'^/learner$', views.Learner),         # learner form submit
+    (r'^/certificate$', views.Certificate), # learner certificate
     (r'^/(\w+)/scenario$', views.Scenario), # e.g. "coi1/scenario"
     (r'^/(\w+)/response$', views.Response), # e.g. "coi1/response"
     (r'^/(\w+)/(\w+)$', views.Content),     # e.g. "coi1/intro1"
