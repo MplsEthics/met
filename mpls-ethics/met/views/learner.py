@@ -8,6 +8,9 @@ from met.views import base
 class Learner(base.SecureView):
 
     def get(self):
+        # ensure that all scenarios have been completed
+        self.assert_all_scenarios_completed()
+
         path = self.viewpath(append='learner.djt')
         session = self.getSession()
         show_prevnext = True
@@ -26,19 +29,27 @@ class Learner(base.SecureView):
         self.assert_all_scenarios_completed()
 
         # update the session as needed based on the answer
+
+        # bail if we don't have a valid learner name
         learner_name = self.request.params.get('learner_name',"")
-        learner_board = self.request.params.get('learner_board',"")
-
-        #logging.info('''learner_name: "%s"''' % learner_name)
-        #logging.info('''learner_board: "%s"''' % learner_board)
-
-        # bail if we don't have both name and board
-        if len(learner_name) == 0 or len(learner_board) == 0:
+        if len(learner_name) == 0:
             session["learner_error"] = True
             self.redirect('/learner')
             return
 
-        # persist the learner name and board in the session
+        # bail if we don't have a valid learner board
+        learner_board_id = self.request.params.get('learner_board_id',"")
+        try:
+            learner_board = boards_[int(learner_board_id)]
+            if len(learner_board) == 0:
+                raise
+        except:
+            session["learner_error"] = True
+            self.redirect('/learner')
+            return
+
+        # persist the learner name and board in the session (to be used by the
+        # certificate template)
         session["learner_name"] = learner_name
         session["learner_board"] = learner_board
 
@@ -56,6 +67,5 @@ class Learner(base.SecureView):
             pass
 
         # redirect to the certificate view
-        logging.info('redirecting to /certificate')
         self.redirect('/certificate')
 
