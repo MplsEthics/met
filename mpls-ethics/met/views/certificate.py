@@ -9,7 +9,7 @@ class Certificate(base.SessionView):
     """View class for the certificate."""
 
     def get(self, *argv):
-        path = self.viewpath(append='main.djt')
+        path = self.viewpath(append='certificate.djt')
         show_prevnext = False
         version = VERSION
         now = datetime.datetime.now()
