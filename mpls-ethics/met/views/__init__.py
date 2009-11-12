@@ -1,3 +1,4 @@
+from met.views.certificate import Certificate
 from met.views.fallback import Fallback
 from met.views.content import Content
 from met.views.learner import Learner
