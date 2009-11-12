@@ -35,7 +35,7 @@ City’s Ethics in Government Ordinance.
 <td><input name="learner_name" type="text" size=40>
 <tr>
 <td>Board or Commission:
-<td><select name="learner_board">
+<td><select name="learner_board_id">
 <option value="">[choose a board or commission]</option>
 {% for board in boards %}
 <option value="{{ forloop.counter0 }}">{{ board }}</option>
