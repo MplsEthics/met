@@ -6,37 +6,30 @@ html, title, body {
     padding: 0;
 }
 
-body {
-    background-image: url('/images/certback.png');
+div#certificate {
+    width: 7.5in;
+    height: 10.0in;
+    background-image: url('/images/certificate.png');
+    font-family: Verdana, Helvetica, sans-serif;
+    margin: 0.5in 0.5in 0.5in 0.5in;
+    background-repeat: no-repeat;
 }
-
-@media screen { }
-
-/*
-@media print {
-    size: landscape;
-}
-*/
 
 div#learner_name {
     position:absolute;
-    width: 5in;
-    left: 100px;
-    top: 150px;
+    width: 6.5in;
+    left: 1in;
+    top: 600px;
     text-align: center;
-}
-
-div#learner_board {
-    position: absolute;
-    width: 5in;
-    left: 100px;
-    top: 250px;
-    text-align: center;
+    font-size: 24pt;
 }
 
 div#complete_date {
     position: absolute;
-    left: 25px;
-    top: 500px;
+    width: 6.5in;
+    left: 1in;
+    top: 840px;
+    text-align: center;
+    font-size: 16pt;
 }
 
