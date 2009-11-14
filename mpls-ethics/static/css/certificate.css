@@ -9,10 +9,8 @@ html, title, body {
 div#certificate {
     width: 7.5in;
     height: 10.0in;
-    background-image: url('/images/certificate.png');
     font-family: Verdana, Helvetica, sans-serif;
     margin: 0.5in 0.5in 0.5in 0.5in;
-    background-repeat: no-repeat;
 }
 
 div#learner_name {
