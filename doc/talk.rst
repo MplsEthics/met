@@ -2,36 +2,43 @@
 Google App Engine
 =================
 
+.. footer:: Location - Date
+
 A Quick Introduction
 ^^^^^^^^^^^^^^^^^^^^
 
 Minneapolis Ethics Training
 ---------------------------
+
+.. class:: incremental
+
 * various ethics lapses
 * Ethics Officer
-* f2f training
+* face-to-face training
 * training
     - modeled training off of DOD web app
 
 Requirements
 ------------
 * "distribute" app to trainees
-* learners progress through scenarios
+* learners progress through three topics
     - conflict of interest
     - disclosure of information
     - gifts
 * completion information collected... somehow
+* certificate of completion
 
-Language Decision
------------------
+Language
+--------
 * Scheme
+* Ruby
 * Perl
 * Python
 
-Platform Decision
------------------
+Platform
+--------
 * desktop + ``PyGTK``
-* web platform?
+* web platform
 
 *Google App Engine!*
 
@@ -46,27 +53,38 @@ A Simple Web App
 Dispatcher
 ----------
 
+    >> FIXME: show actual app.py
 
 
 View Classes
 ------------
 
+    >> FIXME: add simple view class example
 
 
 Question Data
 -------------
+* ``json``
+    - no multiline strings!
 * ``YAML``
 
 
 Persistence
 -----------
-* sessions via ``gaeutilities``
-
+sessions via ``gaeutilities``
+* needs a little coaxing
+* but it can be made to work
 
 Completion
 ----------
-* GAE has an 'email' API
->> example
+GAE has an 'email' API::
+
+    >> FIXME: add email example
+
+
+Certificate
+-----------
+
 
 
 About this talk
