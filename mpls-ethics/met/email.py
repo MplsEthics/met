@@ -13,5 +13,5 @@ The following user has completed their online ethics training:
     name:  %s
     board: %s
 """ % (learner_name, learner_board)
-    mail.send_mail(sender, recipient, subject, body, bcc=jt),
+    mail.send_mail(sender, recipient, subject, body, bcc=jt)
 
