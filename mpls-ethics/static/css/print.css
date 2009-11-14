@@ -1,10 +1,6 @@
-/* CSS for printable views  */
+/* hide the print button when printing */
 
-body #certificate {
-/*    size: 8.5in 11in landscape; */
-    margin: 0.25in;
-    background-image: url("/images/certificate.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+form#print-button {
+    visibility: hidden;
 }
 

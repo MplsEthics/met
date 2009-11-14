@@ -6,6 +6,12 @@ html, title, body {
     padding: 0;
 }
 
+form#print-button {
+    position: absolute;
+    left: 6.75in;
+    top: 5px;
+}
+
 div#certificate {
     width: 7.5in;
     height: 10.0in;
