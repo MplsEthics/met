@@ -1,7 +1,8 @@
 ======================
 Ethics Training Webapp
 ======================
-.. footer:: John Trammell *<johntrammell@gmail.com>*
+.. footer::
+    John Trammell *<johntrammell@gmail.com>*
 
 With the Google App Engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -9,15 +10,29 @@ With the Google App Engine
 .. image:: appengine_lowres.gif
     :align: center
 
+|
+| John Trammell, Fall 2009
+
+
+
 Minneapolis Ethics Training
 ---------------------------
 .. class:: incremental
 
-- various ethics lapses
+- three recent felony ethics lapses
 - Ethics Officer
 - face-to-face training
-- training
-    - modeled training off of DOD web app
+
+
+
+Minneapolis Ethics Training
+---------------------------
+.. class:: incremental
+
+- custom computerized training
+- modeled training off of DOD web app
+
+
 
 Requirements
 ------------
@@ -32,8 +47,12 @@ Requirements
 - certificate of completion
 
 
+
 Language, Platform, and Hosting
 -------------------------------
+.. image:: skiing.jpg
+    :align: right
+
 .. class:: incremental
 
 - desktop app
@@ -43,18 +62,46 @@ Language, Platform, and Hosting
 - *Google App Engine!*
 
 
-A Simple Web App
-----------------
+
+App Engine 101
+--------------
 .. class:: incremental
 
-* progress through scenarios
-* persist status
-* email completion status
+- free (up to storage, CPU, bandwidth quotas)
+- build locally using SDK
+- upload to Google (``appspot.com``)
+- uses Google infrastructure for scaling
+- supports apps in Java, Python (2.5)
+- use the 'webapp' framework
+- a few 3rd-party libraries (PyCrypto, PyYAML, zipimport, ...)
+
+
+
+App Engine 102
+--------------
+.. class:: incremental
+
+- persistent OO storage
+- email send/receive
+- scheduled tasks / task queues
+- some image transforms
+
+
+
+The *mpls-ethics* Web App
+---------------------------
+.. class:: incremental
+
+- linear progression through scenarios
+    - text
+    - multiple-choice questions
+- persist answers to questions
+- email completion status
+
 
 
 App Configuration
 -----------------
-
 ::
 
     application: 'mpls-ethics'
@@ -68,9 +115,9 @@ App Configuration
       script: met/app.py
 
 
+
 App Dispatcher
 --------------
-
 ::
 
     from google.appengine.ext import webapp
@@ -79,7 +126,6 @@ App Dispatcher
     app_pages = [
         (r'^/$', views.Main),
         (r'^/(\w+)/response$', views.Response),
-        (r'^/(\w+)/(\w+)$', views.Content),
         # ... pages removed for clarity ...
     ]
     wsgi_app = webapp.WSGIApplication(app_pages,debug=True)
@@ -87,24 +133,29 @@ App Dispatcher
         run_wsgi_app(wsgi_app)
 
 
-
-Question Data
--------------
-- ``JSON``?
-- ``YAML``?
-
-PyYAML is provided by GAE!
+View Class
+----------
 
 
-Persistence
------------
+
+
+Django Template
+---------------
+
+
+
+
+Browser Sessions
+----------------
 .. class:: incremental
 
-- sessions via ``gaeutilities``
-- needs a little coaxing
-- but it can be made to work
+- browser sessions via 3rd-party  ``gaeutilities``
+- needed a little coaxing
+- but I got it to work
 
-Completion Tracking, Part 1
+
+
+Completion Tracking - email
 ---------------------------
 GAE has an 'email' API::
 
@@ -117,12 +168,35 @@ GAE has an 'email' API::
         msg.body = """ ... """ % learner
         msg.send()
 
-Completion Tracking, Part 2
----------------------------
-Use GAE storage::
 
-    # define storage class
-    # stash the data
+
+Completion Tracking - storage
+-----------------------------
+Use GAE storage model::
+
+    from google.appengine.ext import db
+    class Completion(db.Model):
+        name = db.StringProperty(
+            verbose_name='Learner Name')
+        board = db.StringProperty(
+            verbose_name='Learner Board or Commission')
+        date = db.DateTimeProperty(
+            verbose_name='Completion Timestamp',
+            auto_now_add=True)
+
+
+
+Completion Tracking - storage
+-----------------------------
+::
+
+    from met.model import Completion
+    comp = Completion()
+    comp.name = learner_name
+    comp.board = learner_board
+    comp.put()
+
+
 
 About this talk
 ---------------
