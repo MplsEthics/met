@@ -1,11 +1,13 @@
-=================
-Google App Engine
-=================
+======================
+Ethics Training Webapp
+======================
+.. footer:: John Trammell *<johntrammell@gmail.com>*
 
-.. footer:: Location - Date
+With the Google App Engine
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A Quick Introduction
-^^^^^^^^^^^^^^^^^^^^
+.. image:: appengine_lowres.gif
+    :align: center
 
 Minneapolis Ethics Training
 ---------------------------
