@@ -9,83 +9,118 @@ A Quick Introduction
 
 Minneapolis Ethics Training
 ---------------------------
-
 .. class:: incremental
 
-* various ethics lapses
-* Ethics Officer
-* face-to-face training
-* training
+- various ethics lapses
+- Ethics Officer
+- face-to-face training
+- training
     - modeled training off of DOD web app
 
 Requirements
 ------------
-* "distribute" app to trainees
-* learners progress through three topics
+.. class:: incremental
+
+- "distribute" app to trainees
+- learners progress through three topics
     - conflict of interest
     - disclosure of information
     - gifts
-* completion information collected... somehow
-* certificate of completion
+- completion information collected... somehow
+- certificate of completion
 
-Language
---------
-* Scheme
-* Ruby
-* Perl
-* Python
 
-Platform
---------
-* desktop + ``PyGTK``
-* web platform
+Language, Platform, and Hosting
+-------------------------------
+.. class:: incremental
 
-*Google App Engine!*
+- desktop app
+- "Scheme on Skis"
+- Perl + Catalyst
+- Python + ???
+- *Google App Engine!*
 
 
 A Simple Web App
 ----------------
+.. class:: incremental
+
 * progress through scenarios
 * persist status
 * email completion status
 
 
-Dispatcher
-----------
+App Configuration
+-----------------
 
-    >> FIXME: show actual app.py
+::
+
+    application: 'mpls-ethics'
+    runtime: python
+    handlers:
+    - url: /images
+      static_dir: static/images
+    - url: /css
+      static_dir: static/css
+    - url: /.*
+      script: met/app.py
 
 
-View Classes
-------------
+App Dispatcher
+--------------
 
-    >> FIXME: add simple view class example
+::
+
+    from google.appengine.ext import webapp
+    from google.appengine.ext.webapp.util import run_wsgi_app
+    from met import views
+    app_pages = [
+        (r'^/$', views.Main),
+        (r'^/(\w+)/response$', views.Response),
+        (r'^/(\w+)/(\w+)$', views.Content),
+        # ... pages removed for clarity ...
+    ]
+    wsgi_app = webapp.WSGIApplication(app_pages,debug=True)
+    if __name__ == "__main__":
+        run_wsgi_app(wsgi_app)
+
 
 
 Question Data
 -------------
-* ``json``
-    - no multiline strings!
-* ``YAML``
+- ``JSON``?
+- ``YAML``?
+
+PyYAML is provided by GAE!
 
 
 Persistence
 -----------
-sessions via ``gaeutilities``
-* needs a little coaxing
-* but it can be made to work
+.. class:: incremental
 
-Completion
-----------
+- sessions via ``gaeutilities``
+- needs a little coaxing
+- but it can be made to work
+
+Completion Tracking, Part 1
+---------------------------
 GAE has an 'email' API::
 
-    >> FIXME: add email example
+    from google.appengine.api import mail
+    def send_completion(learner):
+        msg = mail.EmailMessage()
+        msg.sender = 'ethics@example.com'
+        msg.to = 'training@example.com'
+        msg.subject = "Ethics training completion"
+        msg.body = """ ... """ % learner
+        msg.send()
 
+Completion Tracking, Part 2
+---------------------------
+Use GAE storage::
 
-Certificate
------------
-
-
+    # define storage class
+    # stash the data
 
 About this talk
 ---------------
