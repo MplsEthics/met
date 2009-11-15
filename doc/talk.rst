@@ -63,6 +63,14 @@ Language, Platform, and Hosting
 
 
 
+Development
+-----------
+.. class:: incremental
+
+- github
+
+
+
 App Engine 101
 --------------
 .. class:: incremental
@@ -139,8 +147,10 @@ View Class
 
 
 
-Django Template
----------------
+
+Django Templates
+----------------
+
 
 
 
