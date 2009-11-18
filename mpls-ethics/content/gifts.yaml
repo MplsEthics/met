@@ -5,17 +5,17 @@ id: 'gifts'
 name: "Topic Three: Gifts"
 
 scenario: "You are a member of the Neighborhood & Community Engagement
-  Commission.  A subcommittee of the NCEC has been tasked with the working
-  with the City to hire a Director for the Neighborhood and Community
-  Relations Department.  The subcommittee will be selecting the finalists
-  and making recommendations on hiring.  The City Coordinator will make the
-  final decision on the hiring of a director.  You have been invited to
-  coffee at a local restaurant by Acquaintance who is interested in your
-  work on the NCEC and you accept.  During your meeting you have coffee and
-  a scone.  During your meeting, Acquaintance tells you that she has
-  applied for the Director position.  You inform Acquaintance that you are
-  on the selection committee and can not discuss that topic with her.  When
-  the server brings the bill, Acquaintance insists on paying."
+  Commission.  A subcommittee of the NCEC has been tasked with working with
+  the City to hire a Director for the Neighborhood and Community Relations
+  Department.  The subcommittee will be selecting the finalists and making
+  recommendations on hiring.  The City Coordinator will make the final
+  decision on the hiring of a director.  You have been invited to coffee at
+  a local restaurant by Acquaintance who is interested in your work on the
+  NCEC and you accept.  During your meeting you have coffee and a scone.
+  During your meeting, Acquaintance tells you that she has applied for the
+  Director position.  You inform Acquaintance that you are on the selection
+  committee and can not discuss that topic with her.  When the server
+  brings the bill, Acquaintance insists on paying."
 
 question: "Is it permissible to accept Acquaintance's offer to pay for your
   scone and coffee?"
