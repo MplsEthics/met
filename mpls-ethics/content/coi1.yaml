@@ -4,14 +4,15 @@ id: "coi1"
 
 name: 'Topic One: Conflict of Interest, Part One'
 
-scenario: "You, an architect, arrive for a Zoning Board of Adjustment
-  meeting only to see a “Friend” standing in the hallway outside the
-  meeting room.  Friend is present to plead his case for a variance.  Many
-  neighborhood residents appearing to oppose Friend’s case are also
-  standing in the hallway.  You “backslap” your friend with a hearty
-  greeting.  Your employer initially worked on Friend’s project but Friend
-  chose to finish the project with another Firm.  You never worked on
-  Friend’s project because you specialize in other areas."
+scenario: "You, an architect and a member of the Zoning Board of
+  Adjustment, arrive for a board meeting only to see a “Friend” standing in
+  the hallway outside the meeting room.  Friend is present to plead his
+  case for a variance.  Many neighborhood residents appearing to oppose
+  Friend's case are also standing in the hallway.  You “backslap” your
+  friend with a hearty greeting.  Your employer initially worked on
+  Friend's project but Friend chose to finish the project with another
+  Firm.  You never worked on Friend’s project because you specialize in
+  other areas."
 
 question: "May you participate in the Board’s decision related to Friend’s
   variance?"
