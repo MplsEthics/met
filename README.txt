@@ -28,3 +28,8 @@ RESOURCES
    http://code.google.com/appengine/docs/python/overview.html
    http://www.dod.mil/dodgc/defense_ethics/ethics_training/2007_AET/
 
+DEVELOPMENT
+===========
+
+   http://10.1.6.111:8765/_ah/admin/cron
+
