@@ -27,6 +27,7 @@ RESOURCES
    http://code.google.com/intl/en/appengine/
    http://code.google.com/appengine/docs/python/overview.html
    http://www.dod.mil/dodgc/defense_ethics/ethics_training/2007_AET/
+   https://appengine.google.com/
 
 DEVELOPMENT
 ===========
