@@ -20,5 +20,7 @@ for f in sys.argv[1:]:
     print "Opening YAML file '%s'..." % f,  # no newline
     fh = open(f)
     objects = [x for x in yaml.load_all(fh)]
+    import pdb; pdb.set_trace()
+
     pprint.pprint(objects)
 
