@@ -20,6 +20,9 @@ archive:
 update:
 	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
+load:
+	$(PYTHON25) $(APPENGINE)/appcfg.py ???? --filename=bulkloader.yaml
+
 dist sdist:
 	$(PYTHON25) setup.py sdist --formats=zip
 
