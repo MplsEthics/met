@@ -19,61 +19,48 @@ question: "May you participate in the decision making process related to
 prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
---- !answer
+answers:
 
-id: "coi4.1"
+  - !answer
+    id: "coi4.1"
+    answer: "Yes, provided Firm is not the sole provider of services listed in
+      Helping Others’ proposal."
+    is_correct: true
+    response: "While the financial interests of a domestic partner are
+      considered your financial interests, if the Firm is one of several
+      possible providers of services, no conflict of interest exists. At
+      the time of the board’s decision your financial interests are no
+      greater than the other providers of services listed."
 
-answer: "Yes, provided Firm is not the sole provider of services listed in
-  Helping Others’ proposal."
+  - !answer
+    id: "coi4.2"
+    answer: "No, because you have an interest in two of the proposals."
+    is_correct: false
+    response: "While the financial interests of a domestic partner are
+      considered your financial interests, a potential conflict of interest
+      involving the Firm would only arise if the Firm is listed as the sole
+      provider of services.<p>Your volunteer service at Do Good does not
+      create a conflict of interest because you are a volunteer.  Absent
+      the payment of compensation of $50.00 per month or more, Do Good is
+      not an associated business and you do not have a financial interest
+      in Do Good."
 
-correct: true
+  - !answer
+    id: "coi4.3"
+    answer: "Yes, because any interest you have in Helping Others is
+      negated by the interest you have in Do Good."
+    is_correct: false
+    response: "If you have a financial interest in a matter of city
+      business, that interest can not be negated by another competing
+      financial interest."
 
-response: "While the financial interests of a domestic partner are
-  considered your financial interests, if the Firm is one of several
-  possible providers of services, no conflict of interest exists. At the
-  time of the board’s decision your financial interests are no greater than
-  the other providers of services listed."
-
---- !answer
-
-id: "coi4.2"
-
-answer: "No, because you have an interest in two of the proposals."
-
-correct: false
-
-response: "While the financial interests of a domestic partner are
-  considered your financial interests, a potential conflict of interest
-  involving the Firm would only arise if the Firm is listed as the sole
-  provider of services.<p>Your volunteer service at Do Good does not create
-  a conflict of interest because you are a volunteer.  Absent the payment
-  of compensation of $50.00 per month or more, Do Good is not an associated
-  business and you do not have a financial interest in Do Good."
-
---- !answer
-
-id: "coi4.3"
-
-answer: "Yes, because any interest you have in Helping Others is negated by
-  the interest you have in Do Good."
-
-correct: false
-
-response: "If you have a financial interest in a matter of city business,
-  that interest can not be negated by another competing financial
-  interest."
-
---- !answer
-
-id: "coi4.4"
-
-answer: "Yes, provided you do not receive more than $50.00 compensation a
-  month from Do Good."
-
-correct: false
-
-response: "While it is correct that absent the payment of compensation of
-  $50.00 per month or more, Do Good is not an associated business and you
-  do not have a financial interest in Do Good, this answer ignores the
-  financial interests of your domestic partner."
+  - !answer
+    id: "coi4.4"
+    answer: "Yes, provided you do not receive more than $50.00 compensation
+      a month from Do Good."
+    is_correct: false
+    response: "While it is correct that absent the payment of compensation
+      of $50.00 per month or more, Do Good is not an associated business
+      and you do not have a financial interest in Do Good, this answer
+      ignores the financial interests of your domestic partner."
 
