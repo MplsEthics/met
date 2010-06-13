@@ -16,53 +16,36 @@ question: "May you appeal an order issued by city staff when the appeal
 prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
---- !answer
+answers:
 
-id: "coi2.1"
+  - !answer
+    answer: "Yes.  Provided you send a property representative and not
+      personally plead your case to the board."
+    correct: false
+    response: "You may send a representative to plead your case but you may
+      personally plead your case.  There is a better answer."
 
-answer: "Yes.  Provided you send a property representative and not
-  personally plead your case to the board."
+  - !answer
+    answer: "Yes. Provided you resign from the Board prior to the hearing
+      date."
+    correct: false
+    response: "While resigning from the board would permit you to bring
+      your appeal before the Board, you need not resign from the board to
+      get your hearing."
 
-correct: false
+  - !answer
+    answer: "Yes.  Provided you do not discuss your situation with other
+      board members outside of the hearing."
+    correct: true
+    response: "You continue to have the rights other citizens have to
+      pursue personal business with the City and may appeal a housing order
+      to the Board."
 
-response: "You may send a representative to plead your case but you may
-  personally plead your case.  There is a better answer."
-
---- !answer
-
-id: "coi2.2"
-
-answer: "Yes. Provided you resign from the Board prior to the hearing
-  date."
-
-correct: false
-
-response: "While resigning from the board would permit you to bring your
-  appeal before the Board, you need not resign from the board to get your
-  hearing."
-
---- !answer
-
-id: "coi2.3"
-
-answer: "Yes.  Provided you do not discuss your situation with other board
-  members outside of the hearing."
-
-correct: true
-
-response: "You continue to have the rights other citizens have to pursue
-  personal business with the City and may appeal a housing order to the
-  Board."
-
---- !answer
-
-id: "coi2.4"
-
-answer: "No.  Because of your relationship to the board, whether you resign
-  or not."
-
-correct: false
-
-response: "This answer leaves you with no recourse and denies you rights
-  held by other Minneapolis citizens."
+  - !answer
+    id: "coi2.4"
+    answer: "No.  Because of your relationship to the board, whether you
+      resign or not."
+    correct: false
+    response: "This answer leaves you with no recourse and denies you
+      rights held by other Minneapolis citizens."
 
