@@ -1,19 +1,8 @@
 #!/usr/bin/env python2.5
 
-"""
-Classes and other utilities related to dynamic question content.
-"""
+"""Schema classes for question content."""
 
-import copy
-import os
 import yaml
-import logging
-from pprint import pprint
-
-
-class Topic(yaml.YAMLObject):
-    yaml_tag = '!topic'
-
 
 class Scenario(yaml.YAMLObject):
 
@@ -34,11 +23,6 @@ class Scenario(yaml.YAMLObject):
         return """%(class)s("%(name)s")[%(desc)s]""" % repr
 
 
-class Question(yaml.YAMLObject):
-    yaml_tag = '!question'
-
-
-
 class Answer(yaml.YAMLObject):
 
     yaml_tag = '!answer'
@@ -46,10 +30,10 @@ class Answer(yaml.YAMLObject):
     checked = False
     disabled = False
 
-    def __init__(self,_id,answer,correct,response):
+    def __init__(self,_id,answer,is_correct,response):
         self.id = _id
         self.answer = answer
-        self.correct = correct
+        self.is_correct = is_correct
         self.response = response
 
     def __repr__(self):
