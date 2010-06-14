@@ -10,7 +10,7 @@ import yaml
 import pprint
 import csv
 
-content_ = os.path.join(os.path.dirname(__file__),'../lib/content')
+content_ = os.path.join(os.path.dirname(__file__),'../lib')
 sys.path.append(content_)
 
 #from met.content import Scenario

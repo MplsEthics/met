@@ -10,7 +10,7 @@ start gae app:
 	PYTHON25=$(PYTHON25) APPENGINE=$(APPENGINE) /bin/bash bin/start-appengine.sh
 
 clean:
-	rm -f MANIFEST *.csv *.zip *.tar.gz
+	rm -f MANIFEST bulkloader-* *.csv *.zip *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' | xargs rm -f
 
@@ -20,10 +20,24 @@ archive:
 update:
 	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
-load:
+answers.csv scenario.csv:
 	$(PYTHON25) bin/yaml2csv.py lib/content/*.yaml
 
-#$(PYTHON25) $(APPENGINE)/appcfg.py ???? --filename=bulkloader.yaml
+load-scenario: scenario.csv
+	$(PYTHON25) $(APPENGINE)/bulkloader.py \
+		--app_id="mpls-ethics" \
+		--config_file=etc/bulkloader.yaml \
+		--filename=scenario.csv \
+		--kind=Scenario \
+		--url http://10.1.6.111:8765/remote_api
+
+load-answer: answers.csv
+	$(PYTHON25) $(APPENGINE)/bulkloader.py \
+		--app_id="mpls-ethics" \
+		--config_file=etc/bulkloader.yaml \
+		--filename=answers.csv \
+		--kind=Answer \
+		--url http://10.1.6.111:8765/remote_api
 
 dist sdist:
 	$(PYTHON25) setup.py sdist --formats=zip

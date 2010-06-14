@@ -10,11 +10,10 @@ python_preamble:
 transformers:
 - kind: Scenario
   connector: csv
-
   property_map:
-    - property: __key__
-      external_name: key
-      export_transform: transform.key_id_or_name_as_string
+#   - property: __key__
+#     external_name: key
+#     export_transform: transform.key_id_or_name_as_string
     - property: id
       external_name: id
     - property: name
@@ -25,4 +24,16 @@ transformers:
       external_name: question
     - property: prompt
       external_name: prompt
+
+- kind: Answer
+  connector: csv
+  property_map:
+    - property: id
+      external_name: id
+    - property: answer
+      external_name: answer
+    - property: is_correct
+      external_name: is_correct
+    - property: response
+      external_name: response
 
