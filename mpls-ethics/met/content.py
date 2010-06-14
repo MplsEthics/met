@@ -63,17 +63,13 @@ class Answer(yaml.YAMLObject):
 def load_scenario_file(file):
     path = os.path.join(content_dir,file)
     fh = open(path)
-    try:
-        logging.info("loading file '%s'" % path)
-        objects = [x for x in yaml.load_all(fh)]
-        scenario = objects[0]
-        scenario.answers = objects[1:]
-        # load the answers into the scenario
-        scenario.answer_dict = dict()
-        for answer in scenario.answers:
-            scenario.answer_dict[ answer.id ] = answer
-    except:
-        logging.error("error loading '%s', skipping" % path)
+    logging.info("loading file '%s'" % path)
+    objects = [x for x in yaml.load_all(fh)]
+    scenario = objects[0]
+    # load the answers into the scenario
+    scenario.answer_dict = dict()
+    for answer in scenario.answers:
+        scenario.answer_dict[ answer.id ] = answer
     return scenario
 
 def load_testbank():
