@@ -22,58 +22,49 @@ question: "Is it permissible to accept Acquaintance's offer to pay for your
 
 prompt: ""
 
---- !answer
+answers:
 
-id: 'gifts.1'
+  - !answer
 
-answer: "Yes, because the intent behind the offer was one of common
-  courtesy."
+    id: 'gifts.1'
+    answer: "Yes, because the intent behind the offer was one of common
+      courtesy."
+    correct: false
+    response: "It may well be that the gift is offered simply as a common
+      courtesy with no intention to influence your inspection but if the
+      gift is from a prohibited source, the gift must fall under an
+      exception in order to be accepted."
+    
+  - !answer
 
-correct: false
+    id: 'gifts.2'
+    answer: "Yes, because the value of the scone and coffee is less than
+      $5.00."
+    correct: false
+    response: "Not all gifts valued under $5.00 may be accepted.  This gift
+      would not fit under any of the exceptions so even though it is of
+      minimal value it may not be accepted if it is from a prohibited
+      source."
 
-response: "It may well be that the gift is offered simply as a common
-  courtesy with no intention to influence your inspection but if the gift
-  is from a prohibited source, the gift must fall under an exception in
-  order to be accepted."
+  - !answer
 
---- !answer
+    id: 'gifts.3'
+    answer: "No, because of your role on the subcommittee and Acquaintance's
+      financial interests."
+    correct: true
+    response: "Acquaintance is an interested party.  Acquaintance has a
+      financial interest in the outcome of the subcommittee's hiring
+      recommendations.   Coffee and scones do not fall within any of the
+      listed gift exceptions."
+    
+  - !answer
 
-id: 'gifts.2'
-
-answer: "Yes, because the value of the scone and coffee is less than
-  $5.00."
-
-correct: false
-
-response: "Not all gifts valued under $5.00 may be accepted.  This gift
-  would not fit under any of the exceptions so even though it is of minimal
-  value it may not be accepted if it is from a prohibited source."
-
---- !answer
-
-id: 'gifts.3'
-
-answer: "No, because of your role on the subcommittee and Acquaintance's
-  financial interests."
-
-correct: true
-
-response: "Acquaintance is an interested party.  Acquaintance has a
-  financial interest in the outcome of the subcommittee's hiring
-  recommendations.   Coffee and scones do not fall within any of the listed
-  gift exceptions."
-
---- !answer
-
-id: 'gifts.4'
-
-answer: "Yes, because the subcommittee is not the final decision maker
-  and you did not discuss the matter with Acquaintance."
-
-correct: false
-
-response: "Even though the subcommittee is not the final decision maker,
-  the subcommittee's recommendations will directly impact Acquaintance's
-  status as a contender for the Director position.  Acquaintance is an
-  interested person."
-
+    id: 'gifts.4'
+    answer: "Yes, because the subcommittee is not the final decision maker
+      and you did not discuss the matter with Acquaintance."
+    correct: false
+    response: "Even though the subcommittee is not the final decision
+      maker, the subcommittee's recommendations will directly impact
+      Acquaintance's status as a contender for the Director position.
+      Acquaintance is an interested person."
+    
