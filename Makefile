@@ -10,7 +10,7 @@ start gae app:
 	PYTHON25=$(PYTHON25) APPENGINE=$(APPENGINE) /bin/bash bin/start-appengine.sh
 
 clean:
-	rm -f MANIFEST *.zip *.tar.gz
+	rm -f MANIFEST *.csv *.zip *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' | xargs rm -f
 
@@ -21,7 +21,9 @@ update:
 	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
 load:
-	$(PYTHON25) $(APPENGINE)/appcfg.py ???? --filename=bulkloader.yaml
+	$(PYTHON25) bin/yaml2csv.py lib/content/*.yaml
+
+#$(PYTHON25) $(APPENGINE)/appcfg.py ???? --filename=bulkloader.yaml
 
 dist sdist:
 	$(PYTHON25) setup.py sdist --formats=zip
