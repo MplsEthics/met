@@ -26,19 +26,19 @@ answers:
       decisions on this case."
     is_correct: false
     response: "The fact that you are an honest person with a high level of
-      personal integrity is not relevant.  <p>The ordinance provides
+      personal integrity is not relevant. <p>The ordinance provides
       objective criteria.  The subjective factor of personal integrity is
       not included.  The fact that you could make an objective and
       impartial decision based entirely on the facts presented in the
       hearing would not preclude you from violating the conflict of
-      interest rule.  <p>This is a good example of how even honest,
+      interest rule. <p>This is a good example of how even honest,
       well-meaning individuals may unwittingly violate the Ethics Code."
 
-    - !answer
+  - !answer
     id: "coi3.2"
-    answer: "Maybe, if you sell the stock and determine that your relationship
-      with your daughter and her employment will not affect your decisions in
-      the case."
+    answer: "Maybe, if you sell the stock and determine that your
+      relationship with your daughter and her employment will not affect
+      your decisions in the case."
     is_correct: true
     response: "Selling the stock would eliminate your conflicting financial
       interest.  <p>Your ability to assume the responsibilities of a member
@@ -46,7 +46,7 @@ answers:
       participation in the matter would lead to an appearance of
       impropriety."
 
-    - !answer
+  - !answer
     id: "coi3.3"
     answer: "No, because your financial interest in the stock and your
       daughter’s employment preclude you from hearing the case."
@@ -54,14 +54,14 @@ answers:
     response: "While stock ownership does give you a financial interest
       that precludes you from serving on the hearing panel, there are
       actions that may be taken to remedy the conflict and allow you to
-      participate.  <p>There is a better answer, please try again."
+      participate. <p>There is a better answer, please try again."
 
-    - !answer
+  - !answer
     id: "coi3.4"
     answer: "Yes, if you sell your stock and disown your daughter."
     is_correct: false
     response: "Did you really think the City would require you to disown
-      your child?<p>The Ethics Code sets high standards but does not
-      require unreasonable remedies.<p>There is a better answer, please try
-      again."
+      your child? <p>The Ethics Code sets high standards but does not
+      require unreasonable remedies. <p>There is a better answer, please
+      try again."
 
