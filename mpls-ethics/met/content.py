@@ -20,6 +20,7 @@ class Scenario(yaml.YAMLObject):
     def __init__(self,id_,name,prompt,question,answers):
         self.id = id_
         self.name = name
+        self.scenario = scenario
         self.question = question
         self.prompt = prompt
         self.answers = answers
@@ -46,10 +47,10 @@ class Answer(yaml.YAMLObject):
     checked = False
     disabled = False
 
-    def __init__(self,_id,answer,correct,response):
+    def __init__(self,_id,answer,is_correct,response):
         self.id = _id
         self.answer = answer
-        self.correct = correct
+        self.is_correct = is_correct
         self.response = response
 
     def __repr__(self):
