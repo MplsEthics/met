@@ -17,10 +17,9 @@ class Scenario(yaml.YAMLObject):
     def __repr__(self):
         repr = {
             'class': self.__class__.__name__,
-            'name': self.name,
-            'desc': self.description,
+            'id': self.id
         }
-        return """%(class)s("%(name)s")[%(desc)s]""" % repr
+        return """%(class)s("%(id)s")""" % repr
 
 
 class Answer(yaml.YAMLObject):
@@ -39,8 +38,7 @@ class Answer(yaml.YAMLObject):
     def __repr__(self):
         repr = {
             'class': self.__class__.__name__,
-            'answer': '%s...' % self.answer[0:30],
             'id': self.id,
         }
-        return "%(class)s(%(id)s:%(answer)s)" % repr
+        return "%(class)s(%(id)s)" % repr
 
