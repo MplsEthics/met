@@ -22,55 +22,45 @@ question: "Was it permissible to share the information with Guest?"
 
 prompt: ""
 
---- !answer
+answers:
 
-id: "doi.1"
+  - !answer
 
-answer: "Yes, because you did not gain financially by informing Guest."
+    id: "doi.1"
+    answer: "Yes, because you did not gain financially by informing Guest."
+    correct: false
+    response: "While your disclosure did not result in financial gain for
+      you or the other persons or entities listed in M.C.O. § 15.170, a
+      violation can also arise in situations where the disclosure is of
+      nonpublic information."
 
-correct: false
-
-response: "While your disclosure did not result in financial gain for you
-  or the other persons or entities listed in M.C.O. § 15.170, a violation
-  can also arise in situations where the disclosure is of nonpublic
-  information."
-
---- !answer
-
-id: "doi.2"
-
-answer: "Yes, because the issue is completed and the matter closed."
-
-correct: false
-
-response: "The answer to this question does not depend on the status of the
-  matter but the status of the information used or disclosed."
-
---- !answer
-
-id: "doi.3"
-
-answer: "No, because a complaint about Guest’s properties could be before
-  the Board at a later date."
-
-correct: false
-
-response: "The discussion you are holding with Guest could require you to
-  recuse yourself from a later hearing involving Guest’s properties but has
-  no bearing on whether your disclosure of the information involving
-  Landlord was proper."
-
---- !answer
-
-id: "doi.4"
-
-answer: "No, because you identified Complainant as the complaining party in
-  Landlord's matter."
-
-correct: true
-
-response: "The Minnesota Government Data Practices Act classifies the
-  identity of a Complainant as private data on an individual.  This means
-  that although the data is accessible to the Complainant, the data is
-  not accessible to the public."
-
+  - !answer
+    
+    id: "doi.2"
+    answer: "Yes, because the issue is completed and the matter closed."
+    correct: false
+    response: "The answer to this question does not depend on the status of the
+      matter but the status of the information used or disclosed."
+    
+  - !answer
+    
+    id: "doi.3"
+    answer: "No, because a complaint about Guest’s properties could be before
+      the Board at a later date."
+    correct: false
+    response: "The discussion you are holding with Guest could require you
+      to recuse yourself from a later hearing involving Guest’s properties
+      but has no bearing on whether your disclosure of the information
+      involving Landlord was proper."
+    
+  - !answer
+    
+    id: "doi.4"
+    answer: "No, because you identified Complainant as the complaining
+      party in Landlord's matter."
+    correct: true
+    response: "The Minnesota Government Data Practices Act classifies the
+      identity of a Complainant as private data on an individual.  This
+      means that although the data is accessible to the Complainant, the
+      data is not accessible to the public."
+    
