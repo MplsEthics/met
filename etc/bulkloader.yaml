@@ -10,25 +10,19 @@ python_preamble:
 transformers:
 - kind: Scenario
   connector: csv
+
   property_map:
     - property: __key__
       external_name: key
       export_transform: transform.key_id_or_name_as_string
-    - property: account
-      external_name: account
-      # Type: Key Stats: 119 properties of this type in this kind.
-      import_transform: transform.create_foreign_key('TODO: fill in Kind name')
-      export_transform: transform.key_id_or_name_as_string
-    - property: invite_nonce
-      external_name: invite_nonce
-      # Type: String Stats: 19 properties of this type in this kind.
-    - property: role
-      external_name: role
-      # Type: Integer Stats: 119 properties of this type in this kind.
-      import_transform: transform.none_if_empty(int)
-    - property: user
-      external_name: user
-      # Type: Key Stats: 119 properties of this type in this kind.
-      import_transform: transform.create_foreign_key('TODO: fill in Kind name')
-      export_transform: transform.key_id_or_name_as_string
+    - property: id
+      external_name: id
+    - property: name
+      external_name: name
+    - property: scenario
+      external_name: scenario
+    - property: question
+      external_name: question
+    - property: prompt
+      external_name: prompt
 
