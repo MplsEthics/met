@@ -5,7 +5,7 @@ from met.order import scenario_order, view_order
 from met.session import Session
 
 class BaseView(webapp.RequestHandler):
-    """Base class for all MET view classes."""
+    """Base class for all MET (Minneapolis Ethics Training) view classes."""
 
     # Define a hardcoded relative path from this file to the views.  This
     # should be automated somehow!
@@ -70,22 +70,9 @@ class SessionView(BaseView):
     allows access to the session."""
 
     def getSession(self):
-        """Return an initialized session object."""
-
-        # if a cached session object already exists, return it
-        if hasattr(self,'_session'):
-            return self._session
-
-        # create and cache a new session object
-        self._session = session = Session()
-
-        # ensure all scenario answer arrays are present
-        for so in scenario_order:
-            session.setdefault(so,[])
-
-        # ensure the scenario completion dict is present and empty
-        session.setdefault('completed',dict())
-
+        """Cache and return an initialized session object."""
+        if getattr(self,'_session',None) is None:
+            self._session = Session()
         return self._session
 
 
