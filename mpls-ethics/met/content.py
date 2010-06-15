@@ -1,86 +1,9 @@
-#!/usr/bin/env python2.5
-
 """
 Classes and other utilities related to dynamic question content.
 """
 
 import copy
-import os
-import yaml
-import logging
-from pprint import pprint
-
-content_dir = os.path.join(os.path.dirname(__file__), '../content')
-
-class Scenario(yaml.YAMLObject):
-
-    yaml_tag = '!scenario'
-    completed = False
-
-    def __init__(self,id_,name,prompt,question,answers):
-        self.id = id_
-        self.name = name
-        self.scenario = scenario
-        self.question = question
-        self.prompt = prompt
-        self.answers = answers
-
-    def __repr__(self):
-        repr = {
-            'class': self.__class__.__name__,
-            'id': self.id,
-            'name': self.name,
-            'answers': self.answers,
-        }
-        return """%(class)s("%(name)s")[%(answers)s]""" % repr
-
-    def is_correct(self,answer_id):
-        for answer in self.answers:
-            if answer.id == answer_id and answer.correct:
-                return True
-        return False
-
-class Answer(yaml.YAMLObject):
-
-    yaml_tag = '!answer'
-
-    checked = False
-    disabled = False
-
-    def __init__(self,_id,answer,is_correct,response):
-        self.id = _id
-        self.answer = answer
-        self.is_correct = is_correct
-        self.response = response
-
-    def __repr__(self):
-        repr = {
-            'class': self.__class__.__name__,
-            'answer': '%s...' % self.answer[0:30],
-            'id': self.id,
-        }
-        return "%(class)s(%(id)s:%(answer)s)" % repr
-
-def load_scenario_file(file):
-    path = os.path.join(content_dir,file)
-    fh = open(path)
-    logging.info("loading file '%s'" % path)
-    objects = [x for x in yaml.load_all(fh)]
-    scenario = objects[0]
-    # load the answers into the scenario
-    scenario.answer_dict = dict()
-    for answer in scenario.answers:
-        scenario.answer_dict[ answer.id ] = answer
-    return scenario
-
-def load_testbank():
-    bank = {}
-    for file in os.listdir(content_dir):
-        scenario = load_scenario_file(file)
-        bank[scenario.id] = scenario
-    return bank
-
-testbank = load_testbank()
+from met.model import Scenario
 
 def get_scenario(scenario_id):
     """Finds the scenario corresponding to the indicated ID.  We return a
