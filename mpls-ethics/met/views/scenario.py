@@ -1,6 +1,6 @@
 from google.appengine.ext import webapp
 from met.content import InvalidAnswerError, LearnerScenario
-from met.base import SecureView
+from met.views.base import SecureView
 
 class Scenario(SecureView):
 
