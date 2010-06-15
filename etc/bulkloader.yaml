@@ -25,11 +25,14 @@ transformers:
       import_transform: db.Text
     - property: question
       external_name: question
+      import_transform: db.Text
     - property: prompt
       external_name: prompt
 
 - kind: Answer
   connector: csv
+  connector_options:
+    column_list: ["id", "answer", "is_correct", "response"]
   property_map:
     - property: __key__
       external_name: key
@@ -38,8 +41,10 @@ transformers:
       external_name: id
     - property: answer
       external_name: answer
+      import_transform: db.Text
     - property: is_correct
       external_name: is_correct
     - property: response
       external_name: response
+      import_transform: db.Text
 
