@@ -61,40 +61,85 @@ class LearnerScenario(object):
 
 
         else:
-            setattr(a,"disabled",True)
-            # correct answer
-            if a.correct:
-                setattr(a,"class","answer correct")
-            # incorrect answer
+
+            answers = []
+
+
+            for a in self.scenario_answers():
+                d = dict(a.__dict__)
+
+                if a.id not in self.learner_answers():
+                    pass
+
+                answers.append(d)
+
+            # answers not yet chosen
+            if a.id not in learner_answers:
+                setattr(a,"class","answer")
+                setattr(a,"disabled",False)
+            # answers chosen
             else:
-                setattr(a,"class","answer incorrect")
+                setattr(a,"disabled",True)
+                # correct answer
 
-    # if the session says to, mark this scenario as completed
-    if session['completed'].get(scenario_id,False):
-        scenario.completed = True
-    else:
-        scenario.completed = False
+    def mark_single_answer(self,answer,learner_answers):
 
-    # if the scenario has been completed, disable all user inputs, and set the
-    # user response to the correct value
-    if scenario.completed:
-        for a in scenario.answers:
-            setattr(a,"disabled",True)
-            if a.correct:
-                setattr(a,"class","answer correct")
-                setattr(scenario,"response",a.response)
+        if answer.id not in learner_answers:
+            setattr(answer,"class","answer")
+            setattr(answer,"disabled",False)
+        else:
+            setattr(answer,"disabled",True)
+            if answer.correct:
+                setattr(answer,"class","answer correct")
             else:
-                setattr(a,"class","answer incorrect")
+                setattr(answer,"class","answer incorrect")
 
-    # since the scenario has *not* been completed, make sure the response is
-    # for the **most recent** answer
-    else:
-        scenario.answer_dict[last_answer].checked = True
-        scenario.response = scenario.answer_dict[last_answer].response
 
-    return scenario
+#    def answer_dict(self):
+#        """Returns a dictionary of answers?"""
+#
+#    # if the scenario has been completed, disable all user inputs, and set the
+#    # user response to the correct value
+#    if scenario.completed:
+#        for a in scenario.answers:
+#            setattr(a,"disabled",True)
+#            if a.correct:
+#                setattr(a,"class","answer correct")
+#                setattr(scenario,"response",a.response)
+#            else:
+#                setattr(a,"class","answer incorrect")
+#
+#    # since the scenario has *not* been completed, make sure the response is
+#    # for the **most recent** answer
+#    else:
+#        scenario.answer_dict[last_answer].checked = True
+#        scenario.response = scenario.answer_dict[last_answer].response
+#
+#    return scenario
+#
 
-if __name__ == '__main__':
-    print 'file: %s' % __file__
-    pprint(testbank)
+    def is_valid_answer(self,answer_id):
+        """Returns True if answer_id is valid for this scenario."""
+        valid_answer_ids = scenario.answer_dict.keys()
+        return answer_id in valid_answer_ids
+
+
+    def record_answer(self,answer_id):
+        """Record this answer and responds accordingly."""
+
+        if not self.is_valid_answer(answer_id):
+            raise InvalidAnswerError
+
+        # record the answer ID
+        if answer_id not in self.session[scenario_id]:
+            learner_answers = self.session[scenario_id]
+            learner_answers.append(answer_id)
+            self.session[scenario_id] = learner_answers
+
+        # update session['completed'] if the answer is correct
+        answer_obj = scenario.answer_dict[answer_id]
+        if answer_obj.correct:
+            completed = self.session["completed"]
+            completed[scenario_id] = datetime.now().isoformat()
+            self.session["completed"] = completed
 
