@@ -12,7 +12,6 @@ class Scenario(SecureView):
             incomplete = self.first_incomplete_scenario()
             self.redirect("/%s/intro1" % incomplete)
 
-
     def get(self,scenario_id):
         """Handle HTTP GET--show the scenario question to the user."""
         # enforce correct scenario order
