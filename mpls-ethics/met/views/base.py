@@ -77,8 +77,8 @@ class SessionView(BaseView):
 
 
 class SecureView(SessionView):
-    """This view class extends the session view with features useful for
-    ensuring that learners are completing the scenarios in the right order."""
+    """This view class extends the session view with features for ensuring
+    that learners are not accessing views out of order."""
 
     def assert_all_scenarios_completed(self):
         if not self.all_scenarios_completed():
@@ -88,6 +88,7 @@ class SecureView(SessionView):
     def assert_scenario_order(self,scenario_id):
         """If the learner is trying to access this scenario out of order,
         redirect to the first incomplete scenario."""
+        # FIXME: do I need compdict?
         compdict = self.getSession()['completed']
         if not self.prereqs_completed(scenario_id):
             incomplete = self.first_incomplete_scenario()
