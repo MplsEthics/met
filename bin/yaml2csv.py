@@ -27,7 +27,7 @@ sw = csv.DictWriter(
 # answers
 aw = csv.DictWriter(
     open('answers.csv','w'),
-    ['id','answer','is_correct','response'],
+    ['id','scenario','answer','is_correct','response'],
     extrasaction='ignore',
 )
 
@@ -47,5 +47,6 @@ if __name__ == '__main__':
         scenario = objects[0]
         sw.writerow(to_utf8(scenario.__dict__))
         for ans in scenario.answers:
+            ans.scenario = scenario.id
             aw.writerow(to_utf8(ans.__dict__))
 

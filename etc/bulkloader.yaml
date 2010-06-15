@@ -14,10 +14,8 @@ transformers:
     column_list: ["id", "name", "scenario", "question", "prompt"]
   property_map:
     - property: __key__
-      external_name: key
-      export_transform: transform.key_id_or_name_as_string
-    - property: id
       external_name: id
+      export_transform: transform.key_id_or_name_as_string
     - property: name
       external_name: name
     - property: scenario
@@ -33,13 +31,15 @@ transformers:
 - kind: Answer
   connector: csv
   connector_options:
-    column_list: ["id", "answer", "is_correct", "response"]
+    column_list: ["id", "scenario", "answer", "is_correct", "response"]
   property_map:
     - property: __key__
-      external_name: key
-      export_transform: transform.key_id_or_name_as_string
-    - property: id
       external_name: id
+      export_transform: transform.key_id_or_name_as_string
+    - property: scenario
+      external_name: scenario
+      import_transform: transform.create_foreign_key('Scenario')
+      export_transform: transform.key_id_or_name_as_string
     - property: answer
       external_name: answer
       import_transform: db.Text
@@ -48,4 +48,3 @@ transformers:
     - property: response
       external_name: response
       import_transform: db.Text
-
