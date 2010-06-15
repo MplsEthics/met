@@ -48,6 +48,9 @@ class LearnerScenario(object):
         except:
             return None
 
+    def answers(self):
+        return self.answer_set
+
     def scenario_answers(self):
         """Returns the source answers for this scenario."""
         #FIXME
