@@ -14,6 +14,9 @@ clean:
 	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' | xargs rm -f
 
+realclean:
+	$(PYTHON25) $(APPENGINE)/appcfg.py
+
 archive:
 	git archive --verbose --format=tar --prefix="met-0.2/" HEAD | gzip > met-0.2.tar.gz
 
@@ -23,12 +26,15 @@ update:
 answers.csv scenario.csv:
 	$(PYTHON25) bin/yaml2csv.py lib/content/*.yaml
 
+load-all: load-scenario load-answer
+
 load-scenario: scenario.csv
 	$(PYTHON25) $(APPENGINE)/bulkloader.py \
 		--app_id="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=scenario.csv \
 		--kind=Scenario \
+		--email=johntrammell@gmail.com \
 		--url http://10.1.6.111:8765/remote_api
 
 load-answer: answers.csv
@@ -37,6 +43,7 @@ load-answer: answers.csv
 		--config_file=etc/bulkloader.yaml \
 		--filename=answers.csv \
 		--kind=Answer \
+		--email=johntrammell@gmail.com \
 		--url http://10.1.6.111:8765/remote_api
 
 dist sdist:
