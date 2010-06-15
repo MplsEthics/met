@@ -2,7 +2,6 @@
 Classes and other utilities related to dynamic question content.
 """
 
-import copy
 from met.model import Scenario
 
 def get_scenario(scenario_id):
