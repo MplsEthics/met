@@ -1,11 +1,10 @@
-import os
-import logging
 import datetime
-import base
 from google.appengine.ext import webapp
+
+from met.views.base import SessionView
 from met.version import version as VERSION
 
-class Certificate(base.SessionView):
+class Certificate(SessionView):
     """View class for the certificate."""
 
     def get(self, *argv):
