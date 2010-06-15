@@ -10,16 +10,19 @@ python_preamble:
 transformers:
 - kind: Scenario
   connector: csv
+  connector_options:
+    column_list: ["id", "name", "scenario", "question", "prompt"]
   property_map:
-#   - property: __key__
-#     external_name: key
-#     export_transform: transform.key_id_or_name_as_string
+    - property: __key__
+      external_name: key
+      export_transform: transform.key_id_or_name_as_string
     - property: id
       external_name: id
     - property: name
       external_name: name
     - property: scenario
       external_name: scenario
+      import_transform: db.Text
     - property: question
       external_name: question
     - property: prompt
@@ -28,6 +31,9 @@ transformers:
 - kind: Answer
   connector: csv
   property_map:
+    - property: __key__
+      external_name: key
+      export_transform: transform.key_id_or_name_as_string
     - property: id
       external_name: id
     - property: answer
