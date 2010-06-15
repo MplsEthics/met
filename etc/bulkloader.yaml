@@ -23,11 +23,13 @@ transformers:
     - property: scenario
       external_name: scenario
       import_transform: db.Text
+      import_transform: db.Text
     - property: question
       external_name: question
       import_transform: db.Text
     - property: prompt
       external_name: prompt
+      import_transform: db.Text
 
 - kind: Answer
   connector: csv
