@@ -3,9 +3,9 @@ from google.appengine.ext.webapp import template
 from met.boards import boards as boards_
 from met.email import send_completion
 from met.model import Completion
-from met.views import base
+from met.views.base import SecureView
 
-class Learner(base.SecureView):
+class Learner(SecureView):
 
     def get(self):
         # ensure that all scenarios have been completed
