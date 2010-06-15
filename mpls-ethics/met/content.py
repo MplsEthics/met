@@ -9,34 +9,57 @@ def get_scenario(scenario_id):
     """Finds the scenario corresponding to the indicated ID.  We return a
     copy, because GAE persists the 'testbank' global, and we don't want any
     scary action-at-a-distance.  That might take hours to debug!"""
-    scenario = testbank.get(scenario_id,None)
-    return copy.deepcopy(scenario)
+    return Scenario.gql("WHERE id = :1",scenario_id).get()
 
-def merge_scenario(scenario_id,session):
-    """Retrieve the raw scenario data, then append information to it based on
-    the learner status in the session.  This function does quite a bit; it
-    should definitely be refactored."""
 
-    scenario = get_scenario(scenario_id)
+class InvalidAnswerError(Exception):
 
-    # get the learner's answers to this scenario
-    learner_answers = session.get(scenario_id,[])
+    def __init__(self, value):
+        self.parameter = value
 
-    # if there are no learner answers yet, we don't need to do anything
-    if not learner_answers:
-        return scenario
+    def __str__(self):
+        return repr(self.parameter)
 
-    # find the user's most recent answer to this scenario, if any
-    try: last_answer = learner_answers[-1]
-    except: last_answer = None
 
-    # set attributes on the answer objects
-    for a in scenario.answers:
-        # answers not yet chosen
-        if a.id not in learner_answers:
-            setattr(a,"class","answer")
-            setattr(a,"disabled",False)
-        # answers chosen
+class LearnerScenario(object):
+    """Objects of this class handle interactions between scenarios and learner
+    sessions."""
+
+    def __init__(self,scenario_id,session):
+        """Construct the hybrid object."""
+        self.scenario_id = scenario_id
+        self.session = session
+        self.scenario = Scenario.gql("WHERE id = :1", scenario_id).get()
+
+    def is_completed(self):
+        """Returns True if this learner has completed this scenario."""
+        try:
+            return self.session['completed'].get(self.scenario_id,False)
+        except:
+            return False
+
+    def learner_answers(self):
+        return self.session.get(self.scenario_id,[])
+
+    def last_answer(self):
+        """Returns the learner's last answer to this scenario, or None if no
+        last answer exists."""
+        try:
+            return self.learner_answers()[-1]
+        except:
+            return None
+
+    def scenario_answers(self):
+        """Returns the source answers for this scenario."""
+        #FIXME
+        pass
+
+    def marked_answers(self):
+
+        if self.is_completed():
+            pass
+
+
         else:
             setattr(a,"disabled",True)
             # correct answer
