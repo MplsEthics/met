@@ -1,6 +1,11 @@
 Changelog for Minneapolis Ethics Training (MET)
 ===============================================
 
+0.3 - unreleased
+----------------
+* using GAE datastore for content
+* implementing bulk loader
+
 0.2 - 2009-10-19
 ----------------
 * finished installing remaining content
