@@ -11,7 +11,8 @@ transformers:
 - kind: Scenario
   connector: csv
   connector_options:
-    column_list: ["id", "name", "scenario", "question", "prompt"]
+    encoding: utf-8
+    columns: from_header
   property_map:
     - property: __key__
       external_name: id
@@ -31,7 +32,8 @@ transformers:
 - kind: Answer
   connector: csv
   connector_options:
-    column_list: ["id", "scenario", "answer", "is_correct", "response"]
+    encoding: utf-8
+    columns: from_header
   property_map:
     - property: __key__
       external_name: id
