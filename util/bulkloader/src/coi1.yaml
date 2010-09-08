@@ -1,0 +1,63 @@
+--- !scenario
+id: "coi1"
+
+name: "Topic One: Conflict of Interest, Part One"
+
+scenario: "You, an architect and a member of the Zoning Board of
+  Adjustment, arrive for a board meeting only to see a “Friend” standing in
+  the hallway outside the meeting room.  Friend is present to plead his
+  case for a variance.  Many neighborhood residents appearing to oppose
+  Friend's case are also standing in the hallway.  You “backslap” your
+  friend with a hearty greeting.  Your employer initially worked on
+  Friend's project but Friend chose to finish the project with another
+  Firm.  You never worked on Friend’s project because you specialize in
+  other areas."
+
+question: "May you participate in the Board’s decision related to
+  Friend’s variance?"
+
+prompt: "Please reflect first on the reason we have this conflict of
+  interest statute and how it applies here. Then choose the best
+  answer."
+
+answers:
+  - !answer
+    id: "coi1.1"
+    answer: "Yes.  You may participate if your employer has no direct or
+      indirect financial interest."
+    is_correct: true
+    response: "Your employer’s financial interests are considered your
+      financial interests.  If your employer has no business relationship
+      with the party appearing before the Board, your employer, and you,
+      have no financial interest in the matter."
+
+  - !answer
+    id: "coi1.2"
+    answer: "Yes.  You may participate if you disclose the relationships to
+      the other members of the Board prior to the action being taken."
+    is_correct: false
+    response: "Disclosure of a conflict of interest does not permit you to
+      participate in a matter in which you have a conflict.  If your
+      employer has a financial interest in the matter, then you are
+      considered to have a conflict of interest and may not participate in
+      the decision on Friend’s variance."
+
+  - !answer
+    id: "coi1.3"
+    answer: "Yes.  You may participate because your employer is not
+      involved and you are not related to Friend."
+    is_correct: false
+    response: "This answer would be correct <b>only if</b> your Friend and
+      your Employer have concluded all business between them, including
+      payment of outstanding bills.<p>There is a better answer, please try
+      again."
+
+  - !answer
+    id: "coi1.4"
+    answer: "No.  You may not participate because of your relationship with
+      Friend."
+    is_correct: false
+    response: "Financial interests of friends are not considered your
+      financial interests, so your relationship with Friend would not
+      preclude you from hearing the matter."
+

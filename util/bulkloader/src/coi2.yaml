@@ -1,0 +1,54 @@
+--- !scenario
+
+id: "coi2"
+
+name: "Topic One: Conflict of Interest, Part Two"
+
+scenario: "You are the chair of the Housing Board of Appeal which hears and
+  acts upon appeals brought forth by property owners or responsible parties
+  for a property that has received orders defining a violation of the
+  Housing Maintenance Code.  You received an order from a housing inspector
+  regarding a rental property you own.  You want to appeal the order."
+
+question: "May you appeal an order issued by city staff when the appeal
+  will be heard by a board on which you are a member?"
+
+prompt: "Please reflect first on the reason we have this conflict of
+  interest statute and how it applies here. Then choose the best answer."
+
+answers:
+
+  - !answer
+    id: "coi2.1"
+    answer: "Yes.  Provided you send a property representative and not
+      personally plead your case to the board."
+    is_correct: false
+    response: "You may send a representative to plead your case but you may
+      personally plead your case.  There is a better answer."
+
+  - !answer
+    id: "coi2.2"
+    answer: "Yes. Provided you resign from the Board prior to the hearing
+      date."
+    is_correct: false
+    response: "While resigning from the board would permit you to bring
+      your appeal before the Board, you need not resign from the board to
+      get your hearing."
+
+  - !answer
+    id: "coi2.3"
+    answer: "Yes.  Provided you do not discuss your situation with other
+      board members outside of the hearing."
+    is_correct: true
+    response: "You continue to have the rights other citizens have to
+      pursue personal business with the City and may appeal a housing order
+      to the Board."
+
+  - !answer
+    id: "coi2.4"
+    answer: "No.  Because of your relationship to the board, whether you
+      resign or not."
+    is_correct: false
+    response: "This answer leaves you with no recourse and denies you
+      rights held by other Minneapolis citizens."
+
