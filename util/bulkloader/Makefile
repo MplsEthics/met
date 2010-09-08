@@ -1,11 +1,11 @@
-  PYTHON25 ?= python2.5
- APPENGINE := /usr/local/lib/google_appengine
+    PYTHON25 ?= python2.5
+  BULKLOADER ?= /usr/local/bin/bulkloader.py
 
 usage:
 	@echo "usage: [clean|csv|load]"
 
 clean:
-	rm -f *.csv
+	rm -f *.csv bulkloader-{log,progress}-*
 
 csv answers.csv scenario.csv:
 	$(PYTHON25) bin/yaml2csv.py src/*.yaml
@@ -13,8 +13,8 @@ csv answers.csv scenario.csv:
 load: load-scenario load-answer
 
 load-scenario: scenario.csv
-	$(PYTHON25) $(APPENGINE)/bulkloader.py \
-		--app_id="mpls-ethics" \
+	$(PYTHON25) $(BULKLOADER) \
+		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=scenario.csv \
 		--kind=Scenario \
@@ -22,8 +22,8 @@ load-scenario: scenario.csv
 		--url http://localhost:8765/remote_api
 
 load-answer: answers.csv
-	$(PYTHON25) $(APPENGINE)/bulkloader.py \
-		--app_id="mpls-ethics" \
+	$(PYTHON25) $(BULKLOADER) \
+		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=answers.csv \
 		--kind=Answer \
