@@ -1,5 +1,6 @@
 import logging
 from google.appengine.ext import webapp
+from met.decorators import ordered
 from met.model import Scenario
 from met.session import LearnerState
 from met.exceptions import InvalidAnswerException
@@ -16,23 +17,22 @@ class Question(SecureView):
             incomplete = self.first_incomplete_scenario()
             self.redirect("/%s/intro1" % incomplete)
 
+    @ordered
     def get(self, scenario_id):
-        """Handle HTTP GET--show the scenario question to the user."""
-        # enforce correct scenario order
-        self.assert_scenario_order(scenario_id)
-        # retreive the merged scenario / session object
+        """Show the scenario question to the user."""
         state = LearnerState()
         scenario = state.annotate_scenario(scenario_id)
-
-        # render the template
         path = self.viewpath(append='scenario.djt')
-        djt = dict(s=scenario,
-                   session=state.session_fmt(),
-                   previous=self.previous(),
-                   next=self.next(),
-                   show_prevnext=state.is_completed(scenario_id))
-        self.response.out.write(webapp.template.render(path, djt))
+        is_completed = state.is_completed(scenario_id)
+        context = dict(s=scenario,
+                       session=state.session_fmt(),
+                       previous=self.previous(),
+                       next=self.next(),
+                       show_prevnext=is_completed)
+        output = webapp.template.render(path, context)
+        self.response.out.write(output)
 
+    @ordered
     def post(self, scenario_id):
         """Process the learner's answer; redirect as appropriate."""
         # enforce correct scenario order
