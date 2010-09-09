@@ -1,4 +1,9 @@
 TO DO
 =====
-* add certificate view class
-* finish certificate view
+* add cheater certificate view class
+* clean up any unresolved FIXMEs
+* clean up view classes:
+   - question
+   - response
+   - base
+* implement restricted view decorator
