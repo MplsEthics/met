@@ -3,11 +3,11 @@ from google.appengine.ext.webapp import template
 from met.boards import boards
 from met.email import send_completion
 from met.model import Completion
-from met.views.base import SecureView
+from met.views.base import SessionView
 from met.session import LearnerState
 
 
-class Learner(SecureView):
+class Learner(SessionView):
 
     @alldone
     def get(self):

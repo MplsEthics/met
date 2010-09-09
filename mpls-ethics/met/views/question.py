@@ -4,10 +4,10 @@ from met.decorators import ordered
 from met.model import Scenario
 from met.session import LearnerState
 from met.exceptions import InvalidAnswerException
-from met.views.base import SecureView
+from met.views.base import SessionView
 
 
-class Question(SecureView):
+class Question(SessionView):
     """View a question."""
 
     def assert_scenario_order(self, scenario_id):
