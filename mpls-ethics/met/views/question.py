@@ -1,5 +1,7 @@
+import logging
 from google.appengine.ext import webapp
-from met.content import LearnerScenario
+from met.model import Scenario
+from met.session import LearnerState
 from met.exceptions import InvalidAnswerException
 from met.views.base import SecureView
 
@@ -20,15 +22,15 @@ class Question(SecureView):
         self.assert_scenario_order(scenario_id)
         # retreive the merged scenario / session object
         session = self.get_session()
-        ls = LearnerScenario(scenario_id, session)
+        state = LearnerState()
 
         # render the template
         path = self.viewpath(append='scenario.djt')
-        djt = dict(s=ls,
+        djt = dict(s=Scenario.get_by_key_name(scenario_id),
                    session=session,
                    previous=self.previous(),
                    next=self.next(),
-                   show_prevnext=ls.is_completed())
+                   show_prevnext=state.is_completed(scenario_id))
         self.response.out.write(webapp.template.render(path, djt))
 
     def post(self, scenario_id):
@@ -37,13 +39,14 @@ class Question(SecureView):
         self.assert_scenario_order(scenario_id)
 
         # update the session as needed based on the answer
-        ls = LearnerScenario(scenario_id, self.get_session())
+        state = LearnerState()
 
         # record the answer and redirect
         try:
             answer_id = self.request.params.get('answer', '')
-            ls.record_answer(answer_id)
-        except InvalidAnswerError:
+            state.record_answer(scenario_id, answer_id)
+        except InvalidAnswerException:
+            logging.info("caught invalid answer ID '%s'" % answer_id)
             self.redirect("/%s/question" % scenario_id)
         else:
             self.redirect("/%s/response" % scenario_id)
