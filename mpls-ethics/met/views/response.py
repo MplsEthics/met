@@ -12,7 +12,7 @@ class Response(base.SessionView):
         if scenario.completed:
             link_next = "/%s/disc1" % scenario_id
         else:
-            link_next = "/%s/scenario" % scenario_id
+            link_next = "/%s/question" % scenario_id
         djt = {
             'next': self.next(),
             'previous': self.previous(),
@@ -38,4 +38,3 @@ class Response(base.SessionView):
             return answer.response
         else:
             return None
-
