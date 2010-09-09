@@ -7,7 +7,7 @@ class (see http://code.google.com/p/gaeutilities/).
 from datetime import datetime
 from appengine_utilities.sessions import Session as GAESession
 from met.order import scenario_order
-from met.model import Answer
+from met.model import Answer, Scenario
 from met.exceptions import InvalidAnswerException
 
 
@@ -21,16 +21,19 @@ class Session(GAESession):
         # call parent init
         super(Session, self).__init__(*args, **kwargs)
 
-        # init scenario answer array
-        for so in scenario_order:
-            self.setdefault(so, [])
+        # initialize scenario answer array
+        for s in scenario_order:
+            if not s in self:
+                self[s] = []
 
-        # init scenario completion dict
-        self.setdefault('completed', dict())
+        # initialize scenario completion dictionary
+        if not 'completed' in self:
+            items = [(s, False) for s in scenario_order]
+            self['completed'] = dict(items)
 
 
 class LearnerState(object):
-    """Handles interactions querying and updating the user state."""
+    """Handles all interactions with the learner's state."""
 
     def __init__(self):
         """Construct the state object."""
@@ -45,11 +48,11 @@ class LearnerState(object):
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
         session = self.session()
-        return session['completed'].get(scenario_id, False)
+        return session['completed'][scenario_id]
 
     def learner_answers(self, scenario_id):
         session = self.session()
-        return session.get(scenario_id, [])
+        return session[scenario_id]
 
     def last_answer(self, scenario_id):
         """Returns the learner's last answer to the indicated scenario, or
@@ -63,62 +66,37 @@ class LearnerState(object):
         """Returns a list of dicts reflecting the correct learner state for
         scenario_id."""
 
+        scenario = Scenario.get_by_key_name(scenario_id)
+        learner_answers = self.learner_answers(scenario_id)
+
         def annotate(answer):
-            # FIXME: need to incorporate logic from below...
+            """Convert the Answer object into a marked-up dict"""
             a = answer.as_dict()
+            if a.name in learner_answers:
+                a['disabled'] = True
+                if answer.is_correct:
+                    a['class'] = "answer correct"
+                else:
+                    a['class'] = "answer incorrect"
+            else:
+                a['disabled'] = False
+                a['class'] = "answer"
             return a
 
-        return [annotate(answer) for answer in self.answer_set]
-
-### FIXME: move these functions into annotate() above...
-###
-###     def marked_answers(self):
-###
-###         if self.is_completed():
-###             pass
-###         else:
-###             answers = []
-###
-###             for a in self.scenario_answers():
-###                 d = dict(a.__dict__)
-###
-###                 if a.id not in self.learner_answers():
-###                     pass
-###
-###                 answers.append(d)
-###
-###             # answers not yet chosen
-###             if a.id not in learner_answers:
-###                 setattr(a, "class", "answer")
-###                 setattr(a, "disabled", False)
-###             # answers chosen
-###             else:
-###                 setattr(a, "disabled", True)
-###                 # correct answer
-###
-###     def mark_single_answer(self, answer, learner_answers):
-###
-###         if answer.id not in learner_answers:
-###             setattr(answer, "class", "answer")
-###             setattr(answer, "disabled", False)
-###         else:
-###             setattr(answer, "disabled", True)
-###             if answer.correct:
-###                 setattr(answer, "class", "answer correct")
-###             else:
-###                 setattr(answer, "class", "answer incorrect")
+        return [annotate(answer) for answer in scenario.answer_set]
 
     def record_answer(self, scenario_id, answer_id):
-        """Record this answer in the session."""
+        """Record this answer in the session; do any necessary updates."""
 
         answer = Answer.get_by_key_name(answer_id)
 
         # if the lookup failed then this is not a valid answer
+        # FIXME: need to check answer/scenario matching
         if not answer:
             raise InvalidAnswerException
 
         # record the answer ID
-        session = self.session
+        session = self.session()
         if answer_id not in session[scenario_id]:
             session[scenario_id] += [answer_id]
 
