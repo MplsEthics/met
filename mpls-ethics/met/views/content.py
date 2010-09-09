@@ -1,19 +1,17 @@
 from google.appengine.ext import webapp
-import base
-from met import content
+from met.views.base import BaseView
+from met.model import Scenario
 
-class Content(base.BaseView):
+class Content(BaseView):
 
     def get(self,scenario_id,view):
-        a = "%s/%s.djt" % (scenario_id, view)
-        path = self.viewpath(append=a)
-        djt = {
-            'next': self.next(),
-            'previous': self.previous(),
-            's': content.get_scenario(scenario_id),
-            'show_prevnext': True,
-        }
-        self.response.out.write(webapp.template.render(path,djt))
+        template = "%s/%s.djt" % (scenario_id, view)
+        path = self.viewpath(append=template)
+        context = dict(next=self.next(),
+                       previous=self.previous(),
+                       s=Scenario.get_by_key_name(scenario_id),
+                       show_prevnext=True)
+        self.response.out.write(webapp.template.render(path,context))
 
     post = get
 
