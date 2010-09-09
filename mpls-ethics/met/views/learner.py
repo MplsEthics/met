@@ -5,6 +5,7 @@ from met.email import send_completion
 from met.model import Completion
 from met.views.base import SecureView
 
+
 class Learner(SecureView):
 
     def get(self):
@@ -15,9 +16,9 @@ class Learner(SecureView):
         session = self.get_session()
         show_prevnext = True
         boards = boards_
-        learner_error = session.get('learner_error',False)
+        learner_error = session.get('learner_error', False)
         logging.info('''learner_error: "%s"''' % learner_error)
-        self.response.out.write(template.render(path,locals()))
+        self.response.out.write(template.render(path, locals()))
 
     def post(self):
         """Process the learner data submission, then redirect to the
@@ -31,14 +32,14 @@ class Learner(SecureView):
         # update the session as needed based on the answer
 
         # bail if we don't have a valid learner name
-        learner_name = self.request.params.get('learner_name',"")
+        learner_name = self.request.params.get('learner_name', "")
         if len(learner_name) == 0:
             session["learner_error"] = True
             self.redirect('/learner')
             return
 
         # bail if we don't have a valid learner board
-        learner_board_id = self.request.params.get('learner_board_id',"")
+        learner_board_id = self.request.params.get('learner_board_id', "")
         try:
             learner_board = boards_[int(learner_board_id)]
             if len(learner_board) == 0:
@@ -62,10 +63,9 @@ class Learner(SecureView):
 
         # send the completion email
         try:
-            send_completion(learner_name,learner_board)
+            send_completion(learner_name, learner_board)
         except:
             pass
 
         # redirect to the certificate view
         self.redirect('/certificate')
-
