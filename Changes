@@ -3,8 +3,11 @@ Changelog for Minneapolis Ethics Training (MET)
 
 0.3 - unreleased
 ----------------
-* using GAE datastore for content
-* implementing bulk loader
+* now using GAE datastore for content
+* wrote YAML => CSV converter
+* implemented CSV bulk loader
+* implemented decorator to restrict views
+* all session interaction occurs via LearnerState class
 
 0.2 - 2009-10-19
 ----------------
@@ -17,10 +20,3 @@ Changelog for Minneapolis Ethics Training (MET)
 * functioning exam templates
 * no major bugs
 * first 1/3 of content in place
-
-TO DO
------
-* another proofreading sweep
-* add email functionality
-* clarify copyright
-

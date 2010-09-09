@@ -6,4 +6,6 @@ TO DO
    - question
    - response
    - base
+* sweep view classes for direct session access
 * implement restricted view decorator
+* clarify copyright?
