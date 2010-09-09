@@ -16,13 +16,14 @@ class Question(SecureView):
         """Handle HTTP GET--show the scenario question to the user."""
         # enforce correct scenario order
         self.assert_scenario_order(scenario_id)
-
         # retreive the merged scenario / session object
-        ls = LearnerScenario(scenario_id, self.get_session())
+        session = self.get_session()
+        ls = LearnerScenario(scenario_id, session)
 
         # render the template
         path = self.viewpath(append='scenario.djt')
         djt = dict(s=ls,
+                   session=session,
                    previous=self.previous(),
                    next=self.next(),
                    show_prevnext=ls.is_completed())
