@@ -23,32 +23,6 @@ archive:
 update:
 	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
-answers.csv scenario.csv:
-	$(PYTHON25) bin/yaml2csv.py lib/content/*.yaml
-
-load-all: load-scenario load-answer
-
-load-scenario: scenario.csv
-	$(PYTHON25) $(APPENGINE)/bulkloader.py \
-		--app_id="mpls-ethics" \
-		--config_file=etc/bulkloader.yaml \
-		--filename=scenario.csv \
-		--kind=Scenario \
-		--email=johntrammell@gmail.com \
-		--url http://10.1.6.111:8765/remote_api
-
-load-answer: answers.csv
-	$(PYTHON25) $(APPENGINE)/bulkloader.py \
-		--app_id="mpls-ethics" \
-		--config_file=etc/bulkloader.yaml \
-		--filename=answers.csv \
-		--kind=Answer \
-		--email=johntrammell@gmail.com \
-		--url http://10.1.6.111:8765/remote_api
-
-dist sdist:
-	$(PYTHON25) setup.py sdist --formats=zip
-
    FIX = FIX
    ME = ME
 
@@ -56,4 +30,3 @@ test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
 	@-find mpls-ethics/content -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
-
