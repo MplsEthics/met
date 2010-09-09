@@ -1,19 +1,16 @@
-import logging
-from datetime import datetime
 from google.appengine.ext.webapp import template
 from met.views.base import SessionView
+from met.session import LearnerState
 
 
 class Main(SessionView):
 
     def get(self):
         path = self.viewpath(append='main.djt')
-        session = self.get_session()
-        timestamps = session.get('timestamp',[])
-        timestamps.append(datetime.now().isoformat())
-        session['timestamp'] = timestamps[0:3]
-        next = 'instr1'
-        show_prevnext = True
-        show_about = True
-        logging.info(locals())
-        self.response.out.write(template.render(path, locals()))
+        state = LearnerState()
+        state.update_timestamp()
+        context = dict(next='instr1',
+                       show_prevnext=True,
+                       show_about=True,
+                       session=state.session_fmt())
+        self.response.out.write(template.render(path, context))
