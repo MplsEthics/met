@@ -2,6 +2,7 @@
 Classes and other utilities related to dynamic question content.
 """
 
+from datetime import datetime
 from met.model import Answer, Scenario
 
 
@@ -44,7 +45,6 @@ class LearnerScenario(object):
             return None
 
     def answers(self):
-        #s.answer_set.get().key().name()
         return [a.as_dict() for a in self.answer_set]
 
     def scenario_answers(self):
@@ -95,7 +95,6 @@ class LearnerScenario(object):
     def record_answer(self, answer_id):
         """Record this answer and responds accordingly."""
 
-        print ">>> answer ID is '%s'" % answer_id
         answer = Answer.get_by_key_name(answer_id)
 
         # if the lookup failed then this is not a valid answer

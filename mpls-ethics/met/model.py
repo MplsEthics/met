@@ -32,4 +32,8 @@ class Answer(db.Model):
     response = db.TextProperty()
 
     def as_dict(self):
-        return dict(FIXME)
+        return dict(name=self.key().name(),
+                    scenario=self.scenario,
+                    answer=self.answer,
+                    is_correct=self.is_correct,
+                    response=self.response)
