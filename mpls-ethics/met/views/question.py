@@ -2,12 +2,13 @@ from google.appengine.ext import webapp
 from met.content import InvalidAnswerError, LearnerScenario
 from met.views.base import SecureView
 
-class Question(SecureView):
 
-    def assert_scenario_order(self,scenario_id):
+class Question(SecureView):
+    """View a question."""
+
+    def assert_scenario_order(self, scenario_id):
         """If the learner is trying to access the questions out of order,
         redirect to the first incomplete scenario."""
-        compdict = self.get_session()['completed']
         if not self.prereqs_completed(scenario_id):
             incomplete = self.first_incomplete_scenario()
             self.redirect("/%s/intro1" % incomplete)
@@ -39,7 +40,7 @@ class Question(SecureView):
 
         # record the answer and redirect
         try:
-            answer_id = self.request.params.get('answer','')
+            answer_id = self.request.params.get('answer', '')
             ls.record_answer(answer_id)
         except InvalidAnswerError:
             self.redirect("/%s/question" % scenario_id)
