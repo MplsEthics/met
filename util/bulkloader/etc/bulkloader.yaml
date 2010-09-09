@@ -47,6 +47,7 @@ transformers:
       import_transform: db.Text
     - property: is_correct
       external_name: is_correct
+      import_transform: transform.regexp_bool('True')
     - property: response
       external_name: response
       import_transform: db.Text

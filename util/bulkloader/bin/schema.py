@@ -4,6 +4,8 @@
 
 import yaml
 
+_TRUE = ("true","t","y","yes","1",1)
+
 class Scenario(yaml.YAMLObject):
 
     yaml_tag = '!scenario'
@@ -32,7 +34,7 @@ class Answer(yaml.YAMLObject):
     def __init__(self,_id,answer,is_correct,response):
         self.id = _id
         self.answer = answer
-        self.is_correct = is_correct
+        self.is_correct = is_correct.lower() in _TRUE
         self.response = response
 
     def __repr__(self):
