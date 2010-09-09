@@ -155,3 +155,31 @@ class LearnerState(object):
             completed = session["completed"]
             completed[scenario_id] = datetime.now().isoformat()
             session["completed"] = completed
+
+
+    def persist_learner(self, name, board_id):
+        # FIXME
+
+        try:
+            if len(name) == 0:
+                raise
+
+            board = boards[int(board_id)]
+            if len(board) == 0:
+                raise
+
+        except:
+            raise InvalidLearnerException()
+
+        # persist the learner name and board in the session (to be used by the
+        # certificate template)
+        session = self.session()
+        session["learner_name"] = name
+        session["learner_board"] = board
+
+        # persist the learner name, board, and timestamp in GAE storage
+        # (timestamp should be created automatically)
+        comp = Completion()
+        comp.name = name
+        comp.board = board
+        comp.put()
