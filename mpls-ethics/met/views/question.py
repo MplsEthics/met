@@ -1,5 +1,6 @@
 from google.appengine.ext import webapp
-from met.content import InvalidAnswerError, LearnerScenario
+from met.content import LearnerScenario
+from met.exceptions import InvalidAnswerException
 from met.views.base import SecureView
 
 

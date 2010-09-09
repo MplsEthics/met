@@ -4,15 +4,8 @@ Classes and other utilities related to dynamic question content.
 
 from datetime import datetime
 from met.model import Answer, Scenario
+from met.exceptions import InvalidAnswerException
 
-
-class InvalidAnswerError(Exception):
-
-    def __init__(self, value):
-        self.parameter = value
-
-    def __str__(self):
-        return repr(self.parameter)
 
 
 class LearnerScenario(object):
@@ -96,7 +89,7 @@ class LearnerScenario(object):
 
         # if the lookup failed then this is not a valid answer
         if not answer:
-            raise InvalidAnswerError
+            raise InvalidAnswerException
 
         # record the answer ID
         session = self.session
