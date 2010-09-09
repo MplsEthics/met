@@ -44,27 +44,21 @@ class LearnerScenario(object):
         except:
             return None
 
-    def answers(self):
-        answers = []
-        for answer in self.answer_set:
+    def annotated_answers(self):
 
-        return [a.as_dict() for a in self.answer_set]
+        def annotate(answer):
+            # FIXME: need to incorporate logic from below...
+            a = answer.as_dict()
+            return a
 
-    def scenario_answers(self):
-        """Returns the source answers for this scenario."""
-        #FIXME
-        pass
+        return [annotate(answer) for answer in self.answer_set]
 
     def marked_answers(self):
 
         if self.is_completed():
             pass
-
-
         else:
-
             answers = []
-
 
             for a in self.scenario_answers():
                 d = dict(a.__dict__)
@@ -76,24 +70,24 @@ class LearnerScenario(object):
 
             # answers not yet chosen
             if a.id not in learner_answers:
-                setattr(a,"class","answer")
-                setattr(a,"disabled",False)
+                setattr(a, "class", "answer")
+                setattr(a, "disabled", False)
             # answers chosen
             else:
-                setattr(a,"disabled",True)
+                setattr(a, "disabled", True)
                 # correct answer
 
-    def mark_single_answer(self,answer,learner_answers):
+    def mark_single_answer(self, answer, learner_answers):
 
         if answer.id not in learner_answers:
-            setattr(answer,"class","answer")
-            setattr(answer,"disabled",False)
+            setattr(answer, "class", "answer")
+            setattr(answer, "disabled", False)
         else:
-            setattr(answer,"disabled",True)
+            setattr(answer, "disabled", True)
             if answer.correct:
-                setattr(answer,"class","answer correct")
+                setattr(answer, "class", "answer correct")
             else:
-                setattr(answer,"class","answer incorrect")
+                setattr(answer, "class", "answer incorrect")
 
     def record_answer(self, answer_id):
         """Record this answer and responds accordingly."""
