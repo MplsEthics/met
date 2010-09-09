@@ -1,9 +1,11 @@
 import logging
 from datetime import datetime
 from google.appengine.ext.webapp import template
-import base
+from met.views.base import SessionView
 
-class Main(base.SessionView):
+
+class Main(SessionView):
+
     def get(self):
         path = self.viewpath(append='main.djt')
         session = self.getSession()
@@ -14,5 +16,4 @@ class Main(base.SessionView):
         show_prevnext = True
         show_about = True
         logging.info(locals())
-        self.response.out.write(template.render(path,locals()))
-
+        self.response.out.write(template.render(path, locals()))
