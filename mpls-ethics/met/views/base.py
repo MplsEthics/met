@@ -1,5 +1,4 @@
 import os
-import logging
 from google.appengine.ext import webapp
 from met.order import scenario_order, view_order
 from met.session import Session
@@ -24,7 +23,6 @@ class BaseView(webapp.RequestHandler):
     def view_index(self):
         request_path = self.request.path[1:]
         i = view_order.index(request_path)
-        logging.info("%s => %d" % (request_path,i))
         return i
 
     def next(self):
