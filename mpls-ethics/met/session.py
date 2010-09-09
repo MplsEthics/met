@@ -50,6 +50,12 @@ class LearnerState(object):
         session = self.session()
         return pformat(dict(session.items()))
 
+    def update_timestamp(self):
+        session = self.session()
+        timestamps = session.get('timestamp', [])
+        timestamps += [datetime.now().isoformat()]
+        session['timestamp'] = timestamps[0:3]
+
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
         completed = self.session()['completed']
