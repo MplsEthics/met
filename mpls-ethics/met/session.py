@@ -4,6 +4,7 @@ Training site.  It extends the Appengine Utilities ("GAEUtilities") sessions
 class (see http://code.google.com/p/gaeutilities/).
 """
 
+from pprint import pformat
 from datetime import datetime
 from appengine_utilities.sessions import Session as GAESession
 from met.order import scenario_order
@@ -45,6 +46,10 @@ class LearnerState(object):
             self._session = Session()
         return self._session
 
+    def session_fmt(self):
+        session = self.session()
+        return pformat(dict(session.items()))
+
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
         completed = self.session()['completed']
@@ -75,7 +80,7 @@ class LearnerState(object):
         session = self.session()
         return session[scenario_id]
 
-    def last_answer(self, scenario_id):
+    def last_answer_id(self, scenario_id):
         """Returns the most recent answer the learner gave to the indicated
         scenario, or None if the student has no answers yet in that
         scenario."""
@@ -87,6 +92,7 @@ class LearnerState(object):
     def annotate_scenario(self, scenario_id):
         scenario = Scenario.get_by_key_name(scenario_id).as_dict()
         scenario['answers'] = self.annotated_answers(scenario_id)
+        scenario['is_completed'] = self.is_completed(scenario_id)
         return scenario
 
     def annotated_answers(self, scenario_id):
@@ -94,12 +100,15 @@ class LearnerState(object):
         scenario_id."""
 
         scenario = Scenario.get_by_key_name(scenario_id)
+        is_completed = self.is_completed(scenario_id)
         learner_answers = self.learner_answers(scenario_id)
 
         def annotate(answer):
             """Convert the Answer object into a marked-up dict"""
             a = answer.as_dict()
-            if a.name in learner_answers:
+            # if this scenario has been completed, we want the correct answer
+            # to be highlighted
+            if is_completed or a['name'] in learner_answers:
                 a['disabled'] = True
                 if answer.is_correct:
                     a['class'] = "answer correct"
@@ -120,7 +129,7 @@ class LearnerState(object):
         # if the lookup failed then this is not a valid answer
         # FIXME: need to check answer/scenario matching
         if not answer:
-            raise InvalidAnswerException, 'bad answer ID'
+            raise InvalidAnswerException('bad answer ID')
 
         # record the answer ID
         session = self.session()
