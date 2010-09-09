@@ -66,10 +66,10 @@ class BaseView(webapp.RequestHandler):
 
 
 class SessionView(BaseView):
-    """Just like BaseView, with the addition of method getSession(), which
+    """Just like BaseView, with the addition of method get_session(), which
     allows access to the session."""
 
-    def getSession(self):
+    def get_session(self):
         """Cache and return an initialized session object."""
         if getattr(self,'_session',None) is None:
             self._session = Session()
@@ -89,7 +89,7 @@ class SecureView(SessionView):
         """If the learner is trying to access this scenario out of order,
         redirect to the first incomplete scenario."""
         # FIXME: do I need compdict?
-        compdict = self.getSession()['completed']
+        compdict = self.get_session()['completed']
         if not self.prereqs_completed(scenario_id):
             incomplete = self.first_incomplete_scenario()
             self.redirect("/%s/intro1" % incomplete)
@@ -99,7 +99,7 @@ class SecureView(SessionView):
         completed, as indicated by their status in 'compdict'.  Returns False
         otherwise.  This function can be used to determine if the user is
         trying to complete the scenarios out of order."""
-        compdict = self.getSession()["completed"]
+        compdict = self.get_session()["completed"]
         assert scenario_id in scenario_order, 'test scenario must be known'
         k = scenario_order.index(scenario_id)
         for sid in scenario_order[0:k]:
@@ -110,14 +110,14 @@ class SecureView(SessionView):
     def all_scenarios_completed(self):
         """Returns True if all the scenarios are in the dict that records
         scenario completiions ('compdict').  Returns False otherwise."""
-        compdict = self.getSession()["completed"]
+        compdict = self.get_session()["completed"]
         for sid in scenario_order:
             if sid not in compdict:
                 return False
         return True
 
     def first_incomplete_scenario(self):
-        compdict = self.getSession()["completed"]
+        compdict = self.get_session()["completed"]
         for sid in scenario_order:
             if sid not in compdict:
                 return sid

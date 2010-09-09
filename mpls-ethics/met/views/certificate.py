@@ -12,8 +12,7 @@ class Certificate(SessionView):
         show_prevnext = False
         version = VERSION
         now = datetime.datetime.now()
-        session = self.getSession()
+        session = self.get_session()
         learner_name = session.get('learner_name',None)
         learner_board = session.get('learner_board',None)
-        self.response.out.write(webapp.template.render(path,locals()))
-
+        self.response.out.write(webapp.template.render(path, locals()))

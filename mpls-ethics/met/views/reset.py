@@ -1,9 +1,8 @@
-import base
+from met.views.base import SessionView
 
-class Reset(base.SessionView):
+class Reset(SessionView):
     """View to reset the session hash."""
 
     def get(self):
-        self.getSession().flush()
+        self.get_session().flush()
         self.redirect("/")
-

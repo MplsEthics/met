@@ -8,7 +8,7 @@ class Main(SessionView):
 
     def get(self):
         path = self.viewpath(append='main.djt')
-        session = self.getSession()
+        session = self.get_session()
         timestamps = session.get('timestamp',[])
         timestamps.append(datetime.now().isoformat())
         session['timestamp'] = timestamps[0:3]
