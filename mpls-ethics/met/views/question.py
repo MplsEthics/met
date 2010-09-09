@@ -27,7 +27,7 @@ class Question(SecureView):
         # render the template
         path = self.viewpath(append='scenario.djt')
         djt = dict(s=scenario,
-                   session=state.session(),
+                   session=state.session_fmt(),
                    previous=self.previous(),
                    next=self.next(),
                    show_prevnext=state.is_completed(scenario_id))
