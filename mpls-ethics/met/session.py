@@ -23,4 +23,3 @@ class Session(GAESession):
 
         # init scenario completion dict
         self.setdefault('completed',dict())
-

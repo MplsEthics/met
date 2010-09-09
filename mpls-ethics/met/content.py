@@ -2,7 +2,7 @@
 Classes and other utilities related to dynamic question content.
 """
 
-from met.model import Scenario
+from met.model import Answer, Scenario
 
 
 class InvalidAnswerError(Exception):
@@ -15,25 +15,22 @@ class InvalidAnswerError(Exception):
 
 
 class LearnerScenario(object):
-    """Objects of this class handle interactions between scenarios and learner
-    sessions."""
-
-    prompt = "FIXME, maybe use getattr?"
+    """Handle interactions between scenarios and learner sessions."""
 
     def __init__(self, scenario_id, session):
         """Construct the hybrid object."""
         self.scenario_id = scenario_id
-        self.session = session
         self.scenario = Scenario.get_by_key_name(scenario_id)
+        self.session = session
+
+    def __getattr__(self, name):
+        return getattr(self.scenario, name)
 
     def is_completed(self):
         """Returns True if this learner has completed this scenario."""
         session = self.session
         scenario_id = self.scenario_id
-        try:
-            return session['completed'].get(scenario_id,False)
-        except:
-            return False
+        return session['completed'].get(scenario_id, False)
 
     def learner_answers(self):
         return self.session.get(self.scenario_id, [])
@@ -94,26 +91,24 @@ class LearnerScenario(object):
             else:
                 setattr(answer,"class","answer incorrect")
 
-    def is_valid_answer(self,answer_id):
-        """Returns True if answer_id is valid for this scenario."""
-        valid_answer_ids = scenario.answer_dict.keys()
-        return answer_id in valid_answer_ids
-
-    def record_answer(self,answer_id):
+    def record_answer(self, answer_id):
         """Record this answer and responds accordingly."""
 
-        if not self.is_valid_answer(answer_id):
+        print ">>> answer ID is '%s'" % answer_id
+        answer = Answer.get_by_key_name(answer_id)
+
+        # if the lookup failed then this is not a valid answer
+        if not answer:
             raise InvalidAnswerError
 
         # record the answer ID
-        if answer_id not in self.session[scenario_id]:
-            learner_answers = self.session[scenario_id]
-            learner_answers.append(answer_id)
-            self.session[scenario_id] = learner_answers
+        session = self.session
+        scenario_id = self.scenario_id
+        if answer_id not in session[scenario_id]:
+            session[scenario_id] += [answer_id]
 
         # update session['completed'] if the answer is correct
-        answer_obj = scenario.answer_dict[answer_id]
-        if answer_obj.correct:
-            completed = self.session["completed"]
+        if answer.is_correct:
+            completed = session["completed"]
             completed[scenario_id] = datetime.now().isoformat()
-            self.session["completed"] = completed
+            session["completed"] = completed
