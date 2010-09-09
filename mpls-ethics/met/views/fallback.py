@@ -1,43 +1,41 @@
 import os
-import logging
-import datetime
 from met.views.base import SessionView
 from google.appengine.ext import webapp
-from met.version import version as VERSION
+from met.session import LearnerState
+
 
 class Fallback(SessionView):
     """View class that displays the view closest to that requested."""
 
-    def get(self, *argv):
-        logging.info(argv)
-        path = self.viewpath(append=self.template())
-        previous = self.previous()
-        next = self.next()
-        session = self.get_session()
-        show_prevnext = True
-        version = VERSION
-        now = datetime.datetime.now()
-        self.response.out.write(webapp.template.render(path, locals()))
-
     def template(self):
         """Return the view template that best matches the request."""
+
+        # if the path is impossibly short, show the main template
+        if len(self.request.path) <= 1:
+            return 'main.djt'
 
         # if view_dir + self.request.path + ".djt" is a view, then use it
         srp = self.request.path[1:] + ".djt"
         if os.path.exists(self.viewpath(append=srp)):
             return srp
 
-        if len(self.request.path) <= 1:
-            return 'main.djt'
+        # try to find a matching
         if len(self.request.path) > 1:
-            for t in self.list_templates():
+            templates = [x for x in os.listdir(self.view_dir) if x[0] != '.']
+            for t in templates:
                 if self.request.path[1:] in t:
                     return t
-            return 'main.djt'
 
-    def list_templates(self):
-        t = os.listdir(self.view_dir)
-        t = [ x for x in t if x[0] != '.' ]
-        return t
+        # sane fallback
+        return 'main.djt'
+
+    def get(self, *argv):
+        path = self.viewpath(append=self.template())
+        state = LearnerState()
+        context = dict(previous=self.previous(),
+                       next=self.next(),
+                       session=state.session_fmt(),
+                       show_prevnext=True)
+        self.response.out.write(webapp.template.render(path, context))
 
     post = get
