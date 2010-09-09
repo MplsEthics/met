@@ -30,3 +30,6 @@ class Answer(db.Model):
     answer = db.StringProperty()
     is_correct = db.BooleanProperty()
     response = db.TextProperty()
+
+    def as_dict(self):
+        return dict(FIXME)

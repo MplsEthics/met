@@ -4,7 +4,7 @@
 <tr>
 <td style="vertical-align:top">
 <input type="radio" name="answer" id="radio{{ forloop.counter }}"
-   value="{{ answer.id }}" {% if answer.disabled %}disabled{% endif %}
+   value="{{ answer.name }}" {% if answer.disabled %}disabled{% endif %}
    {% if answer.checked %}checked{% endif %}>
 </td>
 <td>
