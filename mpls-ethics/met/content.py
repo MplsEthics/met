@@ -44,7 +44,8 @@ class LearnerScenario(object):
             return None
 
     def answers(self):
-        return self.answer_set
+        #s.answer_set.get().key().name()
+        return [a.as_dict() for a in self.answer_set]
 
     def scenario_answers(self):
         """Returns the source answers for this scenario."""
