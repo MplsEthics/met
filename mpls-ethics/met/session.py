@@ -1,7 +1,7 @@
 """
 This module implements a custom Session class for the Minneapolis Ethics
-Training site.  It uses the Appengine Utilities ("GAEUtilities") sessions
-class as its basis (see http://code.google.com/p/gaeutilities/).
+Training site.  It extends the Appengine Utilities ("GAEUtilities") sessions
+class (see http://code.google.com/p/gaeutilities/).
 """
 
 from appengine_utilities.sessions import Session as GAESession
