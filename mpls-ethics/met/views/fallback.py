@@ -1,11 +1,11 @@
 import os
 import logging
 import datetime
-import base
+from met.views.base import SessionView
 from google.appengine.ext import webapp
 from met.version import version as VERSION
 
-class Fallback(base.BaseView):
+class Fallback(SessionView):
     """View class that displays the view closest to that requested."""
 
     def get(self, *argv):
@@ -13,10 +13,11 @@ class Fallback(base.BaseView):
         path = self.viewpath(append=self.template())
         previous = self.previous()
         next = self.next()
+        session = self.get_session()
         show_prevnext = True
         version = VERSION
         now = datetime.datetime.now()
-        self.response.out.write(webapp.template.render(path,locals()))
+        self.response.out.write(webapp.template.render(path, locals()))
 
     def template(self):
         """Return the view template that best matches the request."""
@@ -40,4 +41,3 @@ class Fallback(base.BaseView):
         return t
 
     post = get
-

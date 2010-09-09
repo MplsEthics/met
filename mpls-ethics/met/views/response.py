@@ -7,7 +7,7 @@ from met.views.base import SessionView
 class Response(SessionView):
 
     def get(self,scenario_id):
-        session = self.getSession()
+        session = self.get_session()
         ls = LearnerScenario(scenario_id, session)
         answer_id = self.last_answer_id(scenario_id)
         answer = Answer.get_by_key_name(answer_id)
@@ -29,7 +29,7 @@ class Response(SessionView):
 
     def last_answer_id(self,scenario_id):
         try:
-            return self.getSession()[scenario_id][-1]
+            return self.get_session()[scenario_id][-1]
         except:
             return None
 

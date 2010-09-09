@@ -12,7 +12,7 @@ class Learner(SecureView):
         self.assert_all_scenarios_completed()
 
         path = self.viewpath(append='learner.djt')
-        session = self.getSession()
+        session = self.get_session()
         show_prevnext = True
         boards = boards_
         learner_error = session.get('learner_error',False)
@@ -23,7 +23,7 @@ class Learner(SecureView):
         """Process the learner data submission, then redirect to the
         'certificate' view."""
 
-        session = self.getSession()
+        session = self.get_session()
 
         # ensure that all scenarios have been completed
         self.assert_all_scenarios_completed()

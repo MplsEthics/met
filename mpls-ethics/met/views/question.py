@@ -7,7 +7,7 @@ class Question(SecureView):
     def assert_scenario_order(self,scenario_id):
         """If the learner is trying to access the questions out of order,
         redirect to the first incomplete scenario."""
-        compdict = self.getSession()['completed']
+        compdict = self.get_session()['completed']
         if not self.prereqs_completed(scenario_id):
             incomplete = self.first_incomplete_scenario()
             self.redirect("/%s/intro1" % incomplete)
@@ -18,7 +18,7 @@ class Question(SecureView):
         self.assert_scenario_order(scenario_id)
 
         # retreive the merged scenario / session object
-        ls = LearnerScenario(scenario_id, self.getSession())
+        ls = LearnerScenario(scenario_id, self.get_session())
 
         # render the template
         path = self.viewpath(append='scenario.djt')
@@ -34,7 +34,7 @@ class Question(SecureView):
         self.assert_scenario_order(scenario_id)
 
         # update the session as needed based on the answer
-        ls = LearnerScenario(scenario_id, self.getSession())
+        ls = LearnerScenario(scenario_id, self.get_session())
 
         # record the answer and redirect
         try:
