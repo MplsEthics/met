@@ -9,3 +9,4 @@ TO DO
 * sweep view classes for direct session access
 * implement restricted view decorator
 * clarify copyright?
+* check VERSION string in "about" page
