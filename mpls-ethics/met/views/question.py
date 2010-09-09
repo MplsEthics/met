@@ -21,13 +21,13 @@ class Question(SecureView):
         # enforce correct scenario order
         self.assert_scenario_order(scenario_id)
         # retreive the merged scenario / session object
-        session = self.get_session()
         state = LearnerState()
+        scenario = state.annotate_scenario(scenario_id)
 
         # render the template
         path = self.viewpath(append='scenario.djt')
-        djt = dict(s=Scenario.get_by_key_name(scenario_id),
-                   session=session,
+        djt = dict(s=scenario,
+                   session=state.session(),
                    previous=self.previous(),
                    next=self.next(),
                    show_prevnext=state.is_completed(scenario_id))
