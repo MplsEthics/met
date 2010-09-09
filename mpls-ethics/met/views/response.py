@@ -1,25 +1,28 @@
 from google.appengine.ext import webapp
-import base
-from met import content
+from met.content import LearnerScenario
+from met.model import Answer
+from met.views.base import SessionView
 
-class Response(base.SessionView):
+
+class Response(SessionView):
 
     def get(self,scenario_id):
         session = self.getSession()
-        scenario = content.merge_scenario(scenario_id,session)
+        ls = LearnerScenario(scenario_id, session)
         answer_id = self.last_answer_id(scenario_id)
+        answer = Answer.get_by_key_name(answer_id)
         path = self.viewpath(append='response.djt')
-        if scenario.completed:
+        if ls.is_completed():
             link_next = "/%s/disc1" % scenario_id
         else:
             link_next = "/%s/question" % scenario_id
         djt = {
             'next': self.next(),
             'previous': self.previous(),
-            's': scenario,
+            's': ls,
             'show_prevnext': False,
-            'correct': scenario.completed,
-            'response': self.learner_response(scenario,answer_id),
+            'correct': ls.is_completed(),
+            'response': answer.response,
             'link_next': link_next,
         }
         self.response.out.write(webapp.template.render(path,djt))
