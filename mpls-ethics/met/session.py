@@ -84,6 +84,11 @@ class LearnerState(object):
         except:
             return None
 
+    def annotate_scenario(self, scenario_id):
+        scenario = Scenario.get_by_key_name(scenario_id).as_dict()
+        scenario['answers'] = self.annotated_answers(scenario_id)
+        return scenario
+
     def annotated_answers(self, scenario_id):
         """Returns a list of dicts reflecting the correct learner state for
         scenario_id."""
