@@ -6,6 +6,7 @@ from met.views.base import SessionView
 
 class Response(SessionView):
 
+    @ordered
     def get(self, scenario_id):
         state = LearnerState()
         answer_id = state.last_answer_id(scenario_id)
