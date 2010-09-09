@@ -47,16 +47,38 @@ class LearnerState(object):
 
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
-        session = self.session()
-        return session['completed'][scenario_id]
+        completed = self.session()['completed']
+        return completed[scenario_id]
+
+    def completed_prerequisites(self, scenario_id):
+        """Returns True if all the scenarios before 'scenario_id' have been
+        completed; returns False otherwise."""
+
+        assert scenario_id in scenario_order, 'unknown scenario'
+
+        # search through all the scenarios in order, making sure the learner
+        # has completed each
+        for s in scenario_order:
+            if s == scenario_id:
+                return True
+            elif not self.is_completed(s):
+                return False
+
+    def first_incomplete_scenario(self):
+        completed = self.session()['completed']
+        for s in scenario_order:
+            if not completed[s]:
+                return s
+        return None
 
     def learner_answers(self, scenario_id):
         session = self.session()
         return session[scenario_id]
 
     def last_answer(self, scenario_id):
-        """Returns the learner's last answer to the indicated scenario, or
-        None if the student has no answers yet in that scenario."""
+        """Returns the most recent answer the learner gave to the indicated
+        scenario, or None if the student has no answers yet in that
+        scenario."""
         try:
             return self.learner_answers(scenario_id)[-1]
         except:
@@ -88,12 +110,12 @@ class LearnerState(object):
     def record_answer(self, scenario_id, answer_id):
         """Record this answer in the session; do any necessary updates."""
 
-        answer = Answer.get_by_key_name(answer_id)
+        answer = Answer.get_by_key_name(answer_id or '--none--')
 
         # if the lookup failed then this is not a valid answer
         # FIXME: need to check answer/scenario matching
         if not answer:
-            raise InvalidAnswerException
+            raise InvalidAnswerException, 'bad answer ID'
 
         # record the answer ID
         session = self.session()
