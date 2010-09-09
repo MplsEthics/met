@@ -14,3 +14,8 @@ pprint(s.__dict__)
 # how does it fail?
 s = Scenario.get_by_key_name('coi99')
 pprint(s.__dict__)
+
+# test the answer_set attribute
+s = Scenario.get_by_key_name('coi1')
+from pprint import pprint
+pprint([x.__dict__ for x in s.answer_set])
