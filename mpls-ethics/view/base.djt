@@ -25,7 +25,7 @@ City of Minneapolis | Electronic Ethics Training
 <h2>Ethics in Government Education for Appointed Members of Boards,
 Commissions and Agencies</h2>
 {% endblock header %}
-</div> <!--end of div id="header" -->
+</div> <!-- end of div id="header" -->
 <div id="content">
 {% block content %}
 {% endblock content %}
@@ -50,13 +50,13 @@ Commissions and Agencies</h2>
 <a class="about" href="/about">About</a>
 {% endif %}
 {% endblock footer %}
-</div> <!--end of div id="footer" -->
-</div> <!--end of div id="content" -->
-</div> <!--end of div id="page" -->
+</div> <!-- end of div id="footer" -->
+</div> <!-- end of div id="content" -->
+</div> <!-- end of div id="page" -->
 </body>
-{% block session %}
+{% block state %}
 <!--
-{% if session %}{{ session }}{% else %}No session.{% endif %}
+{% if state %}{{ state }}{% else %}State not available.{% endif %}
 -->
-{% endblock session %}
+{% endblock state %}
 </html>
