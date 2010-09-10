@@ -32,6 +32,9 @@ clean:
 update:
 	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
+nose nosetest:
+	nosetests-2.5 -v -s --with-gae
+
    FIX = FIX
    ME = ME
 
