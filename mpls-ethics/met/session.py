@@ -191,7 +191,10 @@ class LearnerState(object):
     def learner_board(self):
         return self.session().get('learner_board', None)
 
-    def persist_learner(self, name, board_id):
+    def learner_date(self):
+        return self.session().get('learner_date', None)
+
+    def persist_learner(self, name, board_id, date):
         """Check the learner info; if it's good, persist it in the session and
         GAE storage."""
         session = self.session()
@@ -212,6 +215,10 @@ class LearnerState(object):
         # certificate template)
         session['learner_name'] = name
         session['learner_board'] = board
+
+        # if the date is not empty, convert to datetime and persist
+        if date:
+            session['learner_date'] = datetime.strptime(date, "%m/%d/%Y")
 
         # persist the learner name, board, and a timestamp in GAE storage
         # (the timestamp should be created automatically)
