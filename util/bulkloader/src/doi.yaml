@@ -1,3 +1,19 @@
+# Copyright 2010 John J. Trammell.
+#
+# This file is part of the Mpls-ethics software package.  Mpls-ethics
+# is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+#
+# Mpls-ethics is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+
 --- !scenario
 
 id: "doi"
@@ -35,15 +51,15 @@ answers:
       nonpublic information."
 
   - !answer
-    
+
     id: "doi.2"
     answer: "Yes, because the issue is completed and the matter closed."
     is_correct: false
     response: "The answer to this question does not depend on the status of the
       matter but the status of the information used or disclosed."
-    
+
   - !answer
-    
+
     id: "doi.3"
     answer: "No, because a complaint about Guest’s properties could be before
       the Board at a later date."
@@ -52,9 +68,9 @@ answers:
       to recuse yourself from a later hearing involving Guest’s properties
       but has no bearing on whether your disclosure of the information
       involving Landlord was proper."
-    
+
   - !answer
-    
+
     id: "doi.4"
     answer: "No, because you identified Complainant as the complaining
       party in Landlord's matter."
@@ -63,4 +79,4 @@ answers:
       identity of a Complainant as private data on an individual.  This
       means that although the data is accessible to the Complainant, the
       data is not accessible to the public."
-    
+
