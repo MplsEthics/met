@@ -1,8 +1,9 @@
-from met.views.base import SessionView
+from met.views.base import BaseView
+from met.session import LearnerState
 
-class Reset(SessionView):
-    """View to reset the session hash."""
+class Reset(BaseView):
+    """Clear the session."""
 
     def get(self):
-        self.get_session().flush()
+        LearnerState().flush_session()
         self.redirect("/")
