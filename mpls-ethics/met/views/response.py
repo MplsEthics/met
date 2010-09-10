@@ -35,9 +35,9 @@ class Response(BaseView):
         else:
             link_next = "/%s/question" % scenario_id
 
-        context = dict(session=state.session_fmt(),
-                       next=self.next(),
+        context = dict(next=self.next(),
                        previous=self.previous(),
+                       state=state.as_string(),
                        s=state,
                        show_prevnext=False,
                        correct=state.is_completed(scenario_id),

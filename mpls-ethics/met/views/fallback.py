@@ -51,7 +51,7 @@ class Fallback(BaseView):
         state = LearnerState()
         context = dict(previous=self.previous(),
                        next=self.next(),
-                       session=state.session_fmt(),
+                       state=state.as_string(),
                        version=VERSION,
                        show_prevnext=True)
         self.response.out.write(webapp.template.render(path, context))

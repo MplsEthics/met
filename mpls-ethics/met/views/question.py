@@ -33,7 +33,7 @@ class Question(BaseView):
         path = self.viewpath(append='scenario.djt')
         is_completed = state.is_completed(scenario_id)
         context = dict(s=scenario,
-                       session=state.session_fmt(),
+                       state=state.as_string(),
                        previous=self.previous(),
                        next=self.next(),
                        show_prevnext=is_completed)

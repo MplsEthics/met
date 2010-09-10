@@ -33,7 +33,7 @@ class Learner(BaseView):
         context = dict(show_prevnext=True,
                        boards=boards,
                        learner_error=learner_error,
-                       session=state.session_fmt())
+                       state=state.as_string())
         output = template.render(path, context)
         self.response.out.write(output)
 

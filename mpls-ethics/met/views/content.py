@@ -33,6 +33,7 @@ class Content(BaseView):
         context = dict(next=self.next(),
                        previous=self.previous(),
                        s=scenario.as_dict(),
+                       state=state.as_string(),
                        show_prevnext=True)
         self.response.out.write(webapp.template.render(path, context))
 

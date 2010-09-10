@@ -32,7 +32,7 @@ class Certificate(BaseView):
         context = dict(show_prevnext=False,
                        version=VERSION,
                        now=datetime.now(),
-                       session=state.session_fmt(),
+                       state=state.as_string(),
                        learner_name=state.learner_name(),
                        learner_board=state.learner_board())
         output = webapp.template.render(path, context)

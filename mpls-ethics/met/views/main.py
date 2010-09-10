@@ -28,5 +28,5 @@ class Main(BaseView):
         context = dict(next='instr1',
                        show_prevnext=True,
                        show_about=True,
-                       session=state.session_fmt())
+                       state=state.as_string())
         self.response.out.write(template.render(path, context))
