@@ -1,21 +1,13 @@
 import logging
 from google.appengine.ext import webapp
 from met.decorators import ordered
-from met.model import Scenario
 from met.session import LearnerState
 from met.exceptions import InvalidAnswerException
-from met.views.base import SessionView
+from met.views.base import BaseView
 
 
-class Question(SessionView):
+class Question(BaseView):
     """View a question."""
-
-    def assert_scenario_order(self, scenario_id):
-        """If the learner is trying to access the questions out of order,
-        redirect to the first incomplete scenario."""
-        if not self.prereqs_completed(scenario_id):
-            incomplete = self.first_incomplete_scenario()
-            self.redirect("/%s/intro1" % incomplete)
 
     @ordered
     def get(self, scenario_id):
@@ -35,13 +27,7 @@ class Question(SessionView):
     @ordered
     def post(self, scenario_id):
         """Process the learner's answer; redirect as appropriate."""
-        # enforce correct scenario order
-        self.assert_scenario_order(scenario_id)
-
-        # update the session as needed based on the answer
         state = LearnerState()
-
-        # record the answer and redirect
         try:
             answer_id = self.request.params.get('answer', '')
             state.record_answer(scenario_id, answer_id)
