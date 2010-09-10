@@ -44,10 +44,7 @@ sub has_gpl {
         "If not, see <http://www.gnu.org/licenses/>.",
     );
     for my $string (@strings) {
-        if (index($slurp,$string) < 0) {
-            warn "failed match: $string\n";
-            return undef;
-        }
+        return undef if index($slurp,$string) < 0;
     }
     return 1;
 }
