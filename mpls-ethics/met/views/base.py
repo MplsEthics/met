@@ -1,7 +1,6 @@
 import os
 from google.appengine.ext import webapp
-from met.order import scenario_order, view_order
-from met.session import Session
+from met.order import view_order
 
 
 class BaseView(webapp.RequestHandler):
