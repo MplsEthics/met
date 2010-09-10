@@ -1,3 +1,19 @@
+# Copyright 2010 John J. Trammell.
+#
+# This file is part of the Mpls-ethics software package.  Mpls-ethics
+# is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+#
+# Mpls-ethics is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+
 --- !scenario
 
 id: 'gifts'
@@ -34,7 +50,7 @@ answers:
       courtesy with no intention to influence your inspection but if the
       gift is from a prohibited source, the gift must fall under an
       exception in order to be accepted."
-    
+
   - !answer
 
     id: 'gifts.2'
@@ -56,7 +72,7 @@ answers:
       financial interest in the outcome of the subcommittee's hiring
       recommendations.   Coffee and scones do not fall within any of the
       listed gift exceptions."
-    
+
   - !answer
 
     id: 'gifts.4'
@@ -67,4 +83,4 @@ answers:
       maker, the subcommittee's recommendations will directly impact
       Acquaintance's status as a contender for the Director position.
       Acquaintance is an interested person."
-    
+
