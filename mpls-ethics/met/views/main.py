@@ -1,9 +1,9 @@
 from google.appengine.ext.webapp import template
-from met.views.base import SessionView
+from met.views.base import BaseView
 from met.session import LearnerState
 
 
-class Main(SessionView):
+class Main(BaseView):
 
     def get(self):
         path = self.viewpath(append='main.djt')
