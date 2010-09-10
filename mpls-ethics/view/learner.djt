@@ -16,6 +16,19 @@ You should have received a copy of the GNU General Public License
 along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
 {% extends "base.djt" %}
+{% block javascript %}
+{% if cheater %}
+<link type="text/css" href="/css/redmond/jquery-ui-1.8.4.custom.css"
+  rel="Stylesheet" /> 
+<script type="text/javascript"
+  src="/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"
+  src="/js/jquery-ui-1.8.4.custom.min.js"></script>
+<script type="text/javascript">
+  $(function() { $("#datepicker").datepicker(); });
+</script>
+{% endif %}
+{% endblock javascript %}
 {% block content %}
 <h1>Automated Proof of Required Ethics Education</h1>
 
@@ -47,22 +60,34 @@ City’s Ethics in Government Ordinance.
 <form id="learner" action="" method="POST">
 
 <table>
-<tr>
-<td>Full Name:
-<td><input name="learner_name" type="text" size=40>
-<tr>
-<td>Board or Commission:
-<td><select name="learner_board_id">
-<option value="">[choose a board or commission]</option>
+  <tr>
+    <td>Full Name:</td>
+    <td><input name="learner_name" type="text" size=40></td>
+  </tr>
+  <tr>
+    <td>Board or Commission:</td>
+    <td>
+      <select name="learner_board_id">
+        <option value="">[choose a board or commission]</option>
 {% for board in boards %}
-<option value="{{ forloop.counter0 }}">{{ board }}</option>
+        <option value="{{ forloop.counter0 }}">{{ board }}</option>
 {% endfor %}
-</select>
-<tr>
-<td colspan=2>
-<input style="margin-top:1em" type="submit"
-   id="submit" value="Create Certificate">
+      </select>
+    </td>
+  </tr>
+{% if cheater %}
+  <tr>
+    <td>Completion Date:</td>
+    <td><input id="datepicker" name="learner_date" type="text" size=40></td>
+  </tr>
+{% endif %}
+  <tr>
+    <td colspan=2>
+      <input style="margin-top:1em" type="submit"
+        id="submit" value="Create Certificate">
+    </td>
+  </tr>
 </table>
 </form>
 
-{% endblock %}
+{% endblock content %}
