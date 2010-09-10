@@ -4,6 +4,7 @@ http://www.ci.minneapolis.mn.us/boards-and-commissions/
 """
 
 boards = (
+    "Guest",
     "Above the Falls Citizen Advisory Committee",
     "Airports Commission, Metropolitan (MAC)",
     "Animal Care and Control Advisory Board",
