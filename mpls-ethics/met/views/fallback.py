@@ -1,10 +1,10 @@
 import os
-from met.views.base import SessionView
+from met.views.base import BaseView
 from google.appengine.ext import webapp
 from met.session import LearnerState
 
 
-class Fallback(SessionView):
+class Fallback(BaseView):
     """View class that displays the view closest to that requested."""
 
     def template(self):
