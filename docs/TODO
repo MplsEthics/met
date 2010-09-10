@@ -2,4 +2,5 @@ TO DO
 =====
 * test test test
 * add a NoseGAE test
-* add state to template output
+* check state to template output
+* check logic in response template
