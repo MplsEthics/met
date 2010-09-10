@@ -145,9 +145,12 @@ class LearnerState(object):
         answer = Answer.get_by_key_name(answer_id or '--none--')
 
         # if the lookup failed then this is not a valid answer
-        # FIXME: need to check answer/scenario matching
         if not answer:
             raise InvalidAnswerException('bad answer ID')
+
+        # verify that this answer is for this scenario
+        if not answer.scenario.key().name() == scenario_id:
+            raise InvalidAnswerException('answer and scenario do not match')
 
         # record the answer ID
         session = self.session()
