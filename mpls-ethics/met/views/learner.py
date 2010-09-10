@@ -1,18 +1,19 @@
-import logging
 from google.appengine.ext.webapp import template
 from met.boards import boards
+from met.decorators import alldone
 from met.email import send_completion
-from met.model import Completion
-from met.views.base import SessionView
+from met.exceptions import InvalidLearnerException
+from met.views.base import BaseView
 from met.session import LearnerState
 
 
-class Learner(SessionView):
+class Learner(BaseView):
 
     @alldone
     def get(self):
         path = self.viewpath(append='learner.djt')
-        learner_error = session.get('learner_error', False)
+        state = LearnerState()
+        learner_error = state.learner_error()
         context = dict(show_prevnext=True,
                        boards=boards,
                        learner_error=learner_error,
@@ -22,8 +23,8 @@ class Learner(SessionView):
 
     @alldone
     def post(self):
-        """Persist the learner data in the GAE datastore and in the session,
-        then send the email and redirect to the 'certificate' view."""
+        """Attempt to persist the learner data in the GAE datastore and in the
+        session, send the email, and redirect to the certificate view."""
 
         state = LearnerState()
 
@@ -33,56 +34,14 @@ class Learner(SessionView):
             board_id = self.request.params.get('learner_board_id', "")
             state.persist_learner(name, board_id)
         except InvalidLearnerException:
-            session["learner_error"] = True
             self.redirect('/learner')
             return
 
         # send the completion email
         try:
-            send_completion(learner_name, learner_board)
-        except:
-            pass
-
-        # redirect to the certificate view
-        self.redirect('/certificate')
-
-# FIXME: cleanup
-
-        # update the session as needed based on the answer
-
-        # bail if we don't have a valid learner name
-        learner_name = self.request.params.get('learner_name', "")
-        if len(learner_name) == 0:
-            session["learner_error"] = True
-            self.redirect('/learner')
-            return
-
-        # bail if we don't have a valid learner board
-        learner_board_id = self.request.params.get('learner_board_id', "")
-        try:
-            learner_board = boards_[int(learner_board_id)]
-            if len(learner_board) == 0:
-                raise
-        except:
-            session["learner_error"] = True
-            self.redirect('/learner')
-            return
-
-        # persist the learner name and board in the session (to be used by the
-        # certificate template)
-        session["learner_name"] = learner_name
-        session["learner_board"] = learner_board
-
-        # persist the learner name, board, and timestamp in GAE storage
-        # (timestamp should be created automatically)
-        comp = Completion()
-        comp.name = learner_name
-        comp.board = learner_board
-        comp.put()
-
-        # send the completion email
-        try:
-            send_completion(learner_name, learner_board)
+            name = state.learner_name()
+            board = state.learner_board()
+            send_completion(name, board)
         except:
             pass
 
