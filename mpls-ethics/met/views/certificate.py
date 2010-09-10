@@ -3,7 +3,7 @@ from google.appengine.ext import webapp
 from met.decorators import alldone
 from met.views.base import BaseView
 from met.session import LearnerState
-from met.version import version
+from met.version import VERSION
 
 
 class Certificate(BaseView):
@@ -14,7 +14,7 @@ class Certificate(BaseView):
         path = self.viewpath(append='certificate.djt')
         state = LearnerState()
         context = dict(show_prevnext=False,
-                       version=version,
+                       version=VERSION,
                        now=datetime.now(),
                        session=state.session_fmt(),
                        learner_name=state.learner_name(),
