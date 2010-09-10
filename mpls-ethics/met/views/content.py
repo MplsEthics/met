@@ -18,12 +18,14 @@ from google.appengine.ext import webapp
 from met.views.base import BaseView
 from met.exceptions import InvalidScenarioException
 from met.model import Scenario
+from met.session import LearnerState
 
 
 class Content(BaseView):
     """Shows any page containing scenario content."""
 
     def get(self, scenario_id, view):
+        state = LearnerState()
         template = "%s/%s.djt" % (scenario_id, view)
         path = self.viewpath(append=template)
         scenario = Scenario.get_by_key_name(scenario_id)
