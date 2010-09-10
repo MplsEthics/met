@@ -1,8 +1,7 @@
 application: 'mpls-ethics'
-version: 2
+version: 3
 runtime: python
 api_version: 1
-
 handlers:
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
