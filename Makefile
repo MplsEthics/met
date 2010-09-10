@@ -41,4 +41,4 @@ gpl:
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
-	@-find mpls-ethics/content -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
+	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
