@@ -48,7 +48,7 @@ class Learner(BaseView):
         try:
             name = self.request.params.get('learner_name', "")
             board_id = self.request.params.get('learner_board_id', "")
-            state.persist_learner(name, board_id)
+            state.persist_learner(name, board_id, None)
         except InvalidLearnerException:
             self.redirect('/learner')
             return
