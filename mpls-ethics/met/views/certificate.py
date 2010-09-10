@@ -1,21 +1,24 @@
 from datetime import datetime
 from google.appengine.ext import webapp
-from met.decorators import ordered
-from met.views.base import SessionView
+from met.decorators import alldone
+from met.views.base import BaseView
+from met.session import LearnerState
 from met.version import version
 
 
-class Certificate(SessionView):
+class Certificate(BaseView):
     """View class for the certificate."""
 
     @alldone
     def get(self, *argv):
+        # FIXME: fix direct session access
         path = self.viewpath(append='certificate.djt')
+        state = LearnerState()
         context = dict(show_prevnext=False,
                        version=version,
                        now=datetime.now(),
                        session=state.session_fmt(),
-                       learner_name=session.get('learner_name', None),
-                       learner_board=session.get('learner_board', None))
+                       learner_name=state.learner_name(),
+                       learner_board=state.learner_board())
         output = webapp.template.render(path, context)
         self.response.out.write(output)
