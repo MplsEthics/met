@@ -30,6 +30,7 @@ class Cheater(BaseView):
         context = dict(show_prevnext=True,
                        boards=boards,
                        learner_error=learner_error,
+                       cheater=True,
                        state=state.as_string())
         output = template.render(path, context)
         self.response.out.write(output)
