@@ -1,6 +1,7 @@
 TO DO
 =====
+* add warning when cookies are disabled
 * test test test
 * add a NoseGAE test
-* check state to template output
-* check logic in response template
+* verify that state is in output as needed
+* fix logic in response template
