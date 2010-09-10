@@ -26,8 +26,14 @@ class Response(BaseView):
     @ordered
     def get(self, scenario_id):
         state = LearnerState()
-        answer_id = state.last_answer_id(scenario_id)
-        response = Answer.get_by_key_name(answer_id).response
+        answer_id = state.last_answer_id(scenario_id) or "--none--"
+        answer = Answer.get_by_key_name(answer_id)
+
+        if answer is None:
+            self.redirect("/%s/question" % scenario_id)
+            return
+
+        response = answer.response
         path = self.viewpath(append='response.djt')
 
         if state.is_completed(scenario_id):
