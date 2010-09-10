@@ -2,6 +2,7 @@ import os
 from met.views.base import BaseView
 from google.appengine.ext import webapp
 from met.session import LearnerState
+from met.version import VERSION
 
 
 class Fallback(BaseView):
@@ -35,6 +36,7 @@ class Fallback(BaseView):
         context = dict(previous=self.previous(),
                        next=self.next(),
                        session=state.session_fmt(),
+                       version=VERSION,
                        show_prevnext=True)
         self.response.out.write(webapp.template.render(path, context))
 
