@@ -1,12 +1,4 @@
 TO DO
 =====
 * add cheater certificate view class
-* clean up any unresolved FIXMEs
-* clean up view classes:
-   - question
-   - response
-   - base
-* sweep view classes for direct session access
-* implement restricted view decorator
 * clarify copyright?
-* check VERSION string in "about" page
