@@ -36,8 +36,12 @@ along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
     {{ learner_name|default:"Learner Name" }}
   </div>
   <img src="/images/certificate-middle.png">
-  <div id="complete_date">This
-    {{ learner_date|default:now|date:"jS \d\a\y \o\f F, Y" }}</div>
+  <div id="complete_date">
+    This
+    {{ learner_date|default:now|date:"jS" }}
+    day of
+    {{ learner_date|default:now|date:"F, Y" }}
   </div>
   <img src="/images/certificate-bottom.png">
+</div>
 {% endblock body %}
