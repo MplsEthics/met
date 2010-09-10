@@ -1,7 +1,5 @@
 from google.appengine.ext.webapp import template
 from met.boards import boards
-from met.decorators import alldone
-from met.email import send_completion
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
 from met.session import LearnerState
