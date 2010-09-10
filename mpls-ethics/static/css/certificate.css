@@ -38,20 +38,13 @@ div#certificate {
 }
 
 div#learner_name {
-    position:absolute;
     width: 6.5in;
-    left: 1in;
-    top: 600px;
     text-align: center;
     font-size: 24pt;
 }
 
 div#complete_date {
-    position: absolute;
     width: 6.5in;
-    left: 1in;
-    top: 840px;
     text-align: center;
     font-size: 16pt;
 }
-
