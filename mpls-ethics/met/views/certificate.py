@@ -34,6 +34,7 @@ class Certificate(BaseView):
                        now=datetime.now(),
                        state=state.as_string(),
                        learner_name=state.learner_name(),
-                       learner_board=state.learner_board())
+                       learner_board=state.learner_board(),
+                       learner_date=state.learner_date())
         output = webapp.template.render(path, context)
         self.response.out.write(output)
