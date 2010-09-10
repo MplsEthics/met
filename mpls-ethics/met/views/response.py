@@ -1,10 +1,11 @@
 from google.appengine.ext import webapp
-from met.session import LearnerState
+from met.decorators import ordered
 from met.model import Answer
-from met.views.base import SessionView
+from met.session import LearnerState
+from met.views.base import BaseView
 
 
-class Response(SessionView):
+class Response(BaseView):
 
     @ordered
     def get(self, scenario_id):
