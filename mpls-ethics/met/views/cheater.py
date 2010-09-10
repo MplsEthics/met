@@ -45,7 +45,8 @@ class Cheater(BaseView):
         try:
             name = self.request.params.get('learner_name', "")
             board_id = self.request.params.get('learner_board_id', "")
-            state.persist_learner(name, board_id)
+            date = self.request.params.get('learner_date', "")
+            state.persist_learner(name, board_id, date)
         except InvalidLearnerException:
             self.redirect('/cheater')
             return
