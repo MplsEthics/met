@@ -35,6 +35,9 @@ update:
    FIX = FIX
    ME = ME
 
+gpl:
+	find . -name '*.py' | xargs bin/has-gpl.pl
+
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
