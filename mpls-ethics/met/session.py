@@ -63,7 +63,8 @@ class LearnerState(object):
             self._session = Session()
         return self._session
 
-    def session_fmt(self):
+    def as_string(self):
+        """Returns the learner state as a string."""
         session = self.session()
         return pformat(dict(session.items()))
 
