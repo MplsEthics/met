@@ -37,7 +37,7 @@ onclick="window.print();return false;" /></form>
 <img src="/images/certificate.png">
 <div id="learner_name">{{ learner_name|default:"Learner Name" }}</div>
 <div id="complete_date">This
-{{ complete_date|default:now|date:"jS \d\a\y \o\f F, Y" }}</div>
+{{ learner_date|default:now|date:"jS \d\a\y \o\f F, Y" }}</div>
 </div>
 </body>
 </html>
