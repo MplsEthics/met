@@ -23,15 +23,16 @@ Script to convert YAML files into CSV.
 import os
 import sys
 import yaml
-import pprint
 import csv
 
-content_ = os.path.join(os.path.dirname(__file__), '../lib')
-sys.path.append(content_)
+_TRUE = ("true","t","y","yes","1",1)
 
-#from met.content import Scenario
-import schema
-#import pdb; pdb.set_trace()
+#def import_schema():
+#    content = os.path.join(os.path.dirname(__file__), '../lib')
+#    sys.path.append(content)
+#    import schema
+#
+#import_schema()
 
 # scenario writer
 sw_cols = ['id', 'name', 'scenario', 'question', 'prompt']
@@ -59,6 +60,44 @@ def self_dict(list_):
     items = [(x, x) for x in list_]
     return dict(items)
 
+
+class Scenario(yaml.YAMLObject):
+
+    yaml_tag = '!scenario'
+    name = 'foo'
+    description = 'bar'
+
+    def __init__(self,name,description):
+        self.name = name
+        self.description = description
+
+    def __repr__(self):
+        repr = {
+            'class': self.__class__.__name__,
+            'id': self.id
+        }
+        return """%(class)s("%(id)s")""" % repr
+
+
+class Answer(yaml.YAMLObject):
+
+    yaml_tag = '!answer'
+
+    checked = False
+    disabled = False
+
+    def __init__(self,_id,answer,is_correct,response):
+        self.id = _id
+        self.answer = answer
+        self.is_correct = is_correct.lower() in _TRUE
+        self.response = response
+
+    def __repr__(self):
+        repr = {
+            'class': self.__class__.__name__,
+            'id': self.id,
+        }
+        return "%(class)s(%(id)s)" % repr
 
 if __name__ == '__main__':
     # write the header columns
