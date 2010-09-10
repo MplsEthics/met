@@ -29,6 +29,11 @@ RESOURCES
    http://www.dod.mil/dodgc/defense_ethics/ethics_training/2007_AET/
    https://appengine.google.com/
 
+AUTHOR
+======
+
+John Trammell <johntrammell (at) gmail (dot) com>
+
 DEVELOPMENT
 ===========
 
