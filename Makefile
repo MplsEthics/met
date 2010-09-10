@@ -36,7 +36,9 @@ update:
    ME = ME
 
 gpl:
-	find . -name '*.py' | xargs bin/has-gpl.pl
+	find . -name '*.djt'  | xargs bin/has-gpl.pl
+	find . -name '*.py'   | xargs bin/has-gpl.pl
+	find . -name '*.yaml' | xargs bin/has-gpl.pl
 
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
