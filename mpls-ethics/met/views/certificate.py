@@ -11,7 +11,6 @@ class Certificate(BaseView):
 
     @alldone
     def get(self, *argv):
-        # FIXME: fix direct session access
         path = self.viewpath(append='certificate.djt')
         state = LearnerState()
         context = dict(show_prevnext=False,
