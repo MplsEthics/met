@@ -33,7 +33,6 @@ class Response(BaseView):
             self.redirect("/%s/question" % scenario_id)
             return
 
-        response = answer.response
         path = self.viewpath(append='response.djt')
 
         if state.is_completed(scenario_id):
@@ -44,10 +43,9 @@ class Response(BaseView):
         context = dict(next=self.next(),
                        previous=self.previous(),
                        state=state.as_string(),
-                       s=state,
                        show_prevnext=False,
                        correct=state.is_completed(scenario_id),
-                       response=response,
+                       response=answer.response,
                        link_next=link_next)
         output = webapp.template.render(path, context)
         self.response.out.write(output)
