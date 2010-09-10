@@ -7,9 +7,10 @@ class (see http://code.google.com/p/gaeutilities/).
 from pprint import pformat
 from datetime import datetime
 from appengine_utilities.sessions import Session as GAESession
+from met.boards import boards
 from met.order import scenario_order
-from met.model import Answer, Scenario
-from met.exceptions import InvalidAnswerException
+from met.model import Answer, Completion, Scenario
+from met.exceptions import InvalidAnswerException, InvalidLearnerException
 
 
 class Session(GAESession):
@@ -49,6 +50,9 @@ class LearnerState(object):
     def session_fmt(self):
         session = self.session()
         return pformat(dict(session.items()))
+
+    def flush_session(self):
+        self.session().flush()
 
     def update_timestamp(self):
         session = self.session()
@@ -156,29 +160,41 @@ class LearnerState(object):
             completed[scenario_id] = datetime.now().isoformat()
             session["completed"] = completed
 
+    def learner_error(self, error=False):
+        session = self.session()
+        session['learner_error'] = True if error else False
+        return session['learner_error']
+
+    def learner_name(self):
+        return self.session().get('learner_name', None)
+
+    def learner_board(self):
+        return self.session().get('learner_board', None)
 
     def persist_learner(self, name, board_id):
-        # FIXME
+        """Check the learner info; if it's good, persist it in the session and
+        GAE storage."""
+        session = self.session()
 
+        # perform sanity checks on the name and the board
         try:
             if len(name) == 0:
                 raise
-
             board = boards[int(board_id)]
             if len(board) == 0:
                 raise
-
         except:
-            raise InvalidLearnerException()
+            self.learner_error(True)
+            msg = "name='%s' board_id='%s'" % (name, board_id)
+            raise InvalidLearnerException(msg)
 
         # persist the learner name and board in the session (to be used by the
         # certificate template)
-        session = self.session()
-        session["learner_name"] = name
-        session["learner_board"] = board
+        session['learner_name'] = name
+        session['learner_board'] = board
 
-        # persist the learner name, board, and timestamp in GAE storage
-        # (timestamp should be created automatically)
+        # persist the learner name, board, and a timestamp in GAE storage
+        # (the timestamp should be created automatically)
         comp = Completion()
         comp.name = name
         comp.board = board
