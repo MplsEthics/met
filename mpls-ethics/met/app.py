@@ -21,6 +21,8 @@ from met import views
 app_pages = [
     (r'^/$', views.Main),                       # splash page
     (r'^/main$', views.Main),                   # ditto
+    (r'^/cookies$', views.Cookies),             # shows an error message if
+                                                # cookies are disabled
     (r'^/reset$', views.Reset),                 # clears session
     (r'^/learner$', views.Learner),             # learner form submit
     (r'^/certificate$', views.Certificate),     # learner certificate
