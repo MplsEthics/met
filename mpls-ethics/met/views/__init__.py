@@ -1,6 +1,7 @@
 from met.views.base import BaseView
 from met.views.certificate import Certificate
 from met.views.fallback import Fallback
+from met.views.cheater import Cheater
 from met.views.content import Content
 from met.views.learner import Learner
 from met.views.main import Main

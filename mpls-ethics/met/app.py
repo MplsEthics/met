@@ -8,6 +8,7 @@ app_pages = [
     (r'^/reset$', views.Reset),                 # clears session
     (r'^/learner$', views.Learner),             # learner form submit
     (r'^/certificate$', views.Certificate),     # learner certificate
+    (r'^/cheater$', views.Cheater),             # cheater certificate
     (r'^/(\w+)/question$', views.Question),     # e.g. "coi1/question"
     (r'^/(\w+)/response$', views.Response),     # e.g. "coi1/response"
     (r'^/(\w+)/(\w+)$', views.Content),         # e.g. "coi1/intro1"
