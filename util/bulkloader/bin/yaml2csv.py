@@ -20,19 +20,12 @@
 Script to convert YAML files into CSV.
 """
 
-import os
 import sys
 import yaml
 import csv
 
 _TRUE = ("true","t","y","yes","1",1)
 
-#def import_schema():
-#    content = os.path.join(os.path.dirname(__file__), '../lib')
-#    sys.path.append(content)
-#    import schema
-#
-#import_schema()
 
 # scenario writer
 sw_cols = ['id', 'name', 'scenario', 'question', 'prompt']
