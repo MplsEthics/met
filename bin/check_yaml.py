@@ -27,10 +27,8 @@ import yaml
 for f in sys.argv[1:]:
     # pylint: disable-msg=E1101
     try:
-        print "Checking YAML file '%s'..." % f,  # no newline
         fh = open(f)
         yaml.load_all(fh)
-        print " success."
     except yaml.error.YAMLError, e:
         if hasattr(e, 'problem_mark'):
             m = e.problem_mark
