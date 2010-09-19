@@ -4,5 +4,6 @@ from met.app import wsgi_app
 app = TestApp(wsgi_app)
 
 def test_index():
+    #import met; met.debug()
     response = app.get('/')
-    assert 'Hello world!' in str(response)
+    assert('302' in response.status)
