@@ -32,16 +32,14 @@ clean:
 update:
 	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
-# add option '-s' to not capture stdout from tests
-nose nosetest:
-	(cd mpls-ethics; nosetests-2.5 -v --with-gae \
-		--gae-datastore=/tmp/dev_appserver.datastore \
-		--without-sandbox)
-
    FIX = FIX
    ME = ME
 
+# add option '-s' to nose invocation if you want to see stdout from tests
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
 	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
+	(cd mpls-ethics; nosetests-2.5 -v --with-gae \
+		--gae-datastore=/tmp/dev_appserver.datastore \
+		--without-sandbox)
