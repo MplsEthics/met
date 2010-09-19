@@ -25,22 +25,110 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 """
 
+import time
+from google.appengine.api import datastore
 from google.appengine.ext import db
+
+# settings
+try:
+    import settings_default
+    import settings
+
+    if settings.__name__.rsplit('.', 1)[0] != settings_default.__name__.rsplit('.', 1)[0]:
+        settings = settings_default
+except:
+    settings = settings_default
 
 class ROTModel(db.Model):
     """
-    ROTModel overrides the db.Model put function, having it retry
-    up to 3 times when it encounters a datastore timeout. This is
-    to try an maximize the chance the data makes it into the datastore
-    when attempted. If it fails, it raises the db.Timeout error and the
-    calling application will need to handle that.
+    ROTModel overrides the db.Model functions, retrying each method each time
+    a timeout exception is raised.
+
+    Methods superclassed from db.Model are:
+        get(cls, keys)
+        get_by_id(cls, ids, parent)
+        get_by_key_name(cls, key_names, parent)
+        get_or_insert(cls, key_name, kwargs)
+        put(self)
     """
+
+    @classmethod
+    def get(cls, keys):
+        count = 0
+        while count < settings.rotmodel["RETRY_ATTEMPTS"]:
+            try:
+                return db.Model.get(keys)
+            except db.Timeout:
+                count += 1
+                time.sleep(count * settings.rotmodel["RETRY_INTERVAL"])
+        else:
+            raise db.Timeout()
+
+    @classmethod
+    def get_by_id(cls, ids, parent=None):
+        count = 0
+        while count < settings.rotmodel["RETRY_ATTEMPTS"]:
+            try:
+                return db.Model.get_by_id(ids, parent)
+            except db.Timeout:
+                count += 1
+                time.sleep(count * settings.rotmodel["RETRY_INTERVAL"])
+        else:
+            raise db.Timeout()
+
+    @classmethod
+    def get_by_key_name(cls, key_names, parent=None):
+        if isinstance(parent, db.Model):
+            parent = parent.key()
+        key_names, multiple = datastore.NormalizeAndTypeCheck(key_names, basestring)
+        keys = [datastore.Key.from_path(cls.kind(), name, parent=parent)
+                for name in key_names]
+        count = 0
+        if multiple:
+            while count < settings.rotmodel["RETRY_ATTEMPTS"]:
+                try:
+                    return db.get(keys)
+                except db.Timeout:
+                    count += 1
+                    time.sleep(count * settings.rotmodel["RETRY_INTERVAL"])
+        else:
+            while count < settings.rotmodel["RETRY_ATTEMPTS"]:
+                try:
+                    return db.get(*keys)
+                except db.Timeout:
+                    count += 1
+                    time.sleep(count * settings.rotmodel["RETRY_INTERVAL"])
+
+    @classmethod
+    def get_or_insert(cls, key_name, **kwargs):
+        def txn():
+            entity = cls.get_by_key_name(key_name, parent=kwargs.get('parent'))
+            if entity is None:
+                entity = cls(key_name=key_name, **kwargs)
+                entity.put()
+            return entity
+        return db.run_in_transaction(txn)
+
     def put(self):
         count = 0
-        while count < 3:
+        while count < settings.rotmodel["RETRY_ATTEMPTS"]:
             try:
                 return db.Model.put(self)
             except db.Timeout:
                 count += 1
+                time.sleep(count * settings.rotmodel["RETRY_INTERVAL"])
         else:
             raise db.Timeout()
+
+    def delete(self):
+        count = 0
+        while count < settings.rotmodel["RETRY_ATTEMPTS"]:
+            try:
+                return db.Model.delete(self)
+            except db.Timeout:
+                count += 1
+                time.sleep(count * settings.rotmodel["RETRY_INTERVAL"])
+        else:
+            raise db.Timeout()
+
+
