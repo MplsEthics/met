@@ -14,7 +14,7 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
    PACKAGE := mpls-ethics
- APPENGINE := /usr/local/lib/google_appengine
+ APPENGINE := /usr/local/google_appengine
       PATH := /usr/bin:/bin:/usr/local/bin
   PYTHON25 ?= python2.5
 
@@ -37,7 +37,8 @@ update:
 
 nose nosetest:
 	(cd mpls-ethics; nosetests-2.5 --with-gae \
-		--gae-datastore=/tmp/dev_appserver.datastore --without-sandbox)
+		--gae-datastore=/tmp/dev_appserver.datastore \
+		--without-sandbox)
 
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
