@@ -1,0 +1,10 @@
+GAEBASE="/usr/local/google_appengine"
+
+PYTHONPATH=$GAEBASE
+PYTHONPATH=$PYTHONPATH:$GAEBASE/lib
+PYTHONPATH=$PYTHONPATH:$GAEBASE/lib/django
+PYTHONPATH=$PYTHONPATH:$GAEBASE/lib/ipaddr
+PYTHONPATH=$PYTHONPATH:$GAEBASE/lib/webob
+PYTHONPATH=$PYTHONPATH:/Users/johntrammell/work/github/met/mpls-ethics
+
+export PYTHONPATH
