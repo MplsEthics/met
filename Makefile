@@ -35,6 +35,10 @@ update:
    FIX = FIX
    ME = ME
 
+nose nosetest:
+	(cd mpls-ethics; nosetests-2.5 --with-gae \
+		--gae-datastore=/tmp/dev_appserver.datastore --without-sandbox)
+
 test: bin/check_yaml.py
 	@-ack $(FIX)$(ME)
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
