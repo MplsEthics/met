@@ -32,6 +32,7 @@ class SessionMiddleware(object):
         request.session.test_cookie_worked = self.test_cookie_worked
         request.session.delete_test_cookie = self.delete_test_cookie
         request.session.save = self.save
+        return None
 
     def set_test_cookie(self):
         string_cookie = os.environ.get('HTTP_COOKIE', '')
@@ -60,3 +61,8 @@ class SessionMiddleware(object):
 
     def save(self):
         self.request.session = sessions.Session()
+
+    def process_response(self, request, response):
+        if hasattr(request, "session"):
+            response.cookies= request.session.output_cookie
+        return response

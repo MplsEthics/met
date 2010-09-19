@@ -30,20 +30,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 import datetime
 import pickle
 import random
-import __main__
+import sys
 
 # google appengine import
 from google.appengine.ext import db
 from google.appengine.api import memcache
 
 # settings
-DEFAULT_TIMEOUT = 3600 # cache expires after one hour (3600 sec)
-CLEAN_CHECK_PERCENT = 50 # 15% of all requests will clean the database
-MAX_HITS_TO_CLEAN = 100 # the maximum number of cache hits to clean on attempt
+try:
+    import settings_default
+    import settings
 
-
+    if settings.__name__.rsplit('.', 1)[0] != settings_default.__name__.rsplit('.', 1)[0]:
+        settings = settings_default
+except:
+    settings = settings_default
+    
 class _AppEngineUtilities_Cache(db.Model):
-    # It's up to the application to determine the format of their keys
     cachekey = db.StringProperty()
     createTime = db.DateTimeProperty(auto_now_add=True)
     timeout = db.DateTimeProperty()
@@ -58,11 +61,16 @@ class Cache(object):
     results really should only be run once. Cache can be used to store
     pregenerated value made from queries (or other calls such as
     urlFetch()), or the query objects themselves.
+
+    Cache is a standard dictionary object and can be used as such. It attesmpts
+    to store data in both memcache, and the datastore. However, should a
+    datastore write fail, it will not try again. This is for performance
+    reasons.
     """
 
-    def __init__(self, clean_check_percent = CLEAN_CHECK_PERCENT,
-      max_hits_to_clean = MAX_HITS_TO_CLEAN,
-        default_timeout = DEFAULT_TIMEOUT):
+    def __init__(self, clean_check_percent = settings.cache["CLEAN_CHECK_PERCENT"],
+      max_hits_to_clean = settings.cache["MAX_HITS_TO_CLEAN"],
+        default_timeout = settings.cache["DEFAULT_TIMEOUT"]):
         """
         Initializer
 
@@ -77,36 +85,75 @@ class Cache(object):
         self.default_timeout = default_timeout
 
         if random.randint(1, 100) < self.clean_check_percent:
-            self._clean_cache()
+            try:
+                self._clean_cache()
+            except:
+                pass
 
-        if 'AEU_Events' in __main__.__dict__:
-            __main__.AEU_Events.fire_event('cacheInitialized')
+        if 'AEU_Events' in sys.modules['__main__'].__dict__:
+            sys.modules['__main__'].AEU_Events.fire_event('cacheInitialized')
 
     def _clean_cache(self):
         """
         _clean_cache is a routine that is run to find and delete cache
         items that are old. This helps keep the size of your over all
         datastore down.
+
+        It only deletes the max_hits_to_clean per attempt, in order
+        to maximize performance. Default settings are 20 hits, 50%
+        of requests. Generally less hits cleaned on more requests will
+        give you better performance.
+
+        Returns True on completion
         """
         query = _AppEngineUtilities_Cache.all()
         query.filter('timeout < ', datetime.datetime.now())
         results = query.fetch(self.max_hits_to_clean)
         db.delete(results)
-        #for result in results:
-        #    result.delete()
+
+        return True
 
     def _validate_key(self, key):
+        """
+        Internal method for key validation. This can be used by a superclass
+        to introduce more checks on key names.
+        
+        Args:
+            key: Key name to check
+
+        Returns True is key is valid, otherwise raises KeyError.
+        """
         if key == None:
             raise KeyError
+        return True
 
     def _validate_value(self, value):
+        """
+        Internal method for value validation. This can be used by a superclass
+        to introduce more checks on key names.
+
+        Args:
+            value: value to check
+
+        Returns True is value is valid, otherwise raises ValueError.
+        """
         if value == None:
             raise ValueError
+        return True
 
     def _validate_timeout(self, timeout):
+        """
+        Internal method to validate timeouts. If no timeout
+        is passed, then the default_timeout is used.
+
+        Args:
+            timeout: datetime.datetime format
+
+        Returns the timeout
+        """
         if timeout == None:
             timeout = datetime.datetime.now() +\
-            datetime.timedelta(seconds=DEFAULT_TIMEOUT)
+            datetime.timedelta(seconds=self.default_timeout)
         if type(timeout) == type(1):
             timeout = datetime.datetime.now() + \
                 datetime.timedelta(seconds = timeout)
@@ -119,8 +166,15 @@ class Cache(object):
 
     def add(self, key = None, value = None, timeout = None):
         """
-        add adds an entry to the cache, if one does not already
-        exist.
+        Adds an entry to the cache, if one does not already exist. If they key
+        already exists, KeyError will be raised.
+
+        Args:
+            key: Key name of the cache object
+            value: Value of the cache object
+            timeout: timeout value for the cache object.
+
+        Returns the cache object.
         """
         self._validate_key(key)
         self._validate_value(value)
@@ -145,15 +199,24 @@ class Cache(object):
             pass
 
         memcache_timeout = timeout - datetime.datetime.now()
-        memcache.set('cache-'+key, value, int(memcache_timeout.seconds))
+        memcache.set('cache-%s' % (key), value, int(memcache_timeout.seconds))
 
-        if 'AEU_Events' in __main__.__dict__:
-            __main__.AEU_Events.fire_event('cacheAdded')
+        if 'AEU_Events' in sys.modules['__main__'].__dict__:
+            sys.modules['__main__'].AEU_Events.fire_event('cacheAdded')
+
+        return self.get(key)
 
     def set(self, key = None, value = None, timeout = None):
         """
-        add adds an entry to the cache, overwriting an existing value
+        Sets an entry to the cache, overwriting an existing value
         if one already exists.
+
+        Args:
+            key: Key name of the cache object
+            value: Value of the cache object
+            timeout: timeout value for the cache object.
+
+        Returns the cache object.
         """
         self._validate_key(key)
         self._validate_value(value)
@@ -172,18 +235,23 @@ class Cache(object):
             pass
 
         memcache_timeout = timeout - datetime.datetime.now()
-        memcache.set('cache-'+key, value, int(memcache_timeout.seconds))
+        memcache.set('cache-%s' % (key), value, int(memcache_timeout.seconds))
 
-        if 'AEU_Events' in __main__.__dict__:
-            __main__.AEU_Events.fire_event('cacheSet')
+        if 'AEU_Events' in sys.modules['__main__'].__dict__:
+            sys.modules['__main__'].AEU_Events.fire_event('cacheSet')
+
+        return value
 
     def _read(self, key = None):
         """
-        _read returns a cache object determined by the key. It's set
-        to private because it returns a db.Model object, and also
-        does not handle the unpickling of objects making it not the
-        best candidate for use. The special method __getitem__ is the
-        preferred access method for cache data.
+        _read is an internal method that will get the cache entry directly
+        from the datastore, and return the entity. This is used for datastore
+        maintenance within the class.
+
+        Args:
+            key: The key to retrieve
+
+        Returns the cache entity
         """
         query = _AppEngineUtilities_Cache.all()
         query.filter('cachekey', key)
@@ -191,41 +259,54 @@ class Cache(object):
         results = query.fetch(1)
         if len(results) is 0:
             return None
-        return results[0]
 
-        if 'AEU_Events' in __main__.__dict__:
-            __main__.AEU_Events.fire_event('cacheReadFromDatastore')
-        if 'AEU_Events' in __main__.__dict__:
-            __main__.AEU_Events.fire_event('cacheRead')
+        if 'AEU_Events' in sys.modules['__main__'].__dict__:
+            sys.modules['__main__'].AEU_Events.fire_event('cacheReadFromDatastore')
+        if 'AEU_Events' in sys.modules['__main__'].__dict__:
+            sys.modules['__main__'].AEU_Events.fire_event('cacheRead')
+
+        return results[0]
 
     def delete(self, key = None):
         """
-        Deletes a cache object determined by the key.
+        Deletes a cache object.
+
+        Args:
+            key: The key of the cache object to delete.
+
+        Returns True.
         """
-        memcache.delete('cache-'+key)
+        memcache.delete('cache-%s' % (key))
         result = self._read(key)
         if result:
-            if 'AEU_Events' in __main__.__dict__:
-                __main__.AEU_Events.fire_event('cacheDeleted')
+            if 'AEU_Events' in sys.modules['__main__'].__dict__:
+                sys.modules['__main__'].AEU_Events.fire_event('cacheDeleted')
             result.delete()
+        return True
 
     def get(self, key):
         """
-        get is used to return the cache value associated with the key passed.
+        Used to return the cache value associated with the key passed.
+
+        Args:
+            key: The key of the value to retrieve.
+
+        Returns the value of the cache item.
         """
-        mc = memcache.get('cache-'+key)
+        mc = memcache.get('cache-%s' % (key))
         if mc:
-            if 'AEU_Events' in __main__.__dict__:
-                __main__.AEU_Events.fire_event('cacheReadFromMemcache')
-            if 'AEU_Events' in __main__.__dict__:
-                __main__.AEU_Events.fire_event('cacheRead')
+            if 'AEU_Events' in sys.modules['__main__'].__dict__:
+                sys.modules['__main__'].AEU_Events.fire_event('cacheReadFromMemcache')
+            if 'AEU_Events' in sys.modules['__main__'].__dict__:
+                sys.modules['__main__'].AEU_Events.fire_event('cacheRead')
             return mc
         result = self._read(key)
         if result:
             timeout = result.timeout - datetime.datetime.now()
-            # print timeout.seconds
-            memcache.set('cache-'+key, pickle.loads(result.value),
+            memcache.set('cache-%s' % (key), pickle.loads(result.value),
                int(timeout.seconds))
+            if 'AEU_Events' in sys.modules['__main__'].__dict__:
+                sys.modules['__main__'].AEU_Events.fire_event('cacheRead')
             return pickle.loads(result.value)
         else:
             raise KeyError
@@ -234,12 +315,17 @@ class Cache(object):
         """
         Returns a dict mapping each key in keys to its value. If the given
         key is missing, it will be missing from the response dict.
+
+        Args:
+            keys: A list of keys to retrieve.
+
+        Returns a dictionary of key/value pairs.
         """
         dict = {}
         for key in keys:
             value = self.get(key)
             if value is not None:
-                dict[key] = val
+                dict[key] = value
         return dict
 
     def __getitem__(self, key):
@@ -265,7 +351,7 @@ class Cache(object):
         Implements "in" operator
         """
         try:
-            r = self.__getitem__(key)
+            self.__getitem__(key)
         except KeyError:
             return False
         return True
