@@ -219,7 +219,7 @@ class LearnerState(object):
         # if the date is not empty, convert to datetime and persist
         if date:
             session['learner_date'] = datetime.strptime(date, "%m/%d/%Y")
-        else:
+        elif 'learner_date' in session:
             del session['learner_date']
 
         # persist the learner name, board, and a timestamp in GAE storage
