@@ -58,9 +58,11 @@ class LearnerState(object):
         pass
 
     def session(self):
-        """Cache and return an initialized session object."""
+        """Cache and return an initialized session object.  Don't validate the
+        user's IP address or user agent, since this confuses AOL."""
         if getattr(self, '_session', None) is None:
-            self._session = Session()
+            self._session = Session(check_ip=False,
+                                    check_user_agent=False)
         return self._session
 
     def as_string(self):
