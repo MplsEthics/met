@@ -13,10 +13,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-   PACKAGE := mpls-ethics
- APPENGINE := /usr/local/google_appengine
-      PATH := /usr/bin:/bin:/usr/local/bin
-  PYTHON25 ?= python2.5
+     PACKAGE := mpls-ethics
+   APPENGINE := /usr/local/lib/google_appengine
+        PATH := /usr/bin:/bin:/usr/local/bin
+    PYTHON25 ?= python2.5
 
 usage:
 	@echo "usage: [clean]"
@@ -32,12 +32,11 @@ clean:
 update:
 	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
-   FIX = FIX
-   ME = ME
+nose nosetest:
+	nosetests-2.5 -v -s --with-gae
 
-# add option '-s' to nose invocation if you want to see stdout from tests
 test: bin/check_yaml.py
-	@-ack $(FIX)$(ME)
+	@-ack $$(echo "abcde" | tr 'edcba' 'emxif')
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
 	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
 	(cd mpls-ethics; nosetests-2.5 -v --with-gae \
