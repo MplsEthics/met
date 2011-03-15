@@ -20,7 +20,6 @@
 Script to convert YAML files into CSV.
 """
 
-import os
 import sys
 import yaml
 import csv
