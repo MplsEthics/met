@@ -29,10 +29,8 @@ Audit Committee
 Bassett Creek Watershed Management Commission
 Bloomington-Lake Special Service District Board
 Capital Long Range Improvements Committee (CLIC)
-Central Avenue Advisory Board
 Central Avenue Special Service District Advisory Board
 Charter Commission
-Chicago Avenue Special Service District Advisory Board
 Chicago Avenue Advisory Board (Also known as 48th St E and Chicago Ave S)
 Chicago-Lake Special Service District Advisory Board
 Citizen Environmental Advisory Committee (CEAC)
@@ -40,7 +38,6 @@ Civil Rights Commission, Minneapolis
 Civil Service Commission
 Civilian Police Review Authority
 Complete Count Committee (2010 Census)
-Dinkytown Advisory Board
 Dinkytown Special Service District Advisory Board
 Disabilities, Minneapolis Advisory Committee on People With
 Downtown Skyway Advisory Committee
@@ -50,14 +47,11 @@ Ethical Practices Board
 Family Housing Fund (McKnight), Minneapolis/St. Paul
 Fire Code Board of Appeals
 Forty Third Street West and Upton Avenue South Special Service District
-Franklin Avenue East Advisory Board
 Franklin Avenue East Special Service District Advisory Board
 Heritage Preservation Commission
-Hennepin Theatre District Advisory Board
 Hennepin Theatre District Special Service District Advisory Board
 Housing Board of Appeals
 Latino Community Advisory Committee to the Mayor and the City Council
-Linden Hills Advisory Board
 Linden Hills Advisory Board (Also known as 43rd St W and Upton Ave S)
 Minneapolis Bicycle Advisory Committee
 Minneapolis Tree Advisory Commission
@@ -67,9 +61,7 @@ Mississippi Watershed Management Organization
 Municipal Building Commission
 Neighborhood Revitalization Program (NRP) Policy Board
 Neighborhood and Community Engagement Commission
-Nicollet Avenue South Advisory Board
 Nicollet Avenue South Special Service District
-Nicollet Mall Advisory Board
 Nicollet Mall South Special Service District
 Park and Recreation Board of Commissioners, Minneapolis
 Pedestrian Advisory Committee
@@ -80,15 +72,12 @@ Riverview Advisory Board
 School Board, Minneapolis
 Senior Citizen Advisory Committee to the Mayor and City Council
 Shingle Creek Watershed Management Commission
-South Hennepin Avenue Advisory Board
 South Hennepin Avenue Special Service District Advisory Board
 Sports Facilities Commission, Metropolitan
-Stadium Village Advisory Board
 Stadium Village Special Service District Advisory Board
 Telecommunications Network (MTN), Minneapolis
 Thinc.GreenMSP Steering Committee
 Truth in Sale of Housing Board of Appeals
-Uptown Advisory Board (Formerly Hennepin-Lake)
 Uptown Special Service District Advisory Committee
 Workforce Council, Minneapolis
 Youth Coordinating Board
@@ -96,4 +85,5 @@ Youth Violence Executive Committee
 Zoning Board of Adjustment
 """
 
+# build a list of boards (filter out empty strings)
 boards = filter(lambda s: len(s) > 0, _boards.split("\n"))
