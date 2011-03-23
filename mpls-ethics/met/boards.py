@@ -41,6 +41,7 @@ Complete Count Committee (2010 Census)
 Dinkytown Special Service District Advisory Board
 Disabilities, Minneapolis Advisory Committee on People With
 Downtown Skyway Advisory Committee
+East Lake Street Special Service District
 Economic Development Company, Minneapolis (MEDC)
 Estimate and Taxation, Board of
 Ethical Practices Board
