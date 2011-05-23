@@ -1,7 +1,14 @@
 Changelog for Minneapolis Ethics Training (MET)
 ===============================================
 
-0.3 - unreleased
+4.0 - 2011-03-01
+----------------
+* "AOL" fixes to session handling
+
+Note: versioning was changed from "0.x" to "x.y", where "x" corresponds to
+the GAE release version.
+
+0.3 - 2011-03-01
 ----------------
 * now using GAE datastore for content
 * wrote YAML => CSV converter
