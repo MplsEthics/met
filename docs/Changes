@@ -1,12 +1,24 @@
 Changelog for Minneapolis Ethics Training (MET)
 ===============================================
 
+4.3 - 2011-06-27
+----------------
+* fixed broken links
+
+4.2 - 2011-06-27
+----------------
+* added MAC, Lyn-Lake SSD
+
+4.1 - 2011-03-23
+----------------
+* added "East Lake Street SSD"
+
 4.0 - 2011-03-01
 ----------------
 * "AOL" fixes to session handling
 
-Note: versioning was changed from "0.x" to "x.y", where "x" corresponds to
-the GAE release version.
+Note: at this point in the changelog, versioning was changed from "0.x" to
+"x.y", where "x" corresponds to the GAE release version.
 
 0.3 - 2011-03-01
 ----------------
