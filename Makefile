@@ -39,5 +39,4 @@ test: bin/check_yaml.py
 	@-ack $$(echo "abcde" | tr 'edcba' 'emxif')
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
 	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
-	(cd mpls-ethics; nosetests-2.5 -v \
-		--with-gae --without-sandbox)
+	cd mpls-ethics; nosetests-2.5 -v --with-gae --without-sandbox
