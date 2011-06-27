@@ -54,6 +54,8 @@ Hennepin Theatre District Special Service District Advisory Board
 Housing Board of Appeals
 Latino Community Advisory Committee to the Mayor and the City Council
 Linden Hills Advisory Board (Also known as 43rd St W and Upton Ave S)
+Lyndale-Lake Special Service District
+Metropolitan Airports Commission
 Minneapolis Bicycle Advisory Committee
 Minneapolis Tree Advisory Commission
 Minneapolis Workforce Council
