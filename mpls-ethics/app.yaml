@@ -15,7 +15,7 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 application: 'mpls-ethics'
-version: 4
+version: 5
 runtime: python
 api_version: 1
 handlers:
