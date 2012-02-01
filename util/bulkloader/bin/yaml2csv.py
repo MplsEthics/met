@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-# Copyright 2010 John J. Trammell.
+# Copyright 2012 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
