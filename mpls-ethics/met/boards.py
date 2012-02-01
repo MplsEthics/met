@@ -51,6 +51,7 @@ Forty Third Street West and Upton Avenue South Special Service District
 Franklin Avenue East Special Service District Advisory Board
 Heritage Preservation Commission
 Hennepin Theatre District Special Service District Advisory Board
+Homegrown Minneapolis Food Counci
 Housing Board of Appeals
 Latino Community Advisory Committee to the Mayor and the City Council
 Linden Hills Advisory Board (Also known as 43rd St W and Upton Ave S)
