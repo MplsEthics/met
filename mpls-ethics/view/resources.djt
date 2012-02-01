@@ -26,20 +26,20 @@ along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 <dt>
 The Ethics Code
 <dd>
-<a target="new" href="http://www.ci.minneapolis.mn.us/epb/docs/CodeofEthicsOrd.pdf">
-http://www.ci.minneapolis.mn.us/epb/docs/CodeofEthicsOrd.pdf</a>
+<a target="new" href="http://www.minneapolismn.gov/epb/epb_docs_codeofethicsord">
+http://www.minneapolismn.gov/epb/epb_docs_codeofethicsord</a>
 
 <dt>
 The Ethical Practices Board website
 <dd>
-<a target="new" href="http://www.ci.minneapolis.mn.us/epb/">
-http://www.ci.minneapolis.mn.us/epb/</a>
+<a target="new" href="http://www.minneapolismn.gov/epb/">
+http://www.minneapolismn.gov/epb/</a>
 
 <dt>
-Conflict of Interest form
+Conflict of Interest forms
 <dd>
-<a target="new" href="http://www.ci.minneapolis.mn.us/council/procedures/docs/Conflict-of-Interest-Form.doc">
-http://www.ci.minneapolis.mn.us/council/procedures/docs/Conflict-of-Interest-Form.doc</a>
+<a target="new" href="http://www.minneapolismn.gov/epb/epb_coi-forms">
+http://www.minneapolismn.gov/epb/epb_coi-forms</a>
 
 <dt>
 The Ethics Report Line
@@ -51,8 +51,8 @@ https://www.reportlineweb.com/Welcome.aspx?Client=Minneapolis</a>, or call
 <dt>
 Complaint forms from the Ethical Practices Board website
 <dd>
-<a target="new" href="http://www.ci.minneapolis.mn.us/epb/scope.asp">
-http://www.ci.minneapolis.mn.us/epb/scope.asp</a>
+<a target="new" href="http://www.minneapolismn.gov/epb/epb_scope">
+http://www.minneapolismn.gov/epb/epb_scope</a>
 
 <dt>
 The Minnesota Campaign Finance and Public Disclosure Board’s Advisory Opinion #267
@@ -64,7 +64,7 @@ http://www.cfboard.state.mn.us/ao/AO267.pdf</a>
 
 <p>
 If you have any ethics questions, please contact the City's Ethics Officer,
-Susan Trammell at <a href="mailto:EthicsOfficer@ci.minneapolis.mn.us">
-EthicsOfficer@ci.minneapolis.mn.us</a> or 612-673-3230.
+Susan Trammell at <a href="mailto:EthicsOfficer@minneapolismn.gov">
+EthicsOfficer@minneapolismn.gov</a> or 612-673-3230.
 
 {% endblock %}

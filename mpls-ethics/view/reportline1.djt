@@ -40,8 +40,8 @@ you don’t feel comfortable talking to the person, you can:
 <li>visit the Ethics Report Line Web site,
 <li>utilize a downloadable complaint form from the Ethical Practices Board
 website,
-<a target="new" href="http://www.ci.minneapolis.mn.us/epb">
-http://www.ci.minneapolis.mn.us/epb</a>,
+<a target="new" href="http://www.minneapolismn.gov/epb">
+http://www.minneapolismn.gov/epb</a>,
 </ul>
 
 <p>
@@ -50,8 +50,8 @@ or
 <ul>
 <li>
 contact the City’s Ethics Officer, Susan Trammell, at (612) 673-3230 or 
-<a href="mailto:EthicsOfficer@ci.minneapolis.mn.us">
-EthicsOfficer@ci.minneapolis.mn.us</a>.
+<a href="mailto:EthicsOfficer@minneapolismn.gov">
+EthicsOfficer@minneapolismn.gov</a>.
 </ul>
 
 {% endblock content %}
