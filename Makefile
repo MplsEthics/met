@@ -16,13 +16,13 @@
      PACKAGE := mpls-ethics
    APPENGINE := /usr/local/google_appengine
         PATH := /usr/bin:/bin:/usr/local/bin
-    PYTHON25 ?= python2.5
+    PYTHON2X ?= python2.7
 
 usage:
 	@echo "usage: [clean]"
 
 start gae app:
-	PYTHON25=$(PYTHON25) APPENGINE=$(APPENGINE) /bin/bash bin/start-appengine.sh
+	PYTHON2=$(PYTHON2X) APPENGINE=$(APPENGINE) /bin/bash bin/start-appengine.sh
 
 clean:
 	rm -f MANIFEST bulkloader-* *.csv *.zip *.tar.gz
@@ -30,7 +30,7 @@ clean:
 	find . -name '*.pyc' | xargs rm -f
 
 update:
-	$(PYTHON25) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
+	$(PYTHON2X) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
 nose nosetest:
 	nosetests-2.5 -v -s --with-gae
@@ -38,5 +38,5 @@ nose nosetest:
 test: bin/check_yaml.py
 	@-ack $$(echo "abcde" | tr 'edcba' 'emxif')
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
-	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON25) bin/check_yaml.py
+	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON2X) bin/check_yaml.py
 	cd mpls-ethics; nosetests-2.5 -v --with-gae --without-sandbox
