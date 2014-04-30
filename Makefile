@@ -14,9 +14,10 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
      PACKAGE := mpls-ethics
-   APPENGINE := /usr/local/google_appengine
+   APPENGINE := $(HOME)/local/google_appengine
         PATH := /usr/bin:/bin:/usr/local/bin
     PYTHON2X ?= python2.7
+        NOSE := nosetests-2.7
 
 usage:
 	@echo "usage: [clean]"
@@ -33,10 +34,11 @@ update:
 	$(PYTHON2X) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
 nose nosetest:
-	nosetests-2.5 -v -s --with-gae
+	$(NOSE) -v -s --with-gae
 
 test: bin/check_yaml.py
 	@-ack $$(echo "abcde" | tr 'edcba' 'emxif')
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
 	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON2X) bin/check_yaml.py
-	cd mpls-ethics; nosetests-2.5 -v --with-gae --without-sandbox
+	cd mpls-ethics; $(NOSE) -v --with-gae --gae-lib-root=$(APPENGINE) --without-sandbox
+

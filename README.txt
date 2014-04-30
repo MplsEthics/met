@@ -1,9 +1,10 @@
-NAME
+Name
 ====
 
 mpls-ethics - online ethics training for the city of Minneapolis
 
-COPYRIGHT
+
+Copyright
 =========
 
 Copyright 2012 John J. Trammell.
@@ -21,7 +22,8 @@ details.
 You should have received a copy of the GNU General Public License
 along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-DESCRIPTION
+
+Description
 ===========
 
 This package contains a complete Google App Engine application suitable for
@@ -39,7 +41,8 @@ proof of completion to a central location.
 This training is modeled after the 2007 US DOD Annual Ethics Training
 module.
 
-RESOURCES
+
+Resources
 =========
 
    http://code.google.com/intl/en/appengine/
@@ -47,12 +50,23 @@ RESOURCES
    http://www.dod.mil/dodgc/defense_ethics/ethics_training/2007_AET/
    https://appengine.google.com/
 
-AUTHOR
+
+Python Dependencies
+===================
+
+   % sudo pip install pyyaml
+   % sudo pip install nose
+   % sudo pip install nosegae
+
+
+Author
 ======
 
 John Trammell <johntrammell (at) gmail (dot) com>
 
-DEVELOPMENT
+
+Development
 ===========
 
    http://localhost:8765/_ah/admin
+
