@@ -16,8 +16,12 @@
 
 application: 'mpls-ethics'
 version: 5
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: false
+libraries:
+- name: django
+  version: "1.2"
 handlers:
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py

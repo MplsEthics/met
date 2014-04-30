@@ -15,9 +15,5 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-APPSERVER=$APPENGINE/dev_appserver.py
-ADDRESS=127.0.0.1
-
-echo $PYTHON2X $APPSERVER --port=8765 --address=$ADDRESS mpls-ethics/
-
-$PYTHON2X $APPSERVER --port=8765 --address=$ADDRESS mpls-ethics/
+echo $PYTHON2X $APPENGINE/dev_appserver.py --port=8765 mpls-ethics/
+$PYTHON2X $APPENGINE/dev_appserver.py --port=8765 mpls-ethics/
