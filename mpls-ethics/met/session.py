@@ -22,14 +22,17 @@ class (see http://code.google.com/p/gaeutilities/).
 
 from pprint import pformat
 from datetime import datetime
-from appengine_utilities.sessions import Session as GAESession
+# from appengine_utilities.sessions import Session as GAESession
 from met.boards import boards
-from met.order import scenario_order
 from met.model import Answer, Completion, Scenario
 from met.exceptions import InvalidAnswerException, InvalidLearnerException
 
+scenario_order = []    # FIXME
 
-class Session(GAESession):
+
+# class Session(GAESession):
+
+class Session(object):
     """Subclass the appengine_utilities session object to simplify
     extension."""
 

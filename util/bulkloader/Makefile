@@ -1,9 +1,10 @@
 
     PYTHON2X ?= python2.7
   BULKLOADER ?= $(HOME)/local/google_appengine/bulkloader.py
+       SHELL := /bin/bash
 
 usage:
-	@echo "usage: [clean|csv|load]"
+	@echo "usage: [clean|csv|localload|upload]"
 
 clean:
 	rm -f *.csv bulkloader-{log,progress}-*
@@ -20,7 +21,8 @@ answers.csv:
 	$(PYTHON2X) bin/yaml2csv.py src/*.yaml
 
 boards boards.csv: src/boards.txt
-	nl -w1 -nln -s , src/boards.txt > boards.csv
+	echo "id,board" > boards.csv
+	perl -nle 'print qq{"$$_"}' src/boards.txt | nl -w1 -nln -s , >> boards.csv
 
 views views.csv: src/views.txt
 	grep -v '^#' src/views.txt | grep '[[:print:]]' | nl -w1 -nln -s , > views.csv
@@ -28,25 +30,27 @@ views views.csv: src/views.txt
 localload: localload-scenario localload-answer
 
 localload-boards: boards.csv
-	$(PYTHON2X) $(BULKLOADER) \
-		--application="mpls-ethics" \
+	echo XX | $(PYTHON2X) $(BULKLOADER) \
+		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=boards.csv \
 		--kind=Board \
+		--passin \
 		--email=johntrammell@gmail.com \
 		--url http://localhost:8765/remote_api
 
 localload-scenario: scenario.csv
-	$(PYTHON2X) $(BULKLOADER) \
-		--application="mpls-ethics" \
+	echo XX | $(PYTHON2X) $(BULKLOADER) \
+		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
+		--email=johntrammell@gmail.com \
 		--filename=scenario.csv \
 		--kind=Scenario \
-		--email=johntrammell@gmail.com \
+		--passin \
 		--url http://localhost:8765/remote_api
 
 localload-answer: answers.csv
-	$(PYTHON2X) $(BULKLOADER) \
+	echo XX | $(PYTHON2X) $(BULKLOADER) \
 		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=answers.csv \
@@ -55,13 +59,15 @@ localload-answer: answers.csv
 		--url http://localhost:8765/remote_api
 
 localload-views: views.csv
-	$(PYTHON2X) $(BULKLOADER) \
+	echo XX | $(PYTHON2X) $(BULKLOADER) \
 		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=views.csv \
 		--kind=View \
-		--email=johntrammell@gmail.com \
-		--url http://localhost:8765/remote_api
+		--email=foobar@nowhere.com \
+		--passin \
+		--url http://localhost:8765/_ah/remote_api
+
 
 
 upload: upload-scenario upload-answer

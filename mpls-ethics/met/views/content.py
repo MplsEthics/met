@@ -25,18 +25,21 @@ class Content(BaseView):
     """Shows any page containing scenario content."""
 
     def get(self, scenario_id, view):
-        state = LearnerState()
-        template = "%s/%s.djt" % (scenario_id, view)
-        path = self.viewpath(append=template)
-        scenario = Scenario.get_by_key_name(scenario_id)
-        if not scenario:
-            raise InvalidScenarioException('bad scenario ID')
+        pass
 
-        context = dict(next=self.next(),
-                       previous=self.previous(),
-                       s=scenario.as_dict(),
-                       state=state.as_string(),
-                       show_prevnext=True)
-        self.response.out.write(webapp.template.render(path, context))
+
+#       state = LearnerState()
+#       template = "%s/%s.djt" % (scenario_id, view)
+#       path = self.viewpath(append=template)
+#       scenario = Scenario.get_by_key_name(scenario_id)
+#       if not scenario:
+#           raise InvalidScenarioException('bad scenario ID')
+
+#       context = dict(next=self.next(),
+#                      previous=self.previous(),
+#                      s=scenario.as_dict(),
+#                      state=state.as_string(),
+#                      show_prevnext=True)
+#       self.response.out.write(webapp.template.render(path, context))
 
     post = get

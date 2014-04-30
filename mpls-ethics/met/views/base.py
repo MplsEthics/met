@@ -16,11 +16,12 @@
 
 import os
 from google.appengine.ext import webapp
-from met.order import view_order
 
 
 class BaseView(webapp.RequestHandler):
-    """Base class for all MET (Minneapolis Ethics Training) view classes."""
+    """
+    Base class for all MET (Minneapolis Ethics Training) view classes.
+    """
 
     # Define a hardcoded relative path from this file to the views.  This
     # should be automated somehow!
@@ -36,44 +37,55 @@ class BaseView(webapp.RequestHandler):
             return os.path.join(self.view_dir, './' + append)
         return self.view_dir
 
+    def request_path(self):
+        """
+        Return the path of the current request, minus any leading slash.
+        """
+        return self.request.path[1:]
+
     def view_index(self):
-        request_path = self.request.path[1:]
-        i = view_order.index(request_path)
-        return i
+        """
+        Return the (integer) index of the current request path.
+        """
+        return db.GqlQuery("SELECT order FROM View WHERE view=:1",
+            self.request_path()).get()
 
     def next(self):
-        """Returns the alias to the next page."""
-        try:
-            i = self.view_index()
-            if i < len(view_order):
-                return view_order[i + 1]
-        except:
-            return None
+        """
+        Returns the alias to the next page, None if there is no next page.
+        """
+        return db.GqlQuery("SELECT view FROM View WHERE order=:1",
+            self.view_index() + 1).get()
 
     def previous(self):
-        """Returns the alias to the previous page."""
-        try:
-            i = self.view_index()
-            if i > 0:
-                return view_order[i - 1]
-        except:
-            return None
+        """
+        Returns the alias to the previous page, None if there is no previous
+        page.
+        """
+        return db.GqlQuery("SELECT view FROM View WHERE order=:1",
+            self.view_index() - 1).get()
 
     def template(self):
-        """Returns the filename of the template to view."""
+        """
+        Returns the filename of the template to view.  This should be
+        overridden in any subclass...
+        """
         return 'main.djt'
 
     def get(self):
-        """The default GET request handler."""
+        """
+        The default GET request handler.
+        """
         template_values = {
             'next': self.next(),
             'previous': self.previous(),
             'show_prevnext': True,
         }
-
         t = self.viewpath(append=self.template())
         self.response.out.write(webapp.template.render(t, template_values))
 
     def post(self):
-        """Default POST action is to redirect to GET."""
+        """
+        Default POST action is to redirect to GET.
+        """
         self.redirect(self.request.path)

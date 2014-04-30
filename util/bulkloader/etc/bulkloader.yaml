@@ -82,3 +82,15 @@ transformers:
       external_name: order
       import_transform: db.Text
 
+- kind: Board
+  connector: csv
+  connector_options:
+    encoding: utf-8
+    columns: from_header
+  property_map:
+    - property: id
+      external_name: id
+      export_transform: db.Text
+    - property: order
+      external_name: order
+      import_transform: db.Text
