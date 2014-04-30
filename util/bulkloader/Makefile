@@ -23,6 +23,9 @@ answers.csv:
 boards boards.csv: src/boards.txt
 	nl -w1 -nln -s , src/boards.txt > boards.csv
 
+views views.csv: src/views.txt
+	grep -v '^#' src/views.txt | grep '[[:print:]]' | nl -w1 -nln -s , > views.csv
+
 localload: localload-scenario localload-answer
 
 localload-scenario: scenario.csv
