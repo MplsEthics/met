@@ -27,7 +27,9 @@ boards boards.csv: src/boards.txt
 views views.csv: src/views.txt
 	grep -v '^#' src/views.txt | grep '[[:print:]]' | nl -w1 -nln -s , > views.csv
 
-localload: localload-scenario localload-answer
+localload:
+	make localload-boards localload-views
+	make localload-scenario localload-answer
 
 localload-boards: boards.csv
 	echo XX | $(PYTHON2X) $(BULKLOADER) \
@@ -39,35 +41,35 @@ localload-boards: boards.csv
 		--email=johntrammell@gmail.com \
 		--url http://localhost:8765/remote_api
 
+localload-views: views.csv
+	echo XX | $(PYTHON2X) $(BULKLOADER) \
+		--application="dev~mpls-ethics" \
+		--config_file=etc/bulkloader.yaml \
+		--filename=views.csv \
+		--kind=View \
+		--email=johntrammell@gmail.com \
+		--passin \
+		--url http://localhost:8765/remote_api
+
 localload-scenario: scenario.csv
 	echo XX | $(PYTHON2X) $(BULKLOADER) \
 		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
-		--email=johntrammell@gmail.com \
 		--filename=scenario.csv \
 		--kind=Scenario \
+		--email=johntrammell@gmail.com \
 		--passin \
 		--url http://localhost:8765/remote_api
 
 localload-answer: answers.csv
 	echo XX | $(PYTHON2X) $(BULKLOADER) \
-		--application="mpls-ethics" \
+		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=answers.csv \
 		--kind=Answer \
 		--email=johntrammell@gmail.com \
-		--url http://localhost:8765/remote_api
-
-localload-views: views.csv
-	echo XX | $(PYTHON2X) $(BULKLOADER) \
-		--application="mpls-ethics" \
-		--config_file=etc/bulkloader.yaml \
-		--filename=views.csv \
-		--kind=View \
-		--email=foobar@nowhere.com \
 		--passin \
-		--url http://localhost:8765/_ah/remote_api
-
+		--url http://localhost:8765/remote_api
 
 
 upload: upload-scenario upload-answer
