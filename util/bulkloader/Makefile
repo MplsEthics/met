@@ -1,7 +1,6 @@
 
-
-    PYTHON2X ?= python2.5
-  BULKLOADER ?= /usr/local/google_appengine/bulkloader.py
+    PYTHON2X ?= python2.7
+  BULKLOADER ?= $(HOME)/local/google_appengine/bulkloader.py
 
 usage:
 	@echo "usage: [clean|csv|load]"
@@ -28,6 +27,15 @@ views views.csv: src/views.txt
 
 localload: localload-scenario localload-answer
 
+localload-boards: boards.csv
+	$(PYTHON2X) $(BULKLOADER) \
+		--application="mpls-ethics" \
+		--config_file=etc/bulkloader.yaml \
+		--filename=boards.csv \
+		--kind=Board \
+		--email=johntrammell@gmail.com \
+		--url http://localhost:8765/remote_api
+
 localload-scenario: scenario.csv
 	$(PYTHON2X) $(BULKLOADER) \
 		--application="mpls-ethics" \
@@ -45,6 +53,16 @@ localload-answer: answers.csv
 		--kind=Answer \
 		--email=johntrammell@gmail.com \
 		--url http://localhost:8765/remote_api
+
+localload-views: views.csv
+	$(PYTHON2X) $(BULKLOADER) \
+		--application="mpls-ethics" \
+		--config_file=etc/bulkloader.yaml \
+		--filename=views.csv \
+		--kind=View \
+		--email=johntrammell@gmail.com \
+		--url http://localhost:8765/remote_api
+
 
 upload: upload-scenario upload-answer
 
