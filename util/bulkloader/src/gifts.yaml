@@ -38,6 +38,8 @@ question: "Is it permissible to accept Acquaintance's offer to pay for your
 
 prompt: ""
 
+prereq: "doi"
+
 answers:
 
   - !answer

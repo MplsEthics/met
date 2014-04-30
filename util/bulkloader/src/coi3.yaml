@@ -32,6 +32,8 @@ question: "May you sit on the panel hearing the charge of discrimination?"
 prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
+prereq: "coi2"
+
 answers:
 
   - !answer

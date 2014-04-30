@@ -38,6 +38,8 @@ question: "Was it permissible to share the information with Guest?"
 
 prompt: ""
 
+prereq: "coi4"
+
 answers:
 
   - !answer

@@ -35,6 +35,8 @@ question: "May you participate in the decision making process related to
 prompt: "Please reflect first on the reason we have this conflict of
   interest statute and how it applies here. Then choose the best answer."
 
+prereq: "coi3"
+
 answers:
 
   - !answer
