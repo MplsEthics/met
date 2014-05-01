@@ -1,3 +1,4 @@
+{% extends "base.djt" %}
 {% comment %}
 Copyright 2012 John J. Trammell.
 
@@ -15,7 +16,6 @@ General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 {% endcomment %}
-{% extends "base.djt" %}
 {% block content %}
 <div id="response">
 <p class="topic">{{ topic }}</p>
