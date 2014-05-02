@@ -35,6 +35,9 @@ transformers:
       export_transform: transform.key_id_or_name_as_string
     - property: name
       external_name: name
+    - property: prereq
+      external_name: prereq
+      import_transform: db.Text
     - property: scenario
       external_name: scenario
       import_transform: db.Text

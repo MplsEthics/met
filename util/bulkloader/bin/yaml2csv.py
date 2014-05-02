@@ -28,7 +28,7 @@ _TRUE = ("true","t","y","yes","1",1)
 
 
 # scenario writer
-sw_cols = ['id', 'name', 'scenario', 'question', 'prompt']
+sw_cols = ['id', 'name', 'prereq', 'scenario', 'question', 'prompt']
 sw = csv.DictWriter(open('scenario.csv', 'w'),
                     sw_cols,
                     extrasaction='ignore')
