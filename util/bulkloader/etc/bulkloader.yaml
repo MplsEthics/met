@@ -23,7 +23,6 @@ python_preamble:
 - import: re
 - import: base64
 
-
 transformers:
 - kind: Scenario
   connector: csv
@@ -76,11 +75,14 @@ transformers:
     columns: from_header
   property_map:
     - property: __key__
-      external_name: name
+      external_name: id
       export_transform: transform.key_id_or_name_as_string
-    - property: order
-      external_name: order
+      import_transform: transform.create_foreign_key('id', key_is_id=True)
+    - property: view
+      external_name: view
       import_transform: db.Text
+
+# see e.g. https://stackoverflow.com/questions/14953957/how-to-populate-id-field-in-appengine-when-using-bulkloader
 
 - kind: Board
   connector: csv
@@ -88,9 +90,10 @@ transformers:
     encoding: utf-8
     columns: from_header
   property_map:
-    - property: id
+    - property: __key__
       external_name: id
-      export_transform: db.Text
-    - property: order
-      external_name: order
+      export_transform: transform.key_id_or_name_as_string
+      import_transform: transform.create_foreign_key('id', key_is_id=True)
+    - property: board
+      external_name: board
       import_transform: db.Text

@@ -40,17 +40,17 @@ class Session(object):
         """Initialize session attributes for the ethics training."""
 
         # call parent init
-        super(Session, self).__init__(*args, **kwargs)
+#       super(Session, self).__init__(*args, **kwargs)
 
         # initialize scenario answer array
-        for s in scenario_order:
-            if not s in self:
-                self[s] = []
+#       for s in scenario_order:
+#           if not s in self:
+#               self[s] = []
 
-        # initialize scenario completion dictionary
-        if not 'completed' in self:
-            items = [(s, False) for s in scenario_order]
-            self['completed'] = dict(items)
+#       # initialize scenario completion dictionary
+#       if not 'completed' in self:
+#           items = [(s, False) for s in scenario_order]
+#           self['completed'] = dict(items)
 
 
 class LearnerState(object):
@@ -71,24 +71,26 @@ class LearnerState(object):
     def as_string(self):
         """Returns the learner state as a string."""
         session = self.session()
-        return pformat(dict(session.items()))
+        return "FIXME: as_string"
+        #return pformat(dict(session.items()))
 
     def flush_session(self):
         self.session().flush()
 
     def update_timestamp(self):
         session = self.session()
-        timestamps = session.get('timestamp', [])
-        timestamps += [datetime.now().isoformat()]
-        session['timestamp'] = timestamps[0:3]
+        #timestamps = session.get('timestamp', [])
+        #timestamps += [datetime.now().isoformat()]
+        #session['timestamp'] = timestamps[0:3]
 
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
-        completed = self.session()['completed']
-        return completed[scenario_id]
+        #completed = self.session()['completed']
+        #return completed[scenario_id]
 
     def completed_all(self):
         """Returns True if the user has completed all scenarios."""
+        return False
         completed = self.session()['completed']
         for s in scenario_order:
             if s not in completed:
@@ -98,6 +100,7 @@ class LearnerState(object):
     def completed_prerequisites(self, scenario_id):
         """Returns True if all the scenarios before 'scenario_id' have been
         completed; returns False otherwise."""
+        return True
 
         assert scenario_id in scenario_order, 'unknown scenario'
 

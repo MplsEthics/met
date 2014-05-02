@@ -14,8 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
+import met
 import os
-from google.appengine.ext import webapp
+from google.appengine.ext import db, webapp
 
 
 class BaseView(webapp.RequestHandler):
@@ -47,23 +48,38 @@ class BaseView(webapp.RequestHandler):
         """
         Return the (integer) index of the current request path.
         """
-        return db.GqlQuery("SELECT order FROM View WHERE view=:1",
-            self.request_path()).get()
+        gql = "SELECT order FROM View WHERE view=:1"
+        idx = db.GqlQuery(gql, self.request_path()).get()
+        return idx
 
     def next(self):
         """
         Returns the alias to the next page, None if there is no next page.
         """
-        return db.GqlQuery("SELECT view FROM View WHERE order=:1",
-            self.view_index() + 1).get()
+        gql = "SELECT view FROM View WHERE order=:1"
+        try:
+            return db.GqlQuery(gql, self.view_index() + 1).get()
+        except:
+            return "foo"
+            met.debug()
+            idx = self.view_index() + 1
+            nxt = db.GqlQuery(gql, idx).get()
+            return nxt
 
     def previous(self):
         """
         Returns the alias to the previous page, None if there is no previous
         page.
         """
-        return db.GqlQuery("SELECT view FROM View WHERE order=:1",
-            self.view_index() - 1).get()
+        gql = "SELECT view FROM View WHERE order=:1"
+        try:
+            return db.GqlQuery(gql, self.view_index() - 1).get()
+        except:
+            return "bar"
+            met.debug()
+            idx = self.view_index() - 1
+            prev = db.GqlQuery(gql, idx).get()
+            return prev
 
     def template(self):
         """

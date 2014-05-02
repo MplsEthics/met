@@ -13,6 +13,7 @@ csv:
 	make scenario.csv
 	make answers.csv
 	make boards.csv
+	make views.csv
 
 scenario.csv:
 	$(PYTHON2X) bin/yaml2csv.py src/*.yaml
@@ -25,7 +26,9 @@ boards boards.csv: src/boards.txt
 	perl -nle 'print qq{"$$_"}' src/boards.txt | nl -w1 -nln -s , >> boards.csv
 
 views views.csv: src/views.txt
-	grep -v '^#' src/views.txt | grep '[[:print:]]' | nl -w1 -nln -s , > views.csv
+	echo "id,view" > views.csv
+	grep -v '^#' src/views.txt | grep '[[:print:]]' | \
+		perl -nle 'print qq{"$$_"}' | nl -w1 -nln -s , >> views.csv
 
 localload:
 	make localload-boards localload-views

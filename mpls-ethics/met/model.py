@@ -17,6 +17,14 @@
 from google.appengine.ext import db
 
 
+class Board(db.Model):
+    """
+    Views are presented to the learner in a specific order.
+    """
+    id = db.IntegerProperty(verbose_name='board id')
+    board = db.StringProperty(verbose_name='board name')
+
+
 class View(db.Model):
     """
     Views are presented to the learner in a specific order.

@@ -15,12 +15,21 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 from google.appengine.ext.webapp import template
-from met.boards import boards
+#from met.boards import boards
 from met.decorators import alldone
 from met.email import send_completion
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
 from met.session import LearnerState
+
+
+ import Board
+ from pprint import pprint as pp
+
+# pprint.pprint(os.environ.copy())
+
+q = db.GqlQuery("SELECT * FROM Board ORDER BY __key__");
+pp([x.board for x in q.fetch(1000)])
 
 
 class Learner(BaseView):
