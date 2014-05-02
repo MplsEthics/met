@@ -16,6 +16,7 @@
 
 from google.appengine.api import mail
 
+
 def send_completion(learner_name,learner_board):
     """Sends the completion email to someone who tracks these things."""
     msg = mail.EmailMessage()
@@ -31,7 +32,6 @@ The following user has completed their online ethics training:
 """ % (learner_name, learner_board)
     msg.send()
 
-    # send a copy to me
+    # send a copy to the admin email address
     msg.to = 'John Trammell <johntrammell@gmail.com>'
     msg.send()
-

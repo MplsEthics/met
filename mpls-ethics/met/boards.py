@@ -16,7 +16,8 @@
 
 
 from google.appengine.ext import db
-from met.model import Board
+#from met.model import Board
+
 
 def boards():
     """

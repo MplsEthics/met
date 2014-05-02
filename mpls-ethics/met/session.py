@@ -16,90 +16,51 @@
 
 """
 This module implements a custom Session class for the Minneapolis Ethics
-Training site.  It extends the Appengine Utilities ("GAEUtilities") sessions
-class (see http://code.google.com/p/gaeutilities/).
+Training site.
 """
 
-from pprint import pformat
 from datetime import datetime
-# from appengine_utilities.sessions import Session as GAESession
 from met.boards import boards
 from met.model import Answer, Completion, Scenario
 from met.exceptions import InvalidAnswerException, InvalidLearnerException
 
-scenario_order = []    # FIXME
-
-
-# class Session(GAESession):
-
-class Session(object):
-    """Subclass the appengine_utilities session object to simplify
-    extension."""
-
-    def __init__(self, *args, **kwargs):
-        """Initialize session attributes for the ethics training."""
-
-        # call parent init
-#       super(Session, self).__init__(*args, **kwargs)
-
-        # initialize scenario answer array
-#       for s in scenario_order:
-#           if not s in self:
-#               self[s] = []
-
-#       # initialize scenario completion dictionary
-#       if not 'completed' in self:
-#           items = [(s, False) for s in scenario_order]
-#           self['completed'] = dict(items)
-
 
 class LearnerState(object):
-    """Handles all interactions with the learner's state."""
+    """
+    Wraps the Session object; provides simple interface to get/set the
+    learner's state.
+    """
 
-    def __init__(self):
+    def __init__(self, session):
         """Construct the state object."""
+        self.session = session
         pass
 
-    def session(self):
-        """Cache and return an initialized session object.  Don't validate the
-        user's IP address or user agent, since this confuses AOL."""
-        if getattr(self, '_session', None) is None:
-            self._session = Session(check_ip=False,
-                                    check_user_agent=False)
-        return self._session
-
-    def as_string(self):
-        """Returns the learner state as a string."""
-        session = self.session()
-        return "FIXME: as_string"
-        #return pformat(dict(session.items()))
-
-    def flush_session(self):
-        self.session().flush()
+    def flush(self):
+        self.session.flush()
 
     def update_timestamp(self):
-        session = self.session()
-        #timestamps = session.get('timestamp', [])
-        #timestamps += [datetime.now().isoformat()]
-        #session['timestamp'] = timestamps[0:3]
+        """
+        The session tracks a small number of requests for debugging purposes.
+        """
 
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
-        #completed = self.session()['completed']
-        #return completed[scenario_id]
+        return scenario_id in self.session.completed
 
-    def completed_all(self):
-        """Returns True if the user has completed all scenarios."""
-        return False
-        completed = self.session()['completed']
-        for s in scenario_order:
-            if s not in completed:
-                return False
-        return True
+    def all_completed(self):
+        """
+        Returns True if the user has completed all scenarios, False otherwise.
+        """
+        gql = "SELECT __key__ FROM Scenario";
+        app_scenarios = [ x for x in db.fetch(gql, 100) ]
+        completed_scenarios = self.session.completed
+        return set(completed_scenarios) == set(app_scenarios)
 
     def completed_prerequisites(self, scenario_id):
-        """Returns True if all the scenarios before 'scenario_id' have been
-        completed; returns False otherwise."""
+        """
+        Returns True if ...  FIXME
+        """
         return True
 
         assert scenario_id in scenario_order, 'unknown scenario'

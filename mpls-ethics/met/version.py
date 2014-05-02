@@ -14,4 +14,4 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-VERSION = '3.0'
+VERSION = '3.1'
