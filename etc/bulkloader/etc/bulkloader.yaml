@@ -67,3 +67,16 @@ transformers:
     - property: response
       external_name: response
       import_transform: db.Text
+
+- kind: Board
+  connector: csv
+  connector_options:
+    encoding: utf-8
+    columns: from_header
+  property_map:
+    - property: __key__
+      external_name: id
+      export_transform: transform.key_id_or_name_as_string
+    - property: name
+      external_name: name
+      import_transform: db.Text

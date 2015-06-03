@@ -15,11 +15,11 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from google.appengine.ext import webapp
+import webapp2
 from met.order import view_order
 
 
-class BaseView(webapp.RequestHandler):
+class BaseView(webapp2.RequestHandler):
     """Base class for all MET (Minneapolis Ethics Training) view classes."""
 
     # Define a hardcoded relative path from this file to the views.  This
@@ -72,7 +72,7 @@ class BaseView(webapp.RequestHandler):
         }
 
         t = self.viewpath(append=self.template())
-        self.response.out.write(webapp.template.render(t, template_values))
+        self.response.out.write(webapp2.template.render(t, template_values))
 
     def post(self):
         """Default POST action is to redirect to GET."""

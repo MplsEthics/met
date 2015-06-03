@@ -1,7 +1,7 @@
 
-
-    PYTHON2X ?= python2.5
-  BULKLOADER ?= /usr/local/google_appengine/bulkloader.py
+       SHELL := /bin/bash
+      PYTHON ?= python2.7
+  BULKLOADER ?= ../../sdk/google_appengine/bulkloader.py
 
 usage:
 	@echo "usage: [clean|csv|load]"
@@ -15,38 +15,51 @@ csv:
 	make boards.csv
 
 scenario.csv:
-	$(PYTHON2X) bin/yaml2csv.py src/*.yaml
+	$(PYTHON) bin/yaml2csv.py src/*.yaml
 
 answers.csv:
-	$(PYTHON2X) bin/yaml2csv.py src/*.yaml
+	$(PYTHON) bin/yaml2csv.py src/*.yaml
 
-boards boards.csv: src/boards.txt
-	nl -w1 -nln -s , src/boards.txt > boards.csv
+boards.csv: src/boards.txt
+	echo "id,name" > boards.csv
+	sed -e 's/\(.*\)/"\1"/' src/boards.txt | nl -w1 -nln -s , >> boards.csv
 
-localload: localload-scenario localload-answer
+localload: localload-scenario localload-answer localload-board
 
 localload-scenario: scenario.csv
-	$(PYTHON2X) $(BULKLOADER) \
-		--application="mpls-ethics" \
+	echo 'XX' | $(PYTHON) $(BULKLOADER) \
+		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=scenario.csv \
 		--kind=Scenario \
 		--email=johntrammell@gmail.com \
-		--url http://localhost:8765/remote_api
+		--url http://localhost:8765/remote_api \
+		--passin
 
 localload-answer: answers.csv
-	$(PYTHON2X) $(BULKLOADER) \
-		--application="mpls-ethics" \
+	echo 'XX' | $(PYTHON) $(BULKLOADER) \
+		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=answers.csv \
 		--kind=Answer \
 		--email=johntrammell@gmail.com \
-		--url http://localhost:8765/remote_api
+		--url http://localhost:8765/remote_api \
+		--passin
+
+localload-board: boards.csv
+	echo 'XX' | $(PYTHON) $(BULKLOADER) \
+		--application="dev~mpls-ethics" \
+		--config_file=etc/bulkloader.yaml \
+		--filename=boards.csv \
+		--kind=Board \
+		--email=johntrammell@gmail.com \
+		--url http://localhost:8765/remote_api \
+		--passin
 
 upload: upload-scenario upload-answer
 
 upload-scenario: scenario.csv
-	$(PYTHON2X) $(BULKLOADER) \
+	$(PYTHON) $(BULKLOADER) \
 		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=scenario.csv \
@@ -55,7 +68,7 @@ upload-scenario: scenario.csv
 		--url http://mpls-ethics.appspot.com/remote_api
 
 upload-answer: answers.csv
-	$(PYTHON2X) $(BULKLOADER) \
+	$(PYTHON) $(BULKLOADER) \
 		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=answers.csv \

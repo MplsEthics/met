@@ -49,7 +49,6 @@ sdk/$(ZIPFILE):
 		cp ~/Downloads/$(ZIPFILE) sdk/ ; else \
 		cd sdk; wget $(ZIPURL); fi
 
-
 start: sdk/google_appengine/dev_appserver.py
 	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check --port=8765 mpls-ethics/
 
