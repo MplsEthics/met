@@ -1,3 +1,4 @@
 .*.sw*
 *.pyc
 mpls-ethics/index.yaml
+sdk/

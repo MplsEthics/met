@@ -14,24 +14,47 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
      PACKAGE := mpls-ethics
-   APPENGINE := $(HOME)/local/google_appengine
         PATH := /usr/bin:/bin:/usr/local/bin
-    PYTHON2X ?= python2.7
+      PYTHON ?= python2.7
         NOSE := nosetests-2.7
 
-usage:
-	@echo "usage: [clean]"
+   APPENGINE := ./sdk/google_appengine
+     ZIPFILE := google_appengine_1.9.21.zip
+      ZIPURL := https://storage.googleapis.com/appengine-sdks/featured/$(ZIPFILE)
 
-start gae app:
-	PYTHON2=$(PYTHON2X) APPENGINE=$(APPENGINE) /bin/bash bin/start-appengine.sh
+.PHONY: start
+
+usage:
+	@echo "usage: [clean|realclean|sdk|start]"
 
 clean:
-	rm -f MANIFEST bulkloader-* *.csv *.zip *.tar.gz
+	rm -f MANIFEST bulkloader-* *.csv *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
-	find . -name '*.pyc' | xargs rm -f
+	find . -name '*.pyc' -exec rm {} \;
+
+realclean:
+	git clean -df
+
+sdk: sdk/google_appengine
+
+sdk/google_appengine/dev_appserver.py: sdk/google_appengine
+
+sdk/google_appengine: sdk/$(ZIPFILE)
+	mkdir -p sdk
+	cd sdk; unzip -q $(ZIPFILE)
+
+sdk/$(ZIPFILE):
+	mkdir -p sdk
+	if [ -e ~/Downloads/$(ZIPFILE) ]; then \
+		cp ~/Downloads/$(ZIPFILE) sdk/ ; else \
+		cd sdk; wget $(ZIPURL); fi
+
+
+start: sdk/google_appengine/dev_appserver.py
+	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check --port=8765 mpls-ethics/
 
 update:
-	$(PYTHON2X) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
+	$(PYTHON) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
 nose nosetest:
 	$(NOSE) -v -s --with-gae
@@ -39,6 +62,6 @@ nose nosetest:
 test: bin/check_yaml.py
 	@-ack $$(echo "abcde" | tr 'edcba' 'emxif')
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
-	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON2X) bin/check_yaml.py
+	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON) bin/check_yaml.py
 	cd mpls-ethics; $(NOSE) -v --with-gae --gae-lib-root=$(APPENGINE) --without-sandbox
 
