@@ -50,7 +50,7 @@ sdk/$(ZIPFILE):
 	cp ~/Downloads/$(ZIPFILE) sdk/ \
 
 start: sdk/google_appengine/dev_appserver.py
-	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check mpls-ethics/
+	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check 1 mpls-ethics/
 
 update:
 	$(PYTHON) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
