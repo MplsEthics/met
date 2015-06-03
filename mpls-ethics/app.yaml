@@ -22,6 +22,10 @@ threadsafe: false
 libraries:
 - name: django
   version: "1.2"
+- name: webapp2
+  version: "2.5.2"
+- name: jinja2
+  version: "2.6"
 handlers:
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py

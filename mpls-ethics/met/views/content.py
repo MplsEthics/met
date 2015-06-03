@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 from google.appengine.ext import webapp
 from met.views.base import BaseView
 from met.exceptions import InvalidScenarioException
@@ -28,6 +29,7 @@ class Content(BaseView):
         state = LearnerState()
         template = "%s/%s.djt" % (scenario_id, view)
         path = self.viewpath(append=template)
+        logging.warn("scenario_id=%s path=%s" % (scenario_id, path))
         scenario = Scenario.get_by_key_name(scenario_id)
         if not scenario:
             raise InvalidScenarioException('bad scenario ID')

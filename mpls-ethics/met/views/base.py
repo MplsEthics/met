@@ -24,7 +24,7 @@ class BaseView(webapp2.RequestHandler):
 
     # Define a hardcoded relative path from this file to the views.  This
     # should be automated somehow!
-    view_dir = os.path.join(os.path.dirname(__file__), '../../view')
+    view_dir = os.path.join(os.path.dirname(__file__), '../../templates')
 
     def main(self):
         """Returns the path to the 'main' view template."""
@@ -32,9 +32,8 @@ class BaseView(webapp2.RequestHandler):
 
     def viewpath(self, append=None):
         """Construct a view path."""
-        if append:
-            return os.path.join(self.view_dir, './' + append)
-        return self.view_dir
+        return os.path.normpath(os.path.join(self.view_dir, './' + append)) \
+            if append else os.path.normpath(self.view_dir)
 
     def view_index(self):
         request_path = self.request.path[1:]
