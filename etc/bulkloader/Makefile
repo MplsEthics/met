@@ -4,7 +4,7 @@
   BULKLOADER ?= ../../sdk/google_appengine/bulkloader.py
 
 usage:
-	@echo "usage: [clean|csv|load]"
+	@echo "usage: [clean|csv|localload]"
 
 clean:
 	rm -f *.csv bulkloader-{log,progress}-*
@@ -33,7 +33,7 @@ localload-scenario: scenario.csv
 		--filename=scenario.csv \
 		--kind=Scenario \
 		--email=johntrammell@gmail.com \
-		--url http://localhost:8765/remote_api \
+		--url http://localhost:8080/remote_api \
 		--passin
 
 localload-answer: answers.csv
@@ -43,7 +43,7 @@ localload-answer: answers.csv
 		--filename=answers.csv \
 		--kind=Answer \
 		--email=johntrammell@gmail.com \
-		--url http://localhost:8765/remote_api \
+		--url http://localhost:8080/remote_api \
 		--passin
 
 localload-board: boards.csv
@@ -53,10 +53,10 @@ localload-board: boards.csv
 		--filename=boards.csv \
 		--kind=Board \
 		--email=johntrammell@gmail.com \
-		--url http://localhost:8765/remote_api \
+		--url http://localhost:8080/remote_api \
 		--passin
 
-upload: upload-scenario upload-answer
+upload: upload-scenario upload-answer upload-boards
 
 upload-scenario: scenario.csv
 	$(PYTHON) $(BULKLOADER) \
@@ -73,5 +73,14 @@ upload-answer: answers.csv
 		--config_file=etc/bulkloader.yaml \
 		--filename=answers.csv \
 		--kind=Answer \
+		--email=johntrammell@gmail.com \
+		--url http://mpls-ethics.appspot.com/remote_api
+
+upload-boards: boards.csv
+	$(PYTHON) $(BULKLOADER) \
+		--application="mpls-ethics" \
+		--config_file=etc/bulkloader.yaml \
+		--filename=boards.csv \
+		--kind=Board \
 		--email=johntrammell@gmail.com \
 		--url http://mpls-ethics.appspot.com/remote_api

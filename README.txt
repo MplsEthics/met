@@ -68,5 +68,5 @@ John Trammell <johntrammell (at) gmail (dot) com>
 Development
 ===========
 
-   http://localhost:8765/_ah/admin
+   http://localhost:8000/
 
