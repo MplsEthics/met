@@ -17,6 +17,9 @@
 import os
 import pdb
 import sys
+import webapp2
+from met import views
+
 
 content_dir = os.path.join(os.path.dirname(__file__), '../../content')
 
@@ -24,3 +27,18 @@ def debug():
     for attr in ('stdin', 'stdout', 'stderr'):
         setattr(sys, attr, getattr(sys, '__%s__' % attr))
     pdb.set_trace()
+
+
+app = webapp2.WSGIApplication([
+    (r'^/$', views.Main),                       # splash page
+    (r'^/main$', views.Main),                   # ditto
+    (r'^/cookies$', views.Cookies),             # no cookie error msg
+    (r'^/reset$', views.Reset),                 # clears session
+    (r'^/learner$', views.Learner),             # learner form submit
+    (r'^/certificate$', views.Certificate),     # learner certificate
+    (r'^/cheater$', views.Cheater),             # cheater certificate
+    (r'^/(\w+)/question$', views.Question),     # e.g. "coi1/question"
+    (r'^/(\w+)/response$', views.Response),     # e.g. "coi1/response"
+    (r'^/(\w+)/(\w+)$', views.Content),         # e.g. "coi1/intro1"
+    (r'^/\w+$', views.Fallback),                # fallback / best guess
+], debug=True)
