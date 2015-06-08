@@ -33,7 +33,7 @@ clean:
 	find . -name '*.pyc' -exec rm {} \;
 
 realclean:
-	git clean -df
+	git clean -dfx
 
 sdk: sdk/google_appengine
 
