@@ -131,6 +131,11 @@ class LearnerState(object):
     def record_answer(self, scenario_id, answer_id):
         """Record this answer in the session; do any necessary updates."""
 
+        # make sure the session has the fields I need
+        self.session.setdefault(scenario_id, {})
+        self.session.setdefault('completed', {})
+
+        # get the correct answer
         answer = Answer.get_by_key_name(answer_id or '--none--')
 
         # if the lookup failed then this is not a valid answer
@@ -142,7 +147,7 @@ class LearnerState(object):
             raise InvalidAnswerException('answer and scenario do not match')
 
         # record the answer ID
-        if answer_id not in self.session.setdefault(scenario_id, []):
+        if answer_id not in self.session[scenario_id]:
             self.session[scenario_id] += [answer_id]
 
         # update session['completed'] if the answer is correct
