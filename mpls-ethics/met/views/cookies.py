@@ -21,10 +21,18 @@ from met.session import LearnerState
 
 
 class Cookies(BaseView):
-    """Page view to  """
+    """
+    Page view to validate that cookies are enabled.  Here's how it works:
+        1. if the main page doesn't see the special "_mplsethics" cookie, it
+           attempts to set the cookie, and redirects to this page.
+        2. if this page doesn't see the cookie, then we know the cookie didn't
+           take, so we show an error message.
+        3. if this page *does* see the cookie, we know the cookie did take, so
+           we can safely redirect back to the main page (which should then not
+           redirect back here, as it should still see the cookie).
+    """
 
     def get(self):
-        path = self.viewpath(append='cookies.djt')
         state = LearnerState()
         state.update_timestamp()
 
@@ -42,4 +50,6 @@ class Cookies(BaseView):
         context = dict(next='main',
                        show_prevnext=True,
                        state=state.as_string())
-        self.response.out.write(template.render(path, context))
+
+        jt = self.jinja_environment().get_template('cookies.djt')
+        self.response.write(jt.render(context))
