@@ -17,7 +17,7 @@
 import logging
 from google.appengine.ext.webapp import template
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
 
 
 class Cookies(BaseView):
@@ -33,7 +33,7 @@ class Cookies(BaseView):
     """
 
     def get(self):
-        state = LearnerState()
+        state = LearnerState(self.session)
         state.update_timestamp()
 
         # if the test cookie is set, we know that this user has cookies

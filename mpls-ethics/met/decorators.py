@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from met.session import LearnerState
+from met.state import LearnerState
 
 
 def ordered(func):
@@ -27,7 +27,7 @@ def ordered(func):
         display the view, otherwise redirect to the start of the first
         incomplete scenario.
         """
-        state = LearnerState()
+        state = LearnerState(self.session)
         if state.completed_prerequisites(scenario_id):
             return func(self, scenario_id, *args, **kwargs)
         else:
@@ -48,7 +48,7 @@ def alldone(func):
         display the view, otherwise redirect to the start of the first
         incomplete scenario.
         """
-        state = LearnerState()
+        state = LearnerState(self.session)
         if state.completed_all():
             return func(self, *args, **kwargs)
         else:

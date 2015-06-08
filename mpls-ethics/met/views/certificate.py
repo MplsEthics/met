@@ -18,7 +18,7 @@ from datetime import datetime
 from google.appengine.ext import webapp
 from met.decorators import alldone
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
 from met.version import VERSION
 
 

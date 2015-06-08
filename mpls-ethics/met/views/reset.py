@@ -15,7 +15,7 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
 
 class Reset(BaseView):
     """Clear the session."""

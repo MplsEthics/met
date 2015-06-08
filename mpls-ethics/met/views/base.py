@@ -14,16 +14,35 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
 import jinja2
 import webapp2
 import logging
+from webapp2_extras import sessions
 import met
 from met.order import view_order
 
-
 class BaseView(webapp2.RequestHandler):
     """Base class for all MET (Minneapolis Ethics Training) view classes."""
+
+    def dispatch(self):
+        """
+        See https://webapp-improved.appspot.com/api/webapp2_extras/sessions.html
+        for more on how to do sessions in webapp2.
+        """
+        # Get a session store for this request.
+        self.session_store = sessions.get_store(request=self.request)
+
+        try:
+            # Dispatch the request.
+            webapp2.RequestHandler.dispatch(self)
+        finally:
+            # Save all sessions.
+            self.session_store.save_sessions(self.response)
+
+    @webapp2.cached_property
+    def session(self):
+        # Returns a session using the default cookie key.
+        return self.session_store.get_session()
 
     def viewpath(self):
         """Construct a view path relative to met.app.TEMPLATE_DIR."""

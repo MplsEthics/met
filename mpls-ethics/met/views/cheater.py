@@ -18,7 +18,7 @@ from google.appengine.ext.webapp import template
 from met.boards import boards
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
 
 
 class Cheater(BaseView):

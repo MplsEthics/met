@@ -33,7 +33,7 @@ You may now proceed to the next page for a full discussion of the issue.
 {% if not correct %}
 <p>
 <span class="incorrect">Incorrect.</span>
-{{ response }}
+{{ response | safe }}
 </p>
 <h3>Please return to the question and select another answer.</h3>
 {% endif %}

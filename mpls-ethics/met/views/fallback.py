@@ -18,7 +18,7 @@ import os
 import met
 from met.views.base import BaseView
 from google.appengine.ext import webapp
-from met.session import LearnerState
+from met.state import LearnerState
 from met.version import VERSION
 
 
@@ -41,7 +41,7 @@ class Fallback(BaseView):
         return 'main.djt'
 
     def get(self, *argv):
-        state = LearnerState()
+        state = LearnerState(self.session)
         context = dict(previous=self.previous(),
                        next=self.next(),
                        state=state.as_string(),

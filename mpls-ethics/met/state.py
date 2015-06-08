@@ -22,70 +22,36 @@ class (see http://code.google.com/p/gaeutilities/).
 
 from pprint import pformat
 from datetime import datetime
-#from appengine_utilities.sessions import Session as GAESession
 from met.boards import boards
 from met.order import scenario_order
 from met.model import Answer, Completion, Scenario
 from met.exceptions import InvalidAnswerException, InvalidLearnerException
 
 
-#class Session(GAESession):
-class Session(object):
-    """Subclass the appengine_utilities session object to simplify
-    extension."""
-
-    def __init__(self, *args, **kwargs):
-        """Initialize session attributes for the ethics training."""
-
-        # call parent init
-#       super(Session, self).__init__(*args, **kwargs)
-
-        # initialize scenario answer array
-#       for s in scenario_order:
-#           if not s in self:
-#               self[s] = []
-
-        # initialize scenario completion dictionary
-#       if not 'completed' in self:
-#           items = [(s, False) for s in scenario_order]
-#           self['completed'] = dict(items)
-
-
 class LearnerState(object):
-    """Handles all interactions with the learner's state."""
+    """
+    Handles all interactions with the learner's state, which is presumably
+    stored in some sort of session object.
+    """
 
-    def __init__(self):
+    def __init__(self, session):
         """Construct the state object."""
-        pass
-
-    def session(self):
-        """Cache and return an initialized session object.  Don't validate the
-        user's IP address or user agent, since this confuses AOL."""
-        if getattr(self, '_session', None) is None:
-            self._session = Session(check_ip=False,
-                                    check_user_agent=False)
-        return self._session
+        self.session = session
 
     def as_string(self):
         """Returns the learner state as a string."""
-        #session = self.session()
-        #return pformat(dict(session.items()))
-        return "foo"
-
-    def flush_session(self):
-        self.session().flush()
+        return pformat(dict(self.session))
 
     def update_timestamp(self):
-        pass
-    #   session = self.session()
-    #   timestamps = session.get('timestamp', [])
-    #   timestamps += [datetime.now().isoformat()]
-    #   session['timestamp'] = timestamps[0:3]
+        """Only save the last few timestamps!"""
+        timestamps = self.session.get('timestamp', [])
+        timestamps += [datetime.now().isoformat()]
+        self.session['timestamp'] = timestamps[0:3]
 
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
-        completed = self.session()['completed']
-        return completed[scenario_id]
+        completed = self.session.get('completed', {})
+        return completed.get(scenario_id, False)
 
     def completed_all(self):
         """Returns True if the user has completed all scenarios."""
@@ -117,8 +83,7 @@ class LearnerState(object):
         return None
 
     def learner_answers(self, scenario_id):
-        session = self.session()
-        return session[scenario_id]
+        return self.session.get(scenario_id, [])
 
     def last_answer_id(self, scenario_id):
         """Returns the most recent answer the learner gave to the indicated
@@ -136,8 +101,10 @@ class LearnerState(object):
         return scenario
 
     def annotated_answers(self, scenario_id):
-        """Returns a list of dicts reflecting the correct learner state for
-        scenario_id."""
+        """
+        Returns a list of dicts reflecting the correct learner state for
+        scenario_id.
+        """
 
         scenario = Scenario.get_by_key_name(scenario_id)
         is_completed = self.is_completed(scenario_id)
@@ -175,15 +142,12 @@ class LearnerState(object):
             raise InvalidAnswerException('answer and scenario do not match')
 
         # record the answer ID
-        session = self.session()
-        if answer_id not in session[scenario_id]:
-            session[scenario_id] += [answer_id]
+        if answer_id not in self.session.setdefault(scenario_id, []):
+            self.session[scenario_id] += [answer_id]
 
         # update session['completed'] if the answer is correct
         if answer.is_correct:
-            completed = session["completed"]
-            completed[scenario_id] = datetime.now().isoformat()
-            session["completed"] = completed
+            self.session['completed'][scenario_id] = datetime.now().isoformat()
 
     def learner_error(self, error=False):
         session = self.session()
