@@ -1,0 +1,57 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+<h2>Discussion continued:</h2>
+
+<p>
+Again in the scenario presented, you are a volunteer on Do Good’s board and
+are not compensated for your service.  This volunteer status would not prevent
+you from participating in the grant decision.  You would, however, need to
+complete the conflict of interest form to disclose your affiliation.  The
+completed form will be distributed to the other members of the NCEC, the mayor
+and city council, as well as any department heads whose departments could be
+affected and filed with the City Clerk.
+
+<p>
+Even though the Ethics Code will permit your participation, you should
+consider whether the ethical aspirations of the Ethics Code weigh in favor of
+your recusal from the decision, including:
+
+<ul>
+<li>The importance of your role in the matter;
+<li>The sensitivity of the matter;
+<li>The information you have learned about the Do Good not included in the
+proposal that you would have difficulty setting aside; and
+<li>Whether a reasonable person might question your impartiality.
+</ul>
+
+<p>
+The City strives to have its officials avoid actions that might impair
+independence of judgment or give the appearance of impropriety or an
+appearance of a conflict of interest (See M.C.O. §15.20).  If after
+considering all of the facts, you determine that abstaining is necessary to
+maintain the highest ethical principles and avoid an apparent conflict of
+interest, you should recuse yourself from the decision making process.
+
+<p>
+Let’s now turn our attention to a new topic:
+<em>Disclosure of Information</em>.
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+
+<p>
+<em>GENERAL RULE:</em> You may not use or disclose any information gained in
+the course of or by reason of service to the City in any way that violates
+either your fiduciary duty to the City or the Minnesota Government Data
+Practices Act.
+
+<p>
+In addition, you may not use or disclose privileged, nonpublic, confidential,
+private, or proprietary information gained in the course of your official
+duties in any way that could result in financial gain for you, or for your
+spouse, domestic partner, or dependent, or for a person in a committed
+relationship with you, or for any associated business of these persons. M.C.O.
+§ 15.170.
+
+<p><em>Scenario:</em> {{ s.scenario }}</p>
+<p><em>Question:</em> {{ s.question }}</p>
+
+<p>
+Remember, we encourage you to use the analysis steps discussed earlier to
+select answers to the scenarios.
+
+{% endblock content %}

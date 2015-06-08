@@ -15,6 +15,7 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
+import met
 from google.appengine.ext.webapp import template
 from met.views.base import BaseView
 from met.session import LearnerState
@@ -23,8 +24,11 @@ from time import gmtime, strftime, time
 
 class Main(BaseView):
 
+    def viewpath():
+        return 'main.djt'
+
     def get(self):
-        path = self.viewpath(append='main.djt')
+        path = 'main.djt'
         state = LearnerState()
         state.update_timestamp()
 
@@ -43,4 +47,6 @@ class Main(BaseView):
                        show_prevnext=True,
                        show_about=True,
                        state=state.as_string())
-        self.response.out.write(template.render(path, context))
+
+        jt = self.jinja_environment().get_template(path)
+        self.response.write(jt.render(context))

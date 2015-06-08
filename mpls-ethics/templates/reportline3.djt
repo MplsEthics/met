@@ -1,0 +1,46 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h2>Ethics Report Line Continued:</h2>
+
+<p>
+What happens when you call the Ethics Report Line?
+
+<ol>
+<li>Your call is answered by a specially trained interviewer who documents
+your concern in detail. Your call is not recorded and you may remain
+anonymous.
+<li>The interviewer gives you a report number and a call back date.
+<li>The company relays information about your concern to the appropriate City
+staff member for follow-up or investigation.
+<li>You phone the Ethics Report Line on your scheduled call back date and give
+the operator your report number. At this time, an interviewer may ask you a
+few questions to clarify the issue or give you an update on the status of the
+investigation.
+<li>If you wish, you can always call back to provide additional information or
+to ask about the status of the investigation. (Be sure to have your report
+number on hand.)
+</ol>
+
+<p>
+The Network’s Web-based report service works in a similar fashion. The Web
+site visitor is guided through a series of online questions designed to elicit
+the same information the interviewer would gather.
+
+{% endblock content %}

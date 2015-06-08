@@ -14,16 +14,17 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import webapp2
-from google.appengine.ext.webapp.util import run_wsgi_app
 from met import views
 
+PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
 app = webapp2.WSGIApplication([
     (r'^/$', views.Main),                       # splash page
     (r'^/main$', views.Main),                   # ditto
-    (r'^/cookies$', views.Cookies),             # shows an error message if
-                                                # cookies are disabled
+    (r'^/cookies$', views.Cookies),             # no cookie error msg
     (r'^/reset$', views.Reset),                 # clears session
     (r'^/learner$', views.Learner),             # learner form submit
     (r'^/certificate$', views.Certificate),     # learner certificate
@@ -33,6 +34,3 @@ app = webapp2.WSGIApplication([
     (r'^/(\w+)/(\w+)$', views.Content),         # e.g. "coi1/intro1"
     (r'^/\w+$', views.Fallback),                # fallback / best guess
 ], debug=True)
-
-if __name__ == "__main__":
-    run_wsgi_app(app)

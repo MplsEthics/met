@@ -1,0 +1,44 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<div id="response">
+<p class="topic">{{ topic }}</p>
+
+{% if correct %}
+<p>
+<span class="correct">Correct!!</span>
+{{ response }}
+</p>
+<h3>
+You may now proceed to the next page for a full discussion of the issue.
+</h3>
+{% endif %}
+
+{% if not correct %}
+<p>
+<span class="incorrect">Incorrect.</span>
+{{ response }}
+</p>
+<h3>Please return to the question and select another answer.</h3>
+{% endif %}
+
+<p>
+<a class="button" href="{{ link_next }}">Continue</a>
+</div>
+{% endblock content %}

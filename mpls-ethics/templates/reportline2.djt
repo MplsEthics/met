@@ -1,0 +1,49 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>Ethics Report Line</h1>
+
+<p>
+The Ethics Report Line is operated by an independent company&mdash;The Network
+(<a target="new" href="http://www.tnwinc.com/">www.tnwinc.com</a>)&mdash;to
+ensure a confidential process for City employees and officials to report
+workplace concerns such as:
+
+<ul>
+<li>Violations of government regulations
+<li>Violations of the City’s Ethics in Government policy
+<li>Destroying, altering or falsifying City records
+<li>Withholding properly requested public records
+<li>Theft or fraud
+<li>Creating or ignoring safety or environmental hazards
+<li>Using or selling illegal drugs
+<li>Misuse of City property or facilities
+<li>Alcohol use while on duty
+<li>Bribery
+<li>Conflict of interest
+<li>Threats to personal safety
+<li>Accounting or auditing irregularities
+<li>Harassment, discrimination or other violations of the City’s Respect in the Workplace policy.
+</ul>
+
+<p>
+The Network provides anonymous reporting services for hundreds of
+businesses and governmental entities worldwide.
+
+{% endblock content %}

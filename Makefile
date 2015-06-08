@@ -33,24 +33,24 @@ clean:
 	find . -name '*.pyc' -exec rm {} \;
 
 realclean:
-	git clean -df
+	git clean -dfx
 
 sdk: sdk/google_appengine
 
-sdk/google_appengine/dev_appserver.py: sdk/google_appengine
+sdk/google_appengine/dev_appserver.py:
+	make sdk/google_appengine
 
 sdk/google_appengine: sdk/$(ZIPFILE)
 	mkdir -p sdk
 	cd sdk; unzip -q $(ZIPFILE)
 
 sdk/$(ZIPFILE):
-	mkdir -p sdk
-	if [ -e ~/Downloads/$(ZIPFILE) ]; then \
-		cp ~/Downloads/$(ZIPFILE) sdk/ ; else \
-		cd sdk; wget $(ZIPURL); fi
+	mkdir -p sdk ~/Downloads
+	if [ ! -e ~/Downloads/$(ZIPFILE) ]; then (cd ~/Downloads; wget $(ZIPURL)); fi
+	cp ~/Downloads/$(ZIPFILE) sdk/ \
 
 start: sdk/google_appengine/dev_appserver.py
-	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check --port=8765 mpls-ethics/
+	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check 1 mpls-ethics/
 
 update:
 	$(PYTHON) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/

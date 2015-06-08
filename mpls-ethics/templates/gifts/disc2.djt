@@ -1,0 +1,53 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+<h2>Discussion continued:</h2>
+
+<p>
+Gifts to City officials pose a couple of risks.  One risk is that a gift will
+actually influence the official’s action on a matter.  The other risk is that
+the public will perceive the gift as having influenced the official’s action
+on the matter, regardless of whether the matter was actually influenced.
+
+<p>
+There is reason to be concerned with even small gifts.  Officials may
+rationalize that it is perfectly okay to accept such a small gift because
+everyone knows you can not be bought for a scone and coffee.  Sometimes that
+is the start of a very gradual but slippery slope.
+
+<p>
+When you are confronted with a gift from a prohibited source, you will want to
+consider carefully that even when a gift exception would allow you to accept
+the gift that it is never inappropriate and is frequently prudent to decline
+the gift because of your official position.
+
+<p>
+It is difficult to decline a gift especially when the only apparent reason for
+the giving of the gift is thoughtfulness.  A gift can be gracefully declined.
+Start with thanking the giver for the giver’s thoughtfulness.  You can explain
+the City’s gift policy and say “no thank you” as graciously as one can.  You
+may wish to use words to the effect… “I appreciate your offer of this gift,
+but I can not accept it.  Your effort to [thank me] [to be considerate] is so
+very kind and thoughtful.  Your gesture makes my day.  It is important that
+the City’s citizens not come to believe or perceive that they are required to
+give gifts in order to receive a high level or service from the City so I must
+respectfully decline your offer.”
+
+{% endblock content %}

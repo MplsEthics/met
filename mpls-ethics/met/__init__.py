@@ -18,9 +18,16 @@ import os
 import pdb
 import sys
 
-content_dir = os.path.join(os.path.dirname(__file__), '../../content')
-
 def debug():
+    """
+    To use the traditional consolde debugger:
+
+        import met
+        ...
+        met.debug()
+
+    """
+    # override Appengine developer studio defaults
     for attr in ('stdin', 'stdout', 'stderr'):
         setattr(sys, attr, getattr(sys, '__%s__' % attr))
     pdb.set_trace()

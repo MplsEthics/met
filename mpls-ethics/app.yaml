@@ -19,9 +19,13 @@ version: 5
 runtime: python27
 api_version: 1
 threadsafe: false
+
 libraries:
 - name: django
-  version: "1.2"
+  version: "1.5"
+- name: jinja2
+  version: "2.6"
+
 handlers:
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
@@ -36,4 +40,4 @@ handlers:
 - url: /css
   static_dir: static/css
 - url: /.*
-  script: met/app.py
+  script: met.app.app

@@ -1,0 +1,52 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+<h2>Discussion continued:</h2>
+
+<p>
+Situations where members appear on their own behalf are distinguishable from
+situations where members appear on behalf of clients in a matter before the
+board.
+
+<p>
+Ethics Code § 15.60(a) precludes a local official from accepting employment or
+entering into a contract that interferes with the discharge of the local
+official’s public duty or creates a conflict of interest that would materially
+impair the local official’s ability to serve the City.  Ethics Code § 15.70
+prohibits a local official from using his or her official position to solicit
+privileges or special treatment.
+
+<p>
+By taking on a client’s business, when that business will likely appear on a
+board agenda, a local official voluntarily creates a financial interest which
+may conflict with the duties owed to the citizens of the City.  Citizens may
+view the local official’s involvement as influence peddling or taking
+advantage of the “inside track”.  Even if the local official abstains from the
+matter, the objectivity of other members may be questioned due to the local
+official’s “control”  or “influence” over other board members.  Inside tracks
+and influence peddling are rightly viewed by citizens as adverse to the public
+interest and will erode public confidence and trust.
+
+<p>
+A local official should carefully consider their position on the board
+before agreeing to take on a client when that client’s business will likely
+appear at some point on the board’s agenda.
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends "base.djt" %}
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% block content %}
+<h1>Overview Of the Ethics in Government Ordinances</h1>
+
+<p>
+The Ethics in Government Code, Chapter 15 of the Minneapolis Code of
+Ordinances, was enacted in 2002 to promote confidence and trust in the
+integrity of City Government. The Code:
+
+<ul>
+<li>Establishes a code of conduct for the City’s elected officials,
+appointed officials and employees</li>
+<li>Provides for the filing of financial disclosure statements (Statements
+of economic interest) by many City officials and employees
+<li>Created the Ethical Practices Board and the position of Ethics Officer
+to administer the Ethics in Government Code</li>
+</ul>
+
+<p>
+The Code has two types of ordinance sections&mdash;aspiration and rule
+sections:
+
+<ul>
+<li>Ethical aspiration sections represent the inspirational objectives
+toward which each local official and employee should strive.</li>
+<li>Rule sections set forth some specific standards below which no City
+official or employee can fall without being subject to disciplinary action.
+These rules are considered a baseline of conduct and some departments have
+adopted more stringent rules.</li>
+</ul>
+
+{% endblock content %}
+

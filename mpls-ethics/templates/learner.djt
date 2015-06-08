@@ -1,0 +1,96 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block javascript %}
+{% if cheater %}
+<link type="text/css" href="/css/redmond/jquery-ui-1.8.4.custom.css"
+  rel="Stylesheet" /> 
+<script type="text/javascript"
+  src="/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript"
+  src="/js/jquery-ui-1.8.4.custom.min.js"></script>
+<script type="text/javascript">
+  $(function() { $("#datepicker").datepicker(); });
+</script>
+{% endif %}
+{% endblock javascript %}
+{% block content %}
+<h1>Automated Proof of Required Ethics Education</h1>
+
+{% if learner_error %}
+<div id="learner_error">
+Please enter your full name and choose a board or commission from the list
+below.
+</div>
+{% endif %}
+
+<p>
+The training certificate and email submissions from this electronic ethics
+education course are official records.  By submitting your proof of education
+certificate and/or automated email, you certify that you have reviewed the
+entire Ethics in Government Education for Appointed Members of Boards,
+Commissions and Agencies course, answered each question correctly&mdash;and
+fully reviewed the final discussion for each topic.
+
+<p>
+Please enter your full name and choose your Board or Commission, then click
+Create Certificate.  The following page will show a certificate, suitable for
+printing.  The City Clerk's office will also receive an email indicating that
+you have completed your ethics training.
+
+<p>
+Thank you for your commitment to public service and your compliance with the
+City’s Ethics in Government Ordinance.
+
+<form id="learner" action="" method="POST">
+
+<table>
+  <tr>
+    <td>Full Name:</td>
+    <td><input name="learner_name" type="text" size=40></td>
+  </tr>
+  <tr>
+    <td>Board or Commission:</td>
+    <td>
+      <select name="learner_board_id">
+        <option value="">[choose a board or commission]</option>
+{% for board in boards %}
+        <option value="{{ forloop.counter0 }}">{{ board }}</option>
+{% endfor %}
+      </select>
+    </td>
+  </tr>
+{% if cheater %}
+  <tr>
+    <td>Completion Date:</td>
+    <td>
+      <input id="datepicker" name="learner_date" type="text" size=15>
+      (mm/dd/yyyy)
+    </td>
+  </tr>
+{% endif %}
+  <tr>
+    <td colspan=2>
+      <input style="margin-top:1em" type="submit"
+        id="submit" value="Create Certificate">
+    </td>
+  </tr>
+</table>
+</form>
+
+{% endblock content %}
