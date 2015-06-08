@@ -1,4 +1,4 @@
-{% comment %}
+{#
 Copyright 2012 John J. Trammell.
 
 This file is part of the Mpls-ethics software package.  Mpls-ethics
@@ -14,7 +14,7 @@ General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
-{% endcomment %}
+#}
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>

@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
+
 from met.views.base import BaseView
 from met.views.cookies import Cookies
 from met.views.certificate import Certificate

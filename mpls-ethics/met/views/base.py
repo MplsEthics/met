@@ -15,25 +15,19 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import jinja2
 import webapp2
+import logging
+import met
 from met.order import view_order
 
 
 class BaseView(webapp2.RequestHandler):
     """Base class for all MET (Minneapolis Ethics Training) view classes."""
 
-    # Define a hardcoded relative path from this file to the views.  This
-    # should be automated somehow!
-    view_dir = os.path.join(os.path.dirname(__file__), '../../templates')
-
-    def main(self):
-        """Returns the path to the 'main' view template."""
-        return self.viewpath('main.djt')
-
-    def viewpath(self, append=None):
-        """Construct a view path."""
-        return os.path.normpath(os.path.join(self.view_dir, './' + append)) \
-            if append else os.path.normpath(self.view_dir)
+    def viewpath(self):
+        """Construct a view path relative to met.app.TEMPLATE_DIR."""
+        return 'main.djt'
 
     def view_index(self):
         request_path = self.request.path[1:]
@@ -58,6 +52,13 @@ class BaseView(webapp2.RequestHandler):
         except:
             return None
 
+    def jinja_environment(self):
+        """Return the Jinja2 environment object"""
+        return jinja2.Environment(
+            loader = jinja2.FileSystemLoader(met.app.TEMPLATE_PATH),
+            extensions = ['jinja2.ext.autoescape'],
+            autoescape = True)
+
     def template(self):
         """Returns the filename of the template to view."""
         return 'main.djt'
@@ -70,8 +71,9 @@ class BaseView(webapp2.RequestHandler):
             'show_prevnext': True,
         }
 
-        t = self.viewpath(append=self.template())
-        self.response.out.write(webapp2.template.render(t, template_values))
+        tfile = self.viewpath(append=self.template())
+        jtemplate = self.jinja_environment().get_template(tfile)
+        self.response.write(jtemplate.render(template_values))
 
     def post(self):
         """Default POST action is to redirect to GET."""

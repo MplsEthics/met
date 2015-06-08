@@ -49,6 +49,7 @@ Resources
    http://code.google.com/appengine/docs/python/overview.html
    http://www.dod.mil/dodgc/defense_ethics/ethics_training/2007_AET/
    https://appengine.google.com/
+   http://stackoverflow.com/questions/20956429/google-app-engine-jinja2-template-extends-base-template-from-parent-folder
 
 
 Python Dependencies
@@ -69,4 +70,5 @@ Development
 ===========
 
    http://localhost:8000/
+   http://localhost:8080/
 

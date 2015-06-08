@@ -39,6 +39,9 @@ class Content(BaseView):
                        s=scenario.as_dict(),
                        state=state.as_string(),
                        show_prevnext=True)
-        self.response.out.write(webapp.template.render(path, context))
+        try:
+            self.response.out.write(webapp.template.render(path, context))
+        except Exception:
+            logging.error("scenario_id=%s path=%s" % (scenario_id, path))
 
     post = get

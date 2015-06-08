@@ -1,4 +1,4 @@
-{% extends "base.djt" %}
+{% extends "templates/base.djt" %}
 {% comment %}
 Copyright 2012 John J. Trammell.
 
