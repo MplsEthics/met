@@ -35,7 +35,7 @@ sub has_gpl {
     $slurp =~ s{#}{ }g;
     $slurp =~ s{\s+}{ }g;
     my @strings = (
-        "Copyright 2012 John J. Trammell.",
+        "Copyright 2015 John J. Trammell.",
         "This file is part of the Mpls-ethics software package.",
         "Mpls-ethics is free software: you can redistribute it and/or",
         "Mpls-ethics is distributed in the hope that it will be useful",

@@ -28,8 +28,6 @@ class Content(BaseView):
     def get(self, scenario_id, view):
         state = LearnerState()
         template = "%s/%s.djt" % (scenario_id, view)
-        path = self.viewpath(append=template)
-        logging.warn("scenario_id=%s path=%s" % (scenario_id, path))
         scenario = Scenario.get_by_key_name(scenario_id)
         if not scenario:
             raise InvalidScenarioException('bad scenario ID')
@@ -39,9 +37,8 @@ class Content(BaseView):
                        s=scenario.as_dict(),
                        state=state.as_string(),
                        show_prevnext=True)
-        try:
-            self.response.out.write(webapp.template.render(path, context))
-        except Exception:
-            logging.error("scenario_id=%s path=%s" % (scenario_id, path))
+
+        jt = self.jinja_environment().get_template(template)
+        self.response.write(jt.render(context))
 
     post = get
