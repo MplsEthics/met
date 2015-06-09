@@ -33,14 +33,15 @@ along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 <div id="certificate">
   <img src="/images/certificate-top.png">
   <div id="learner_name">
-    {{ learner_name|default:"Learner Name" }}
+    {{ learner_name | default("Learner Name") }}
   </div>
   <img src="/images/certificate-middle.png">
   <div id="complete_date">
+  {# e.g. This 5th day of February, 2015 #}
     This
-    {{ learner_date|default:now|date:"jS" }}
+    {{ learner_date | ordinal_day() }}
     day of
-    {{ learner_date|default:now|date:"F, Y" }}
+    {{ learner_date | month_comma_year() }}
   </div>
   <img src="/images/certificate-bottom.png">
 </div>

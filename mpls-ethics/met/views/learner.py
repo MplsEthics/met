@@ -27,22 +27,22 @@ class Learner(BaseView):
 
     @alldone
     def get(self):
-        path = self.viewpath(append='learner.djt')
-        state = LearnerState()
+        state = LearnerState(self.session)
         learner_error = state.learner_error()
         context = dict(show_prevnext=True,
                        boards=boards,
                        learner_error=learner_error,
                        state=state.as_string())
-        output = template.render(path, context)
-        self.response.out.write(output)
+        jt = self.jinja_environment().get_template('learner.djt')
+        self.response.write(jt.render(context))
 
     @alldone
     def post(self):
-        """Attempt to persist the learner data in the GAE datastore and in the
-        session, send the email, and redirect to the certificate view."""
-
-        state = LearnerState()
+        """
+        Attempt to persist the learner data in the appengine datastore and in
+        the session, send the email, and redirect to the certificate view.
+        """
+        state = LearnerState(self.session)
 
         # persist the learner data
         try:

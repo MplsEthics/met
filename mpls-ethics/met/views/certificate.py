@@ -15,7 +15,6 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 from datetime import datetime
-from google.appengine.ext import webapp
 from met.decorators import alldone
 from met.views.base import BaseView
 from met.state import LearnerState
@@ -27,8 +26,7 @@ class Certificate(BaseView):
 
     @alldone
     def get(self, *argv):
-        path = self.viewpath(append='certificate.djt')
-        state = LearnerState()
+        state = LearnerState(self.session)
         context = dict(show_prevnext=False,
                        version=VERSION,
                        now=datetime.now(),
@@ -36,5 +34,5 @@ class Certificate(BaseView):
                        learner_name=state.learner_name(),
                        learner_board=state.learner_board(),
                        learner_date=state.learner_date())
-        output = webapp.template.render(path, context)
-        self.response.out.write(output)
+        jt = self.jinja_environment().get_template('certificate.djt')
+        self.response.write(jt.render(context))

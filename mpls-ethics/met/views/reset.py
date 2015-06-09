@@ -21,5 +21,5 @@ class Reset(BaseView):
     """Clear the session."""
 
     def get(self):
-        LearnerState().flush_session()
+        LearnerState(self.session).flush_session()
         self.redirect("/")

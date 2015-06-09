@@ -72,3 +72,11 @@ Development
    http://localhost:8000/
    http://localhost:8080/
 
+Notes
+=====
+
+Dates in templates:
+    https://docs.djangoproject.com/en/1.8/ref/templates/builtins/#std:templatefilter-date
+
+
+

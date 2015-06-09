@@ -38,6 +38,9 @@ class LearnerState(object):
         """Construct the state object."""
         self.session = session
 
+    def flush_session(self):
+        self.session.clear()
+
     def as_string(self):
         """Returns the learner state as a string."""
         return pformat(dict(self.session))
@@ -55,9 +58,8 @@ class LearnerState(object):
 
     def completed_all(self):
         """Returns True if the user has completed all scenarios."""
-        completed = self.session()['completed']
         for s in scenario_order:
-            if s not in completed:
+            if s not in self.session['completed']:
                 return False
         return True
 
@@ -76,7 +78,7 @@ class LearnerState(object):
                 return False
 
     def first_incomplete_scenario(self):
-        completed = self.session()['completed']
+        completed = self.session['completed']
         for s in scenario_order:
             if not completed[s]:
                 return s
@@ -132,7 +134,7 @@ class LearnerState(object):
         """Record this answer in the session; do any necessary updates."""
 
         # make sure the session has the fields I need
-        self.session.setdefault(scenario_id, {})
+        self.session.setdefault(scenario_id, [])
         self.session.setdefault('completed', {})
 
         # get the correct answer
@@ -155,23 +157,21 @@ class LearnerState(object):
             self.session['completed'][scenario_id] = datetime.now().isoformat()
 
     def learner_error(self, error=False):
-        session = self.session()
-        session['learner_error'] = True if error else False
-        return session['learner_error']
+        self.session['learner_error'] = True if error else False
+        return self.session['learner_error']
 
     def learner_name(self):
-        return self.session().get('learner_name', None)
+        return self.session.get('learner_name', None)
 
     def learner_board(self):
-        return self.session().get('learner_board', None)
+        return self.session.get('learner_board', None)
 
     def learner_date(self):
-        return self.session().get('learner_date', None)
+        return self.session.get('learner_date', None)
 
     def persist_learner(self, name, board_id, date):
         """Check the learner info; if it's good, persist it in the session and
         GAE storage."""
-        session = self.session()
 
         # perform sanity checks on the name and the board
         try:
@@ -187,14 +187,14 @@ class LearnerState(object):
 
         # persist the learner name and board in the session (to be used by the
         # certificate template)
-        session['learner_name'] = name
-        session['learner_board'] = board
+        self.session['learner_name'] = name
+        self.session['learner_board'] = board
 
         # if the date is not empty, convert to datetime and persist
         if date:
-            session['learner_date'] = datetime.strptime(date, "%m/%d/%Y")
-        elif 'learner_date' in session:
-            del session['learner_date']
+            self.session['learner_date'] = datetime.strptime(date, "%m/%d/%Y")
+        elif 'learner_date' in self.session:
+            del self.session['learner_date']
 
         # persist the learner name, board, and a timestamp in GAE storage
         # (the timestamp should be created automatically)

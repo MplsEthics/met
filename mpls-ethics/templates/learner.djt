@@ -19,7 +19,7 @@ along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 {% block javascript %}
 {% if cheater %}
 <link type="text/css" href="/css/redmond/jquery-ui-1.8.4.custom.css"
-  rel="Stylesheet" /> 
+  rel="Stylesheet" />
 <script type="text/javascript"
   src="/js/jquery-1.4.2.min.js"></script>
 <script type="text/javascript"
@@ -70,7 +70,7 @@ City’s Ethics in Government Ordinance.
       <select name="learner_board_id">
         <option value="">[choose a board or commission]</option>
 {% for board in boards %}
-        <option value="{{ forloop.counter0 }}">{{ board }}</option>
+        <option value="{{ loop.index0 }}">{{ board }}</option>
 {% endfor %}
       </select>
     </td>

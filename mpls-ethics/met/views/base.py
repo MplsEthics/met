@@ -14,6 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
+from datetime import datetime
 import jinja2
 import webapp2
 import logging
@@ -73,10 +74,25 @@ class BaseView(webapp2.RequestHandler):
 
     def jinja_environment(self):
         """Return the Jinja2 environment object"""
-        return jinja2.Environment(
+        env = jinja2.Environment(
             loader = jinja2.FileSystemLoader(met.app.TEMPLATE_PATH),
             extensions = ['jinja2.ext.autoescape'],
             autoescape = True)
+
+        def ordinal_day(value):
+            value = value or datetime.now()
+            # http://codereview.stackexchange.com/questions/41298/producing-ordinal-numbers
+            dd = int(value.strftime('%-d'))
+            suf = {1:"st",2:"nd",3:"rd"}.get(dd if (dd<20) else (dd%10), 'th')
+            return "%d%s" % (dd, suf)
+
+        def month_comma_year(value):
+            value = value or datetime.now()
+            return value.strftime('%B, %Y')
+
+        env.filters['ordinal_day'] = ordinal_day
+        env.filters['month_comma_year'] = month_comma_year
+        return env
 
     def template(self):
         """Returns the filename of the template to view."""
@@ -84,15 +100,13 @@ class BaseView(webapp2.RequestHandler):
 
     def get(self):
         """The default GET request handler."""
-        template_values = {
+        context = {
             'next': self.next(),
             'previous': self.previous(),
             'show_prevnext': True,
         }
-
-        tfile = self.viewpath(append=self.template())
-        jtemplate = self.jinja_environment().get_template(tfile)
-        self.response.write(jtemplate.render(template_values))
+        jt = self.jinja_environment().get_template('main.djt')
+        self.response.write(jt.render(context))
 
     def post(self):
         """Default POST action is to redirect to GET."""
