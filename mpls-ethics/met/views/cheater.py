@@ -22,24 +22,29 @@ from met.state import LearnerState
 
 
 class Cheater(BaseView):
+    """
+    This is a view to skip ahead to the certificate of completion, for testing
+    purposes.
+    """
 
     def get(self):
-        path = self.viewpath(append='learner.djt')
-        state = LearnerState()
+        state = LearnerState(self.session)
         learner_error = state.learner_error()
         context = dict(show_prevnext=True,
                        boards=boards,
                        learner_error=learner_error,
                        cheater=True,
                        state=state.as_string())
-        output = template.render(path, context)
-        self.response.out.write(output)
+        jt = self.jinja_environment().get_template('learner.djt')
+        self.response.write(jt.render(context))
 
     def post(self):
-        """Attempt to persist the learner data in the GAE datastore and in the
-        session, send the email, and redirect to the certificate view."""
+        """
+        Attempt to persist the learner data in the GAE datastore and in the
+        session, send the email, and redirect to the certificate view.
+        """
 
-        state = LearnerState()
+        state = LearnerState(self.session)
 
         # persist the learner data
         try:
