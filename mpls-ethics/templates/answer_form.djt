@@ -20,13 +20,13 @@ along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 {% for answer in s.answers %}
 <tr>
 <td style="vertical-align:top">
-<input type="radio" name="answer" id="radio{{ forloop.counter }}"
+<input type="radio" name="answer" id="radio{{ loop.index }}"
    value="{{ answer.name }}" {% if answer.disabled %}disabled{% endif %}
    {% if answer.checked %}checked{% endif %}>
 </td>
 <td>
-<label for="radio{{ forloop.counter }}">
-<span class="{{ answer.class }}" id="a{{ forloop.counter }}">
+<label for="radio{{ loop.index }}">
+<span class="{{ answer.class }}" id="a{{ loop.index }}">
 {{ answer.answer }}
 </span>
 </label>

@@ -58,3 +58,16 @@ class Answer(db.Model):
                     answer=self.answer,
                     is_correct=self.is_correct,
                     response=self.response)
+
+class Board(db.Model):
+    """This class models a board the learner can choose."""
+
+    name = db.StringProperty()
+
+    def as_dict(self):
+        return dict(name=self.key().name(),
+                    scenario=self.scenario,
+                    answer=self.answer,
+                    is_correct=self.is_correct,
+                    response=self.response)
+

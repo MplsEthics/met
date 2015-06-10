@@ -20,78 +20,47 @@ Training site.  It extends the Appengine Utilities ("GAEUtilities") sessions
 class (see http://code.google.com/p/gaeutilities/).
 """
 
+import logging
 from pprint import pformat
 from datetime import datetime
-#from appengine_utilities.sessions import Session as GAESession
 from met.boards import boards
 from met.order import scenario_order
 from met.model import Answer, Completion, Scenario
 from met.exceptions import InvalidAnswerException, InvalidLearnerException
 
 
-#class Session(GAESession):
-class Session(object):
-    """Subclass the appengine_utilities session object to simplify
-    extension."""
-
-    def __init__(self, *args, **kwargs):
-        """Initialize session attributes for the ethics training."""
-
-        # call parent init
-#       super(Session, self).__init__(*args, **kwargs)
-
-        # initialize scenario answer array
-#       for s in scenario_order:
-#           if not s in self:
-#               self[s] = []
-
-        # initialize scenario completion dictionary
-#       if not 'completed' in self:
-#           items = [(s, False) for s in scenario_order]
-#           self['completed'] = dict(items)
-
-
 class LearnerState(object):
-    """Handles all interactions with the learner's state."""
+    """
+    Handles all interactions with the learner's state, which is presumably
+    stored in some sort of session object.
+    """
 
-    def __init__(self):
+    def __init__(self, session):
         """Construct the state object."""
-        pass
+        self.session = session
 
-    def session(self):
-        """Cache and return an initialized session object.  Don't validate the
-        user's IP address or user agent, since this confuses AOL."""
-        if getattr(self, '_session', None) is None:
-            self._session = Session(check_ip=False,
-                                    check_user_agent=False)
-        return self._session
+    def flush_session(self):
+        self.session.clear()
 
     def as_string(self):
         """Returns the learner state as a string."""
-        #session = self.session()
-        #return pformat(dict(session.items()))
-        return "foo"
-
-    def flush_session(self):
-        self.session().flush()
+        return pformat(dict(self.session))
 
     def update_timestamp(self):
-        pass
-    #   session = self.session()
-    #   timestamps = session.get('timestamp', [])
-    #   timestamps += [datetime.now().isoformat()]
-    #   session['timestamp'] = timestamps[0:3]
+        """Only save the last few timestamps!"""
+        timestamps = self.session.get('timestamp', [])
+        timestamps += [datetime.now().isoformat()]
+        self.session['timestamp'] = timestamps[0:3]
 
     def is_completed(self, scenario_id):
         """Returns True if this learner has completed this scenario."""
-        completed = self.session()['completed']
-        return completed[scenario_id]
+        completed = self.session.get('completed', {})
+        return completed.get(scenario_id, False)
 
     def completed_all(self):
         """Returns True if the user has completed all scenarios."""
-        completed = self.session()['completed']
         for s in scenario_order:
-            if s not in completed:
+            if s not in self.session['completed']:
                 return False
         return True
 
@@ -110,15 +79,14 @@ class LearnerState(object):
                 return False
 
     def first_incomplete_scenario(self):
-        completed = self.session()['completed']
+        completed = self.session['completed']
         for s in scenario_order:
             if not completed[s]:
                 return s
         return None
 
     def learner_answers(self, scenario_id):
-        session = self.session()
-        return session[scenario_id]
+        return self.session.get(scenario_id, [])
 
     def last_answer_id(self, scenario_id):
         """Returns the most recent answer the learner gave to the indicated
@@ -136,8 +104,10 @@ class LearnerState(object):
         return scenario
 
     def annotated_answers(self, scenario_id):
-        """Returns a list of dicts reflecting the correct learner state for
-        scenario_id."""
+        """
+        Returns a list of dicts reflecting the correct learner state for
+        scenario_id.
+        """
 
         scenario = Scenario.get_by_key_name(scenario_id)
         is_completed = self.is_completed(scenario_id)
@@ -164,6 +134,11 @@ class LearnerState(object):
     def record_answer(self, scenario_id, answer_id):
         """Record this answer in the session; do any necessary updates."""
 
+        # make sure the session has the fields I need
+        self.session.setdefault(scenario_id, [])
+        self.session.setdefault('completed', {})
+
+        # get the correct answer
         answer = Answer.get_by_key_name(answer_id or '--none--')
 
         # if the lookup failed then this is not a valid answer
@@ -175,60 +150,63 @@ class LearnerState(object):
             raise InvalidAnswerException('answer and scenario do not match')
 
         # record the answer ID
-        session = self.session()
-        if answer_id not in session[scenario_id]:
-            session[scenario_id] += [answer_id]
+        if answer_id not in self.session[scenario_id]:
+            self.session[scenario_id] += [answer_id]
 
         # update session['completed'] if the answer is correct
         if answer.is_correct:
-            completed = session["completed"]
-            completed[scenario_id] = datetime.now().isoformat()
-            session["completed"] = completed
+            self.session['completed'][scenario_id] = datetime.now().isoformat()
 
     def learner_error(self, error=False):
-        session = self.session()
-        session['learner_error'] = True if error else False
-        return session['learner_error']
+        self.session['learner_error'] = True if error else False
+        return self.session['learner_error']
 
     def learner_name(self):
-        return self.session().get('learner_name', None)
+        return self.session.get('learner_name', None)
 
     def learner_board(self):
-        return self.session().get('learner_board', None)
+        return self.session.get('learner_board', None)
 
     def learner_date(self):
-        return self.session().get('learner_date', None)
+        return self.session.get('learner_date', None)
 
     def persist_learner(self, name, board_id, date):
-        """Check the learner info; if it's good, persist it in the session and
-        GAE storage."""
-        session = self.session()
-
-        # perform sanity checks on the name and the board
+        """
+        Check the learner info; if it's good, persist it in the session and App
+        Engine storage.  This is a slight departure from previous MET versions
+        b/c webapp2 sessions can't serialize datetime objects (!).
+        """
+        # perform sanity checks on the name, board, and date
         try:
             if len(name) == 0:
                 raise
             board = boards[int(board_id)]
             if len(board) == 0:
                 raise
+            # date can be empty (typical usage) or contain a date string
+            # ("cheater" mode)
+            if date and not datetime.strptime(date, "%m/%d/%Y"):
+                raise
         except:
             self.learner_error(True)
-            msg = "name='%s' board_id='%s'" % (name, board_id)
+            msg = "name='%s' board_id='%s' date='%s'" % (name, board_id, date)
+            logging.error(msg)
             raise InvalidLearnerException(msg)
 
         # persist the learner name and board in the session (to be used by the
         # certificate template)
-        session['learner_name'] = name
-        session['learner_board'] = board
+        self.session['learner_name'] = name
+        self.session['learner_board'] = board
 
-        # if the date is not empty, convert to datetime and persist
+        # if a date is supplied, use it, otherwise make sure it's clear so the
+        # template can supply a default
         if date:
-            session['learner_date'] = datetime.strptime(date, "%m/%d/%Y")
-        elif 'learner_date' in session:
-            del session['learner_date']
+            self.session['learner_date'] = date
+        elif 'learner_date' in self.session:
+            del self.session['learner_date']
 
-        # persist the learner name, board, and a timestamp in GAE storage
-        # (the timestamp should be created automatically)
+        # Persist the learner name, board, and a timestamp in appengine
+        # storage.  The model includes its own timestamp.
         comp = Completion()
         comp.name = name
         comp.board = board

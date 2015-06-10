@@ -15,10 +15,8 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-import met
-from google.appengine.ext.webapp import template
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
 from time import gmtime, strftime, time
 
 
@@ -29,7 +27,7 @@ class Main(BaseView):
 
     def get(self):
         path = 'main.djt'
-        state = LearnerState()
+        state = LearnerState(self.session)
         state.update_timestamp()
 
         # if there are no cookies, set one and redirect to /cookies

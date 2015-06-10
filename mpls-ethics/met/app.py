@@ -21,6 +21,10 @@ from met import views
 PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
+config = {
+    'webapp2_extras.sessions': { 'secret_key': 'abcde', }
+}
+
 app = webapp2.WSGIApplication([
     (r'^/$', views.Main),                       # splash page
     (r'^/main$', views.Main),                   # ditto
@@ -33,4 +37,4 @@ app = webapp2.WSGIApplication([
     (r'^/(\w+)/response$', views.Response),     # e.g. "coi1/response"
     (r'^/(\w+)/(\w+)$', views.Content),         # e.g. "coi1/intro1"
     (r'^/\w+$', views.Fallback),                # fallback / best guess
-], debug=True)
+], config=config, debug=True)
