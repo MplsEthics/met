@@ -70,7 +70,7 @@ City’s Ethics in Government Ordinance.
       <select name="learner_board_id">
         <option value="">[choose a board or commission]</option>
 {% for board in boards %}
-        <option value="{{ loop.index0 }}">{{ board }}</option>
+        <option value="{{ board.priority }}">{{ board.name }}</option>
 {% endfor %}
       </select>
     </td>

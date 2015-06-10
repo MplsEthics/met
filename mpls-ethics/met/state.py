@@ -23,10 +23,10 @@ class (see http://code.google.com/p/gaeutilities/).
 import logging
 from pprint import pformat
 from datetime import datetime
-from met.boards import boards
 from met.order import scenario_order
 from met.model import Answer, Completion, Scenario
 from met.exceptions import InvalidAnswerException, InvalidLearnerException
+from met.model import Board
 
 
 class LearnerState(object):
@@ -180,7 +180,7 @@ class LearnerState(object):
         try:
             if len(name) == 0:
                 raise
-            board = boards[int(board_id)]
+            board = Board.all().filter("priority =", int(board_id)).get().name
             if len(board) == 0:
                 raise
             # date can be empty (typical usage) or contain a date string
