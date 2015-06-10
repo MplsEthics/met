@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-application: 'mpls-ethics'
+application: 'mpls-ethics-hrd'
 version: 6
 runtime: python27
 api_version: 1

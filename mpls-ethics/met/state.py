@@ -66,9 +66,10 @@ class LearnerState(object):
         return True
 
     def completed_prerequisites(self, scenario_id):
-        """Returns True if all the scenarios before 'scenario_id' have been
-        completed; returns False otherwise."""
-
+        """
+        Returns True if all the scenarios before 'scenario_id' have been
+        completed; returns False otherwise.
+        """
         assert scenario_id in scenario_order, 'unknown scenario'
 
         # make sure the learner has completed all scenarios
@@ -82,7 +83,7 @@ class LearnerState(object):
     def first_incomplete_scenario(self):
         completed = self.session.get('completed', {})
         for s in scenario_order:
-            if not completed[s]:
+            if not s in completed:
                 return s
         return None
 
