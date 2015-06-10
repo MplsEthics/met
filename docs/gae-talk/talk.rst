@@ -2,7 +2,7 @@
 Ethics Training Webapp
 ======================
 .. footer::
-    John Trammell *<johntrammell@gmail.com>*
+    John Trammell *<john.trammell@gmail.com>*
 
 With the Google App Engine
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

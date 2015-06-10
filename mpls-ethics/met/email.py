@@ -32,6 +32,7 @@ The following user has completed their online ethics training:
     msg.send()
 
     # send a copy to me
-    msg.to = 'John Trammell <johntrammell@gmail.com>'
+    msg.to = 'John Trammell <john.trammell@gmail.com>'
     msg.send()
 
+    # FIXME: send a copy to Jozie.Nummi@minneapolismn.gov?
