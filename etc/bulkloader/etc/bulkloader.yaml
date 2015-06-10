@@ -77,6 +77,11 @@ transformers:
     - property: __key__
       external_name: id
       export_transform: transform.key_id_or_name_as_string
+
     - property: name
       external_name: name
       import_transform: db.Text
+
+    - property: priority
+      external_name: priority
+      import_transform: int

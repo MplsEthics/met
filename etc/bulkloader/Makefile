@@ -21,8 +21,9 @@ answers.csv:
 	$(PYTHON) bin/yaml2csv.py src/*.yaml
 
 boards.csv: src/boards.txt
-	echo "id,name" > boards.csv
-	sed -e 's/\(.*\)/"\1"/' src/boards.txt | nl -w1 -nln -s , >> boards.csv
+	echo "priority,name" > boards.csv
+	sed -e 's/\(.*\)/"\1"/' src/boards.txt | nl --number-width=1 \
+		--number-format=ln --number-separator="," >> boards.csv
 
 localload: localload-scenario localload-answer localload-board
 

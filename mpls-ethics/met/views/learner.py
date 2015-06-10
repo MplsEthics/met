@@ -15,12 +15,12 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-from met.boards import boards
 from met.decorators import alldone
 from met.email import send_completion
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
 from met.state import LearnerState
+from met.model import Board
 
 
 class Learner(BaseView):
@@ -30,7 +30,7 @@ class Learner(BaseView):
         state = LearnerState(self.session)
         learner_error = state.learner_error()
         context = dict(show_prevnext=True,
-                       boards=boards,
+                       boards=Board.all().order('priority'),
                        learner_error=learner_error,
                        state=state.as_string())
         jt = self.jinja_environment().get_template('learner.djt')

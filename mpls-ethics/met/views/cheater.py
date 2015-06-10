@@ -14,10 +14,10 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from met.boards import boards
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
 from met.state import LearnerState
+from met.model import Board
 
 
 class Cheater(BaseView):
@@ -30,7 +30,7 @@ class Cheater(BaseView):
         state = LearnerState(self.session)
         learner_error = state.learner_error()
         context = dict(show_prevnext=True,
-                       boards=boards,
+                       boards=Board.all().order('priority'),
                        learner_error=learner_error,
                        cheater=True,
                        state=state.as_string())
