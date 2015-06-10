@@ -20,6 +20,7 @@ Training site.  It extends the Appengine Utilities ("GAEUtilities") sessions
 class (see http://code.google.com/p/gaeutilities/).
 """
 
+import logging
 from pprint import pformat
 from datetime import datetime
 from met.boards import boards
@@ -170,19 +171,26 @@ class LearnerState(object):
         return self.session.get('learner_date', None)
 
     def persist_learner(self, name, board_id, date):
-        """Check the learner info; if it's good, persist it in the session and
-        GAE storage."""
-
-        # perform sanity checks on the name and the board
+        """
+        Check the learner info; if it's good, persist it in the session and App
+        Engine storage.  This is a slight departure from previous MET versions
+        b/c webapp2 sessions can't serialize datetime objects (!).
+        """
+        # perform sanity checks on the name, board, and date
         try:
             if len(name) == 0:
                 raise
             board = boards[int(board_id)]
             if len(board) == 0:
                 raise
+            # date can be empty (typical usage) or contain a date string
+            # ("cheater" mode)
+            if date and not datetime.strptime(date, "%m/%d/%Y"):
+                raise
         except:
             self.learner_error(True)
-            msg = "name='%s' board_id='%s'" % (name, board_id)
+            msg = "name='%s' board_id='%s' date='%s'" % (name, board_id, date)
+            logging.error(msg)
             raise InvalidLearnerException(msg)
 
         # persist the learner name and board in the session (to be used by the
@@ -190,14 +198,15 @@ class LearnerState(object):
         self.session['learner_name'] = name
         self.session['learner_board'] = board
 
-        # if the date is not empty, convert to datetime and persist
+        # if a date is supplied, use it, otherwise make sure it's clear so the
+        # template can supply a default
         if date:
-            self.session['learner_date'] = datetime.strptime(date, "%m/%d/%Y")
+            self.session['learner_date'] = date
         elif 'learner_date' in self.session:
             del self.session['learner_date']
 
-        # persist the learner name, board, and a timestamp in GAE storage
-        # (the timestamp should be created automatically)
+        # Persist the learner name, board, and a timestamp in appengine
+        # storage.  The model includes its own timestamp.
         comp = Completion()
         comp.name = name
         comp.board = board

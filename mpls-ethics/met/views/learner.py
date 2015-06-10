@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from google.appengine.ext.webapp import template
+import logging
 from met.boards import boards
 from met.decorators import alldone
 from met.email import send_completion
@@ -50,6 +50,7 @@ class Learner(BaseView):
             board_id = self.request.params.get('learner_board_id', "")
             state.persist_learner(name, board_id, None)
         except InvalidLearnerException:
+            logging.warn("caught invalid learner")
             self.redirect('/learner')
             return
 

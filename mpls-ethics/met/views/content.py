@@ -14,8 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-import logging
-from google.appengine.ext import webapp
 from met.views.base import BaseView
 from met.exceptions import InvalidScenarioException
 from met.model import Scenario

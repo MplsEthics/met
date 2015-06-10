@@ -17,7 +17,6 @@
 from datetime import datetime
 import jinja2
 import webapp2
-import logging
 from webapp2_extras import sessions
 import met
 from met.order import view_order
@@ -79,15 +78,27 @@ class BaseView(webapp2.RequestHandler):
             extensions = ['jinja2.ext.autoescape'],
             autoescape = True)
 
+        def coerce_datetime(value):
+            if isinstance(value, datetime):
+                return value
+            if isinstance(value, basestring):
+                try:
+                    value = datetime.strptime(value, "%m/%d/%Y")
+                except:
+                    value = datetime.now()
+            if value is None:
+                value = datetime.now()
+            return value
+
         def ordinal_day(value):
-            value = value or datetime.now()
+            value = coerce_datetime(value)
             # http://codereview.stackexchange.com/questions/41298/producing-ordinal-numbers
             dd = int(value.strftime('%-d'))
             suf = {1:"st",2:"nd",3:"rd"}.get(dd if (dd<20) else (dd%10), 'th')
             return "%d%s" % (dd, suf)
 
         def month_comma_year(value):
-            value = value or datetime.now()
+            value = coerce_datetime(value)
             return value.strftime('%B, %Y')
 
         env.filters['ordinal_day'] = ordinal_day

@@ -17,7 +17,6 @@
 import os
 import met
 from met.views.base import BaseView
-from google.appengine.ext import webapp
 from met.state import LearnerState
 from met.version import VERSION
 

@@ -15,7 +15,6 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-from google.appengine.ext.webapp import template
 from met.views.base import BaseView
 from met.state import LearnerState
 

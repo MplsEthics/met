@@ -15,7 +15,6 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-from google.appengine.ext import webapp
 from met.decorators import ordered
 from met.state import LearnerState
 from met.exceptions import InvalidAnswerException

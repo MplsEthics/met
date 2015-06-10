@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from google.appengine.ext import webapp
 from met.decorators import ordered
 from met.model import Answer
 from met.state import LearnerState

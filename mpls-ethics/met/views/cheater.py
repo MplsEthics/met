@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from google.appengine.ext.webapp import template
 from met.boards import boards
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
@@ -43,7 +42,6 @@ class Cheater(BaseView):
         Attempt to persist the learner data in the GAE datastore and in the
         session, send the email, and redirect to the certificate view.
         """
-
         state = LearnerState(self.session)
 
         # persist the learner data
