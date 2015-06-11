@@ -49,7 +49,7 @@ class LearnerState(object):
     def update_timestamp(self):
         """Only save the last few timestamps!"""
         timestamps = self.session.get('timestamp', [])
-        timestamps += [datetime.now().isoformat()]
+        timestamps += [ datetime.now().isoformat() ]
         self.session['timestamp'] = timestamps[0:3]
 
     def is_completed(self, scenario_id):
@@ -59,15 +59,17 @@ class LearnerState(object):
 
     def completed_all(self):
         """Returns True if the user has completed all scenarios."""
+        completed = self.session.get('completed', {})
         for s in scenario_order:
-            if s not in self.session['completed']:
+            if s not in completed:
                 return False
         return True
 
     def completed_prerequisites(self, scenario_id):
-        """Returns True if all the scenarios before 'scenario_id' have been
-        completed; returns False otherwise."""
-
+        """
+        Returns True if all the scenarios before 'scenario_id' have been
+        completed; returns False otherwise.
+        """
         assert scenario_id in scenario_order, 'unknown scenario'
 
         # make sure the learner has completed all scenarios
@@ -79,9 +81,9 @@ class LearnerState(object):
                 return False
 
     def first_incomplete_scenario(self):
-        completed = self.session['completed']
+        completed = self.session.get('completed', {})
         for s in scenario_order:
-            if not completed[s]:
+            if not s in completed:
                 return s
         return None
 
@@ -108,7 +110,6 @@ class LearnerState(object):
         Returns a list of dicts reflecting the correct learner state for
         scenario_id.
         """
-
         scenario = Scenario.get_by_key_name(scenario_id)
         is_completed = self.is_completed(scenario_id)
         learner_answers = self.learner_answers(scenario_id)
@@ -134,10 +135,6 @@ class LearnerState(object):
     def record_answer(self, scenario_id, answer_id):
         """Record this answer in the session; do any necessary updates."""
 
-        # make sure the session has the fields I need
-        self.session.setdefault(scenario_id, [])
-        self.session.setdefault('completed', {})
-
         # get the correct answer
         answer = Answer.get_by_key_name(answer_id or '--none--')
 
@@ -150,11 +147,13 @@ class LearnerState(object):
             raise InvalidAnswerException('answer and scenario do not match')
 
         # record the answer ID
+        self.session.setdefault(scenario_id, [])
         if answer_id not in self.session[scenario_id]:
             self.session[scenario_id] += [answer_id]
 
         # update session['completed'] if the answer is correct
         if answer.is_correct:
+            self.session.setdefault('completed', {})
             self.session['completed'][scenario_id] = datetime.now().isoformat()
 
     def learner_error(self, error=False):

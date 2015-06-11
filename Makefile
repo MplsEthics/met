@@ -42,12 +42,11 @@ sdk/google_appengine/dev_appserver.py:
 
 sdk/google_appengine: sdk/$(ZIPFILE)
 	mkdir -p sdk
-	cd sdk; unzip -q $(ZIPFILE)
+	unzip -q -d sdk $(HOME)/Downloads/$(ZIPFILE)
 
-sdk/$(ZIPFILE):
-	mkdir -p sdk ~/Downloads
+download $(HOME)/Downloads/$(ZIPFILE):
+	mkdir -p ~/Downloads
 	if [ ! -e ~/Downloads/$(ZIPFILE) ]; then (cd ~/Downloads; wget $(ZIPURL)); fi
-	cp ~/Downloads/$(ZIPFILE) sdk/ \
 
 start: sdk/google_appengine/dev_appserver.py
 	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check 1 mpls-ethics/
