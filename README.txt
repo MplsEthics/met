@@ -63,7 +63,7 @@ Python Dependencies
 Author
 ======
 
-John Trammell <johntrammell (at) gmail (dot) com>
+John Trammell <john {dot} trammell (at) gmail =dot= com>
 
 
 Development

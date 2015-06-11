@@ -25,9 +25,9 @@ boards.csv: src/boards.txt
 	sed -e 's/\(.*\)/"\1"/' src/boards.txt | nl --number-width=1 \
 		--number-format=ln --number-separator="," >> boards.csv
 
-localload: localload-scenario localload-answer localload-board
+localload: localload-scenarios localload-answers localload-boards
 
-localload-scenario: scenario.csv
+localload-scenarios: scenario.csv
 	echo 'XX' | $(PYTHON) $(BULKLOADER) \
 		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
@@ -37,7 +37,7 @@ localload-scenario: scenario.csv
 		--url http://localhost:8080/remote_api \
 		--passin
 
-localload-answer: answers.csv
+localload-answers: answers.csv
 	echo 'XX' | $(PYTHON) $(BULKLOADER) \
 		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
@@ -47,7 +47,7 @@ localload-answer: answers.csv
 		--url http://localhost:8080/remote_api \
 		--passin
 
-localload-board: boards.csv
+localload-boards: boards.csv
 	echo 'XX' | $(PYTHON) $(BULKLOADER) \
 		--application="dev~mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
@@ -57,9 +57,9 @@ localload-board: boards.csv
 		--url http://localhost:8080/remote_api \
 		--passin
 
-upload: upload-scenario upload-answer upload-boards
+upload: upload-scenarios upload-answers upload-boards
 
-upload-scenario: scenario.csv
+upload-scenarios: scenario.csv
 	$(PYTHON) $(BULKLOADER) \
 		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
@@ -68,7 +68,7 @@ upload-scenario: scenario.csv
 		--email=johntrammell@gmail.com \
 		--url http://mpls-ethics.appspot.com/remote_api
 
-upload-answer: answers.csv
+upload-answers: answers.csv
 	$(PYTHON) $(BULKLOADER) \
 		--application="mpls-ethics" \
 		--config_file=etc/bulkloader.yaml \
@@ -79,7 +79,7 @@ upload-answer: answers.csv
 
 upload-boards: boards.csv
 	$(PYTHON) $(BULKLOADER) \
-		--application="mpls-ethics" \
+		--application="s~mpls-ethics-hrd" \
 		--config_file=etc/bulkloader.yaml \
 		--filename=boards.csv \
 		--kind=Board \

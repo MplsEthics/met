@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -32,6 +32,7 @@ The following user has completed their online ethics training:
     msg.send()
 
     # send a copy to me
-    msg.to = 'John Trammell <johntrammell@gmail.com>'
+    msg.to = 'John Trammell <john.trammell@gmail.com>'
     msg.send()
 
+    # FIXME: send a copy to Jozie.Nummi@minneapolismn.gov?

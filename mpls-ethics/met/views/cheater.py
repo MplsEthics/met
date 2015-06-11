@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -14,10 +14,12 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
+from datetime import datetime
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
 from met.state import LearnerState
 from met.model import Board
+from met.order import scenario_order
 
 
 class Cheater(BaseView):
@@ -43,6 +45,11 @@ class Cheater(BaseView):
         session, send the email, and redirect to the certificate view.
         """
         state = LearnerState(self.session)
+
+        # fake that we've really completed the scenarios
+        self.session.setdefault('completed', {})
+        for s in scenario_order:
+            self.session['completed'][s] = datetime.now().isoformat()
 
         # persist the learner data
         try:
