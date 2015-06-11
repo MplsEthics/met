@@ -14,29 +14,56 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
      PACKAGE := mpls-ethics
-   APPENGINE := /usr/local/google_appengine
         PATH := /usr/bin:/bin:/usr/local/bin
-    PYTHON2X ?= python2.7
+      PYTHON ?= python2.7
+        NOSE := nosetests-2.7
+
+   APPENGINE := ./sdk/google_appengine
+     ZIPFILE := google_appengine_1.9.21.zip
+      ZIPURL := https://storage.googleapis.com/appengine-sdks/featured/$(ZIPFILE)
+
+.PHONY: start
 
 usage:
-	@echo "usage: [clean]"
-
-start gae app:
-	PYTHON2=$(PYTHON2X) APPENGINE=$(APPENGINE) /bin/bash bin/start-appengine.sh
+	@echo "usage: [clean|realclean|sdk|start]"
 
 clean:
-	rm -f MANIFEST bulkloader-* *.csv *.zip *.tar.gz
+	rm -f MANIFEST bulkloader-* *.csv *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
-	find . -name '*.pyc' | xargs rm -f
+	find . -name '*.pyc' -exec rm {} \;
+	find mpls-ethics/ -name '*.css' -exec chmod 664 {} \;
+	find mpls-ethics/ -name '*.djt' -exec chmod 664 {} \;
+	find mpls-ethics/ -name '*.png' -exec chmod 664 {} \;
+	find mpls-ethics/ -name '*.py'  -exec chmod 664 {} \;
+
+realclean:
+	git clean -dfx
+
+sdk: sdk/google_appengine
+
+sdk/google_appengine/dev_appserver.py:
+	make sdk/google_appengine
+
+sdk/google_appengine: sdk/$(ZIPFILE)
+	mkdir -p sdk
+	unzip -q -d sdk $(HOME)/Downloads/$(ZIPFILE)
+
+download $(HOME)/Downloads/$(ZIPFILE):
+	mkdir -p ~/Downloads
+	if [ ! -e ~/Downloads/$(ZIPFILE) ]; then (cd ~/Downloads; wget $(ZIPURL)); fi
+
+start: sdk/google_appengine/dev_appserver.py
+	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check 1 mpls-ethics/
 
 update:
-	$(PYTHON2X) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
+	$(PYTHON) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
 
 nose nosetest:
-	nosetests-2.5 -v -s --with-gae
+	$(NOSE) -v -s --with-gae
 
 test: bin/check_yaml.py
 	@-ack $$(echo "abcde" | tr 'edcba' 'emxif')
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
-	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON2X) bin/check_yaml.py
-	cd mpls-ethics; nosetests-2.5 -v --with-gae --without-sandbox
+	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON) bin/check_yaml.py
+	cd mpls-ethics; $(NOSE) -v --with-gae --gae-lib-root=$(APPENGINE) --without-sandbox
+

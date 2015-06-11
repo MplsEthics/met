@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -15,17 +15,19 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import logging
-from google.appengine.ext.webapp import template
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
 from time import gmtime, strftime, time
 
 
 class Main(BaseView):
 
+    def viewpath():
+        return 'main.djt'
+
     def get(self):
-        path = self.viewpath(append='main.djt')
-        state = LearnerState()
+        path = 'main.djt'
+        state = LearnerState(self.session)
         state.update_timestamp()
 
         # if there are no cookies, set one and redirect to /cookies
@@ -43,4 +45,6 @@ class Main(BaseView):
                        show_prevnext=True,
                        show_about=True,
                        state=state.as_string())
-        self.response.out.write(template.render(path, context))
+
+        jt = self.jinja_environment().get_template(path)
+        self.response.write(jt.render(context))

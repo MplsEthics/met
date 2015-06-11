@@ -1,0 +1,40 @@
+{% extends "base.djt" %}
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% block content %}
+
+<p>
+This is version <b>{{ version }}</b> of the Minneapolis Ethics Training
+software.
+
+<p>
+This is free software written in
+<a target="new" href="http://www.python.org/">Python</a>
+to run on the
+<a target="new" href="http://appengine.google.com/">Google App Engine</a>.
+
+<p>
+The source code for this application is available as a free download from
+<a target="new" href="http://github.com">GitHub</a>, at URL
+<a target="new" href="http://github.com/trammell/met/downloads">
+http://github.com/trammell/met/downloads</a>.
+
+<p style="margin-top: 2em">
+<a class="button" href="javascript:history.back(1)">&larr; Back</a>
+
+{% endblock content %}

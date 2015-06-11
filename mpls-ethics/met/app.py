@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -14,15 +14,21 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp.util import run_wsgi_app
+import os
+import webapp2
 from met import views
 
-app_pages = [
+PROJECT_PATH = os.path.dirname(os.path.dirname(__file__))
+TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
+
+config = {
+    'webapp2_extras.sessions': { 'secret_key': 'abcde', }
+}
+
+app = webapp2.WSGIApplication([
     (r'^/$', views.Main),                       # splash page
     (r'^/main$', views.Main),                   # ditto
-    (r'^/cookies$', views.Cookies),             # shows an error message if
-                                                # cookies are disabled
+    (r'^/cookies$', views.Cookies),             # no cookie error msg
     (r'^/reset$', views.Reset),                 # clears session
     (r'^/learner$', views.Learner),             # learner form submit
     (r'^/certificate$', views.Certificate),     # learner certificate
@@ -31,9 +37,4 @@ app_pages = [
     (r'^/(\w+)/response$', views.Response),     # e.g. "coi1/response"
     (r'^/(\w+)/(\w+)$', views.Content),         # e.g. "coi1/intro1"
     (r'^/\w+$', views.Fallback),                # fallback / best guess
-]
-
-wsgi_app = webapp.WSGIApplication(app_pages, debug=True)
-
-if __name__ == "__main__":
-    run_wsgi_app(wsgi_app)
+], config=config, debug=True)

@@ -1,0 +1,47 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+<h2>Discussion continued:</h2>
+
+<p>
+In the scenario, you are a board member of an entity applying for a city
+grant.  If the entity is considered your associated business, you are deemed
+to have a financial interest and must declare a conflict of interest.   If the
+entity is not considered your associated business, you may participate in City
+decisions related to entity provided you disclose your affiliation.
+
+<p>
+An associated business is one from which you receive compensation of more than
+$50 in a month, or in which you owns securities worth at least $2,500.
+Compensation does not include expense reimbursement.  Associated businesses
+are considered to be your financial interests for Ethics Code Conflict of
+Interest, M.C.O. § 15.40, analysis.
+
+<p>
+If you are an officer, director, board member, or trustee serving without
+compensation of an organization or entity, the organization or entity is not
+considered to be your associated business.  This is true even if you are
+reimbursed for expenses.  In this situation, you are permitted to participate
+in City matters involving the organization or entity.  You are required,
+however, to disclose your affiliation with the organization or entity as
+though it were a conflict of interest.  You will use the conflict of interest
+form to disclose your affiliation.
+
+{% endblock content %}

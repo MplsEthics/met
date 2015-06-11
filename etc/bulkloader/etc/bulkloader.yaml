@@ -1,0 +1,87 @@
+# Copyright 2012 John J. Trammell.
+#
+# This file is part of the Mpls-ethics software package.  Mpls-ethics
+# is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your
+# option) any later version.
+#
+# Mpls-ethics is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+
+# see e.g. http://code.google.com/appengine/docs/python/tools/uploadingdata.html
+# for more information on this file.
+
+python_preamble:
+- import: google.appengine.ext.bulkload.transform
+- import: google.appengine.ext.db
+- import: re
+- import: base64
+
+transformers:
+- kind: Scenario
+  connector: csv
+  connector_options:
+    encoding: utf-8
+    columns: from_header
+  property_map:
+    - property: __key__
+      external_name: id
+      export_transform: transform.key_id_or_name_as_string
+    - property: name
+      external_name: name
+    - property: scenario
+      external_name: scenario
+      import_transform: db.Text
+    - property: question
+      external_name: question
+      import_transform: db.Text
+    - property: prompt
+      external_name: prompt
+      import_transform: db.Text
+
+- kind: Answer
+  connector: csv
+  connector_options:
+    encoding: utf-8
+    columns: from_header
+  property_map:
+    - property: __key__
+      external_name: id
+      export_transform: transform.key_id_or_name_as_string
+    - property: scenario
+      external_name: scenario
+      import_transform: transform.create_foreign_key('Scenario')
+      export_transform: transform.key_id_or_name_as_string
+    - property: answer
+      external_name: answer
+      import_transform: db.Text
+    - property: is_correct
+      external_name: is_correct
+      import_transform: transform.regexp_bool('True')
+    - property: response
+      external_name: response
+      import_transform: db.Text
+
+- kind: Board
+  connector: csv
+  connector_options:
+    encoding: utf-8
+    columns: from_header
+  property_map:
+    - property: __key__
+      external_name: id
+      export_transform: transform.key_id_or_name_as_string
+
+    - property: name
+      external_name: name
+      import_transform: db.Text
+
+    - property: priority
+      external_name: priority
+      import_transform: int

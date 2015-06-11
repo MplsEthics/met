@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -18,9 +18,16 @@ import os
 import pdb
 import sys
 
-content_dir = os.path.join(os.path.dirname(__file__), '../../content')
-
 def debug():
+    """
+    To use the traditional consolde debugger:
+
+        import met
+        ...
+        met.debug()
+
+    """
+    # override Appengine developer studio defaults
     for attr in ('stdin', 'stdout', 'stderr'):
         setattr(sys, attr, getattr(sys, '__%s__' % attr))
     pdb.set_trace()

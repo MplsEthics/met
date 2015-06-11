@@ -1,0 +1,42 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+<form action="" method="POST" class="question" id="question">
+<table>
+{% for answer in s.answers %}
+<tr>
+<td style="vertical-align:top">
+<input type="radio" name="answer" id="radio{{ loop.index }}"
+   value="{{ answer.name }}" {% if answer.disabled %}disabled{% endif %}
+   {% if answer.checked %}checked{% endif %}>
+</td>
+<td>
+<label for="radio{{ loop.index }}">
+<span class="{{ answer.class }}" id="a{{ loop.index }}">
+{{ answer.answer }}
+</span>
+</label>
+</td>
+</tr>
+{% endfor %}
+</table>
+
+{% if not s.is_completed %}
+<input id="submit" type="submit" name="submit" value="Submit Answer">
+{% endif %}
+
+</form>

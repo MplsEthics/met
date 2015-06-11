@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -14,27 +14,39 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
-from google.appengine.ext import webapp
+from datetime import datetime
+import jinja2
+import webapp2
+from webapp2_extras import sessions
+import met
 from met.order import view_order
 
-
-class BaseView(webapp.RequestHandler):
+class BaseView(webapp2.RequestHandler):
     """Base class for all MET (Minneapolis Ethics Training) view classes."""
 
-    # Define a hardcoded relative path from this file to the views.  This
-    # should be automated somehow!
-    view_dir = os.path.join(os.path.dirname(__file__), '../../view')
+    def dispatch(self):
+        """
+        See https://webapp-improved.appspot.com/api/webapp2_extras/sessions.html
+        for more on how to do sessions in webapp2.
+        """
+        # Get a session store for this request.
+        self.session_store = sessions.get_store(request=self.request)
 
-    def main(self):
-        """Returns the path to the 'main' view template."""
-        return self.viewpath('main.djt')
+        try:
+            # Dispatch the request.
+            webapp2.RequestHandler.dispatch(self)
+        finally:
+            # Save all sessions.
+            self.session_store.save_sessions(self.response)
 
-    def viewpath(self, append=None):
-        """Construct a view path."""
-        if append:
-            return os.path.join(self.view_dir, './' + append)
-        return self.view_dir
+    @webapp2.cached_property
+    def session(self):
+        # Returns a session using the default cookie key.
+        return self.session_store.get_session()
+
+    def viewpath(self):
+        """Construct a view path relative to met.app.TEMPLATE_DIR."""
+        return 'main.djt'
 
     def view_index(self):
         request_path = self.request.path[1:]
@@ -59,20 +71,53 @@ class BaseView(webapp.RequestHandler):
         except:
             return None
 
+    def jinja_environment(self):
+        """Return the Jinja2 environment object"""
+        env = jinja2.Environment(
+            loader = jinja2.FileSystemLoader(met.app.TEMPLATE_PATH),
+            extensions = ['jinja2.ext.autoescape'],
+            autoescape = True)
+
+        def coerce_datetime(value):
+            if isinstance(value, datetime):
+                return value
+            if isinstance(value, basestring):
+                try:
+                    value = datetime.strptime(value, "%m/%d/%Y")
+                except:
+                    value = datetime.now()
+            if value is None:
+                value = datetime.now()
+            return value
+
+        def ordinal_day(value):
+            value = coerce_datetime(value)
+            # http://codereview.stackexchange.com/questions/41298/producing-ordinal-numbers
+            dd = int(value.strftime('%-d'))
+            suf = {1:"st",2:"nd",3:"rd"}.get(dd if (dd<20) else (dd%10), 'th')
+            return "%d%s" % (dd, suf)
+
+        def month_comma_year(value):
+            value = coerce_datetime(value)
+            return value.strftime('%B, %Y')
+
+        env.filters['ordinal_day'] = ordinal_day
+        env.filters['month_comma_year'] = month_comma_year
+        return env
+
     def template(self):
         """Returns the filename of the template to view."""
         return 'main.djt'
 
     def get(self):
         """The default GET request handler."""
-        template_values = {
+        context = {
             'next': self.next(),
             'previous': self.previous(),
             'show_prevnext': True,
         }
-
-        t = self.viewpath(append=self.template())
-        self.response.out.write(webapp.template.render(t, template_values))
+        jt = self.jinja_environment().get_template('main.djt')
+        self.response.write(jt.render(context))
 
     def post(self):
         """Default POST action is to redirect to GET."""

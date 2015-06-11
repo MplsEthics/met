@@ -1,0 +1,56 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>Summary</h1>
+
+<p>
+The ethics education in which you participated today is a summary of the
+ethics code provisions commonly encountered by citizens appointed to City
+boards and commissions.  Our goal was not to make you a legal expert but to
+give you an understanding of conflicts of interest, impermissible disclosure
+of information and prohibited gifts and an appreciation of why these rules are
+necessary for good governance.
+
+<p>
+There are many ethics topics we did not cover.  We encourage you to review
+the <a target="new" href="http://www.minneapolismn.gov/epb/epb_ordinance">
+Ethics Code</a> and the <a target="new"
+href="http://www.minneapolismn.gov/epb/">Ethical Practices Board
+website</a>.
+Downloadable <a target="new"
+href="http://www.minneapolismn.gov/epb/epb_coi-forms">conflict of interest
+forms</a> are available on the Ethical Practices Board website for board and
+commission members.  These are the forms you should use to disclose a
+potential conflict of interest.
+
+<p>
+If you have any ethics questions, please contact the City’s Ethics Officer,
+Susan Trammell at <a href="mailto:EthicsOfficer@minneapolismn.gov">
+EthicsOfficer@minneapolismn.gov</a> or 612-673-3230.
+
+<p>
+Please remember that you may report a violation of the Ethics in Government
+Code by contacting the Ethics Officer, accessing the <a target="new"
+href="https://www.reportlineweb.com/Welcome.aspx?Client=Minneapolis">Ethics
+Report Line</a>, utilizing a <a target="new"
+href="http://www.minneapolismn.gov/epb/epb_scope">complaint form</a> from
+the Ethical Practices Board website, or calling the Ethics Report Line at
+1-877-563-1075.
+
+{% endblock content %}

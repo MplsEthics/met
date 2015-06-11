@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -14,10 +14,18 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-application: 'mpls-ethics'
-version: 5
-runtime: python
+application: 'mpls-ethics-hrd'
+version: 6
+runtime: python27
 api_version: 1
+threadsafe: false
+
+libraries:
+- name: django
+  version: "1.5"
+- name: jinja2
+  version: "2.6"
+
 handlers:
 - url: /remote_api
   script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
@@ -32,4 +40,4 @@ handlers:
 - url: /css
   static_dir: static/css
 - url: /.*
-  script: met/app.py
+  script: met.app.app

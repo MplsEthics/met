@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -15,9 +15,9 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
+import met
 from met.views.base import BaseView
-from google.appengine.ext import webapp
-from met.session import LearnerState
+from met.state import LearnerState
 from met.version import VERSION
 
 
@@ -31,29 +31,22 @@ class Fallback(BaseView):
         if len(self.request.path) <= 1:
             return 'main.djt'
 
-        # if view_dir + self.request.path + ".djt" is a view, then use it
+        # if the request path corresponds to a template, then show it
         srp = self.request.path[1:] + ".djt"
-        if os.path.exists(self.viewpath(append=srp)):
+        if os.path.exists(os.path.join(met.app.TEMPLATE_PATH, srp)):
             return srp
-
-        # try to find a matching
-        if len(self.request.path) > 1:
-            templates = [x for x in os.listdir(self.view_dir) if x[0] != '.']
-            for t in templates:
-                if self.request.path[1:] in t:
-                    return t
 
         # sane fallback
         return 'main.djt'
 
     def get(self, *argv):
-        path = self.viewpath(append=self.template())
-        state = LearnerState()
+        state = LearnerState(self.session)
         context = dict(previous=self.previous(),
                        next=self.next(),
                        state=state.as_string(),
                        version=VERSION,
                        show_prevnext=True)
-        self.response.out.write(webapp.template.render(path, context))
+        jt = self.jinja_environment().get_template(self.template())
+        self.response.write(jt.render(context))
 
     post = get

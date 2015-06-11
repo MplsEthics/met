@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -14,10 +14,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from google.appengine.ext import webapp
 from met.decorators import ordered
 from met.model import Answer
-from met.session import LearnerState
+from met.state import LearnerState
 from met.views.base import BaseView
 
 
@@ -25,15 +24,13 @@ class Response(BaseView):
 
     @ordered
     def get(self, scenario_id):
-        state = LearnerState()
+        state = LearnerState(self.session)
         answer_id = state.last_answer_id(scenario_id) or "--none--"
         answer = Answer.get_by_key_name(answer_id)
 
         if answer is None:
             self.redirect("/%s/question" % scenario_id)
             return
-
-        path = self.viewpath(append='response.djt')
 
         if state.is_completed(scenario_id):
             link_next = "/%s/disc1" % scenario_id
@@ -47,5 +44,6 @@ class Response(BaseView):
                        correct=state.is_completed(scenario_id),
                        response=answer.response,
                        link_next=link_next)
-        output = webapp.template.render(path, context)
-        self.response.out.write(output)
+
+        jt = self.jinja_environment().get_template('response.djt')
+        self.response.write(jt.render(context))

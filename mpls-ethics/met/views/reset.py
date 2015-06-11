@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -15,11 +15,11 @@
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
 
 class Reset(BaseView):
     """Clear the session."""
 
     def get(self):
-        LearnerState().flush_session()
+        LearnerState(self.session).flush_session()
         self.redirect("/")

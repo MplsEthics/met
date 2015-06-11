@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -14,20 +14,18 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from google.appengine.ext import webapp
 from met.views.base import BaseView
 from met.exceptions import InvalidScenarioException
 from met.model import Scenario
-from met.session import LearnerState
+from met.state import LearnerState
 
 
 class Content(BaseView):
     """Shows any page containing scenario content."""
 
     def get(self, scenario_id, view):
-        state = LearnerState()
+        state = LearnerState(self.session)
         template = "%s/%s.djt" % (scenario_id, view)
-        path = self.viewpath(append=template)
         scenario = Scenario.get_by_key_name(scenario_id)
         if not scenario:
             raise InvalidScenarioException('bad scenario ID')
@@ -37,6 +35,8 @@ class Content(BaseView):
                        s=scenario.as_dict(),
                        state=state.as_string(),
                        show_prevnext=True)
-        self.response.out.write(webapp.template.render(path, context))
+
+        jt = self.jinja_environment().get_template(template)
+        self.response.write(jt.render(context))
 
     post = get

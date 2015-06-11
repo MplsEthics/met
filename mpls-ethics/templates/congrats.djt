@@ -1,0 +1,40 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>Congratulations!</h1>
+
+<p>
+You have completed the Ethics in Government Education requirement for
+Appointed Members of Boards, Commissions and Agencies.  Thank you for your
+service to the City of Minneapolis and for your compliance with City of
+Minneapolis ethics education requirements.
+
+<p>
+On the following page, you may link to our automated email and training
+certificate features.  You also have the option to save a copy of your
+certificate electronically.  Please use these options to notify the City
+Clerk’s office and your city staff liaison of your completion of this
+educational requirement.
+
+<p>
+If you have comments or suggestions for improving this or future training,
+please contact us at
+<a href="mailto:EthicsOfficer@minneapolismn.gov">EthicsOfficer@minneapolismn.gov</a>.
+
+{% endblock content %}

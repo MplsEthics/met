@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -58,3 +58,30 @@ class Answer(db.Model):
                     answer=self.answer,
                     is_correct=self.is_correct,
                     response=self.response)
+
+class Board(db.Model):
+    """This class models a board the learner can choose."""
+
+    name = db.StringProperty()
+    priority = db.IntegerProperty()
+
+    def as_dict(self):
+        return dict(name=self.name, priority=self.priority)
+
+"""
+Sample commands that work in the interactive console:
+
+from pprint import pprint
+from met.model import Board
+
+query = Board.all()
+query.order('priority')
+
+for bbb in Board.all().order('priority'):
+    pprint(bbb.name)
+
+boards = [ bbb.name for bbb in Board.all().order('priority') ]
+pprint(boards)
+
+"""
+

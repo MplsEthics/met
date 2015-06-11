@@ -1,0 +1,48 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+<h2>Discussion:</h2>
+
+<p>
+M.C.O. §15.50 is an ordinance that prohibits the City’s officials from
+accepting gifts from lobbyists, principals and interested persons.  In their
+work for the City, members of boards and commissions will most often encounter
+interested persons and, occasionally, lobbyists and principals.  If a board or
+commission’s action impacts or will impact the financial interests of a party
+appearing before, or with a matter before, the board or commission, the party
+is deemed to be an interested person.  You should not accept any gift from an
+interested person unless a listed exception applies to the gift.
+
+<p>
+No exceptions apply to a gift of scone and coffee as described in the
+scenario.  Food and beverage are never considered “services” or “trinkets or
+mementos”.  There is an exception that specifically addresses gifts of food or
+beverages, but it is quite limited in its application to event at which the
+recipient appears to make a speech or answer questions as part of a program.
+
+<p>
+It is important to maintain professional standards when working with
+consultants, vendors, customers, and citizens.  In such business
+relationships, you should pay for your own coffee and scones and/or meals.
+This way of doing business also demonstrates to citizens and other vendors,
+customers and consultants that our city processes can not be affected by
+acceptance of meals or other things of value.
+
+{% endblock content %}

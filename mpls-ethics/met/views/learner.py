@@ -1,4 +1,4 @@
-# Copyright 2012 John J. Trammell.
+# Copyright 2015 John J. Trammell.
 #
 # This file is part of the Mpls-ethics software package.  Mpls-ethics
 # is free software: you can redistribute it and/or modify it under the
@@ -14,35 +14,35 @@
 # You should have received a copy of the GNU General Public License
 # along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
 
-from google.appengine.ext.webapp import template
-from met.boards import boards
+import logging
 from met.decorators import alldone
 from met.email import send_completion
 from met.exceptions import InvalidLearnerException
 from met.views.base import BaseView
-from met.session import LearnerState
+from met.state import LearnerState
+from met.model import Board
 
 
 class Learner(BaseView):
 
     @alldone
     def get(self):
-        path = self.viewpath(append='learner.djt')
-        state = LearnerState()
+        state = LearnerState(self.session)
         learner_error = state.learner_error()
         context = dict(show_prevnext=True,
-                       boards=boards,
+                       boards=Board.all().order('priority'),
                        learner_error=learner_error,
                        state=state.as_string())
-        output = template.render(path, context)
-        self.response.out.write(output)
+        jt = self.jinja_environment().get_template('learner.djt')
+        self.response.write(jt.render(context))
 
     @alldone
     def post(self):
-        """Attempt to persist the learner data in the GAE datastore and in the
-        session, send the email, and redirect to the certificate view."""
-
-        state = LearnerState()
+        """
+        Attempt to persist the learner data in the appengine datastore and in
+        the session, send the email, and redirect to the certificate view.
+        """
+        state = LearnerState(self.session)
 
         # persist the learner data
         try:
@@ -50,6 +50,7 @@ class Learner(BaseView):
             board_id = self.request.params.get('learner_board_id', "")
             state.persist_learner(name, board_id, None)
         except InvalidLearnerException:
+            logging.warn("caught invalid learner")
             self.redirect('/learner')
             return
 

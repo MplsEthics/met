@@ -1,0 +1,52 @@
+{#
+Copyright 2015 John J. Trammell.
+
+This file is part of the Mpls-ethics software package.  Mpls-ethics
+is free software: you can redistribute it and/or modify it under the
+terms of the GNU General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your
+option) any later version.
+
+Mpls-ethics is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Mpls-ethics.  If not, see <http://www.gnu.org/licenses/>.
+#}
+{% extends "base.djt" %}
+{% block content %}
+<h1>{{ s.name }}</h1>
+<h2>Discussion continued:</h2>
+
+<p>
+Your relationship with Friend does not create a financial conflict of
+interest since the Ethics Code does not consider the financial interests of
+your friends to be your financial interests.  Only your financial interests
+and those of your employers and associated businesses, along with the
+financial interests of your dependents, your spouse or domestic partner and
+their employers and associated businesses are considered your financial
+interests.  Your friends’ financial interests would not be considered your
+financial interests.
+
+<p>
+Since Friend’s financial interests are not your financial interests, you
+may be saying to yourself, “This is easy!  I know the rule, there is no
+problem here.  I can vote on this variance appeal.”
+
+<p>
+Or... you might be thinking “Maybe I should not have greeted Friend so
+enthusiastically. What are his neighbors thinking?”  The public tends to be
+cynical about government, and may not realize that you only want to do what is
+best for the City of Minneapolis.  What might be best for the City might not
+be what is best for Friend’s neighbors.  Attitudes, behavior and attention to
+details can impact how citizens feel about City government.
+
+<p>
+The best policy is to disclose your relationship with Friend even though
+the Ethics Code does not require disclosure.  And because of the hearty
+greeting, you may wish to recuse yourself from the matter so as to avoid
+the appearance of favoritism to your Friend.
+
+{% endblock content %}
