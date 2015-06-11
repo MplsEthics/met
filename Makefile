@@ -31,6 +31,10 @@ clean:
 	rm -f MANIFEST bulkloader-* *.csv *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' -exec rm {} \;
+	find mpls-ethics/ -name '*.css' -exec chmod 664 {} \;
+	find mpls-ethics/ -name '*.djt' -exec chmod 664 {} \;
+	find mpls-ethics/ -name '*.png' -exec chmod 664 {} \;
+	find mpls-ethics/ -name '*.py'  -exec chmod 664 {} \;
 
 realclean:
 	git clean -dfx
