@@ -16,13 +16,13 @@
 
 from google.appengine.api import mail
 
-def send_completion(learner_name,learner_board):
+def send_completion(learner_name, learner_board):
     """Sends the completion email to someone who tracks these things."""
     msg = mail.EmailMessage()
 
     # send the message to 'ethics education'
     msg.sender = 'Ethics Training Completion <completion@mpls-ethics.appspotmail.com>'
-    msg.to = 'Ethics Education <ethicseducation@ci.minneapolis.mn.us>'
+    msg.to = 'Ethics Education <openappointments@minneapolismn.gov>'
     msg.subject = "Ethics training completion"
     msg.body = """
 The following user has completed their online ethics training:
@@ -34,5 +34,3 @@ The following user has completed their online ethics training:
     # send a copy to me
     msg.to = 'John Trammell <john.trammell@gmail.com>'
     msg.send()
-
-    # FIXME: send a copy to Jozie.Nummi@minneapolismn.gov?
