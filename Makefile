@@ -44,7 +44,7 @@ sdk: sdk/google_appengine
 sdk/google_appengine/dev_appserver.py:
 	make sdk/google_appengine
 
-sdk/google_appengine: sdk/$(ZIPFILE)
+sdk/google_appengine: $(HOME)/Downloads/$(ZIPFILE)
 	mkdir -p sdk
 	unzip -q -d sdk $(HOME)/Downloads/$(ZIPFILE)
 
