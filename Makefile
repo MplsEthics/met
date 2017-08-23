@@ -19,7 +19,7 @@
         NOSE := nosetests-2.7
 
    APPENGINE := ./sdk/google_appengine
-     ZIPFILE := google_appengine_1.9.21.zip
+     ZIPFILE := google_appengine_1.9.57.zip
       ZIPURL := https://storage.googleapis.com/appengine-sdks/featured/$(ZIPFILE)
 
 .PHONY: start
