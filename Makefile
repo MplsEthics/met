@@ -31,10 +31,10 @@ clean:
 	rm -f MANIFEST bulkloader-* *.csv *.tar.gz
 	rm -rf build/ dist/ *.egg-info/
 	find . -name '*.pyc' -exec rm {} \;
-	find mpls-ethics/ -name '*.css' -exec chmod 664 {} \;
-	find mpls-ethics/ -name '*.djt' -exec chmod 664 {} \;
-	find mpls-ethics/ -name '*.png' -exec chmod 664 {} \;
-	find mpls-ethics/ -name '*.py'  -exec chmod 664 {} \;
+	find app/ -name '*.css' -exec chmod 664 {} \;
+	find app/ -name '*.djt' -exec chmod 664 {} \;
+	find app/ -name '*.png' -exec chmod 664 {} \;
+	find app/ -name '*.py'  -exec chmod 664 {} \;
 
 realclean:
 	git clean -dfx
@@ -53,10 +53,10 @@ download $(HOME)/Downloads/$(ZIPFILE):
 	if [ ! -e ~/Downloads/$(ZIPFILE) ]; then (cd ~/Downloads; wget $(ZIPURL)); fi
 
 start: sdk/google_appengine/dev_appserver.py
-	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check 1 mpls-ethics/
+	$(PYTHON) sdk/google_appengine/dev_appserver.py --skip_sdk_update_check 1 app/
 
 update:
-	$(PYTHON) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update mpls-ethics/
+	$(PYTHON) $(APPENGINE)/appcfg.py --email=johntrammell@gmail.com update app/
 
 nose nosetest:
 	$(NOSE) -v -s --with-gae
@@ -65,5 +65,5 @@ test: bin/check_yaml.py
 	@-ack $$(echo "abcde" | tr 'edcba' 'emxif')
 	@-find . -name *.py | grep -v '__' | xargs pyflakes
 	@-find util/bulkloader/src -name '*.yaml' | xargs -n 1 $(PYTHON) bin/check_yaml.py
-	cd mpls-ethics; $(NOSE) -v --with-gae --gae-lib-root=$(APPENGINE) --without-sandbox
+	cd app; $(NOSE) -v --with-gae --gae-lib-root=$(APPENGINE) --without-sandbox
 
