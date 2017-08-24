@@ -50,6 +50,8 @@ Resources
    http://code.google.com/appengine/docs/python/overview.html
    http://stackoverflow.com/questions/20956429/google-app-engine-jinja2-template-extends-base-template-from-parent-folder
 
+<https://console.cloud.google.com/storage/browser/mpls-ethics?project=mpls-ethics-hrd>
+
 
 Python Dependencies
 ===================
