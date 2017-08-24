@@ -83,5 +83,4 @@ upload-boards: boards.csv
 		--config_file=etc/bulkloader.yaml \
 		--filename=boards.csv \
 		--kind=Board \
-		--email=johntrammell@gmail.com \
 		--url http://mpls-ethics.appspot.com/remote_api
