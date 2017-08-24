@@ -83,4 +83,12 @@ Dates in templates:
     <https://docs.djangoproject.com/en/1.8/ref/templates/builtins/#std:templatefilter-date>
 
 
+To Do
+=====
+
+* update to use latest version of app engine code
+* fix bulk upload scripts to work again (sigh, bitrot)
+* research test frameworks; is nosegae still appropriate?
+* add NoseGAE tests to progress through 10 pages sequentially
+* look into test coverage metrics
 
